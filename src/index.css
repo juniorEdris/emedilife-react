@@ -1,13 +1,163 @@
+:root {
+  --theme-color: rgba(87, 0, 58);
+  --nav-bg: rgba(149, 0, 99);
+  --primary-btn-color: rgba(164, 3, 78);
+  --best-seller-color: rgba(230, 122, 0);
+  --brand-name-color: rgba(123, 123, 123);
+  --heading-color: rgba(0, 0, 0);
+  --light-text-color: rgba(255, 255, 255);
+  --dark-text-color: rgba(0, 0, 0, 0.16);
+  --shadow-color: rgba(0, 0, 0, 0.16);
+}
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'SF UI Display', sans-serif;
+  color: var(--light-text-color);
+}
+/* body {
+  margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+} */
+a,
+a:hover,
+a:focus,
+input,
+button,
+textarea,
+button:hover,
+button:focus {
+  outline: none;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+ul,
+ol,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/*--------------------------------------------------------------------
+                        Typhography Settings
+--------------------------------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+/*--------------------------------------------------------------------
+                        Main Elements css starts here
+--------------------------------------------------------------------*/
+/*--------------------------------------------------------------------
+                        Header_top css starts here
+--------------------------------------------------------------------*/
+.header_top_area {
+  background-color: var(--theme-color);
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 1rem;
+}
+.ham-burger {
+  display: block !important;
+}
+.ham-burger > span {
+  height: 3px;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  background: var(--light-text-color);
+}
+.ham-burger:not(:last-child) > span {
+  margin-bottom: 5px;
+}
+.logo_area {
+  margin-left: -45px;
+}
+.logo_area img {
+  width: 120px;
+}
+.search_input form {
+  display: none;
+}
+.search_input .responsive_search {
+  margin-right: -50px;
+}
+.search_input .responsive_search span i {
+  font-size: 1.1rem;
+}
+.header_user {
+  display: none;
+}
+.product_cart {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: center;
+}
+.product_cart .icon img {
+  height: 1.25rem;
+  width: 1.25rem;
+  object-fit: contain;
+}
+.product_cart .icon_name {
+  display: none;
+}
+/*--------------------------------------------------------------------
+                        Header nav css starts here
+--------------------------------------------------------------------*/
+.header_nav {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  align-items: center;
+  justify-content: center;
+  background-color: var(--nav-bg);
+}
+.nav_links {
+  display: none;
+}
+/* .nav_links ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+} */
+.more_link {
+  font-size: 0.5rem;
+  padding: 0.5em;
+}
+.more_link span {
+  margin-right: 0.2em;
 }
