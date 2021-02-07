@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function HamBurger() {
     return (
         <div className='ham-burger'>
-            <span></span>
-            <span></span>
-            <span></span>
+            <Link to='#'>
+                <span></span>
+                <span></span>
+                <span></span>
+            </Link>
         </div>
     )
 }

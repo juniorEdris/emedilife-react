@@ -85,43 +85,51 @@ h6 {
 }
 .ham-burger {
   display: block !important;
+  flex: 0 0 40px;
 }
-.ham-burger > span {
+.ham-burger a > span {
   height: 3px;
   width: 25px;
   display: flex;
   flex-direction: column;
   background: var(--light-text-color);
 }
-.ham-burger:not(:last-child) > span {
+.ham-burger:not(:last-child) a > span {
   margin-bottom: 5px;
 }
 .logo_area {
-  margin-left: -45px;
+  flex: 1 1 auto;
 }
 .logo_area img {
   width: 120px;
+}
+.search_input {
+  flex: 1 1 auto;
 }
 .search_input form {
   display: none;
 }
 .search_input .responsive_search {
-  margin-right: -50px;
+  text-align: right;
 }
 .search_input .responsive_search span i {
   font-size: 1.1rem;
+  color: var(--light-text-color);
 }
 .header_user {
   display: none;
 }
 .product_cart {
+  flex: 1 1 auto;
   display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox; /* TWEENER - IE 10 */
   display: -webkit-flex; /* NEW - Chrome */
   display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
   align-items: center;
+  justify-content: flex-end;
 }
+
 .product_cart .icon img {
   height: 1.25rem;
   width: 1.25rem;
@@ -160,4 +168,44 @@ h6 {
 }
 .more_link span {
   margin-right: 0.2em;
+}
+
+/*--------------------------------------------------------------------
+                        HomeSlider css starts here
+--------------------------------------------------------------------*/
+.slider-area {
+  width: 100%;
+  position: relative;
+}
+.single-slider {
+  width: 100%;
+}
+.single-slider .slider-image {
+  width: 100%;
+  object-fit: contain;
+}
+/* -----------------------------
+  Owl Carousel CSS (Header Slider) All breakpoints
+--------------------------------*/
+.home_slider .owl-carousel.owl-theme .owl-nav {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  color: #000;
+}
+.home_slider .owl-carousel.owl-theme .owl-dots {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  height: 20px;
+  background: var(--light-text-color);
+  border-radius: 1.25rem;
+}
+.home_slider .owl-carousel.owl-theme .owl-dots .owl-dot span {
+  margin: 5px 5px;
+}
+.home_slider .owl-carousel.owl-theme .owl-dots .owl-dot.active span,
+.home_slider .owl-carousel.owl-theme .owl-dots .owl-dot:hover span {
+  background-color: var(--theme-color);
+  border: none;
 }

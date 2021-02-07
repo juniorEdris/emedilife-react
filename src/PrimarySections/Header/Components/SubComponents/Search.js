@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 export const Search = (props) => {
     return (
@@ -17,9 +18,11 @@ export const Search = (props) => {
                 </button>
             </form>
             <div className='responsive_search'>
-                <span className='btn btn-link text-light'>
-                    <i class="fas fa-search" title='search'></i>
-                </span>
+                <Link to='/search'>
+                    <span className='btn btn-link text-light'>
+                        <i class="fas fa-search" title='search'></i>
+                    </span>
+                </Link>
             </div>
         </div>
     )

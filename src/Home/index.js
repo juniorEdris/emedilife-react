@@ -5,7 +5,6 @@ import  HomeSlider  from './Component/Banner'
 export const index = (props) => {
     return (
         <div>
-            <h3>Home Section</h3>
             <HomeSlider/>
         </div>
     )
