@@ -26,8 +26,8 @@ export const Banner = (props) => {
             navText={['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']}
           >
               {banners?.length > 0 && banners?.map(banner=>(
-                <div className="slider-area col-12" key={banner.id}>
-                        <div className="single-slider d-flex align-items-center" style={{backgroundImage: `url()`}}> {/* .replace('demostore', 'store') assets/img/slider/slider1-home1.jpg*/}
+                <div className="slider-area " key={banner.id}>{/*col-12*/}
+                        <div className="single-slider d-flex align-items-center">
                                 <img className='slider_image' src={`./assets/images/${banner.image}`} alt=""/>
                         </div>
                 </div>

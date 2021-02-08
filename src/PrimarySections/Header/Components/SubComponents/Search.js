@@ -8,19 +8,19 @@ export const Search = (props) => {
             <form action="">
                 <select name="" id="">
                     <option value="">Option</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <option value="">hakjsd</option>
+                    <option value="">sdaufh</option>
+                    <option value="">asdklf;k</option>
                 </select>
                 <input type="text" name="search" id="search"/>
                 <button type="submit">
-                    <i class="fas fa-search" title='search'></i>
+                    <i className="fas fa-search" title='search'></i>
                 </button>
             </form>
             <div className='responsive_search'>
                 <Link to='/search'>
                     <span className='btn btn-link text-light'>
-                        <i class="fas fa-search" title='search'></i>
+                        <i className="fas fa-search" title='search'></i>
                     </span>
                 </Link>
             </div>

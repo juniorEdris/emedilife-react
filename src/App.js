@@ -3,6 +3,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Header from './PrimarySections/Header'
 import NoRoutes from './NoRoutes'
 import Home from './Home';
+import "./responsive.css";
 
 function App() {
   return (

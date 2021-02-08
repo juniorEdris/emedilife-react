@@ -5,8 +5,8 @@ import NavRight from './SubComponents/NavRight'
 function HeaderNav() {
     return (
         <div className='header_nav'>
-            <NavList/>
-            <NavRight/>
+                <NavList/>
+                <NavRight/>
         </div>
     )
 }

@@ -7,6 +7,9 @@ function NavList() {
         <div className='nav_links'>
             <ul>
                 <li>
+                    <Link to='/all'><span class="lnr lnr-menu"></span> all</Link>
+                </li>
+                <li>
                     <Link to='/bestsellers'>best sellers</Link>
                 </li>
                 <li>
@@ -16,7 +19,7 @@ function NavList() {
                     <Link to='/mobiles'>mobiles</Link>
                 </li>
                 <li>
-                    <Link to='/prime'>prime</Link>
+                    <Link to='/prime'><span classname="lnr lnr-chevron-down"></span>prime</Link>
                 </li>
                 <li>
                     <Link to='/fashion'>fashion</Link>
@@ -34,6 +37,9 @@ function NavList() {
                     <Link to='/computers'>computers</Link>
                 </li>
                 <li>
+                    <Link to='/computers'>see more</Link>
+                </li>
+                {/* <li>
                     <Link to='/gift-ideas'>gift ideas</Link>
                 </li>
                 <li>
@@ -47,7 +53,7 @@ function NavList() {
                 </li>
                 <li>
                     <Link to='/sell'>sell</Link>
-                </li>
+                </li> */}
             </ul>
         </div>
     )

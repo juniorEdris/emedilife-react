@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 
 export const ProductCart = (props) => {
     return (
-        <div className='product_cart'>
+        <div>
             <Link to='/cart'>
+            <div className='product_cart'>
             <div className="icon">
                 <img src="assets/images/cart-icon.png" alt="cart-icon"/>
             </div>
             <div className="icon_name">
                 <h5>Cart</h5>
+            </div>
             </div>
             </Link>
         </div>

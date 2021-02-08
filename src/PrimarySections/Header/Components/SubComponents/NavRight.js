@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NavRight() {
     return (
         <div className='more_link'>
-            <span>Shopping made easy</span><span>|</span><span>Download the app</span>
+           <Link to='#'><span>Shopping made easy</span></Link><span>|</span> <Link to=''><span>Download the app</span></Link>
         </div>
     )
 }

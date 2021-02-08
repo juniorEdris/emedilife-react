@@ -5,9 +5,14 @@
   --best-seller-color: rgba(230, 122, 0);
   --brand-name-color: rgba(123, 123, 123);
   --heading-color: rgba(0, 0, 0);
-  --light-text-color: rgba(255, 255, 255);
-  --dark-text-color: rgba(0, 0, 0, 0.16);
+  --light-color: rgba(255, 255, 255);
+  --gray-color: rgba(0, 0, 0, 0.16); /* repair the name*/
+  --dark-color: rgba(7, 7, 7);
   --shadow-color: rgba(0, 0, 0, 0.16);
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 body {
   margin: 0;
@@ -17,7 +22,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-family: 'SF UI Display', sans-serif;
-  color: var(--light-text-color);
+  color: var(--light-color);
 }
 /* body {
   margin: 0;
@@ -92,35 +97,64 @@ h6 {
   width: 25px;
   display: flex;
   flex-direction: column;
-  background: var(--light-text-color);
+  background: var(--light-color);
 }
 .ham-burger:not(:last-child) a > span {
   margin-bottom: 5px;
 }
 .logo_area {
-  flex: 1 1 auto;
+  /* flex: 1; */
+  margin-right: 15px;
 }
 .logo_area img {
   width: 120px;
 }
 .search_input {
-  flex: 1 1 auto;
+  display: flex;
+  flex: 1;
+  height: 40px;
+  background: var(--light-color);
 }
-.search_input form {
+.search_input {
   display: none;
+  width: 100%;
+  margin-right: 10px;
 }
+.search_input select {
+  height: 40px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  background: var(--nav-bg);
+  color: var(--light-color);
+}
+.search_input input[type='text'] {
+  background: var(--light-color);
+  padding: 10px;
+  outline: none;
+  border: none;
+  width: 80%;
+  height: 100%;
+}
+.search_input button {
+  height: 40px;
+  width: 37px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
 .search_input .responsive_search {
   text-align: right;
 }
-.search_input .responsive_search span i {
+.search_input .responsive_search a span {
   font-size: 1.1rem;
-  color: var(--light-text-color);
+  color: var(--light-color) !important;
 }
 .header_user {
   display: none;
 }
 .product_cart {
-  flex: 1 1 auto;
   display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
   display: -ms-flexbox; /* TWEENER - IE 10 */
@@ -154,20 +188,17 @@ h6 {
 .nav_links {
   display: none;
 }
-/* .nav_links ul {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-} */
 .more_link {
-  font-size: 0.5rem;
-  padding: 0.5em;
+  padding: 0.2rem;
+  font-size: 0.75rem;
 }
-.more_link span {
-  margin-right: 0.2em;
+.more_link a span {
+  margin-right: 0.2rem;
+  color: var(--light-color);
+}
+.nav_links ul li a:hover,
+.more_link a:hover span {
+  text-decoration: underline;
 }
 
 /*--------------------------------------------------------------------
@@ -187,25 +218,116 @@ h6 {
 /* -----------------------------
   Owl Carousel CSS (Header Slider) All breakpoints
 --------------------------------*/
-.home_slider .owl-carousel.owl-theme .owl-nav {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  color: #000;
-}
+
 .home_slider .owl-carousel.owl-theme .owl-dots {
   position: absolute;
   bottom: 10%;
   left: 50%;
-  height: 20px;
-  background: var(--light-text-color);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 14px;
+  line-height: 14px;
+  background: var(--light-color);
   border-radius: 1.25rem;
 }
 .home_slider .owl-carousel.owl-theme .owl-dots .owl-dot span {
-  margin: 5px 5px;
+  margin: 4px 5px;
+  width: 6px;
+  height: 6px;
 }
 .home_slider .owl-carousel.owl-theme .owl-dots .owl-dot.active span,
 .home_slider .owl-carousel.owl-theme .owl-dots .owl-dot:hover span {
   background-color: var(--theme-color);
   border: none;
+}
+/* owl-carousel nav button styles */
+.home_slider .owl-nav button {
+  background: none;
+  border: none !important;
+  cursor: pointer;
+  left: 5px;
+  background: none;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9999;
+  visibility: visible;
+  width: auto;
+  height: auto;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 0.5 !important;
+}
+.home_slider button.owl-prev {
+  border: none !important;
+  right: auto;
+  left: 15px;
+  background: none !important;
+}
+.home_slider button.owl-next {
+  border: none !important;
+  left: auto;
+  right: 15px;
+  background: none !important;
+}
+
+/*--------------------------------------------------------------------
+                        Home Feature Area css starts here
+--------------------------------------------------------------------*/
+.home_feature_area img {
+  width: -webkit-fill-available;
+  max-width: 100%;
+  object-fit: fill;
+}
+
+/*--------------------------------------------------------------------
+                        Home Online Pharmacy Area css starts here
+--------------------------------------------------------------------*/
+
+.home_online_pharmacy {
+  text-align: center;
+  color: var(--heading-color);
+  text-transform: capitalize;
+}
+.home_online_pharmacy h4 {
+  font-weight: bold;
+  line-height: 2;
+}
+.home_online_pharmacy .btn_container .row > div {
+  margin-top: 1em;
+}
+.home_online_pharmacy .btn_container .text > p {
+  margin-bottom: 0.4rem !important;
+}
+
+.home_online_pharmacy .btn_container .buttons a {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.625rem 0;
+  color: var(--dark-color);
+}
+.home_online_pharmacy .btn_container .section-one .buttons a,
+.home_online_pharmacy .btn_container .section-three .buttons a {
+  color: var(--theme-color);
+  border: 1px solid var(--theme-color);
+}
+.home_online_pharmacy .btn_container .section-one .buttons a:hover,
+.home_online_pharmacy .btn_container .section-three .buttons a:hover {
+  color: var(--light-color);
+  border: 1px solid var(--theme-color);
+  background: var(--theme-color);
+}
+.home_online_pharmacy .btn_container .section-two .buttons a {
+  color: var(--light-color);
+  background-color: var(--theme-color);
+}
+.home_online_pharmacy .btn_container .section-two .buttons a:hover {
+  background-color: var(--dark-color);
 }
