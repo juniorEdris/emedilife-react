@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom'
 
 function Logo() {
     return (
-        <div className="logo_area">
-                <Link to='/'>
-                    <img src={'assets/svg/logo_svg/logo.svg'} alt=""/>
-                </Link>
-            </div>
+        <>
+        <Link to='/'>
+            <img
+                className='header__logo'
+                src={'assets/svg/logo_svg/logo.svg'}
+                alt='amazon Logo'
+            />            
+        </Link>
+        </>
     )
 }
 

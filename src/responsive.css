@@ -32,8 +32,7 @@
     display: flex;
     align-items: center;
   }
-  .nav_links ul {
-  }
+
   .nav_links ul li a {
     color: var(--light-color);
     margin-right: 0.4rem;
@@ -41,20 +40,13 @@
     font-size: 0.5rem;
     line-height: 100%;
   }
-  .nav_links ul li a span.lnr {
-  }
 }
 
 @media (min-width: 991px) {
   .ham-burger {
     display: none !important;
   }
-  .search_input {
-    display: block;
-  }
-  .header_user {
-    display: block;
-  }
+
   .header__option {
     display: flex;
     flex-direction: column;
@@ -68,15 +60,28 @@
     font-size: 16px;
     font-weight: 700;
   }
-  .responsive_search {
+  .header__link {
+    display: block;
+  }
+  .header__link .header__option__basket .icon_name {
+    display: block;
+  }
+  /*
+    .search_input {
+    display: block;
+  }
+  .header_user {
+    display: block;
+  } .responsive_search {
     display: none;
   }
   .product_cart .icon_name {
     display: block;
   }
+
   .product_cart .icon_name {
-    color: #fff;
-  }
+    color: var(--light-color);
+  } */
   .nav_links {
     display: block;
   }

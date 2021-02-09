@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderTop from './Components/HeaderTopSection'
+import HeaderTop from './Components/HeaderTop'
 import Navigation from './Components/HeaderNav'
 
 function index() {

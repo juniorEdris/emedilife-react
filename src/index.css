@@ -102,8 +102,7 @@ h6 {
 .ham-burger:not(:last-child) a > span {
   margin-bottom: 5px;
 }
-.logo_area {
-  /* flex: 1; */
+/* .logo_area {
   margin-right: 15px;
 }
 .logo_area img {
@@ -155,11 +154,11 @@ h6 {
   display: none;
 }
 .product_cart {
-  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox; /* TWEENER - IE 10 */
-  display: -webkit-flex; /* NEW - Chrome */
-  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  display: -webkit-box; 
+  display: -moz-box; 
+  display: -ms-flexbox; 
+  display: -webkit-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
 }
@@ -171,7 +170,111 @@ h6 {
 }
 .product_cart .icon_name {
   display: none;
+} */
+.header {
+  background-color: var(--theme-color);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  justify-content: space-between;
+  padding: 0px 20px;
 }
+.header__logo {
+  width: 100px;
+  object-fit: contain;
+  margin: 0 20px;
+}
+.header__search {
+  width: 60%;
+}
+.header__search_inner {
+  display: flex;
+  flex: 1;
+  background-color: var(--light-color);
+  border-radius: 0.325rem;
+}
+.header__search select {
+  height: 40px;
+  width: 150px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  background: var(--nav-bg);
+  color: var(--light-color);
+  border-radius: 0.325rem 0 0 0.325rem;
+  cursor: pointer;
+}
+.header__searchInput {
+  padding: 5px 15px !important;
+  border: none;
+  width: 100%;
+}
+.header__searchIcon {
+  padding-right: 8px;
+  padding-top: 8px;
+  font-size: 17px;
+}
+.header__searchIcon svg {
+  color: var(--dark-color) !important;
+}
+.header__right {
+  padding-right: 15px;
+}
+.header__mobile_searchIcon {
+  padding-right: 14px;
+  font-size: 22px;
+}
+.header__mobile_searchIcon svg {
+  color: var(--light-color) !important;
+}
+.header__nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__link {
+  margin-right: 20px;
+}
+.header__link {
+  color: var(--light-color);
+  text-decoration: none;
+  display: none;
+}
+.header__link:hover {
+  color: var(--light-color);
+}
+.header__option:hover {
+  opacity: 0.7;
+}
+.header__option {
+  display: flex;
+  flex-direction: column;
+}
+.header__option__lineOne {
+  font-size: 13px;
+}
+.header__option__lineTwo {
+  font-size: 16px;
+  font-weight: 700;
+}
+.header__option__basket {
+  display: flex;
+  color: var(--light-color);
+  align-items: center;
+  margin: 16px 0px;
+}
+.header__link2:hover .header__option__basket {
+  opacity: 0.7;
+}
+.header__link2 .header__option__basket .icon_name {
+  display: none;
+}
+.header__link2 .header__option__basket .icon img {
+  height: 1.45rem;
+  width: 1.45rem;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
 /*--------------------------------------------------------------------
                         Header nav css starts here
 --------------------------------------------------------------------*/
