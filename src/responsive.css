@@ -1,10 +1,10 @@
 /* XL Device :1200px. */
 @media (min-width: 1200px) and (max-width: 1500px) {
   .more_link {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
   }
   .nav_links ul li a {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
   }
 }
 
@@ -66,22 +66,6 @@
   .header__link .header__option__basket .icon_name {
     display: block;
   }
-  /*
-    .search_input {
-    display: block;
-  }
-  .header_user {
-    display: block;
-  } .responsive_search {
-    display: none;
-  }
-  .product_cart .icon_name {
-    display: block;
-  }
-
-  .product_cart .icon_name {
-    color: var(--light-color);
-  } */
   .nav_links {
     display: block;
   }
