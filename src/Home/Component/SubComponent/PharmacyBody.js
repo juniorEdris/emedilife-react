@@ -29,7 +29,7 @@ export const PharmacyBody = (props) => {
                     </div>
                     <div className="col-12 col-md-6 pharmacy_right">
                         <div className="col m-auto">
-                            <iframe src="https://www.youtube.com/watch?v=QHBnlkBTOkM" title='video'></iframe>
+                            <iframe width={853} height={480} src="https://www.youtube.com/embed/QHBnlkBTOkM" frameBorder={0}  title='video'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                         </div>
                     </div>
                 </div>
