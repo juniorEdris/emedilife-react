@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import  HomeSlider  from './Component/Banner'
+import BannerSection from './Component/BannerSection'
 import { FeatureBrands } from './Component/FeatureBrands'
 import { Features } from './Component/Features'
 import { OnlinePharma } from './Component/OnlinePharma'
+import PopularProduct from './Component/PopularProduct'
 
 export const index = (props) => {
     return (
@@ -12,6 +14,8 @@ export const index = (props) => {
             <Features/>
             <OnlinePharma/>
             <FeatureBrands/>
+            <BannerSection/>
+            <PopularProduct/>
         </div>
     )
 }

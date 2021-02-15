@@ -26,15 +26,6 @@ body {
   font-family: 'SF UI Display', sans-serif;
   color: var(--light-color);
 }
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-} */
 a,
 a:hover,
 a:focus,
@@ -76,20 +67,23 @@ h6 {
                         Primary css starts here
 --------------------------------------------------------------------*/
 .box-shadow {
-  box-shadow: 1px 8px 4px 0px var(--shadow-color);
+  -webkit-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
 }
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
 --------------------------------------------------------------------*/
 .section_heading_one {
   position: relative;
-  font-size: 30px;
+  font-size: 1rem;
   z-index: 1;
   overflow: hidden;
   text-align: center;
   color: var(--heading-color);
-  padding: 0 10px;
+  padding: 0 0.625rem;
   font-weight: 300;
+  margin-bottom: 1.2rem;
 }
 .section_heading_one:before,
 .section_heading_one:after {
@@ -97,18 +91,218 @@ ALL Section Heading css starts here
   top: 51%;
   overflow: hidden;
   width: 50%;
-  height: 1px;
+  height: 0.063rem;
   content: '\a0';
   background-color: var(--heading-color);
 }
 .section_heading_one:before {
-  margin-left: -50%;
+  margin-left: -54%;
   text-align: right;
+}
+.section_heading_one:after {
+  margin-left: 4%;
 }
 .section_heading_one span {
   font-weight: 600;
 }
+/*--------------------------------------------------------------------
+                        Primary Slider css starts here
+--------------------------------------------------------------------*/
+/*Image slider starts here */
+.image_container {
+  border-radius: 0.625rem;
+  height: 180px;
+  border: 1px solid var(--shadow-color);
+  background: var(--light-color);
+}
+.image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+}
 
+/*Image nav button styles */
+.image-slider-one .owl-nav button {
+  background: none;
+  border: none !important;
+  cursor: pointer;
+  left: 5px;
+  background: none;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9999;
+  visibility: visible;
+  width: auto;
+  height: auto;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 0.5 !important;
+  color: var(--dark-color);
+}
+.image-slider-one button.owl-prev svg,
+.image-slider-one button.owl-next svg {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.image-slider-one button.owl-prev,
+.image-slider-one button.owl-next {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px !important;
+  background-color: var(--light-color) !important;
+  color: var(--theme-color) !important;
+  font-size: 2rem;
+  -webkit-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+}
+.image-slider-one button.owl-prev.disabled,
+.image-slider-one button.owl-next.disabled {
+  display: none;
+}
+.image-slider-one button.owl-prev {
+  border: none !important;
+  right: auto;
+  left: -20px;
+}
+.image-slider-one button.owl-next {
+  border: none !important;
+  left: auto;
+  right: -20px;
+}
+/*image slider css ends */
+
+/*product slider css starts */
+.product-item {
+  border: 2px solid var(--theme-color);
+  border-radius: 0.625rem;
+  padding: 0.313rem;
+}
+.product-thumb {
+  position: relative;
+}
+
+.product-thumb a {
+  position: relative;
+  display: block;
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+.product-caption {
+  color: var(--dark-color);
+  position: relative;
+  padding: 1.375rem 0.625rem 1rem;
+}
+.manufacture-product {
+  margin: 0.313rem 0;
+}
+.manufacture-product a {
+  color: var(--brand-name-color);
+  font-size: 0.813rem;
+  font-weight: 400;
+  line-height: 20px;
+}
+.product-name h4 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 5px 0;
+  color: var(--dark-color);
+}
+.price-box > span {
+  margin-right: 0.626rem;
+}
+.price-box del {
+  color: var(--brand-name-color);
+}
+.regular-price {
+  font-size: 1rem;
+}
+.old-price {
+  font-size: 0.7rem;
+}
+.old-price::before {
+  content: '|';
+  margin-right: 5px;
+}
+.product-name h4 a {
+  color: #111;
+}
+.btn-cart {
+  width: 100%;
+  background: var(--theme-color);
+  border: medium none;
+  border-radius: 0.313rem;
+  color: var(--light-color);
+  cursor: pointer;
+  font-size: 0.7rem;
+  margin-top: 10px;
+  padding: 0.313rem;
+  text-transform: uppercase;
+}
+.btn-cart:hover {
+  background: var(--dark-color);
+}
+
+/*Image nav button styles */
+.product-section .owl-nav button {
+  background: none;
+  border: none !important;
+  cursor: pointer;
+  left: 5px;
+  background: none;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9999;
+  visibility: visible;
+  width: auto;
+  height: auto;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  transition: 0.4s;
+  font-size: 0.5 !important;
+  color: var(--dark-color);
+}
+.product-section button.owl-prev svg,
+.product-section button.owl-next svg {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.product-section button.owl-prev.disabled,
+.product-section button.owl-next.disabled {
+  display: none;
+}
+.product-section button.owl-prev,
+.product-section button.owl-next {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px !important;
+  background-color: var(--light-color) !important;
+  color: var(--theme-color) !important;
+  font-size: 2rem;
+  -webkit-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+  box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
+}
+.product-section button.owl-prev {
+  border: none !important;
+  right: auto;
+  left: -20px;
+}
+.product-section button.owl-next {
+  border: none !important;
+  left: auto;
+  right: -20px;
+}
+/*product slider css ends */
 /*--------------------------------------------------------------------
                         Main Elements css starts here
 --------------------------------------------------------------------*/
@@ -448,57 +642,14 @@ Feature Brands css starts here
   background: var(--gray-second-color);
 }
 /* slider css starts*/
-.brand_container {
-  border-radius: 0.25rem;
-  height: 180px;
-  border: 1px solid var(--shadow-color);
-  background: var(--light-color);
+.brand_section {
+  padding: 0 1rem;
 }
-.brand_container img {
-  width: 100%;
-  height: 100%;
-  object-fit: none;
-}
+/*  */
 
-/* owl-carousel nav button styles */
-.brand_section .owl-nav button {
-  background: none;
-  border: none !important;
-  cursor: pointer;
-  left: 5px;
-  background: none;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 9999;
-  visibility: visible;
-  width: auto;
-  height: auto;
-  -webkit-transition: 0.4s;
-  -moz-transition: 0.4s;
-  transition: 0.4s;
-  font-size: 0.5 !important;
-  color: var(--dark-color);
+/*--------------------------------------------------------------------
+Banner Section css starts here
+--------------------------------------------------------------------*/
+.wide_banner img {
+  width: 100%;
 }
-.brand_section button.owl-prev,
-.brand_section button.owl-next {
-  height: 20px;
-  width: 20px;
-  color: var(--light-color) !important;
-  background-color: var(--theme-color) !important;
-  font-size: 2rem;
-}
-.brand_section button.owl-prev {
-  border: none !important;
-  right: auto;
-  left: 0px;
-}
-.brand_section button.owl-next {
-  border: none !important;
-  left: auto;
-  right: 0px;
-}
-/* slider css ends */
