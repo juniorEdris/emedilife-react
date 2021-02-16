@@ -7,9 +7,9 @@ const BannerSection = (props) => {
         <div className='wide_banner mb-5'>
             <div className="container">
                 <SectionHeadingOne fontStyleOne={'Good Health and'} fontStyleTwo={'Grand Saving'}/>
-            </div>
-            <div className='wide_banner_image'>
-                <img src={`./assets/images/discountBanner/banner.png`} alt={``}/>
+                <div className='wide_banner_image'>
+                    <img src={`./assets/images/discountBanner/banner.png`} alt={``}/>
+                </div>
             </div>
         </div>
     )

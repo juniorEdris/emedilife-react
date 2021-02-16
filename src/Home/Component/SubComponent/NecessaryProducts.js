@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SectionHeadingOne from '../../PrimarySections/SectionUtils/SectionHeadingOne'
-import Product from '../../PrimarySections/SliderComponents/ProductSlider'
+import ProductCard from '../../../PrimarySections/SectionUtils/ProductCard'
 
-const PopularProduct = (props) => {
+const NecessaryProducts = (props) => {
     const products=[
         {
             id:1,
@@ -87,10 +86,15 @@ const PopularProduct = (props) => {
         },
     ]
     return (
-        <div className='popular_product mb-3'>
-            <div className="container">
-                <SectionHeadingOne fontStyleOne={'Popular'} fontStyleTwo={'Healthcare Products'}/>
-                <Product products={products}/>
+        <div className=''>
+            <div className="row">
+                    {
+                        products.map(product=>(
+                            <div className="col-6 col-md-3">
+                                <ProductCard key={product.id} product={product}/>
+                            </div>
+                        ))
+                    }
             </div>
         </div>
     )
@@ -104,4 +108,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopularProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(NecessaryProducts)

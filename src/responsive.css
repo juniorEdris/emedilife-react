@@ -69,8 +69,15 @@
   .nav_links {
     display: block;
   }
-  .section_heading_one {
+  .btn-cart {
+    font-size: 1rem;
+  }
+  .section_heading_one,
+  .section_heading_three {
     font-size: 1.875rem;
+  }
+  .health_banner_image {
+    margin-bottom: 0;
   }
 }
 
