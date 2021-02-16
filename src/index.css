@@ -265,7 +265,7 @@ ALL Section Heading css starts here
   height: 50px;
 } */
 .product-name h4 {
-  font-size: 0.938rem;
+  font-size: 0.738rem;
   font-weight: 400;
   padding: 5px 0;
   color: var(--dark-color);
@@ -756,5 +756,5 @@ Article css starts here
 }
 .article_post_body {
   padding: 0.625rem;
-  text-align: justify;
+  text-align: left;
 }
