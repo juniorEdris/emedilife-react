@@ -11,6 +11,8 @@ import PopularProduct from './Component/PopularProduct'
 import HealthCareBanners from './Component/HealthCareBanner'
 import { NecessaryProducts } from './Component/NecessaryProducts'
 import HealthArticle from './Component/HealthArticle'
+import AppBanner from './Component/AppBanner'
+
 
 export const index = (props) => {
     return (
@@ -26,6 +28,7 @@ export const index = (props) => {
             <BannerSectionThree/>
             <NecessaryProducts/>
             <HealthArticle/>
+            <AppBanner/>
         </div>
     )
 }

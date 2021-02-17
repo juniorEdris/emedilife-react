@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import FooterBottom from './Components/FooterBottom'
+import FooterLinks from './Components/FooterLinks'
 
 export const index = (props) => {
     return (
-        <div>
-            
+        <div className='footer'>
+            <FooterLinks/>
+            <FooterBottom/>
         </div>
     )
 }

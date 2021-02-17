@@ -79,6 +79,12 @@
   .health_banner_image {
     margin-bottom: 0;
   }
+  .back_to_top span.flat-btn {
+    display: block;
+  }
+  .scroll-top {
+    display: none;
+  }
 }
 
 /* SM Small Device */

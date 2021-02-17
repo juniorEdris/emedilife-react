@@ -8,7 +8,7 @@ function Logo() {
             <img
                 className='header__logo'
                 src={'assets/svg/logo_svg/logo.svg'}
-                alt='amazon Logo'
+                alt='Uparzon Logo'
             />            
         </Link>
         </>

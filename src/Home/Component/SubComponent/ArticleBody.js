@@ -46,9 +46,7 @@ const ArticleBody = (props) => {
         <div className='health_article_body row'>
             {posts.map(post=>(
                 <div className="col-12 col-md-3" key={post.id}>
-                    <Link to='/'>
                         <Article key={post.id} post={post}/>
-                    </Link>
                     </div>
             ))}
         </div>
