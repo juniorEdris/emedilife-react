@@ -13,10 +13,17 @@
   --dark-color: rgba(7, 7, 7);
   --shadow-color: rgba(0, 0, 0, 0.16);
   --gray-second-color: rgba(241, 241, 241);
+  --user-entry-btn: rgba(5, 64, 122);
 }
 * {
   margin: 0;
   padding: 0;
+}
+html::-webkit-scrollbar {
+  display: none; /* css for scrollbar hide*/
+}
+html {
+  -ms-overflow-style: none; /* css for scrollbar hide IE and Edge*/
 }
 body {
   margin: 0;
@@ -77,6 +84,10 @@ h6 {
   width: 100%;
   max-height: 15.625rem;
   object-fit: contain;
+}
+.error-handler {
+  margin-top: 0.6rem;
+  color: rgb(211, 15, 15);
 }
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
@@ -474,6 +485,7 @@ ALL Section Heading css starts here
 .header__option {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .header__option__lineOne {
   font-size: 13px;
@@ -529,7 +541,95 @@ ALL Section Heading css starts here
 .more_link a:hover span {
   text-decoration: underline;
 }
+/*--------------------------------------------------------------------
+Back to top button css starts here
+--------------------------------------------------------------------*/
 
+.back_to_top span.flat-btn {
+  background: var(--primary-btn-color);
+  padding: 0.5rem;
+  text-align: center;
+  display: none;
+  color: var(--light-color);
+  height: 100%;
+  cursor: pointer;
+}
+.back_to_top span.flat-btn:hover {
+  color: var(--dark-color);
+}
+
+/*-------scroll to top-------*/
+.scroll-top {
+  background: var(--theme-color);
+  border-radius: 50%;
+  bottom: 50px;
+  /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5); */
+  cursor: pointer;
+  height: 50px;
+  position: fixed;
+  right: 15px;
+  text-align: center;
+  width: 50px;
+  z-index: 9;
+  line-height: 55px;
+  border: 2px solid #ddd;
+}
+
+.scroll-top span.lnr.lnr-arrow-up {
+  font-size: 0.9rem;
+  font-weight: bolder;
+}
+
+.not-visible {
+  visibility: hidden;
+  -webkit-opacity: 0;
+  opacity: 0;
+}
+
+/*--------------------------------------------------------------------
+Footer css starts here
+--------------------------------------------------------------------*/
+
+.footer {
+  background: var(--theme-color);
+}
+/* Footer Top css */
+.footer_links {
+  padding: 1.7rem 0 1rem 0;
+  border-bottom: 1px solid var(--footer-border-color);
+}
+.links_container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.links_container h6 {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.links li {
+  margin-bottom: 0.1rem;
+}
+.links li a {
+  color: var(--light-color);
+  text-transform: capitalize;
+}
+.links li a:hover {
+  opacity: 0.4;
+}
+
+/* Footer bottom css */
+
+.footer_bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/*-----------------------------------------------------------------------------------------
+                                          Home css starts here
+                  -------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------
                         HomeSlider css starts here
 --------------------------------------------------------------------*/
@@ -778,87 +878,39 @@ Article css starts here
 }
 
 /*--------------------------------------------------------------------
-Back to top button css starts here
---------------------------------------------------------------------*/
-
-.back_to_top span.flat-btn {
-  background: var(--primary-btn-color);
-  padding: 0.5rem;
-  text-align: center;
-  display: none;
-  color: var(--light-color);
-  height: 100%;
-  cursor: pointer;
-}
-.back_to_top span.flat-btn:hover {
-  color: var(--dark-color);
-}
-
-/*-------scroll to top-------*/
-.scroll-top {
-  background: var(--theme-color);
-  border-radius: 50%;
-  bottom: 50px;
-  /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5); */
-  cursor: pointer;
-  height: 50px;
-  position: fixed;
-  right: 15px;
-  text-align: center;
-  width: 50px;
-  z-index: 9;
-  line-height: 55px;
-  border: 2px solid #ddd;
-}
-
-.scroll-top span.lnr.lnr-arrow-up {
-  font-size: 0.9rem;
-  font-weight: bolder;
-}
-
-.not-visible {
-  visibility: hidden;
-  -webkit-opacity: 0;
-  opacity: 0;
-}
+              Home css ends here
+              --------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------
-Footer css starts here
---------------------------------------------------------------------*/
+            User entry css starts here
+            --------------------------------------------------------------------*/
+.user_entry {
+  color: var(--dark-color);
+  padding: 10% 0;
+}
+.user_entry .login-form {
+  padding: 0px 50px 40px;
+  border: 1px solid var(--theme-color);
+  -webkit-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+}
 
-.footer {
-  background: var(--theme-color);
+.user_entry .login-form .input {
+  border: 1px solid var(--theme-color);
 }
-/* Footer Top css */
-.footer_links {
-  padding: 1.7rem 0 1rem 0;
-  border-bottom: 1px solid var(--footer-border-color);
+
+.user_entry_heading {
+  padding: 0.8rem 0 3.125rem;
+  font-size: 1.238rem;
+  font-weight: 500;
 }
-.links_container {
+.user_msg_text {
   text-align: center;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-top: 0.8rem;
 }
-.links_container h6 {
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-.links li {
-  margin-bottom: 0.1rem;
-}
-.links li a {
+.login-box button {
+  background: var(--user-entry-btn);
   color: var(--light-color);
-  text-transform: capitalize;
-}
-.links li a:hover {
-  opacity: 0.4;
-}
-
-/* Footer bottom css */
-
-.footer_bottom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
+  border-radius: 0.1rem !important;
 }

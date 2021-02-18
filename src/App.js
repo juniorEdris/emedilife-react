@@ -6,6 +6,10 @@ import Home from './Home';
 import "./responsive.css";
 import BackToTop from './PrimarySections/SectionUtils/BackToTop';
 import Footer from './PrimarySections/Footer';
+import ProductDetails from './ProductDetails';
+import UserEntry from './MyAccount/UserActivity/index';
+import Dashboard from './MyAccount/Dashboard';
+
 
 function App() {
   return (
@@ -14,7 +18,10 @@ function App() {
         <Header/>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='*' component={ NoRoutes }/>
+          <Route path='/productdetails' component={ProductDetails}/>
+          <Route path='/login' component={UserEntry}/>
+          <Route path='/dashboard' component={Dashboard}/>
+          <Route exact path='*' component={ NoRoutes }/>
         </Switch>
         <BackToTop/>
         <Footer/>

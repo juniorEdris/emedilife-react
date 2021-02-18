@@ -10,7 +10,6 @@ export const renderHTML = (rawHTML) => React.createElement("div", { dangerouslyS
 export const renderSpan = (rawHTML) => React.createElement("span", { dangerouslySetInnerHTML: { __html: rawHTML } });
 
 // Get Url parameters 
-
 export function useQuery() {
     return  new URLSearchParams(useLocation().search);      
 }
