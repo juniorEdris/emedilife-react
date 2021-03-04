@@ -1,8 +1,10 @@
+/* @import "react-alice-carousel/lib/alice-carousel.css"; */
 :root {
   --theme-color: rgba(87, 0, 58);
   --nav-bg: rgba(149, 0, 99);
   --primary-btn-color: rgba(164, 3, 78);
   --best-seller-color: rgba(230, 122, 0);
+  --ratings-color: rgba(255, 216, 25);
   --brand-name-color: rgba(123, 123, 123);
   --muted-color: rgba(106, 106, 106);
   --muted-btn-color: rgba(238, 238, 238);
@@ -881,6 +883,12 @@ Article css starts here
               Home css ends here
               --------------------------------------------------------------------*/
 
+/*--------------------------------------------------------------------
+            Product Details wrapper css starts here
+            --------------------------------------------------------------------*/
+/* .product_details_wrapper .details_buttons{
+  padding: 0.1rem;
+} */
 /*--------------------------------------------------------------------
             User entry css starts here
             --------------------------------------------------------------------*/
