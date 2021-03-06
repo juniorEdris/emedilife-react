@@ -1,24 +1,24 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { renderDiv } from '../../PrimarySections/Utility';
 
 const DetailsBody = (props) => {
-    return (
-        <div className=''>
-            <div className="container">
-                <div className="details__wrapper">
-                    
-                </div>
-            </div>
+  return (
+    <div className="">
+      <div className="container p-0">
+        <div className="details__wrapper">
+          {renderDiv(props.details?.details) || 'none'}
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
-    
-})
+  loading: state.ProductDetails.loading,
+  details: state.ProductDetails.productDetails,
+});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailsBody)
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsBody);

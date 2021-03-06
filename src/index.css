@@ -11,11 +11,13 @@
   --heading-color: rgba(0, 0, 0);
   --light-color: rgba(255, 255, 255);
   --footer-border-color: rgba(250, 250, 250, 35%);
+  --delivery-details-bg: rgba(239, 239, 239, 100%);
   --gray-color: rgba(0, 0, 0, 0.16); /* repair the name*/
   --dark-color: rgba(7, 7, 7);
   --shadow-color: rgba(0, 0, 0, 0.16);
   --gray-second-color: rgba(241, 241, 241);
   --user-entry-btn: rgba(5, 64, 122);
+  --margin-bottom:1.25rem;
 }
 * {
   margin: 0;
@@ -35,7 +37,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-family: 'SF UI Display', sans-serif;
-  color: var(--light-color);
+  color: var(--dark-color);
 }
 a,
 a:hover,
@@ -534,6 +536,7 @@ ALL Section Heading css starts here
 .more_link {
   padding: 0.2rem;
   font-size: 0.75rem;
+  color: var(--light-color);
 }
 .more_link a span {
   margin-right: 0.2rem;
@@ -555,6 +558,7 @@ Back to top button css starts here
   color: var(--light-color);
   height: 100%;
   cursor: pointer;
+  color: var(--light-color);
 }
 .back_to_top span.flat-btn:hover {
   color: var(--dark-color);
@@ -574,6 +578,7 @@ Back to top button css starts here
   text-align: center;
   width: 50px;
   z-index: 9;
+  color: var(--light-color);
   line-height: 55px;
   border: 2px solid #ddd;
 }
@@ -604,6 +609,7 @@ Footer css starts here
 .links_container {
   text-align: center;
   margin-bottom: 1rem;
+  color: var(--light-color);
 }
 .links_container h6 {
   font-size: 0.8rem;

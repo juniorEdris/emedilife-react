@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './PrimarySections/Header';
 import NoRoutes from './NoRoutes';
-import Home from './Home';
+import Home from './Home/Index';
 import './responsive.css';
 import BackToTop from './PrimarySections/SectionUtils/BackToTop';
 import Footer from './PrimarySections/Footer';

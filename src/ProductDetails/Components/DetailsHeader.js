@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
-import { Slider } from './SubComponents/Slider';
-import { Details } from './SubComponents/Details';
+import Slider from './SubComponents/Slider';
+import Details from './SubComponents/Details';
+import DeliveryDetails from './SubComponents/DeliveryDetails';
 
 const DetailsHeader = (props) => {
   return (
-    <div className="container text-secondary">
+    <div className="container text-secondary mb-5">
       <div className="row">
         <div className="col-12 col-md-4">
           <Slider />
@@ -14,7 +15,9 @@ const DetailsHeader = (props) => {
         <div className="col-12 col-md-4">
           <Details />
         </div>
-        <div className="col-12 col-md-4">delivery option</div>
+        <div className="col-12 col-md-4 wrapper">
+          <DeliveryDetails />
+        </div>
       </div>
     </div>
   );

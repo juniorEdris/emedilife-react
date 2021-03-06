@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AliceCarousel from 'react-alice-carousel';
+import { DOMAIN } from '../../../PrimarySections/Utility/API_Links';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { products } from '../../../data';
 import './slider.css';
 
-export const Slider = (props) => {
+const Slider = (props) => {
   return (
     <div className="product_slider_wrapper">
       <AliceCarousel
@@ -15,12 +16,12 @@ export const Slider = (props) => {
         mouseTracking={true}
         infinite={true}
         swipeDelta={0}
-        autoPlayStrategy='default'>
-        {products.map((product) => (
+        autoPlayStrategy="default">
+        {props.details?.images?.map((image) => (
           <img
-            src={`./assets/images/products/${product.image}`}
+            src={`${DOMAIN}${props.details?.images_base_path}/${image.url}`}
             className="slider_image"
-            alt={product.name}
+            alt={props.details?.name}
           />
         ))}
       </AliceCarousel>
@@ -28,8 +29,11 @@ export const Slider = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.ProductDetails.loading,
+  details: state.ProductDetails.productDetails,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);

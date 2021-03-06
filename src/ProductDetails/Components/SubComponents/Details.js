@@ -2,20 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export const Details = (props) => {
+const Details = (props) => {
   return (
     <div className="product_details_wrapper">
       <div className="product_details_caption">
         <div className="details_product-name">
-          <p>
-            <Link
-              to="/"
-              title={
-                'Omron HEM 7120 Fully Automatic Digital Blood Pressure Monitor'
-              }>
-              Omron HEM 7120 Fully Automatic Digital Blood Pressure Monitor
-            </Link>
-          </p>
+          <p title={props.details.name}>{props.details.name}</p>
         </div>
         <div className="details_ratings mb-2">
           <span className={`rated`}>
@@ -33,11 +25,14 @@ export const Details = (props) => {
           <span className={`not-rated`}>
             <i className="fa fa-star" />
           </span>
-          <span className='review_count'>250+ reviews</span>
+          <span className="review_count">250+ reviews</span>
         </div>
         <div className="details_manufacture-product">
           <small>
-            brand: <Link to="/">{'Square Pharmaceuticals Ltd'}</Link>
+            brand:{' '}
+            <Link to="/">
+              {props.details?.company !== null ? props.details?.company : ''}
+            </Link>
           </small>
         </div>
         <div className="share_btns">
@@ -48,6 +43,8 @@ export const Details = (props) => {
               src={'assets/svg/product_details/Icon ionic-md-share.svg'}
               alt="Uparzon Logo"
             />{' '}
+          </Link>
+          <Link to="/">
             <img
               className="share_btns_child wishlist"
               src={
@@ -96,7 +93,10 @@ export const Details = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.ProductDetails.loading,
+  details: state.ProductDetails.productDetails,
+});
 
 const mapDispatchToProps = {};
 
