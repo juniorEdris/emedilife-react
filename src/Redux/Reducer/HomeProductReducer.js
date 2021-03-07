@@ -10,12 +10,12 @@ export const HomeContentReducer = (state = initialState, action) => {
     case FETCH_HOME_PRODUCTS_REQUEST:
       return {
         ...state,
-        homeSlider: '',
+        homeSlider: [],
         loading: true,
-        neccessaryProducts: '',
+        neccessaryProducts: [],
       };
     case FETCH_HOME_PRODUCTS_SUCCESS:
-      console.log('reducer', action.products);
+      console.log('reducer', action);
       return {
         ...state,
         loading: false,
@@ -25,9 +25,9 @@ export const HomeContentReducer = (state = initialState, action) => {
     case FETCH_HOME_PRODUCTS_ERROR:
       return {
         ...state,
-        homeSlider: '',
+        homeSlider: [],
         loading: true,
-        neccessaryProducts: '',
+        neccessaryProducts: [],
       };
     default:
       return state;

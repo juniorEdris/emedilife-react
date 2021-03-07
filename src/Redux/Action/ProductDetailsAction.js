@@ -20,7 +20,7 @@ const fetchProductDetailsError = (error) => ({
   error,
 });
 
-export const GetProductDetails = (id = 59) => async (dispatch) => {
+export const GetProductDetails = (id = 57) => async (dispatch) => {
   dispatch(fetchProductDetailsRequest());
 
   await API()

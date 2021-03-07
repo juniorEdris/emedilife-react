@@ -9,6 +9,7 @@ import Footer from './PrimarySections/Footer';
 import ProductDetails from './ProductDetails';
 import UserEntry from './MyAccount/UserActivity/index';
 import Dashboard from './MyAccount/Dashboard';
+import PrescriptionUpload from './PrescriptionUpload/PrescriptionUpload';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/productdetails" component={ProductDetails} />
+          <Route path="/upload-prescription" component={PrescriptionUpload} />
           <Route path="/login" component={UserEntry} />
           <Route path="/dashboard" component={Dashboard} />
           <Route exact path="*" component={NoRoutes} />

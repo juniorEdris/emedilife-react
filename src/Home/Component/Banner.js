@@ -4,7 +4,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { connect } from 'react-redux';
 
-export const Banner = (props) => {
+const Banner = (props) => {
   const banners = [
     {
       id: 1,
@@ -15,6 +15,10 @@ export const Banner = (props) => {
       image: 'homeSlider.jpg',
     },
   ];
+  console.log(
+    'sliders',
+    props.sliders?.map((slider) => slider.photo)
+  );
   return (
     <div className="home_slider">
       <OwlCarousel

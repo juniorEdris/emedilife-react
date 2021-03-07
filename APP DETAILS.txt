@@ -17,3 +17,8 @@ CSS==================
   display: -ms-flexbox; /* TWEENER - IE 10 */
   display: -webkit-flex; /* NEW - Chrome */
   display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+
+  html::-webkit-scrollbar {
+  display: none; /* css for scrollbar hide*/
+}

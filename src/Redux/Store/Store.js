@@ -5,10 +5,10 @@ import { ProductDetailsReducer } from '../Reducer/ProductDetailsReducer';
 export const initialState = {
   loading: true,
   //HomeContents
-  homeSlider: '',
-  neccessaryProducts: '',
+  homeSlider: [],
+  neccessaryProducts: [],
   //   Single Product details
-  productDetails: '',
+  productDetails: {},
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,0 +1,119 @@
+/* PrescriptionUpload css here */
+.prescription_upload{
+    padding: 1.2rem 0;
+    text-transform: capitalize;
+    margin-bottom: var(--margin-bottom);
+}
+/* Upload Sections css here */
+.upload_section{
+    padding: 1rem;
+    border: 1px solid var(--muted-color);
+    margin-bottom: var(--margin-bottom);
+}
+.upload_section_top {
+    font-size: 0.7rem;
+    margin-bottom: var(--margin-bottom);
+}
+.upload_section_middle span{
+    font-size: 1.3rem;
+}
+.file_upload_btn{
+    text-align: center;
+}
+.file_upload_btn span{
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.image_preview{
+    padding:0.5rem ;
+    justify-content: center;
+}
+.image_preview .remove_picture{
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    background: var(--theme-color);
+    color: var(--light-color);
+    padding: 0.3rem;
+    font-weight: 900;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+.file-input-img{
+    margin-bottom: var(--margin-bottom);
+}
+.file-input {
+    display: none;
+}
+label.gallery-btn{
+    background-color: var(--theme-color);
+    color: var(--light-color);
+    border-radius: 4rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+}
+label.gallery-btn:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+label.gallery-btn .gallery-btn-img{
+    width: 1.1rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.2rem;
+}
+.submit_button button{
+    border-radius: 0;
+    background-color: var(--user-entry-btn);
+    color: var(--light-color);
+    font-size: 1.4rem;
+    border-radius: 4rem;
+}
+.submit_button button:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+/* Preview Section css here */
+.preview_section{
+    text-align: center;
+}
+.preview_footer_heading{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.preview_footer_btns{
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem;
+}
+.steps_count{
+    border:1px solid var(--theme-color);    
+    height: 50px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:50px;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    align-items: center;
+    justify-content: center;
+    margin: 0 1.7rem;
+    margin-bottom: var(--margin-bottom);
+    font-size: 1rem;
+}
+
+.steps p{
+    /* margin: 0 0.4rem; */
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--user-entry-btn);
+    text-align: center;
+}

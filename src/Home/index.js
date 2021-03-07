@@ -9,7 +9,7 @@ import { Features } from './Component/Features';
 import { OnlinePharma } from './Component/OnlinePharma';
 import PopularProduct from './Component/PopularProduct';
 import HealthCareBanners from './Component/HealthCareBanner';
-import { NecessaryProducts } from './Component/NecessaryProducts';
+import NecessaryProducts from './Component/NecessaryProducts';
 import HealthArticle from './Component/HealthArticle';
 import AppBanner from './Component/AppBanner';
 import { GetHomeContents } from '../Redux/Action/HomeProductsAction';
