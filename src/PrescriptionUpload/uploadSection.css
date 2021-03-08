@@ -30,14 +30,18 @@
 }
 .image_preview .remove_picture{
     position: absolute;
-    top: 0.4rem;
-    right: 0.4rem;
-    background: var(--theme-color);
-    color: var(--light-color);
-    padding: 0.3rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--light-color);
+    color: var(--theme-color);
+    padding: 0.2rem;
     font-weight: 900;
     border-radius: 3rem;
     cursor: pointer;
+}
+.image_preview .remove_picture:hover{
+    background: var(--dark-color);
+    color: var(--light-color);
 }
 .file-input-img{
     margin-bottom: var(--margin-bottom);
@@ -111,7 +115,6 @@ label.gallery-btn .gallery-btn-img{
 }
 
 .steps p{
-    /* margin: 0 0.4rem; */
     font-size: 0.6rem;
     font-weight: 700;
     color: var(--user-entry-btn);

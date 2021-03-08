@@ -1,0 +1,43 @@
+.sidebar{
+    height: 100%;
+}
+.sidebar_route{
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+}
+.sidebar_route_list{
+    padding: 1rem;
+}
+.sidebar_route_list li{
+    width: 100%;
+    padding: 0.7rem;
+    background-color: var(--theme-color);
+    margin-bottom: 0.4rem;
+}
+.sidebar_route_list li:hover{
+    background-color: #111;
+}
+.sidebar_route_list li a{
+    display: block;
+    color: #fff;
+}
+.cross .lnr {
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    background-color: #fff;
+    border-radius: 3rem;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    margin-right: 0.3rem;
+}
+.cross .lnr:hover{
+    color: #fff;
+    background-color: #111;
+}

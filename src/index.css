@@ -17,6 +17,7 @@
   --shadow-color: rgba(0, 0, 0, 0.16);
   --gray-second-color: rgba(241, 241, 241);
   --user-entry-btn: rgba(5, 64, 122);
+  --margin-top:1.25rem;
   --margin-bottom:1.25rem;
 }
 * {
@@ -44,6 +45,7 @@ body {
   font-size: 14px;
   font-family: 'SF UI Display', sans-serif;
   color: var(--dark-color);
+  position: relative;
 }
 a,
 a:hover,
@@ -845,6 +847,7 @@ Neccesary Popular Products css starts here
 --------------------------------------------------------------------*/
 .btn-more {
   width: 100%;
+  display: block;
   background: var(--muted-btn-color);
   border: medium none;
   color: var(--theme-color);

@@ -10,6 +10,7 @@ import ProductDetails from './ProductDetails';
 import UserEntry from './MyAccount/UserActivity/index';
 import Dashboard from './MyAccount/Dashboard';
 import PrescriptionUpload from './PrescriptionUpload/PrescriptionUpload';
+import SearchMedicine from './SearchMedicine/Search';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/upload-prescription" component={PrescriptionUpload} />
           <Route path="/login" component={UserEntry} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/search-medicine" component={SearchMedicine} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <BackToTop />
