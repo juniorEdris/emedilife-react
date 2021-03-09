@@ -11,6 +11,7 @@ import UserEntry from './MyAccount/UserActivity/index';
 import Dashboard from './MyAccount/Dashboard';
 import PrescriptionUpload from './PrescriptionUpload/PrescriptionUpload';
 import SearchMedicine from './SearchMedicine/Search';
+import AboutUs from './AboutUs/AboutUs';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" component={UserEntry} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/search-medicine" component={SearchMedicine} />
+          <Route path="/about-us" component={AboutUs} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <BackToTop />
