@@ -426,7 +426,7 @@ ALL Section Heading css starts here
   align-items: center;
   z-index: 100;
   justify-content: space-between;
-  padding: 0px 20px;
+  padding: 10px 20px;
 }
 .header__logo {
   width: 100px;
@@ -467,10 +467,10 @@ ALL Section Heading css starts here
   color: var(--dark-color) !important;
 }
 .header__right {
-  padding-right: 15px;
+  padding-right: 10px; /*<--*/
 }
 .header__mobile_searchIcon {
-  padding-right: 14px;
+  padding-right: 20px;
   font-size: 22px;
 }
 .header__mobile_searchIcon svg {
@@ -518,11 +518,12 @@ ALL Section Heading css starts here
 .header__link2 .header__option__basket .icon_name {
   display: none;
 }
-.header__link2 .header__option__basket .icon img {
+.header__link2 .header__option__basket .icon {
   height: 1.45rem;
   width: 1.45rem;
   object-fit: contain;
-  margin-right: 5px;
+  /* margin-right: 5px; */
+  font-size: 22px;
 }
 
 /*--------------------------------------------------------------------

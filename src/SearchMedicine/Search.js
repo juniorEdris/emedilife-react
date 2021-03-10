@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import SeeMoreBtn from '../PrimarySections/SectionUtils/SeeMoreBtn';
-import RelatedProducts from '../ProductDetails/Components/RelatedProducts';
+import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import Body from './Components/Body';
 import Sidebar from './Components/Sidebar';
 import './search_medicine.css';
 
 const Search = (props) => {
+  useEffect(() => {
+    toTheTop();
+  }, []);
   return (
     <div className="container mb-4">
       <div className="search_medicine_wrapper row">
         <Sidebar />
         <Body />
       </div>
-      <RelatedProducts />
-      <SeeMoreBtn />
     </div>
   );
 };

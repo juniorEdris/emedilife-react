@@ -90,7 +90,9 @@ const Sidebar = (props) => {
     },
   ];
   return (
-    <div className="search_sidebar col-12 col-md-3 order-2 order-md-1">
+    <div className="search_sidebar col-12 col-md-3 d-none d-md-block">
+      {' '}
+      {/* order-2 order-md-1 */}
       {/* categories */}
       <div className="sidebar_categories mb-5">
         <div className="sidebar_header">

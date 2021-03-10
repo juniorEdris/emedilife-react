@@ -4,11 +4,13 @@
 .about_p p{
 font-size: 0.8rem;
 text-align: left;
+font-weight: 300;
 }
 
 .about_list ul li{
     margin-bottom: 0.6rem;
     font-size: 0.8rem;
+    font-weight: 300;
 }
 .about_list ul li img{
     margin-right: 0.6rem;
@@ -43,4 +45,9 @@ text-align: left;
 .quote p{
     font-weight: 300;
     text-align: left;
+}
+/* footer css */
+.about_footer p{
+    font-weight: 300;
+    margin-top: 1rem;
 }

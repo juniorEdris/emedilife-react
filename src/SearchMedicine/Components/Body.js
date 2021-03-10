@@ -5,7 +5,7 @@ import SearchProducts from './SubComponent/SearchProducts';
 
 const Body = (props) => {
   return (
-    <div className="search_body col-12 col-md-9 order-1 order-md-2">
+    <div className="search_body col-12 col-md-9 ">
       <SearchBanner />
       <SearchProducts />
     </div>

@@ -12,6 +12,7 @@ import Dashboard from './MyAccount/Dashboard';
 import PrescriptionUpload from './PrescriptionUpload/PrescriptionUpload';
 import SearchMedicine from './SearchMedicine/Search';
 import AboutUs from './AboutUs/AboutUs';
+import CartIcon from './PrimarySections/CartIcon/CartIcon';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about-us" component={AboutUs} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
+        <CartIcon />
         <BackToTop />
         <Footer />
       </div>
