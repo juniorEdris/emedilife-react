@@ -14,6 +14,6 @@ export const API = () => {
 };
 
 export const ENDPOINTS = {
-  HOMEPRODUCT: `api/get_home_contents`,
-  PRODUCTDETAILS: `api/get_single_product?product_id=`,
+  HOMEPRODUCT: `api/app/get_home_contents`,
+  PRODUCTDETAILS: `api/app/get_single_product?product_id=`,
 };

@@ -128,7 +128,7 @@ const Sidebar = (props) => {
         </div>
       </div>
       {/* filter price */}
-      <div className="sidebar_price_filter mb-5">
+      {/* <div className="sidebar_price_filter mb-5">
         <div className="sidebar_header">
           <h5>Filter by price</h5>
         </div>
@@ -148,9 +148,9 @@ const Sidebar = (props) => {
             Max <span className="show_price_range_span">{price.value.max}</span>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* review select */}
-      <div className="sidebar_review_filter">
+      {/* <div className="sidebar_review_filter">
         <div className="sidebar_header">
           <h5>Review</h5>
         </div>
@@ -170,7 +170,7 @@ const Sidebar = (props) => {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import CartList from './CartList';
 
 const CartSidebar = (props) => {
   return (
@@ -15,23 +15,7 @@ const CartSidebar = (props) => {
             className="lnr lnr-arrow-right"
             onClick={() => props.setCart(false)}></span>
         </div>
-        <ul className="cart_sidebar_route_list">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/account">Account</Link>
-          </li>
-          <li>
-            <Link to="/search">search</Link>
-          </li>
-        </ul>
+        <CartList />
       </div>
     </div>
   );

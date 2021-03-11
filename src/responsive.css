@@ -86,7 +86,7 @@
     display: none;
   }
   .cart_sidebar_route{
-    width: calc(80% - 50%)!important;
+    width: calc(85% - 50%)!important;
   }
 }
 
