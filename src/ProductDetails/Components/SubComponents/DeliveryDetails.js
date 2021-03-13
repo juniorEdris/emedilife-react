@@ -5,7 +5,7 @@ const DeliveryDetails = (props) => {
   return (
     <div className="delivery_details">
       <div className="head row">
-        <h6>Delivery Option</h6>
+        <h4>Delivery Option</h4>
         <img className="icon" src={`./assets/svg/icons/info.svg`} alt="" />
       </div>
       <div className="body row">

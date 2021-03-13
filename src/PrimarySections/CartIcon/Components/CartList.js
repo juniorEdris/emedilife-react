@@ -11,11 +11,11 @@ const CartList = (props) => {
           {products.map((item) => (
             <li>
               <div className="cart_single_product">
-                {/* <div className="cart_single_image">
-              <Link to={`productdetails?id=${3}`}>
-                <img src="./assets/images/products/img-1.png" alt="img-1" />
-              </Link>
-            </div> */}
+                <div className="cart_single_image">
+                  <Link to={`productdetails?id=${3}`}>
+                    <img src="./assets/images/products/img-1.png" alt="img-1" />
+                  </Link>
+                </div>
                 <div className="cart_single_body">
                   <div className="cart_single_name">
                     <Link to={`productdetails?id=${3}`}>

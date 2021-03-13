@@ -100,9 +100,18 @@
 }
 /* CartList CSS */
 .cart_product_wrapper{
- height: 60vh; 
+ height: 100vh; 
  overflow-y: scroll;
 }
+.cart_product_wrapper::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 1rem;
+    border-radius: 50%;
+  } 
+  .cart_product_wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--theme-color);
+    outline: 1px solid slategrey;
+  }
 .cart_sidebar_list li{
     position: relative;
 }
@@ -115,7 +124,7 @@
     color: var(--dark-color);
 }
 .cart_single_image{
-    width: 6.2rem;
+    width: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,13 +134,11 @@
     object-fit: contain;
 }
 .cart_single_name{
-    padding: 0.3rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
     font-weight: 600;
 }
 .cart_single_price{
-    padding: 0.4rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
 }
 .cart_single_price span{
     margin-right: 0.5rem;
@@ -153,6 +160,14 @@
 .cart_product_cross:hover{
     background-color: var(--dark-color);
     
+}
+.cart_product_btn{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: var(--light-color);
+    padding-bottom: 15px;
 }
 .cart_total{
     background-color: var(--theme-color);

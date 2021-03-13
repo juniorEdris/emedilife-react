@@ -77,13 +77,13 @@ const Details = (props) => {
         </div>
 
         <div className="details_buttons_wrapper">
-          <button
+          {/* <button
             className="details_btn-cart btn btn-primary col-5"
             type="button">
             buy now
-          </button>
+          </button> */}
           <button
-            className="details_btn-cart btn btn-danger col-5"
+            className="details_btn-cart btn btn-danger col-8 offset-md-2"
             type="button">
             add to cart
           </button>

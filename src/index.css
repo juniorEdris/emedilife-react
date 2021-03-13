@@ -26,6 +26,7 @@
 }
 html {
   -ms-overflow-style: none; /* css for scrollbar hide IE and Edge*/
+  font-size: 14px;
 }
 body::-webkit-scrollbar {
   width: 10px;
@@ -42,7 +43,6 @@ body {
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  font-size: 14px;
   font-family: 'SF UI Display', sans-serif;
   color: var(--dark-color);
   position: relative;
@@ -286,7 +286,7 @@ ALL Section Heading css starts here
 }
 .manufacture-product a {
   color: var(--brand-name-color);
-  font-size: 0.813rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 20px;
 }
@@ -294,7 +294,7 @@ ALL Section Heading css starts here
   height: 50px;
 } */
 .product-name h4 {
-  font-size: 0.738rem;
+  font-size: 0.9rem;
   font-weight: 400;
   padding: 5px 0;
   color: var(--dark-color);
@@ -306,10 +306,10 @@ ALL Section Heading css starts here
   color: var(--brand-name-color);
 }
 .regular-price {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 .old-price {
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .old-price::before {
   content: '|';

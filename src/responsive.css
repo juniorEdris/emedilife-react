@@ -1,49 +1,70 @@
 /* XL Device :1200px. */
-@media (min-width: 1200px) and (max-width: 1500px) {
-  .more_link {
-    font-size: 0.7rem !important;
-  }
-  .nav_links ul li a {
-    font-size: 0.7rem !important;
+@media (min-width: 1200px){
+  .more_link,.nav_links ul li a {
+    font-size: 1rem !important;
   }
 }
 
 /* ===================================== */
 /* LG Device :992px. */
+@media (min-width: 992px) and (max-width:1199px) {
+  .more_link,.nav_links ul li a{
+    font-size: 0.8rem !important; 
+   }
+}
 @media (min-width: 992px) {
   /*and (max-width: 1199px) */
-}
-/* ===================================== */
-/* MD Device */
-@media (min-width: 768px) {
-  /*and (max-width: 991px) */
-  .more_link {
-    font-size: 0.5rem;
+  .ham-burger {
+    display: none !important;
+  }
+
+  .header__option {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 10px;
+  }
+  .header__option__lineOne {
+    font-size: 13px;
+  }
+  .header__option__lineTwo {
+    font-size: 16px;
+    font-weight: 700;
   }
   .header_nav {
+    padding: 0rem 1rem;
     justify-content: space-between;
-    padding: 0 1rem;
   }
-  .nav_links ul {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
+  .header__link .header__option__basket .icon_name {
+    display: block;
   }
-
-  .nav_links ul li a {
-    color: var(--light-color);
-    margin-right: 0.6rem;
-    text-transform: capitalize;
-    font-size: 0.5rem;
-    line-height: 100%;
+  .nav_links {
+    display: block;
+  }
+  
+  .btn-cart {
+    font-size: 1rem;
+  }
+  .section_heading_one,
+  .section_heading_three {
+    font-size: 1.875rem;
+  }
+  .health_banner_image {
+    margin-bottom: 0;
+  }
+  .back_to_top span.flat-btn {
+    display: block;
+  }
+  .scroll-top {
+    display: none;
+  }
+  .cart_sidebar_route{
+    width: calc(85% - 50%)!important;
   }
 }
-
+/* ===================================== */
 @media (min-width: 991px) {
-  .ham-burger {
+  /* .ham-burger {
     display: none !important;
   }
 
@@ -87,7 +108,50 @@
   }
   .cart_sidebar_route{
     width: calc(85% - 50%)!important;
+  } */
+}
+
+/* MD Device */
+@media (min-width: 768px) and (max-width:991px) {
+  .header_nav {
+    justify-content: center;
+    padding: 0rem 1rem;
   }
+  .header_nav .more_link {
+    font-size: 1rem;
+}
+.header__option span {
+  font-size: 0.7rem;
+}
+.header__option span {
+  margin-left: 2rem;
+}
+}
+@media (min-width: 768px) {
+  /*and (max-width: 991px) */
+  .more_link {
+    font-size: 0.5rem;
+  }
+  .nav_links ul {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav_links ul li a {
+    color: var(--light-color);
+    margin-right: 0.6rem;
+    text-transform: capitalize;
+    font-size: 0.5rem;
+    line-height: 100%;
+  }
+  .header__link {
+    display: block;
+  }
+
 }
 
 /* SM Small Device */

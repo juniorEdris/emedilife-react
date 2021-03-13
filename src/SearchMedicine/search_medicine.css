@@ -5,17 +5,18 @@
 .search_sidebar .sidebar_header h5{
     margin-bottom: var(--margin-bottom);
     font-weight: 700;
+    font-size:1.6rem;
 }
 /* sidebar_list */
 .sidebar_list li {
-    margin-bottom: 0.625rem;
+    margin-bottom: 1rem;
 }
 
   .sidebar_list ul li a {
     color: var(--dark-color);
-    padding-left: 1.25rem;
+    padding-left: 1.6rem;
     position: relative;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
   }
   

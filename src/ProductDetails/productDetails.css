@@ -16,7 +16,7 @@
     color: var(--heading-color);
 }
 .details_product-name{
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     text-transform: capitalize;
 }
 .details_ratings span svg{
@@ -38,7 +38,7 @@
 .details_manufacture-product{
     margin-bottom: 0.625rem;
     text-transform: capitalize;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 .details_manufacture-product small{
     color: var(--muted-color);  
@@ -49,16 +49,15 @@
 .product_details_wrapper .share_btns{
     width: fit-content;
     border: 1px solid var(--theme-color);
-    border-radius: 1rem;
+    border-radius: 3rem;
     margin-bottom: 3rem;
 }
 .product_details_wrapper .share_btns_child{
     width: fit-content;
-    padding: 0.2rem 0.5rem;
-    height: 1.4rem;
+    padding: 0.3rem 0.7rem;
 }
 .details_price-box{
-    font-size: 1.125rem;
+    font-size: 1.8rem;
     margin-bottom: 0.625rem;
     font-weight: 600;
 }
@@ -72,7 +71,7 @@
 }
 .details_qty label{
     color: #111;
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     font-weight: 500;
     margin-right: 1.25rem;
     text-transform: capitalize;
@@ -80,7 +79,7 @@
 }
 .product-qty {
     border: 1px solid #ddd;
-    font-size: 16px;
+    font-size: 1.1rem;
     height: 40px;
     width: 100px;
     line-height: 40px;
@@ -119,7 +118,7 @@
 }
 
 .product_details_wrapper .details_buttons_wrapper button{
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-right: 0.6rem;
     border-radius: 0;
     text-transform: capitalize;
@@ -160,12 +159,12 @@
     cursor: pointer;
 }
 .footer_icon{
-    width: 1.25rem;
+    width: 1.5rem;
     margin-right: 1rem;
 }
 .details_footer ul li{
     margin-bottom: 0.625rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: var(--dark-color);
     font-weight: 600;
 }
