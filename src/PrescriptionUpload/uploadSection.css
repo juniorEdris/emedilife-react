@@ -15,13 +15,13 @@
     margin-bottom: var(--margin-bottom);
 }
 .upload_section_middle span{
-    font-size: 1.3rem;
+    font-size: 1.7rem;
 }
 .file_upload_btn{
     text-align: center;
 }
 .file_upload_btn span{
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 .image_preview{
@@ -54,7 +54,7 @@ label.gallery-btn{
     color: var(--light-color);
     border-radius: 4rem;
     margin-top: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
 }
 label.gallery-btn:hover{
     background-color: var(--dark-color);
@@ -69,7 +69,7 @@ label.gallery-btn .gallery-btn-img{
     border-radius: 0;
     background-color: var(--user-entry-btn);
     color: var(--light-color);
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     border-radius: 4rem;
 }
 .submit_button button:hover{
@@ -82,7 +82,7 @@ label.gallery-btn .gallery-btn-img{
     text-align: center;
 }
 .preview_footer_heading{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 .preview_footer_btns{
@@ -94,6 +94,12 @@ label.gallery-btn .gallery-btn-img{
     justify-content: center;
     align-items: center;
     padding: 0.4rem;
+}
+.steps{
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .steps_count{
     border:1px solid var(--theme-color);    
@@ -111,12 +117,10 @@ label.gallery-btn .gallery-btn-img{
     justify-content: center;
     margin: 0 1.7rem;
     margin-bottom: var(--margin-bottom);
-    font-size: 1rem;
+    font-size: 1.7rem;
 }
 
 .steps p{
-    font-size: 0.6rem;
-    font-weight: 700;
     color: var(--user-entry-btn);
     text-align: center;
 }

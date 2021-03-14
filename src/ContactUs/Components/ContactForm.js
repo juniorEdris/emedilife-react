@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const ContactForm = (props) => {
   return (
     <div className="contact_form offset-md-3 col-md-6 mb-5">
-      <h4>Contact Form</h4>
+      <h1>Contact Form</h1>
       <form>
         <div className="form-group">
           <input

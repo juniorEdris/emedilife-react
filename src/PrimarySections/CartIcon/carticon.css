@@ -45,10 +45,10 @@
     align-items: center;
 }
 .cart_header_count img{
-    width:2.3rem ;
+    /* width:2.3rem ; */
 }
 .cart_header_item_count{
-    font-size: 1rem;
+    font-size: 1.8rem;
     color: var(--light-color);
     margin-left: 0.5rem;
 }
@@ -100,7 +100,7 @@
 }
 /* CartList CSS */
 .cart_product_wrapper{
- height: 100vh; 
+ height: 65vh; 
  overflow-y: scroll;
 }
 .cart_product_wrapper::-webkit-scrollbar {
@@ -144,17 +144,16 @@
     margin-right: 0.5rem;
 }
 .cart_product_cross{
-    font-size: 0.7rem;
     cursor: pointer;
     position: absolute;
     top: 8px;
     right: 8px;
-    height: 15px;
-    width: 15px;
+    height: 16px;
+    width: 16px;
     background: var(--theme-color);
     color: var(--light-color);
     text-align: center;
-    line-height: 14px;
+    line-height: 15px;
     border-radius: 6rem;
 }
 .cart_product_cross:hover{

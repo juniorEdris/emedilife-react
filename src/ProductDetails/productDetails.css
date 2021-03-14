@@ -36,12 +36,13 @@
     padding: 0.2rem 1rem;
 }
 .details_manufacture-product{
-    margin-bottom: 0.625rem;
+    margin-bottom: 1rem;
     text-transform: capitalize;
     font-size: 1rem;
 }
 .details_manufacture-product small{
-    color: var(--muted-color);  
+    color: var(--muted-color);
+    font-size: 1rem;  
 }
 .details_manufacture-product a{
     color: rgba(11, 15, 136);
@@ -118,7 +119,7 @@
 }
 
 .product_details_wrapper .details_buttons_wrapper button{
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-right: 0.6rem;
     border-radius: 0;
     text-transform: capitalize;
@@ -137,7 +138,7 @@
     margin-bottom: var(--margin-bottom);
 }
 .head img{
-    width: 1.1rem;
+    width: 2rem;
 }
 .delivery_details .body{
     justify-content: space-between;
@@ -151,7 +152,7 @@
     padding: 0 1rem;
     text-align: left;
 }
-.details_footer h5{
+.details_footer h4{
     margin-bottom: var(--margin-bottom);    
 }
 .delivery_edit_icon{
@@ -167,6 +168,20 @@
     font-size: 1.4rem;
     color: var(--dark-color);
     font-weight: 600;
+}
+.other_brands_btn {
+    text-align: center;
+    text-transform: capitalize;
+    margin: 4rem 0;
+}
+.other_brands_btn a{
+    font-size: 1.4rem;
+    background: rgb(0,18,90);
+    color: var(--light-color);
+}
+.other_brands_btn a:hover{
+    background: var(--dark-color);
+    color: var(--light-color);
 }
 
 /* Product Header Css ends here */

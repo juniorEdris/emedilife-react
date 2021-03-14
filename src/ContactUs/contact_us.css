@@ -9,37 +9,42 @@
     border-bottom: 1px solid var(--dark-color);
     border-right: 1px solid var(--dark-color);
 }
-.contact_box{
-    height:9.6rem;
-}
 .contact_box_header img{
     width: 40px;
     margin-bottom: 0.7rem;
 }
-.contact_box_header h6{
+.contact_box_header h4{
     font-weight: 600;
     margin-bottom: 0.7rem;
 }
 .contact_box_body{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .contact_box_body div{
     margin-bottom: 0.4rem;
-    font-size: 0.7rem;
 }
 /* Contact Form css starts */
-.contact_form input{
-    border-radius: 3rem;
-    border: 1px solid var(--theme-color);
-}
-.contact_form h4{
+.contact_form h1{
     text-align: center;
     margin: 2rem 0;
+}
+.contact_form input{
+    height: 4rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--theme-color);
+    padding: 0 1.4rem;
+}
+.contact_form input,.contact_form textarea{
+    font-size: 1.2rem;
+}
+.contact_form input::-webkit-input-placeholder,.contact_form textarea::-webkit-input-placeholder{
+    font-size: 1.2rem;
 }
 .contact_form textarea{
     resize: none;
     border-radius: 0.75rem;
     border: 1px solid var(--theme-color);
+    padding: 1.4rem;
 }
 .contact_form button{
     display: block;
@@ -47,6 +52,8 @@
     color: var(--light-color);
     width: 100%;
     border-radius: 2rem;
+    padding: 0.625rem 0;
+    font-size: 1.2rem;
 }
 .contact_form button:hover{
     background-color: var(--dark-color);

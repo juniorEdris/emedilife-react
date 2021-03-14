@@ -22,15 +22,11 @@ const UserEntry = (props) => {
           setOTPActive(true);
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
-        } else if (!res.data.status) {
-          setError({
-            message: res.data.message,
-          });
         }
       })
       .catch((error) => {
-        console.log(error.response);
-        setError({ numFormat: error.response.data.phone });
+        console.log(error);
+        setError({ numFormat: error.data });
       });
   };
   const login = async (e) => {
@@ -68,7 +64,7 @@ const UserEntry = (props) => {
                     <div className="login-form">
                       <div className="user_entry_heading">Login/Register</div>
                       <form action="#" onSubmit={!OTPActive ? register : login}>
-                        <div className="form-group row align-items-center mb-2">
+                        <div className="form-group row align-items-center mt-5">
                           <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
                             <input
                               type="text"
@@ -80,13 +76,10 @@ const UserEntry = (props) => {
                               required
                             />
                             <div className="error-handler">{error.message}</div>
-                            <div className="error-handler">
-                              {error.numFormat}
-                            </div>
                           </div>
                         </div>
                         {OTPActive && (
-                          <div className="form-group row align-items-center mb-2">
+                          <div className="form-group row align-items-center mb-5">
                             <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
                               <input
                                 type="text"
@@ -103,10 +96,10 @@ const UserEntry = (props) => {
                             </div>
                           </div>
                         )}
-                        <div className="login-box mt-3 text-center">
+                        <div className="login-box mt-4 text-center">
                           <button
                             type="submit"
-                            className="btn mb-4 mt-2 col-12 col-sm-12 col-md-7">
+                            className="btn mb-4 col-12 col-sm-12 col-md-7">
                             Continue
                           </button>
                         </div>

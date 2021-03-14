@@ -9,7 +9,7 @@ const ContactDetails = (props) => {
           <div className="contact_box ">
             <div className="contact_box_header">
               <img src="./assets/svg/icons/phone.svg" alt="phone" />
-              <h6>PHONE</h6>
+              <h4>PHONE</h4>
             </div>
             <div className="contact_box_body">
               <div>Toll Free: 111 222 333 555</div>
@@ -21,7 +21,7 @@ const ContactDetails = (props) => {
           <div className="contact_box">
             <div className="contact_box_header">
               <img src="./assets/svg/icons/email.svg" alt="phone" />
-              <h6>EMAIL</h6>
+              <h4>EMAIL</h4>
             </div>
             <div className="contact_box_body">
               <div>Medipathy@mail.com</div>
@@ -33,10 +33,10 @@ const ContactDetails = (props) => {
           <div className="contact_box">
             <div className="contact_box_header">
               <img src="./assets/svg/icons/address.svg" alt="phone" />
-              <h6>ADDRESS</h6>
+              <h4>ADDRESS</h4>
             </div>
             <div className="contact_box_body">
-              <div>No #45/C, East Nasirabad, Baizid , Chattagram</div>
+              <div>No #45/C, East Nasirabad, Baizid, Chattagram</div>
             </div>
           </div>
         </div>

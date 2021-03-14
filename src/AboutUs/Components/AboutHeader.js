@@ -38,10 +38,10 @@ const AboutHeader = (props) => {
         </div>
       </div>
       <div className="col-12 col-md-6 mb-4">
-        <div className="about_heading mb-2">
-          <h5>Modern Delivery Services</h5>
+        <div className="about_heading mb-4">
+          <h1>Modern Delivery Services</h1>
         </div>
-        <div className="about_p">
+        <div className="about_p mb-5">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et sit
             magnam magni obcaecati voluptatum molestiae dolorem. Dignissimos eum

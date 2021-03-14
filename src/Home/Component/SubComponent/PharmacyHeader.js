@@ -7,7 +7,7 @@ export const PharmacyHeader = (props) => {
     <div className="pharmacy_header">
       <div className="container">
         <div className="section_header pt-md-4">
-          <h4>online pharmacy</h4>
+          <h2>online pharmacy</h2>
         </div>
         <div className="btn_container">
           <div className="row">

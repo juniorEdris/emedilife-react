@@ -5,7 +5,7 @@ const AboutFooter = (props) => {
   return (
     <div className="about_footer">
       <div className="about_heading mb-2">
-        <h5>Our Services</h5>
+        <h1>Our Services</h1>
       </div>
       <div className="row">
         <div className="col-12 col-md-8 order-2 order-md-1">
@@ -23,28 +23,28 @@ const AboutFooter = (props) => {
           <div className="col-12">
             <div className="row">
               <div className="col-md-6">
-                <h6> 01. Consulting</h6>
+                <h4> 01. Consulting</h4>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Aliquam ut provident sequi quibusdam pariatur delectus.
                 </p>
               </div>
               <div className="col-md-6">
-                <h6>02. 24/7 Delivery</h6>
+                <h4>02. 24/7 Delivery</h4>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Aliquam ut provident sequi quibusdam pariatur delectus.
                 </p>
               </div>
               <div className="col-md-6">
-                <h6>03. Ambulance</h6>
+                <h4>03. Ambulance</h4>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Aliquam ut provident sequi quibusdam pariatur delectus.
                 </p>
               </div>
               <div className="col-md-6">
-                <h6>04. Prescription Upload</h6>
+                <h4>04. Prescription Upload</h4>
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Aliquam ut provident sequi quibusdam pariatur delectus.

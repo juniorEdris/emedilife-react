@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const DeliveryDetails = (props) => {
   return (
@@ -25,7 +26,7 @@ const DeliveryDetails = (props) => {
         />
       </div>
       <div className="details_footer">
-        <h5>Return and Warrenty Policy</h5>
+        <h4>Return and Warrenty Policy</h4>
         <ul>
           <li>
             <img
@@ -52,6 +53,11 @@ const DeliveryDetails = (props) => {
             Warrenty not available
           </li>
         </ul>
+      </div>
+      <div className="other_brands_btn">
+        <Link to="/" className="btn col-7">
+          other brands
+        </Link>
       </div>
     </div>
   );

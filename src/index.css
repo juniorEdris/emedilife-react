@@ -27,6 +27,7 @@
 html {
   -ms-overflow-style: none; /* css for scrollbar hide IE and Edge*/
   font-size: 14px;
+  scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
   width: 10px;
@@ -107,7 +108,7 @@ ALL Section Heading css starts here
 /* Section heading one */
 .section_heading_one {
   position: relative;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   z-index: 1;
   overflow: hidden;
   text-align: center;
@@ -139,13 +140,12 @@ ALL Section Heading css starts here
 /* Section heading two */
 .section_heading_two {
   position: relative;
-  font-size: 1rem;
   z-index: 1;
   overflow: hidden;
   color: var(--heading-color);
   padding: 0.625rem;
   font-weight: 600;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
   border: 1px solid var(--dark-color);
 }
 .section_heading_two span {
@@ -155,7 +155,7 @@ ALL Section Heading css starts here
 /* Section heading three */
 .section_heading_three {
   position: relative;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   z-index: 1;
   overflow: hidden;
   color: var(--heading-color);
@@ -290,11 +290,7 @@ ALL Section Heading css starts here
   font-weight: 400;
   line-height: 20px;
 }
-/* .product-name {
-  height: 50px;
-} */
-.product-name h4 {
-  font-size: 0.9rem;
+.product-name h5 a {
   font-weight: 400;
   padding: 5px 0;
   color: var(--dark-color);
@@ -578,8 +574,8 @@ Back to top button css starts here
   background: var(--theme-color);
   border-radius: 50%;
   bottom: 50px;
-  /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5); */
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
   cursor: pointer;
   height: 50px;
   position: fixed;
@@ -588,12 +584,11 @@ Back to top button css starts here
   width: 50px;
   z-index: 9;
   color: var(--light-color);
-  line-height: 55px;
+  line-height: 50px;
   border: 2px solid #ddd;
 }
 
 .scroll-top span.lnr.lnr-arrow-up {
-  font-size: 0.9rem;
   font-weight: bolder;
 }
 
@@ -620,9 +615,8 @@ Footer css starts here
   margin-bottom: 1rem;
   color: var(--light-color);
 }
-.links_container h6 {
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+.links_container h5 {
+  margin-bottom: 1rem;
 }
 .links li {
   margin-bottom: 0.1rem;
@@ -743,23 +737,22 @@ Home Online Pharmacy Area css starts here
   text-transform: capitalize;
   margin-bottom: 3rem;
 }
-.home_online_pharmacy h4 {
+.home_online_pharmacy h2 {
   font-weight: bold;
-  line-height: 2;
 }
 .home_online_pharmacy .btn_container .row > div {
-  margin-top: 1em;
+  margin-top: 2rem;
 }
 .home_online_pharmacy .btn_container .text > p {
   margin-bottom: 0.4rem !important;
+  /* font-size: 1.3rem; */
 }
 
 .home_online_pharmacy .btn_container .buttons a {
   display: block;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 0.7rem;
-  padding: 0.625rem 0;
+  padding: 1rem 0;
   color: var(--dark-color);
 }
 .home_online_pharmacy .btn_container .section-one .buttons a,
@@ -775,7 +768,7 @@ Home Online Pharmacy Area css starts here
 }
 .home_online_pharmacy .btn_container .section-two .buttons a {
   color: var(--light-color);
-  background-color: var(--theme-color);
+  background-color: var(--user-entry-btn);
 }
 .home_online_pharmacy .btn_container .section-two .buttons a:hover {
   background-color: var(--dark-color);
@@ -795,19 +788,21 @@ Home Online Pharmacy Area css starts here
 } */
 .home_online_pharmacy .pharmacy_body .pharmacy_right iframe {
   width: 100%;
-  height: 15.375rem;
+  height: 20rem;
 }
 .home_online_pharmacy .pharmacy_body .list > li {
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  margin-bottom: 2.3rem;
+  font-size: 1.4rem;
 }
 .home_online_pharmacy .pharmacy_body .list .sub_list li {
-  font-size: 0.75rem;
-  /* margin-top: 0.5rem; */
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  line-height: 30px;
   color: var(--muted-color);
 }
 .home_online_pharmacy .pharmacy_body .list .sub_list li img {
-  height: 36px;
+  width: 30px;
+  height: 30px;
   padding: 0.3rem;
 }
 /*--------------------------------------------------------------------
@@ -832,7 +827,6 @@ Banner Section css starts here
 --------------------------------------------------------------------*/
 .wide_banner img {
   width: 100%;
-  max-height: 15.625rem;
   object-fit: contain;
 }
 
@@ -851,9 +845,9 @@ Neccesary Popular Products css starts here
   display: block;
   background: var(--muted-btn-color);
   border: medium none;
-  color: var(--theme-color);
+  color: var(--user-entry-btn);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   margin-top: 10px;
   padding: 0.625rem 0.313rem;
   text-align: center;
@@ -884,7 +878,8 @@ Article css starts here
   text-align: left;
 }
 .article_details {
-  font-size: 0.624rem;
+  font-size: 0.9rem;
+    font-weight: 300;
 }
 .article_post_body a {
   font-weight: 500;
@@ -910,7 +905,7 @@ Article css starts here
             --------------------------------------------------------------------*/
 .user_entry {
   color: var(--dark-color);
-  padding: 10% 0;
+  padding: 20% 0;
 }
 .user_entry .login-form {
   padding: 0px 50px 40px;
@@ -921,20 +916,24 @@ Article css starts here
 
 .user_entry .login-form .input {
   border: 1px solid var(--theme-color);
+  height: 50px;
 }
 
 .user_entry_heading {
-  padding: 0.8rem 0 3.125rem;
-  font-size: 1.238rem;
+  padding: 2.5rem 0 0rem;
+  font-size: 1.7rem;
   font-weight: 500;
+  text-align: center;
 }
 .user_msg_text {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 0.8rem;
 }
 .login-box button {
   background: var(--user-entry-btn);
   color: var(--light-color);
   border-radius: 0.1rem !important;
+  height: 50px;
+  font-size: 1.3rem;
 }

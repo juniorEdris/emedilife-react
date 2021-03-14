@@ -48,7 +48,9 @@ const UploadSection = (props) => {
                 onChange={handleChange}
               />
             </div>
-            <span>upload photo of your prescription</span>
+            <span className="text-muted">
+              upload photo of your prescription
+            </span>
             <label
               for="file-upload"
               className="gallery-btn btn col offset-md-3 col-md-6 btn-block btn-outlined">

@@ -23,13 +23,13 @@ const ProductCard = (props) => {
         </div>
         <div className="product-caption">
           <div className="product-name">
-            <h4>
+            <h5>
               <Link
                 to={`/productdetails?id=${props.product.id}`}
                 title={props.product.name}>
                 {props.product.name}
               </Link>
-            </h4>
+            </h5>
           </div>
           <div className="manufacture-product">
             <span>

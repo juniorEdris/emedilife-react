@@ -18,7 +18,7 @@ const AboutBody = (props) => {
               <img src="./assets/svg/icons/quote-right.svg" alt="" />
             </div>
             <div className="qoutes_text col">
-              <h6>Outstanding Biomedical and technology</h6>
+              <h3>Outstanding Biomedical and technology</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Corporis totam ab nemo, cupiditate aliquam ipsa, sequi iure cum
@@ -36,7 +36,7 @@ const AboutBody = (props) => {
               <img src="./assets/svg/icons/quote-right.svg" alt="" />
             </div>
             <div className="qoutes_text col">
-              <h6>Outstanding Biomedical and technology</h6>
+              <h3>Outstanding Biomedical and technology</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Corporis totam ab nemo, cupiditate aliquam ipsa, sequi iure cum

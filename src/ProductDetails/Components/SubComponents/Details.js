@@ -76,14 +76,9 @@ const Details = (props) => {
           </div>
         </div>
 
-        <div className="details_buttons_wrapper">
-          {/* <button
-            className="details_btn-cart btn btn-primary col-5"
-            type="button">
-            buy now
-          </button> */}
+        <div className="details_buttons_wrapper mb-5">
           <button
-            className="details_btn-cart btn btn-danger col-8 offset-md-2"
+            className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
             type="button">
             add to cart
           </button>

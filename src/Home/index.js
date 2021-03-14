@@ -13,10 +13,12 @@ import NecessaryProducts from './Component/NecessaryProducts';
 import HealthArticle from './Component/HealthArticle';
 import AppBanner from './Component/AppBanner';
 import { GetHomeContents } from '../Redux/Action/HomeProductsAction';
+import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 
 const Index = (props) => {
   useEffect(() => {
     props.getHomeContents();
+    toTheTop();
   }, []);
   console.log('>>>', props);
   return (

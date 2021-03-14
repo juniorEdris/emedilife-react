@@ -20,7 +20,7 @@ const Detailsindex = (props) => {
   }, [prodID]);
 
   return (
-    <div className="product_details_container mt-2 mb-4">
+    <div className="product_details_container mt-4 mb-4">
       <Header />
       <Description />
       <RelatedProducts />

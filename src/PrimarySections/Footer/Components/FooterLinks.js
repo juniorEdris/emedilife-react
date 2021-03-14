@@ -7,7 +7,7 @@ function FooterLinks() {
       <div className="container">
         <div className="row">
           <div className="links_container col-6 col-md-3">
-            <h6>Get to Know Us</h6>
+            <h5>Get to Know Us</h5>
             <ul className="links">
               <li>
                 <Link to="/about-us">about us</Link>
@@ -27,7 +27,7 @@ function FooterLinks() {
             </ul>
           </div>
           <div className="links_container col-6 col-md-3">
-            <h6>Connect with Us</h6>
+            <h5>Connect with Us</h5>
             <ul className="links">
               <li>
                 <Link to="/contact-us">contact us</Link>
@@ -47,7 +47,7 @@ function FooterLinks() {
             </ul>
           </div>
           <div className="links_container col-6 col-md-3">
-            <h6>Make Money With Us</h6>
+            <h5>Make Money With Us</h5>
             <ul className="links">
               <li>
                 <Link to="/about-us">about us</Link>
@@ -67,7 +67,7 @@ function FooterLinks() {
             </ul>
           </div>
           <div className="links_container col-6 col-md-3">
-            <h6>Let us Help You</h6>
+            <h5>Let us Help You</h5>
             <ul className="links">
               <li>
                 <Link to="/about-us">about us</Link>
