@@ -18,3 +18,10 @@ export function useQuery() {
 export const Truncate = (str, n) => {
   return str?.length > n ? str.substr(0, n - 1) + '....' : str;
 };
+
+// user constnant
+export let User;
+
+const active = localStorage.getItem('user_id');
+
+active ? (User = true) : (User = false);

@@ -9,7 +9,7 @@ const ResponsiveSearch = (props) => {
     history.push('/search-medicine');
   };
   return (
-    <div className="responsive_search container">
+    <div className="responsive_search">
       <form action="">
         <div className="row">
           <input
