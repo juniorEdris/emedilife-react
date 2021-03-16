@@ -20,6 +20,7 @@ import AboutUs from './AboutUs/AboutUs';
 import CartIcon from './PrimarySections/CartIcon/CartIcon';
 import ContactUs from './ContactUs/ContactUs';
 import { User } from './PrimarySections/Utility';
+import CheckOut from './CheckOut/CheckOut';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/search-medicine" component={SearchMedicine} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
+          <Route path="/check-out" component={CheckOut} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon />

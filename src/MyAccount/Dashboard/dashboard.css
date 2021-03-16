@@ -1,3 +1,14 @@
+/* PRIMARY CLASSES */
+.table_link{
+    color: var(--light-color);
+    background: var(--nav-bg);
+    padding: 0.3rem;
+    text-transform: capitalize;
+}
+.table_link:hover{
+    color: var(--light-color);
+    background: var(--dark-color);
+}
 .dashboard_wrapper{
     margin-top: var(--top-whitespace);
 }
@@ -15,12 +26,12 @@
 }
 .dash_nav_list ul{
     border: 1px solid var(--theme-color);
-    padding: 0.325rem;
+    padding: 0.325rem 0.625rem;
 }
 .dash_nav_list ul li {
     text-transform: capitalize;
     padding: 0.325rem 0 0 0;
-    font-size: 1.5rem;
+    font-size: var(--primary-text-size);
 }
 .dash_nav_list ul li a.active::before{
     content: '';
@@ -45,7 +56,7 @@
     color: var(--user-entry-btn);
     font-weight: 300;
 }
-/* MY DASHBOARD CSS STARTS HERE */
+/* MY DASHBOARD CSS STARTS HERE (DASHBOARD BODY) */
 /* Account Dashboard */
 .account_msg{
     margin-bottom:2.7rem;
@@ -63,7 +74,7 @@
 .account_msg{
     position: relative;
     margin-top: 2rem;
-    font-size: 1.2rem;
+    font-size: var(--primary-text-size);
     font-weight: 300;
 }
 .account_msg img{
@@ -80,16 +91,19 @@
 }
 
 /* Order History */
-.order_lists {
+.order_lists,.my_orders {
     margin-bottom:2.7rem;
+    overflow-x: scroll;
 }
-.order_lists table{
+.order_lists table,
+.my_orders table{
     text-align: center;
     -webkit-box-shadow: var(--box-shadow-1); 
     box-shadow: var(--box-shadow-1);
-    font-size: 1.2rem;
+    font-size: var(--primary-text-size);
     font-weight: 300;
 }
+
 .order_header{
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
@@ -100,10 +114,15 @@
     margin-bottom: 0.8rem;
     align-items: center;
 }
-.order_header span{
-font-size: 1.4rem;
+.order_header span,.order_header a{
+    color: var(--dark-color);
+    font-size: var(--primary-text-size);
+    text-transform: capitalize;
 }
 .order_header a{
+    color: var(--user-entry-btn);
+}
+.order_header a:hover{
     color: var(--dark-color);
 }
 .thead-primary{
@@ -112,6 +131,8 @@ font-size: 1.4rem;
 }
 .trow-light{
     background: var(--light-color);
+    border-bottom: 1px solid var(--nav-bg)!important;
+    border-top: none;
 }
 /* Account information start here */
 .account_information h5{
@@ -122,7 +143,7 @@ font-size: 1.4rem;
 }
 .account_details{
     padding: 0.7rem;
-    font-size: 1.3rem;
+    font-size: var(--primary-text-size);
     font-weight: 300;
     background: var(--light-color);
     border: 1px solid var(--nav-bg);
@@ -131,3 +152,28 @@ font-size: 1.4rem;
     margin-bottom: 2.7rem;
 }
 /* EDIT INFORMATION CSS STARTS HERE */
+.info_heading h3{
+    border-bottom: 1px solid var(--dark-color);
+    margin-bottom: var(--top-whitespace);
+}
+.acc_info_inputs form label{
+    font-size: var(--primary-text-size);
+}
+.acc_info_inputs form input{
+    font-size: var(--primary-text-size);
+    height: 50px;
+}
+.form-check{
+    display: flex !important;
+    align-items: center;
+}
+.account_submit_btn{
+    text-align: right;
+}
+.account_submit_btn button{
+    font-size: var(--primary-text-size);
+
+}
+.check-label{
+    border-radius: 0px;
+}

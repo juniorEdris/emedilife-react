@@ -42,7 +42,9 @@ const CartList = (props) => {
           <span>cart subtotal : &#2547;{2547}</span>
         </div>
         <div className="checkout_btn">
-          <Link className="btn">Check Out</Link>
+          <Link to="/check-out" className="btn">
+            Check Out
+          </Link>
         </div>
       </div>
     </div>

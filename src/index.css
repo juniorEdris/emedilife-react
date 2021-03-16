@@ -1,7 +1,7 @@
 /* @import "react-alice-carousel/lib/alice-carousel.css"; */
 :root {
   --theme-color: rgba(87, 0, 58);
-  --nav-bg: rgba(149, 0, 99);
+  --nav-bg: rgba(122, 5, 83);
   --primary-btn-color: rgba(164, 3, 78);
   --best-seller-color: rgba(230, 122, 0);
   --ratings-color: rgba(255, 216, 25);
@@ -22,6 +22,8 @@
   --margin-bottom:1.25rem;
   --top-whitespace:2rem;
   --box-shadow-1:0px 7px 8px -1px rgba(0,0,0,0.23); 
+  --box-shadow-2:-3px 3px 5px rgba(0, 0, 0, 0.016); 
+  --primary-text-size:1.286rem;
 }
 * {
   margin: 0;

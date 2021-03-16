@@ -28,7 +28,7 @@ const MyOrders = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="">
+              <Link to="#" className="table_link">
                 view order
               </Link>
             </td>
@@ -40,7 +40,19 @@ const MyOrders = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="">
+              <Link to="#" className="table_link">
+                view order
+              </Link>
+            </td>
+          </tr>
+          <tr className="trow-light">
+            <th scope="row">#123456789</th>
+            <td>03-04-2021</td>
+            <td>Eftekar Raghib</td>
+            <td>Tk 123</td>
+            <td>on hold</td>
+            <td>
+              <Link to="#" className="table_link">
                 view order
               </Link>
             </td>

@@ -28,7 +28,7 @@ const AccountOrderHistory = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="">
+              <Link to="#" className="table_link">
                 view order
               </Link>
             </td>
@@ -40,7 +40,7 @@ const AccountOrderHistory = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="">
+              <Link to="#" className="table_link">
                 view order
               </Link>
             </td>
