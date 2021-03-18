@@ -1,14 +1,5 @@
+
 /* PRIMARY CLASSES */
-.table_link{
-    color: var(--light-color);
-    background: var(--nav-bg);
-    padding: 0.3rem;
-    text-transform: capitalize;
-}
-.table_link:hover{
-    color: var(--light-color);
-    background: var(--dark-color);
-}
 .dashboard_wrapper{
     margin-top: var(--top-whitespace);
 }
@@ -94,14 +85,6 @@
 .order_lists,.my_orders {
     margin-bottom:2.7rem;
     overflow-x: scroll;
-}
-.order_lists table,
-.my_orders table{
-    text-align: center;
-    -webkit-box-shadow: var(--box-shadow-1); 
-    box-shadow: var(--box-shadow-1);
-    font-size: var(--primary-text-size);
-    font-weight: 300;
 }
 
 .order_header{

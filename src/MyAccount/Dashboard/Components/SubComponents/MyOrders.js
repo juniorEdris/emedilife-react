@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const MyOrders = (props) => {
   return (
-    <div className="my_orders">
+    <div className="my_orders primary_table">
       <div className="order_header">
         <span>Completed Orders</span>
         <Link to="#">view all</Link>
@@ -28,7 +28,7 @@ const MyOrders = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="table_link">
+              <Link to="/order-info" className="table_link">
                 view order
               </Link>
             </td>
@@ -52,7 +52,7 @@ const MyOrders = (props) => {
             <td>Tk 123</td>
             <td>on hold</td>
             <td>
-              <Link to="#" className="table_link">
+              <Link to="/order-info" className="table_link">
                 view order
               </Link>
             </td>

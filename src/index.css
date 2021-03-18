@@ -11,6 +11,7 @@
   --heading-color: rgba(0, 0, 0);
   --light-color: rgba(255, 255, 255);
   --footer-border-color: rgba(250, 250, 250, 35%);
+  --datalist-bg-color: rgba(243, 243, 243, 100%);
   --myaccount-bg-color: rgba(249, 249, 249, 100%);
   --delivery-details-bg: rgba(239, 239, 239, 100%);
   --gray-color: rgba(0, 0, 0, 0.16); /* repair the name*/
@@ -77,6 +78,7 @@ li {
   margin: 0;
   list-style: none;
 }
+label{margin-bottom: 0;}
 
 /*--------------------------------------------------------------------
                         Typhography Settings
@@ -106,6 +108,28 @@ h6 {
 .error-handler {
   margin-top: 0.6rem;
   color: rgb(211, 15, 15);
+}
+/* Dashboard table primary css */
+.primary_table table{
+  text-align: center;
+  -webkit-box-shadow: var(--box-shadow-1); 
+  box-shadow: var(--box-shadow-1);
+  font-size: var(--primary-text-size);
+  font-weight: 300;
+}
+.table_link{
+  color: var(--light-color);
+  background: var(--nav-bg);
+  padding: 0.6rem;
+  text-transform: capitalize;
+  border-radius: 0.25rem;
+}
+.table_link img{
+  width: 2.857rem;
+}
+.table_link:hover{
+  color: var(--light-color);
+  background: var(--dark-color);
 }
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
@@ -430,18 +454,30 @@ ALL Section Heading css starts here
   padding: 10px 20px;
 }
 .header__logo {
-  width: 100px;
   object-fit: contain;
   margin: 0 20px;
 }
 .header__search {
   width: 60%;
+  position: relative;
+}
+.data-list{
+  position: absolute;
+  background:var(--datalist-bg-color) ;
+  padding: 0.625rem;
+  font-size: 1.2rem;
+  z-index: 1000;
+}
+.data-list div{
+  padding: 0.625rem 0;
+  color: var(--muted-color);
+  font-weight: 300;
 }
 .header__search_inner {
   display: flex;
   flex: 1;
   background-color: var(--light-color);
-  border-radius: 0.325rem;
+  border-radius: 0.425rem;
 }
 .header__search select {
   height: 40px;

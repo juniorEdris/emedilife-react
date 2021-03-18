@@ -9,8 +9,8 @@ const PriceDetails = (props) => {
     setCoupon(!coupon);
   };
   return (
-    <div className="col-md-6">
-      <div className="price_details ">
+    <div className="">
+      <div className="price_details chekoutCard">
         <div className="checkout_headings">
           <h4>Price Details</h4>
         </div>
@@ -25,9 +25,9 @@ const PriceDetails = (props) => {
         </div>
         {coupon && (
           <div className="row mt-2 coupon_input">
-            <div className="form-group col-9 mb-2">
+            <div className="form-group col-md-9 mb-2">
               <label htmlFor="coupon_number" className="sr-only">
-                Password
+                Coupon number
               </label>
               <input
                 type="text"
@@ -37,7 +37,7 @@ const PriceDetails = (props) => {
                 placeholder="Coupon number"
               />
             </div>
-            <button type="submit" className="btn mb-2 col-3">
+            <button type="submit" className="btn mb-2 col-md-3">
               Apply Coupon
             </button>
           </div>
@@ -49,27 +49,29 @@ const PriceDetails = (props) => {
           <div className="row no-gutters align-items-center">
             <div className="form-check">
               <input
-                className="form-check-input position-static"
-                type="radio"
-                name="blankRadio"
-                id="blankRadio1"
+                className="form-check-input"
+                type="checkbox"
+                name="exampleRadios"
+                id="delivery_list"
                 value="option1"
-                aria-label="..."
               />
             </div>
             <div className="delivery_charge">
-              <div className="col delivery_amount">
-                Delivery Charge + &#2547;{28}
-              </div>
-              <div className="col delivery_time">1-3 Hours</div>
+              <label htmlFor="delivery_list" className="delivery_amount_hover">
+                <div className="col delivery_amount">
+                  Delivery Charge + &#2547;{28}
+                </div>
+                <div className="col delivery_time">1-3 Hours</div>
+              </label>
             </div>
           </div>
-          <div className="grand_total col no-gutters">
+          <div className="border_top_section"></div>
+          <div className="grand_total row no-gutters">
             <span className="grand_total_label">Grand Total</span>
             <span className="grand_total_amount">&#2547; {284}</span>
           </div>
-          <div className="">
-            <button className="btn btn-primary order_btn col-md-4">
+          <div className="order_btn">
+            <button className="btn btn-primary  col-md-5">
               Place Order Now
             </button>
           </div>

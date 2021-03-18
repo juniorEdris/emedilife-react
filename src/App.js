@@ -21,6 +21,7 @@ import CartIcon from './PrimarySections/CartIcon/CartIcon';
 import ContactUs from './ContactUs/ContactUs';
 import { User } from './PrimarySections/Utility';
 import CheckOut from './CheckOut/CheckOut';
+import OrderInformation from './OrderInformation/OrderInformation';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
           <Route path="/check-out" component={CheckOut} />
+          <Route path="/order-info" component={OrderInformation} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon />

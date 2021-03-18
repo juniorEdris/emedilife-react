@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 const DeliveryDetails = (props) => {
   return (
-    <div className="col-md-6">
-      <div className="delivery_details">
+    <div className="">
+      <div className="delivery_details chekoutCard">
         <div className="checkout_headings">
           <h4>Delivery Details</h4>
         </div>
@@ -21,7 +21,7 @@ const DeliveryDetails = (props) => {
             <div className="form-group col-md-6">
               <label htmlFor="mobile">Mobile</label>
               <input
-                type="password"
+                type="text"
                 className="form-control form-control-lg"
                 id="mobile"
               />

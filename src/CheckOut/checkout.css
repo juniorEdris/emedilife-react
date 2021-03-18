@@ -1,7 +1,14 @@
 /* Primary class */
-.checkout_headings h4 {
+.checkout_headings {
     border-bottom: 1px solid var(--muted-color);
+    padding-bottom: 0.625rem;
+}
+.checkout_headings h4 {
     font-weight: 600;
+}
+.border_top_section{
+    border-top: 2px solid var(--dark-color);
+    margin-top: 1.325rem;
 }
 .checkout_wrapper{
     background: var(--myaccount-bg-color);
@@ -38,10 +45,10 @@
     max-width: 40px;
 }
 /* CHECKOUT BODY CSS STARTS HERE */
-.delivery_details,.price_details{
+.chekoutCard{
     padding: 1.929rem;
     border: 1px solid var(--nav-bg);
-    border-radius: 0.25rem;
+    border-radius: 0.75rem;
     background: var(--light-color);
     margin-bottom: var(--margin-top);
 }
@@ -90,6 +97,9 @@
     color: var(--light-color);
 
 }
+.delivery_amount_hover{
+    cursor: pointer;
+}
 .delivery_charge{
     color: var(--muted-color);
     margin-top: 1rem;
@@ -97,4 +107,41 @@
 }
 .delivery_time{
     font-weight: 300;
+}
+.grand_total{
+    justify-content: space-between;
+    font-size: 1.4rem;
+    margin-top: 0.625rem;
+    font-weight: 700;
+}
+.order_btn{
+    margin-top: 5rem;
+    text-align: center;
+}
+.order_btn button{
+    font-size: 1.3rem;
+    background-color: var(--user-entry-btn);
+    border: 1px solid var(--light-color);
+    box-shadow: var(--box-shadow-1);
+}
+.order_btn button:hover{
+    background-color: var(--dark-color);
+    border: 1px solid var(--light-color);
+}
+/* Payment Method */
+.payment_select{
+    padding: 1.071rem 1.714rem;
+}
+.payment_select img{
+    width: 8.714rem;
+}
+/* bootstrap radio css */
+.custom-control-inline{
+    margin-right: 0;
+}
+.select-payment div{
+    margin-right: 1rem;
+}
+.check-box-img{
+    cursor: pointer;
 }
