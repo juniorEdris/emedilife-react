@@ -13,8 +13,7 @@ const Detailsindex = (props) => {
   const query = useQuery();
   const prodID = query.get('id');
   useEffect(() => {
-    console.log('id', prodID);
-    props.getProductDetails();
+    props.getProductDetails(prodID);
     // get back to the Top
     toTheTop();
   }, [prodID]);

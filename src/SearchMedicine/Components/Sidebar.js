@@ -6,7 +6,6 @@ import 'react-input-range/lib/css/index.css';
 
 const Sidebar = (props) => {
   const [price, setPrice] = useState({ value: { min: 200, max: 1000 } });
-  console.log(price, 'price');
   const Categories = [
     {
       id: 1,
@@ -102,7 +101,10 @@ const Sidebar = (props) => {
           <ul>
             {Categories.map((category) => (
               <li key={category.id}>
-                <Link to="#" className="">
+                <Link
+                  to="#"
+                  className={props.category === category.name && 'active'}
+                  onClick={() => props.setCategory(category.name)}>
                   {category.name}
                 </Link>
               </li>
@@ -119,7 +121,10 @@ const Sidebar = (props) => {
           <ul>
             {sorting.map((sort) => (
               <li key={sort.id}>
-                <Link to="#" className="">
+                <Link
+                  to="#"
+                  className={props.sort === sort.name && 'active'}
+                  onClick={() => props.setSort(sort.name)}>
                   {sort.name}
                 </Link>
               </li>

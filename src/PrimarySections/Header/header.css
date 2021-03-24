@@ -41,3 +41,11 @@
     color: #fff;
     background-color: #111;
 }
+
+/* Search Component Css */
+.search_list{
+    color: var(--user-entry-btn);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: capitalize;
+}

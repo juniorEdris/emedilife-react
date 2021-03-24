@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Truncate } from '../Utility';
 
 const ProductCard = (props) => {
   return (
@@ -9,7 +10,8 @@ const ProductCard = (props) => {
         <div className="product-thumb">
           <Link to={`/productdetails?id=${props.product.id}`}>
             <img
-              src={`./assets/images/products/${props.product.image}`}
+              src={`./assets/images/products/img-1.png`}
+              // src={`https:${props.product.photo}`}
               className="pri-img"
               alt={props.product.name}
             />
@@ -27,26 +29,28 @@ const ProductCard = (props) => {
               <Link
                 to={`/productdetails?id=${props.product.id}`}
                 title={props.product.name}>
-                {props.product.name}
+                {Truncate(props.product.name, 30)}
               </Link>
             </h5>
           </div>
           <div className="manufacture-product">
-            <span>
-              <Link to={`/`}>by {props.product.brand}</Link>
-            </span>
+            {props.product.company && (
+              <span>
+                <Link to={`/`}>by {props.product?.company}</Link>
+              </span>
+            )}
           </div>
           <div className="price-box">
             <span className="regular-price">
               <span className={` ${props.product.special && 'special-price'}`}>
-                £{props.product.price}
+                £{props.product?.unit_prices?.price}
               </span>
             </span>
             <span className="old-price">
               <span>MRP:</span>
               <del>
-                {props.product.previous_price
-                  ? `£${props.product.previous_price}`
+                {props.product?.unit_prices?.previous_price
+                  ? `£${props.product?.unit_prices?.previous_price}`
                   : ''}
               </del>
             </span>

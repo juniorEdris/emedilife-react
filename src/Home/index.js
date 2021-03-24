@@ -4,7 +4,7 @@ import HomeSlider from './Component/Banner';
 import BannerSection from './Component/BannerSection';
 import BannerSectionTwo from './Component/BannerSectionTwo';
 import BannerSectionThree from './Component/BannerSectionThree';
-import { FeatureBrands } from './Component/FeatureBrands';
+import FeatureBrands from './Component/FeatureBrands';
 import { Features } from './Component/Features';
 import { OnlinePharma } from './Component/OnlinePharma';
 import PopularProduct from './Component/PopularProduct';
@@ -20,7 +20,7 @@ const Index = (props) => {
     props.getHomeContents();
     toTheTop();
   }, []);
-  console.log('>>>', props);
+  console.log('>>> home section', props);
   return (
     <div>
       <HomeSlider />

@@ -37,7 +37,7 @@ export const HeaderTop = (props) => {
           <ProductCart handleChange={openSeacrhbox} />
         </div>
       </div>
-      {search && <ResponsiveSearch />}
+      {search && <ResponsiveSearch setSearch={setSearch} />}
       {filter && <ResponsiveFilter />}
     </nav>
   );

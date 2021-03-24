@@ -88,18 +88,23 @@ const PopularProduct = (props) => {
   ];
   return (
     <div className="popular_product mb-3">
-      <div className="container">
-        <SectionHeadingOne
-          fontStyleOne={'Popular'}
-          fontStyleTwo={'Healthcare Products'}
-        />
-        <Product products={products} />
-      </div>
+      {props.products.length > 0 && (
+        <div className="container">
+          <SectionHeadingOne
+            fontStyleOne={'Popular'}
+            fontStyleTwo={'Healthcare Products'}
+          />
+          <Product products={props.products} />
+        </div>
+      )}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  products: state.HomeContent.popularProducts,
+});
 
 const mapDispatchToProps = {};
 

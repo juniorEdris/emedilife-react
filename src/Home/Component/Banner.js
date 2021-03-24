@@ -5,7 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { connect } from 'react-redux';
 
 const Banner = (props) => {
-  const banners = [
+  const sliders = [
     {
       id: 1,
       image: 'homeSlider.jpg',
@@ -15,10 +15,7 @@ const Banner = (props) => {
       image: 'homeSlider.jpg',
     },
   ];
-  console.log(
-    'sliders',
-    props.sliders?.map((slider) => slider.photo)
-  );
+
   return (
     <div className="home_slider">
       <OwlCarousel
@@ -31,19 +28,20 @@ const Banner = (props) => {
           '<i class="fa fa-angle-left"></i>',
           '<i class="fa fa-angle-right"></i>',
         ]}>
-        {banners?.length > 0 &&
-          banners?.map((banner) => (
-            <div className="slider-area " key={banner.id}>
-              {/*col-12*/}
-              <div className="single-slider d-flex align-items-center">
-                <img
-                  className="slider_image"
-                  src={`./assets/images/${banner.image}`}
-                  alt=""
-                />
-              </div>
+        {/* props.sliders?.length > 0 && */}
+        {sliders?.map((banner) => (
+          <div className="slider-area " key={banner.photo}>
+            {/*col-12*/}
+            <div className="single-slider d-flex align-items-center">
+              <img
+                className="slider_image"
+                src={`./assets/images/${banner.image}`}
+                // src={`https://${banner.photo}`}
+                alt=""
+              />
             </div>
-          ))}
+          </div>
+        ))}
       </OwlCarousel>
     </div>
   );

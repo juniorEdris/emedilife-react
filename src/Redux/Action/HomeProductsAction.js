@@ -13,7 +13,11 @@ const fetchHomeProductsSuccess = (res) => {
   return {
     type: FETCH_HOME_PRODUCTS_SUCCESS,
     slider: res.sliders,
+    homeBrands: res.companies.data,
+    popularProducts: res.trending_products.data,
     neccessaryProducts: res.products,
+    commonProducts: res.common_products.data,
+    homeBlogs: res.blogs.data,
   };
 };
 const fetchHomeProductsError = (error) => ({

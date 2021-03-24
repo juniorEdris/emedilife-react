@@ -469,9 +469,9 @@ ALL Section Heading css starts here
   z-index: 1000;
 }
 .data-list div{
-  padding: 0.625rem 0;
-  color: var(--muted-color);
-  font-weight: 300;
+  padding: 0.325rem 0;
+  /* color: var(--muted-color);
+  font-weight: 300; */
 }
 .header__search_inner {
   display: flex;

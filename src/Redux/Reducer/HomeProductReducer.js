@@ -15,12 +15,15 @@ export const HomeContentReducer = (state = initialState, action) => {
         neccessaryProducts: [],
       };
     case FETCH_HOME_PRODUCTS_SUCCESS:
-      console.log('reducer', action);
       return {
         ...state,
         loading: false,
         homeSlider: action.slider,
+        homeBrands: action.homeBrands,
+        popularProducts: action.popularProducts,
+        commonProducts: action.commonProducts,
         neccessaryProducts: action.neccessaryProducts,
+        homeBlogs: action.homeBlogs,
       };
     case FETCH_HOME_PRODUCTS_ERROR:
       return {

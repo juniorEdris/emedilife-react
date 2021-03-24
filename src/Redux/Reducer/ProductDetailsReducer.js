@@ -14,7 +14,6 @@ export const ProductDetailsReducer = (state = initialState, action) => {
         productDetails: '',
       };
     case FETCH_PRODUCT_DETAILS_SUCCESS:
-      console.log('reducer', action.details);
       return {
         ...state,
         loading: false,
