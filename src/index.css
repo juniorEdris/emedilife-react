@@ -131,6 +131,10 @@ h6 {
   color: var(--light-color);
   background: var(--dark-color);
 }
+.pointer_disabled{
+  pointer-events: none;
+  opacity: 0.4;
+}
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
 --------------------------------------------------------------------*/
@@ -357,6 +361,7 @@ ALL Section Heading css starts here
 }
 .btn-cart:hover {
   background: var(--dark-color);
+  color: var(--light-color);
 }
 
 /*Image nav button styles */

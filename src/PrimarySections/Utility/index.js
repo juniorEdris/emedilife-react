@@ -8,6 +8,12 @@ export const renderDiv = (rawHTML) =>
   React.createElement('div', { dangerouslySetInnerHTML: { __html: rawHTML } });
 export const renderSpan = (rawHTML) =>
   React.createElement('span', { dangerouslySetInnerHTML: { __html: rawHTML } });
+export const renderDivAttr = (rawHTML) => {
+  <div
+    dangerouslySetInnerHTML={{
+      __html: rawHTML,
+    }}></div>;
+};
 
 // Get Url parameters
 export function useQuery() {

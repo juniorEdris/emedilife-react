@@ -22,8 +22,14 @@ import ContactUs from './ContactUs/ContactUs';
 import { User } from './PrimarySections/Utility';
 import CheckOut from './CheckOut/CheckOut';
 import OrderInformation from './OrderInformation/OrderInformation';
+import { connect } from 'react-redux';
+import { getCartItems } from './Redux/Action/CartProductsAction';
+import { useEffect } from 'react';
 
-function App() {
+function App(props) {
+  useEffect(() => {
+    // props.getCartItems();
+  }, []);
   return (
     <Router>
       <div className="App">
@@ -53,4 +59,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  getCartItems: () => dispatch(getCartItems()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App);

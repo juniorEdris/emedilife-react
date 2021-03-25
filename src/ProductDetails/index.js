@@ -7,6 +7,7 @@ import './productDetails.css';
 import RelatedProducts from './Components/RelatedProducts';
 import { GetProductDetails } from '../Redux/Action/ProductDetailsAction';
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
+import CartAddanime from '../PrimarySections/CartAddAnime/CartAddanime';
 
 const Detailsindex = (props) => {
   // get ID from query /productdetails?id=${product.id}`
@@ -23,6 +24,7 @@ const Detailsindex = (props) => {
       <Header />
       <Description />
       <RelatedProducts />
+      <CartAddanime />
     </div>
   );
 };

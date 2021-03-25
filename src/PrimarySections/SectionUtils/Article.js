@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { renderDiv, Truncate } from '../Utility';
+import { Truncate } from '../Utility';
 
 function Article(props) {
+  const details = props.post.details.substring(0, 500);
   return (
     <div className="article box-shadow mb-3" key={props.post.id}>
       <div className="article_image">
@@ -17,9 +18,18 @@ function Article(props) {
           <h4>{Truncate(props.post.title, 40)}</h4>
         </div>
         {/* <div className="article_details">
-          <p>{Truncate(dummy, 20)}</p>
+          <p>{Truncate(props.post.details, 150)}</p>
         </div> */}
-        {renderDiv(props.post.details)}
+        {/* {renderDivAttr()} */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: details,
+          }}
+          style={{
+            minHeight: '10rem',
+            overflow: 'hidden',
+            maxHeight: '10rem',
+          }}></div>
         <Link to={`/single-blog?id=${props.post.id}`}>Read More</Link>
       </div>
     </div>

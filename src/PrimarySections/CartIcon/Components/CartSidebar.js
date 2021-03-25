@@ -9,7 +9,9 @@ const CartSidebar = (props) => {
         <div className="cart_header">
           <div className="cart_header_count">
             <img src="./assets/svg/icons/shopping-cart.svg" alt="cart-icon" />
-            <span className="cart_header_item_count">{3} items</span>
+            <span className="cart_header_item_count">
+              {props.cartList?.length || 0} items
+            </span>
           </div>
           <span
             className="lnr lnr-arrow-right"
@@ -21,7 +23,10 @@ const CartSidebar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.CartItems.loading,
+  cartList: state.CartItems.basket,
+});
 
 const mapDispatchToProps = {};
 

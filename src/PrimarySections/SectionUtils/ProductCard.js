@@ -55,9 +55,11 @@ const ProductCard = (props) => {
               </del>
             </span>
           </div>
-          <button className="btn-cart" type="button">
-            add to cart
-          </button>
+          <Link
+            className="btn-cart d-block text-center"
+            to={`/productdetails?id=${props.product.id}`}>
+            show details
+          </Link>
         </div>
       </div>
     </div>
@@ -66,6 +68,6 @@ const ProductCard = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);

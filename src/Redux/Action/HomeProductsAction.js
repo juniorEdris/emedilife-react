@@ -27,11 +27,9 @@ const fetchHomeProductsError = (error) => ({
 
 export const GetHomeContents = () => async (dispatch) => {
   dispatch(fetchHomeProductsRequest());
-  console.log('hey');
   await API()
     .get(ENDPOINTS.HOMEPRODUCT)
     .then((res) => {
-      console.log(`home prod`, res.data);
       dispatch(fetchHomeProductsSuccess(res.data));
     })
     .catch((error) => {

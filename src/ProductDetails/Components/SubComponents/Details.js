@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { AddBasketProd } from '../../../Redux/Action/BasketAction';
+import { getCartItems } from '../../../Redux/Action/CartProductsAction';
 
 const Details = (props) => {
+  const [quantity, setQuantity] = useState(1);
+  const decrement = () => {
+    setQuantity(quantity - 1);
+  };
+  const increment = () => {
+    setQuantity(quantity + 1);
+  };
+  const addProduct = (item) => {
+    props.addToCart(item, quantity);
+    props.getCartItems();
+  };
   return (
     <div className="product_details_wrapper">
       <div className="product_details_caption">
@@ -66,11 +79,13 @@ const Details = (props) => {
         <div className="details_qty">
           <label>Quantity :</label>
           <div className="product-qty mr-3">
-            <input type="text" readOnly defaultValue={'0'} />
-            <span class={`dec qtybtn `}>
+            <input type="text" readOnly value={quantity} />
+            <span
+              class={`dec qtybtn ${quantity === 1 && 'pointer_disabled'}`}
+              onClick={decrement}>
               <i className="fa fa-minus"></i>
             </span>
-            <span className={`inc qtybtn`}>
+            <span className={`inc qtybtn`} onClick={increment}>
               <i class="fa fa-plus"></i>
             </span>
           </div>
@@ -79,7 +94,8 @@ const Details = (props) => {
         <div className="details_buttons_wrapper mb-5">
           <button
             className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
-            type="button">
+            type="button"
+            onClick={() => addProduct(props.details)}>
             add to cart
           </button>
         </div>
@@ -93,6 +109,8 @@ const mapStateToProps = (state) => ({
   details: state.ProductDetails.productDetails,
 });
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (product, count) => dispatch(AddBasketProd(product, count)),
+  getCartItems: () => dispatch(getCartItems()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Details));
