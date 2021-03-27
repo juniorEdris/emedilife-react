@@ -10,13 +10,16 @@ export const AddBasketReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_BASKET_SUCCESS:
       return {
+        ...state,
+        loading: false,
         basketmsg: action.message,
         basketstatus: action.status,
+        localBasket: action.payload.res,
       };
     case REMOVE_FROM_BASKET:
       return {
         ...state,
-        basket: action.payload.product,
+        localBasket: action.payload.product,
       };
     case BASKET_STATUS_SUCCESS:
       return {

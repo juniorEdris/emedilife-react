@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { API } from '../../../PrimarySections/Utility/API_Links';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { setUserAction } from '../../../Redux/Action/UserAction';
 
 const UserEntry = (props) => {
   const [number, setNumber] = useState('');
@@ -21,6 +22,7 @@ const UserEntry = (props) => {
         if (res.data.data.id) {
           setOTPActive(true);
           localStorage.setItem('user_id', res.data.data.id);
+          props.setUser();
           setError({ otp: res.data.data.otp });
         }
       })
@@ -128,6 +130,8 @@ const UserEntry = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUserAction(user)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserEntry);

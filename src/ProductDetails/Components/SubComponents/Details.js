@@ -12,15 +12,15 @@ const Details = (props) => {
   const increment = () => {
     setQuantity(quantity + 1);
   };
-  const addProduct = (item) => {
-    props.addToCart(item, quantity);
-    props.getCartItems();
+  const addProduct = async (item) => {
+    await props.addToCart(item, quantity);
+    await props.getCartItems();
   };
   return (
     <div className="product_details_wrapper">
       <div className="product_details_caption">
         <div className="details_product-name">
-          <p title={props.details.name}>{props.details.name}</p>
+          <p title={props.details?.name}>{props.details?.name}</p>
         </div>
         <div className="details_ratings mb-2">
           <span className={`rated`}>

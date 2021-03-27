@@ -18,9 +18,9 @@ const getCartItemError = (res) => ({
   error: res,
 });
 
-export const getCartItems = () => (dispatch, getState) => {
+export const getCartItems = () => async (dispatch, getState) => {
   dispatch(getCartItemRequest());
-  API()
+  await API()
     .get(`${ENDPOINTS.GETCARTITEMS}`)
     .then((res) => {
       dispatch(getCartItemSuccess(res.data.data));
