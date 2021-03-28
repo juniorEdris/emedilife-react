@@ -1,0 +1,14 @@
+/* primary css */
+.blog_heading h5{
+    padding: 0.725rem 0;
+    padding-left: 1rem ;
+    text-transform: capitalize;
+    color: var(--light-color);
+    background-color: var(--nav-bg);
+}
+.blog_wrapper {
+    background-color: var(--gray-second-color);
+    padding: var(--top-whitespace) 0;
+}
+.blog_list{
+}

@@ -65,19 +65,37 @@
 .details_price-box .details_old-price del{
     color: var(--muted-color);
 }
-.details_qty{
+.details_quantity{
     display: flex;
     align-items: baseline;
     margin-bottom: 0.625rem;
 }
-.details_qty label{
+.details_qty{
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--muted-color);
+    border-bottom: 1px solid var(--muted-color);
+    margin-bottom: 0.6rem;
+}
+.single_radio{
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    text-transform: capitalize;
+}
+.single_radio input{
+    margin-right: 0.7rem;
+}
+.single_radio small{
+    color: var(--muted-color);
+}
+/* .details_qty label{
     color: #111;
     font-size: 1.8rem;
     font-weight: 500;
     margin-right: 1.25rem;
     text-transform: capitalize;
     
-}
+} */
 .product-qty {
     border: 1px solid #ddd;
     font-size: 1.1rem;

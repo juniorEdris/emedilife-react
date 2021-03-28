@@ -419,6 +419,47 @@ ALL Section Heading css starts here
   right: -20px;
 }
 /*product slider css ends */
+/* Single Blog css here */
+.single_blog_wrapper{
+  margin: 1rem 0;
+}
+.single_blog{
+  padding: 1rem 0rem;
+  background: var(--light-color);
+  width: 100%;
+  margin: 1rem 0 !important;
+}
+.single_blog_title p{
+  font-size: 1.6rem;
+}
+.single_blog_middle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+/* .single_blog_date,.single_blog_views{
+  display: flex;
+  align-items: end;
+} */
+.single_blog_text{
+  padding: 0.5rem 0;
+}
+.single_blog_text p{
+  font-size: 1;
+}
+.blog_read_btn a{
+  padding: 0.4rem;
+  background: var(--user-entry-btn);
+  color: var(--light);
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  border-radius: 0;
+}
+.blog_read_btn a:hover{
+  color: var(--light-color);
+  background: var(--dark-color);
+}
 /*--------------------------------------------------------------------
                         Main Elements css starts here
 --------------------------------------------------------------------*/
