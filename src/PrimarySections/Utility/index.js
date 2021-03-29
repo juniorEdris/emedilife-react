@@ -26,17 +26,16 @@ export const Truncate = (str, n) => {
 };
 
 // user constnant
-export let User;
+const User = localStorage.getItem('user_id');
 
-const active = localStorage.getItem('user_id');
-
-active ? (User = true) : (User = false);
-
-export const getCartProdSubTotal = (basket) => {
-  console.log('all func', basket);
-  return basket?.reduce(
-    (amount, item) =>
-      parseInt(item.unit_prices[0].price * item.total_quantity) + amount,
-    0
-  );
-};
+export const getCartProdSubTotal = (basket) =>
+  User
+    ? basket?.reduce(
+        (amount, item) =>
+          parseInt(item.unit_price.price * item.total_quantity) + amount,
+        0
+      )
+    : basket?.reduce(
+        (amount, item) => parseInt(item.price * item.total_quantity) + amount,
+        0
+      );

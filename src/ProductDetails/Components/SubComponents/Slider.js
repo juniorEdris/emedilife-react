@@ -17,14 +17,24 @@ const Slider = (props) => {
         infinite={true}
         swipeDelta={0}
         autoPlayStrategy="default">
-        {props.details?.images?.map((image) => (
+        <img
+          src={`http:${props.details?.photo}`}
+          className="slider_image"
+          alt={props.details?.name}
+        />
+        {/* {props.details?.images?.map((image) => (
           <img
             src={`${DOMAIN}${props.details?.images_base_path}/${image.url}`}
             className="slider_image"
             alt={props.details?.name}
           />
-        ))}
+        ))} */}
       </AliceCarousel>
+      {/* <img
+        src={`http:${props.details?.photo}`}
+        className="slider_image"
+        alt={props.details?.name}
+      /> */}
     </div>
   );
 };

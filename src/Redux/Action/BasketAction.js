@@ -6,16 +6,22 @@ import {
   REMOVE_FROM_BASKET,
   BASKET_STATUS_SUCCESS,
   BASKET_STATUS_COMPLETE,
+  ADD_TO_SERVER_BASKET_SUCCESS,
 } from '../Types';
 
 const addProdBasketRequest = (product) => ({
   type: ADD_TO_BASKET_REQUEST,
   payload: {},
 });
-const addProdBasketSuccess = (res) => ({
-  type: ADD_TO_BASKET_SUCCESS,
+const addProdServerBasketSuccess = (res) => ({
+  type: ADD_TO_SERVER_BASKET_SUCCESS,
   status: res.type,
   message: res.message,
+});
+const addProdBasketSuccess = (res) => ({
+  type: ADD_TO_BASKET_SUCCESS,
+  // status: res.type,
+  // message: res.message,
   payload: { res },
 });
 const addProdBasketError = (error) => ({
@@ -40,9 +46,9 @@ export const AddBasketProd = (product, quantity) => async (
   dispatch,
   getState
 ) => {
+  console.log('basket action', product);
   // return action if its null
   if (product === null) return;
-  dispatch(addProdBasketRequest());
   if (!user) {
     const cartItems = getState().Basket.localBasket.slice();
     let exist = false;
@@ -56,21 +62,22 @@ export const AddBasketProd = (product, quantity) => async (
       }
     });
     if (!exist) {
-      cartItems.push({ ...product, total_quantity: quantity });
+      cartItems.push({ ...product });
     }
-    dispatch(addProdBasketSuccess(cartItems));
+    console.log('>>>>', cartItems);
     localStorage.setItem('Cart List', JSON.stringify(cartItems));
+    dispatch(addProdBasketSuccess(cartItems));
   } else {
+    dispatch(addProdBasketRequest());
     await API()
       .post(
-        `${ENDPOINTS.ADDTOBASKET}?product_id=${product.id}&unit_price_id=${product.unit_prices[0].id}&total_quantity=${quantity}`
+        `${ENDPOINTS.ADDTOBASKET}?product_id=${product.id}&unit_price_id=${product.unit_prices_id}&total_quantity=${product.total_quantity}`
       )
       .then((res) => {
-        // dispatch(addProdBasketSuccess({...product,quantity}));
         // ---------------------------------
-        // Update Product Qty
+        // Update Product Qty Left
         // ---------------------------------
-        dispatch(addProdBasketSuccess(res.data));
+        dispatch(addProdServerBasketSuccess(res.data));
         dispatch(productStatusSuccess());
         setTimeout(() => {
           dispatch(productStatusComplete());
@@ -85,7 +92,7 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
     let cartItems = getState().Basket.localBasket.slice();
     let exist = false;
     cartItems.forEach((x) => {
-      if (x.product_id === product.product_id && product.total_quantity > 1) {
+      if (x.id === product.id && product.total_quantity > 1) {
         exist = true;
         x.total_quantity--;
       }
@@ -93,11 +100,10 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
     if (!exist) {
       cartItems = getState()
         .Basket.localBasket.slice()
-        .filter((x) => x.product_id !== product.product_id);
+        .filter((x) => x.id !== product.id);
     }
-    console.log(cartItems, '<<<');
-    dispatch(removeProdBasket(cartItems));
     localStorage.setItem('Cart List', JSON.stringify(cartItems));
+    dispatch(removeProdBasket(cartItems));
   } else {
     await API()
       .delete(`${ENDPOINTS.DELETEFROMBASKET}${product.id}`)

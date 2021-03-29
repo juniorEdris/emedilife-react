@@ -10,8 +10,9 @@ const ProductCard = (props) => {
         <div className="product-thumb">
           <Link to={`/productdetails?id=${props.product.id}`}>
             <img
-              src={`./assets/images/products/img-1.png`}
-              // src={`https:${props.product.photo}`}
+              // src={`https://medipathy.changetechbd.com/assets/images/company/16146645099127.png`}
+              // src={`https://store.uparzon.com/assets/images/thumbnails/app/1601529115ADf6VNuh.jpg`}
+              src={`https:${props.product.photo}`}
               className="pri-img"
               alt={props.product.name}
             />

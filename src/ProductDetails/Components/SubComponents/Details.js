@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AddBasketProd } from '../../../Redux/Action/BasketAction';
@@ -7,10 +7,8 @@ import { getCartItems } from '../../../Redux/Action/CartProductsAction';
 const Details = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
-  const primaryPrice =
-    props.details?.unit_prices && props.details?.unit_prices[0].price;
   const [price, setPrice] = useState('');
-  // console.log(primaryPrice, priceId);
+
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -22,15 +20,19 @@ const Details = (props) => {
     setQuantity(quantity + 1);
   };
   const addProduct = async (item) => {
-    // const product = {
-    //   id: item.id,
-    //   unit_prices_id: priceId,
-    //   quantity,
-    // };
-    await props.addToCart(item, quantity);
-    await props.getCartItems();
+    const product = {
+      id: item.id,
+      photo: item.photo,
+      name: item.name,
+      price: price === '' ? item.unit_prices[0].price : price,
+      unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
+      total_quantity: quantity,
+    };
+    await props.addToCart(product, quantity);
+    props.user && (await props.getCartItems());
+    console.log('price_id', product);
   };
-  console.log('price_id', props.cart_id);
+  console.log('cart_id', props.cart_id);
   return (
     <div className="product_details_wrapper">
       <div className="product_details_caption">
@@ -83,12 +85,14 @@ const Details = (props) => {
           </Link>
         </div>
         <div className="details_price-box">
-          <div className="details_regular-price">
-            <span className="">&#2547; {123.0}</span>
-            {props.details?.unit_prices?.map((x) => (
-              <span>{x.price}</span>
-            ))}
-          </div>
+          {props.details?.unit_prices && (
+            <div className="details_regular-price">
+              <span className="">
+                &#2547;{' '}
+                {price === '' ? props.details?.unit_prices[0].price : price}
+              </span>
+            </div>
+          )}
           <div className="details_old-price">
             <span>MRP: </span>
             <del>&#2547;132</del>
@@ -113,7 +117,11 @@ const Details = (props) => {
                     name="price_id"
                     id={x.unitType}
                     onChange={() => selectPackage(x)}
-                    checked={priceId === x.id}
+                    checked={
+                      priceId === ''
+                        ? props.details?.unit_prices[0].id === x.id
+                        : priceId === x.id
+                    }
                     required
                   />
                 )}
@@ -158,6 +166,7 @@ const mapStateToProps = (state) => ({
   loading: state.ProductDetails.loading,
   details: state.ProductDetails.productDetails,
   cart_id: state.CartID.cart_update_id,
+  user: state.User.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

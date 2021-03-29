@@ -7,10 +7,10 @@ import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { getCartProdSubTotal } from '../../Utility';
 
 const CartList = (props) => {
-  console.log(props);
   useEffect(() => {
     props.user && props.getCartItems();
   }, []);
+
   const removeFromCart = async (item) => {
     await props.removeProduct(item);
     await props.getCartItems();
@@ -21,10 +21,10 @@ const CartList = (props) => {
         {!props.user ? (
           <ul className="cart_sidebar_list">
             {props.localCartList?.map((item) => (
-              <li key={item.product_id}>
+              <li key={item.id}>
                 <div className="cart_single_product">
                   <div className="cart_single_image">
-                    <Link to={`productdetails?id=${item.product_id}`}>
+                    <Link to={`productdetails?id=${item.id}`}>
                       <img
                         // src="./assets/images/products/img-1.png"
                         src={`https:${item.photo}`}
@@ -42,9 +42,7 @@ const CartList = (props) => {
                       </Link>
                     </div>
                     <div className="cart_single_price">
-                      <span className="cart_price">
-                        &#2547; {item.unit_price?.price}
-                      </span>
+                      <span className="cart_price">&#2547; {item?.price}</span>
                       <span className="times">&times;</span>
                       <span className="count">{item.total_quantity}</span>
                     </div>

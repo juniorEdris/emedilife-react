@@ -17,7 +17,7 @@ const fetchHomeProductsSuccess = (res) => {
     popularProducts: res.trending_products.data,
     neccessaryProducts: res.products,
     commonProducts: res.common_products.data,
-    homeBlogs: res.blogs.data,
+    homeBlogs: res.blogs,
   };
 };
 const fetchHomeProductsError = (error) => ({

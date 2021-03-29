@@ -19,7 +19,7 @@ import SearchMedicine from './SearchMedicine/Search';
 import AboutUs from './AboutUs/AboutUs';
 import CartIcon from './PrimarySections/CartIcon/CartIcon';
 import ContactUs from './ContactUs/ContactUs';
-import { User } from './PrimarySections/Utility';
+// import { User } from './PrimarySections/Utility';
 import CheckOut from './CheckOut/CheckOut';
 import OrderInformation from './OrderInformation/OrderInformation';
 import { connect } from 'react-redux';
@@ -40,10 +40,10 @@ function App(props) {
           <Route path="/productdetails" component={ProductDetails} />
           <Route path="/upload-prescription" component={PrescriptionUpload} />
           <Route path="/login">
-            {!User ? <UserEntry /> : <Redirect to="/dashboard" />}
+            {!props.User ? <UserEntry /> : <Redirect to="/dashboard" />}
           </Route>
           <Route path="/dashboard">
-            {User ? <Dashboard /> : <Redirect to="/login" />}
+            {!props.User ? <Redirect to="/login" /> : <Dashboard />}
           </Route>
           <Route path="/search-medicine" component={SearchMedicine} />
           <Route path="/about-us" component={AboutUs} />
@@ -61,7 +61,9 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  User: state.User.user,
+});
 const mapDispatchToProps = (dispatch) => ({
   getCartItems: () => dispatch(getCartItems()),
 });

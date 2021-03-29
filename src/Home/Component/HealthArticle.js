@@ -1,25 +1,26 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import SectionHeadingThree from '../../PrimarySections/SectionUtils/SectionHeadingThree'
-import Body from "./SubComponent/ArticleBody";
+import React from 'react';
+import { connect } from 'react-redux';
+import SectionHeadingThree from '../../PrimarySections/SectionUtils/SectionHeadingThree';
+import Body from './SubComponent/ArticleBody';
 
 const HealthArticle = (props) => {
-    return (
-        <div className='health_article mb-4'>
-            <div className="container">
-                <SectionHeadingThree textOne={'Health'} textTwo={'Article'}/>
-                <Body/>
-            </div>
+  return (
+    <div className="health_article mb-4">
+      {props.blogs.length > 0 && (
+        <div className="container">
+          <SectionHeadingThree textOne={'Health'} textTwo={'Article'} />
+          <Body />
         </div>
-    )
-}
+      )}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
-    
-})
+  loading: state.HomeContent.loading,
+  blogs: state.HomeContent.homeBlogs,
+});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(HealthArticle)
+export default connect(mapStateToProps, mapDispatchToProps)(HealthArticle);

@@ -49,3 +49,32 @@
     font-size: 1rem;
     text-transform: capitalize;
 }
+
+/* User Drop Down css */
+
+.dropdown{
+    position: absolute;
+    right: 15px;
+    top: 57px;
+    width: 140px;
+    background: var(--light);
+    text-align: center;
+    z-index: 999;
+}
+.dropdown ul li{
+    padding: 0.3rem 0;
+    
+}
+.dropdown ul li:hover{
+    background-color: var(--theme-color);
+    
+}
+.dropdown ul li:hover a{
+    color: var(--light-color);
+
+}
+.dropdown ul li a{
+    display: block;
+    color: var(--dark);
+    text-transform: capitalize;
+}

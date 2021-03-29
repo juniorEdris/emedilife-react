@@ -9,7 +9,6 @@ const UserEntry = (props) => {
   const [OTP, setOTP] = useState('');
   const [OTPActive, setOTPActive] = useState(false);
   const [error, setError] = useState({});
-  const history = useHistory();
   const register = async (e) => {
     e.preventDefault();
     setError({});
@@ -22,7 +21,6 @@ const UserEntry = (props) => {
         if (res.data.data.id) {
           setOTPActive(true);
           localStorage.setItem('user_id', res.data.data.id);
-          props.setUser();
           setError({ otp: res.data.data.otp });
         }
       })
@@ -42,7 +40,7 @@ const UserEntry = (props) => {
         console.log(res);
         if (res.data.token) {
           localStorage.setItem('user_token', res.data.token);
-          history.push('/dashboard');
+          props.setUser();
         } else if (!res.data.status) {
           setError({
             otpErrMessage: res.data.message,

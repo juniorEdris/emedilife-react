@@ -20,7 +20,6 @@ const Index = (props) => {
     props.getHomeContents();
     toTheTop();
   }, []);
-  console.log('>>> home section', props);
   return (
     <div>
       <HomeSlider />
