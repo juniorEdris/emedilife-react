@@ -7,16 +7,24 @@ import Body from './SubComponent/NecessaryProducts';
 const NecessaryProducts = (props) => {
   return (
     <div className="necessary_product_section mb-5">
-      <div className="container">
-        <SectionHeadingTwo textOne={'Neccesary Popular'} textTwo={'Products'} />
-        <Body />
-        <SeeMoreBtn />
-      </div>
+      {props.products?.length > 0 && (
+        <div className="container">
+          <SectionHeadingTwo
+            textOne={'Neccesary Popular'}
+            textTwo={'Products'}
+          />
+          <Body />
+          <SeeMoreBtn />
+        </div>
+      )}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  products: state.HomeContent.neccessaryProducts,
+});
 
 const mapDispatchToProps = () => ({});
 

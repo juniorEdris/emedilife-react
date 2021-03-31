@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './cartanime.css';
 
 function CartAddanime(props) {
+  console.log('cart Anime', props.tabState, props.basketMsg);
   return (
     <div
       className={`cart_added_animation ${

@@ -7,7 +7,7 @@ import CartSidebar from './Components/CartSidebar';
 import { getCartProdSubTotal } from '../../PrimarySections/Utility';
 
 const CartIcon = (props) => {
-  console.log('cartItems', props.localCartList);
+  useEffect(() => {}, [props.user]);
   const [cart, setCart] = useState(false);
   const sidebarOpen = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const CartIcon = (props) => {
       ? props.cartList?.forEach((x) => {
           allProd.push(x.total_quantity);
         })
-      : props.localCartList.forEach((x) => {
+      : props.localCartList?.forEach((x) => {
           allProd.push(x.total_quantity);
         });
     return allProd.reduce((a, b) => parseInt(a) + parseInt(b), 0);
@@ -36,11 +36,12 @@ const CartIcon = (props) => {
           </div>
           {!props.user ? (
             <div className="total_wrapper">
-              &#2547; {getCartProdSubTotal(props.localCartList)}
+              &#2547;{' '}
+              {getCartProdSubTotal(props.localCartList, props.user) || 0}
             </div>
           ) : (
             <div className="total_wrapper">
-              &#2547; {getCartProdSubTotal(props.cartList)}
+              &#2547; {getCartProdSubTotal(props.cartList, props.user) || 0}
             </div>
           )}
         </div>
@@ -53,7 +54,7 @@ const CartIcon = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.CartItems.loading,
   cartList: state.CartItems.basket,
-  localCartList: state.CartItems.localBasket,
+  localCartList: state.Basket.localBasket,
   user: state.User.user,
 });
 

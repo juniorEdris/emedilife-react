@@ -30,7 +30,6 @@ const Details = (props) => {
     };
     await props.addToCart(product, quantity);
     props.user && (await props.getCartItems());
-    console.log('price_id', product);
   };
   console.log('cart_id', props.cart_id);
   return (

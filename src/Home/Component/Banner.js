@@ -5,6 +5,10 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { connect } from 'react-redux';
 
 const Banner = (props) => {
+  console.log(
+    'slider',
+    props.sliders?.map((banner) => banner.photo)
+  );
   const sliders = [
     {
       id: 1,
@@ -28,20 +32,20 @@ const Banner = (props) => {
           '<i class="fa fa-angle-left"></i>',
           '<i class="fa fa-angle-right"></i>',
         ]}>
-        {/* props.sliders?.length > 0 && */}
-        {sliders?.map((banner) => (
-          <div className="slider-area " key={banner.photo}>
-            {/*col-12*/}
-            <div className="single-slider d-flex align-items-center">
-              <img
-                className="slider_image"
-                src={`./assets/images/${banner.image}`}
-                // src={`https://${banner.photo}`}
-                alt=""
-              />
+        {props.sliders?.length > 0 &&
+          props.sliders?.map((banner) => (
+            <div className="slider-area " key={banner.photo}>
+              {/*col-12*/}
+              <div className="single-slider d-flex align-items-center">
+                <img
+                  className="slider_image"
+                  // src={`./assets/images/${banner.image}`}
+                  src={`https:${banner.photo}`}
+                  alt="banners"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </OwlCarousel>
     </div>
   );

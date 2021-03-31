@@ -102,7 +102,7 @@ h6 {
 }
 .all-wide-banners img {
   width: 100%;
-  max-height: 15.625rem;
+  /* max-height: 15.625rem; */
   object-fit: contain;
 }
 .error-handler {
@@ -307,6 +307,7 @@ ALL Section Heading css starts here
 }
 .product-thumb a img {
   width: 100%;
+  height: 9.375rem;
   object-fit: contain;
 }
 .product-caption {
@@ -315,6 +316,7 @@ ALL Section Heading css starts here
   padding: 1.375rem 0.625rem 1rem;
 }
 .manufacture-product {
+  /* min-height: 40px; */
   margin: 0.313rem 0;
 }
 .manufacture-product a {
@@ -322,6 +324,9 @@ ALL Section Heading css starts here
   font-size: 1rem;
   font-weight: 400;
   line-height: 20px;
+}
+.product-name{
+  min-height: 50px;
 }
 .product-name h5 a {
   font-weight: 400;
@@ -365,6 +370,9 @@ ALL Section Heading css starts here
 }
 
 /*Image nav button styles */
+.slider-product-section{
+  width: 285px;
+}
 .product-section .owl-nav button {
   background: none;
   border: none !important;
@@ -808,6 +816,7 @@ Footer css starts here
 --------------------------------------------------------------------*/
 .home_feature_area img {
   width: -webkit-fill-available;
+  width: 100%;
   max-width: 100%;
   object-fit: fill;
 }
@@ -922,6 +931,9 @@ Healthcare Banner Section css starts here
 --------------------------------------------------------------------*/
 .health_banner_image {
   margin-bottom: 0.625rem;
+}
+.health_banner_image img{
+  width: 100%;
 }
 
 /*--------------------------------------------------------------------

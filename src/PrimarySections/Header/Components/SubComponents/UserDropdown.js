@@ -10,7 +10,10 @@ const UserDropdown = (props) => {
       <Link
         to="#"
         className="header__link"
-        onClick={() => setDropdown(!dropdown)}>
+        onClick={(e) => {
+          e.preventDefault();
+          setDropdown(!dropdown);
+        }}>
         <div className="header__option">
           <span className="header__option__lineOne">Sign In,</span>
           <span className="header__option__lineTwo">
@@ -34,7 +37,12 @@ const UserDropdown = (props) => {
                 </Link>
               </li>
               <li>
-                <Link to="#" onClick={() => props.logOut()}>
+                <Link
+                  to="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    props.logOut();
+                  }}>
                   log out
                 </Link>
               </li>

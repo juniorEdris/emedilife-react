@@ -1,5 +1,6 @@
 import { initialState } from '../Store/Store';
 import {
+  ADD_TO_BASKET_MSG,
   ADD_TO_BASKET_SUCCESS,
   ADD_TO_SERVER_BASKET_SUCCESS,
   BASKET_STATUS_COMPLETE,
@@ -18,10 +19,20 @@ export const AddBasketReducer = (state = initialState, action) => {
       };
     case ADD_TO_BASKET_SUCCESS:
       return {
-        localBasket: [...state.localBasket, action.payload.product],
+        ...state,
+        localBasket: action.payload.product,
+        basketmsg: action.message,
+        basketstatus: action.status,
+      };
+    case ADD_TO_BASKET_MSG:
+      console.log('msg', action.message);
+      return {
+        basketmsg: action.message,
+        tabStatus: action.status,
       };
     case REMOVE_FROM_BASKET:
       return {
+        ...state,
         localBasket: action.payload.product,
       };
     case BASKET_STATUS_SUCCESS:

@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import DashBody from './Components/DashBody';
 import DashSidebar from './Components/DashSidebar';
+import { getCartItems } from '../../Redux/Action/CartProductsAction';
 import './dashboard.css';
 
 const Dashboard = (props) => {
+  useEffect(() => {
+    props.getCartItems();
+  }, []);
   const [tab, setTab] = useState('dashboard');
   return (
     <div className="dashboard_wrapper container">
@@ -22,6 +26,8 @@ const Dashboard = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  getCartItems: () => dispatch(getCartItems()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

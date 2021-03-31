@@ -3,6 +3,7 @@ import { API } from '../../../PrimarySections/Utility/API_Links';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { setUserAction } from '../../../Redux/Action/UserAction';
+import { UserID } from '../../../PrimarySections/Utility';
 
 const UserEntry = (props) => {
   const [number, setNumber] = useState('');
@@ -63,7 +64,7 @@ const UserEntry = (props) => {
                   <div className="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
                     <div className="login-form">
                       <div className="user_entry_heading">Login/Register</div>
-                      <form action="#" onSubmit={!OTPActive ? register : login}>
+                      <form action="#" onSubmit={!UserID() ? register : login}>
                         <div className="form-group row align-items-center mt-5">
                           <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
                             <input
@@ -78,7 +79,7 @@ const UserEntry = (props) => {
                             <div className="error-handler">{error.message}</div>
                           </div>
                         </div>
-                        {OTPActive && (
+                        {UserID() && (
                           <div className="form-group row align-items-center mb-5">
                             <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
                               <input

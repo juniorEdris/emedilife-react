@@ -10,10 +10,13 @@ const CartList = (props) => {
   useEffect(() => {
     props.user && props.getCartItems();
   }, []);
-
+  console.log(
+    'local',
+    props.localCartList.map((x) => x.id)
+  );
   const removeFromCart = async (item) => {
     await props.removeProduct(item);
-    await props.getCartItems();
+    props.user && (await props.getCartItems());
   };
   return (
     <div>
@@ -36,7 +39,7 @@ const CartList = (props) => {
                   <div className="cart_single_body">
                     <div className="cart_single_name">
                       <Link
-                        to={`productdetails?id=${item.product_id}`}
+                        to={`productdetails?id=${item.id}`}
                         onClick={() => props.getCartID(item.id)}>
                         {item.name}
                       </Link>
@@ -105,14 +108,14 @@ const CartList = (props) => {
       <div className="cart_product_btn">
         <div className="cart_total">
           <span>
-            cart subtotal : &#2547;
-            {/* {getCartProdSubTotal(
-              !props.user ? props.localCartList : props.cartList
-            )} */}
+            cart subtotal : &#2547;{' '}
+            {!props.user
+              ? getCartProdSubTotal(props.localCartList, props.user)
+              : getCartProdSubTotal(props.cartList, props.user)}
           </span>
         </div>
         <div className="checkout_btn">
-          <Link to="/check-out" className="btn">
+          <Link to="/check-out" className="btn col-4">
             Check Out
           </Link>
         </div>
@@ -124,7 +127,7 @@ const CartList = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.CartItems.loading,
   cartList: state.CartItems.basket,
-  localCartList: state.CartItems.localBasket,
+  localCartList: state.Basket.localBasket,
   CartID: state.CartID.cart_update_id,
   user: state.User.user,
 });

@@ -3,6 +3,7 @@
     /* background: #fff; */
     top: 50%;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.664);
+    transform: translate(0%, -50%);
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.664);
     position: fixed;
     right: 5px;
@@ -101,7 +102,7 @@
 }
 /* CartList CSS */
 .cart_product_wrapper{
- height: 65vh; 
+ height: 60vh; 
  overflow-y: scroll;
 }
 .cart_product_wrapper::-webkit-scrollbar {
@@ -165,11 +166,11 @@
 }
 .cart_product_btn{
     width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
+    /* position: absolute; */
+    /* bottom: 0px; */
+    /* left: 0px; */
     background: var(--light-color);
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
 }
 .cart_total{
     background-color: var(--theme-color);
@@ -187,6 +188,7 @@
 .checkout_btn a{
     background-color: var(--user-entry-btn);
     color: var(--light-color);
+    padding: 0.6rem;
 }
 .checkout_btn a:hover{
     background-color: var(--dark-color);

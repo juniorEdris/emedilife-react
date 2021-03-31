@@ -31,8 +31,8 @@ export const initialState = {
   //   CartItems state
   cartItems: [],
   cart_update_id: '',
-  user: localStorage.getItem('user_id')
-    ? localStorage.getItem('user_id')
+  user: localStorage.getItem('user_token')
+    ? localStorage.getItem('user_token')
     : null,
 };
 

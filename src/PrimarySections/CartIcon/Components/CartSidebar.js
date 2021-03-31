@@ -26,7 +26,7 @@ const CartSidebar = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.CartItems.loading,
   cartList: state.CartItems.basket,
-  localCartList: state.CartItems.localBasket,
+  localCartList: state.Basket.localBasket,
   user: state.User.user,
 });
 

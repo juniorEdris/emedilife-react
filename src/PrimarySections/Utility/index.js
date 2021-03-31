@@ -25,11 +25,8 @@ export const Truncate = (str, n) => {
   return str?.length > n ? str.substr(0, n - 1) + '....' : str;
 };
 
-// user constnant
-const User = localStorage.getItem('user_id');
-
-export const getCartProdSubTotal = (basket) =>
-  User
+export const getCartProdSubTotal = (basket, user) =>
+  user
     ? basket?.reduce(
         (amount, item) =>
           parseInt(item.unit_price.price * item.total_quantity) + amount,
@@ -39,3 +36,6 @@ export const getCartProdSubTotal = (basket) =>
         (amount, item) => parseInt(item.price * item.total_quantity) + amount,
         0
       );
+
+export const UserToken = () => localStorage.getItem('user_token');
+export const UserID = () => localStorage.getItem('user_id');

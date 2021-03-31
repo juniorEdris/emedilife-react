@@ -7,6 +7,7 @@ import {
   BASKET_STATUS_SUCCESS,
   BASKET_STATUS_COMPLETE,
   ADD_TO_SERVER_BASKET_SUCCESS,
+  ADD_TO_BASKET_MSG,
 } from '../Types';
 
 const addProdBasketRequest = (product) => ({
@@ -18,20 +19,25 @@ const addProdServerBasketSuccess = (res) => ({
   status: res.type,
   message: res.message,
 });
-const addProdBasketSuccess = (res) => ({
+const addProdBasketSuccess = (product) => ({
   type: ADD_TO_BASKET_SUCCESS,
-  // status: res.type,
-  // message: res.message,
-  payload: { res },
+  payload: { product },
+});
+const addProdLocalBasketMsg = (res) => ({
+  type: ADD_TO_BASKET_MSG,
+  status: res.type,
+  message: res.message,
 });
 const addProdBasketError = (error) => ({
   type: ADD_TO_BASKET_ERROR,
   payload: error,
 });
-const removeProdBasket = (product) => ({
-  type: REMOVE_FROM_BASKET,
-  payload: { product },
-});
+const removeProdBasket = (product) => {
+  return {
+    type: REMOVE_FROM_BASKET,
+    payload: { product },
+  };
+};
 const productStatusSuccess = () => ({
   type: BASKET_STATUS_SUCCESS,
   status: true,
@@ -41,16 +47,18 @@ const productStatusComplete = () => ({
   status: false,
 });
 
-const user = localStorage.getItem('user_id');
 export const AddBasketProd = (product, quantity) => async (
   dispatch,
   getState
 ) => {
-  console.log('basket action', product);
+  const user = localStorage.getItem('user_id');
+  let cart = getState().Basket.localBasket.slice();
+  console.log('basket action add local', cart);
   // return action if its null
   if (product === null) return;
   if (!user) {
-    const cartItems = getState().Basket.localBasket.slice();
+    let cartItems = getState().Basket.localBasket.slice();
+    console.log('basket action add local', cartItems);
     let exist = false;
     cartItems.forEach((x) => {
       // if (x.quantity === product.stock) {
@@ -59,14 +67,19 @@ export const AddBasketProd = (product, quantity) => async (
       if (x.id === product.id) {
         exist = true;
         x.total_quantity++;
+        // dispatch(
+        //   addProdLocalBasketMsg({
+        //     type: true,
+        //     message: 'Already Exist in cart',
+        //   })
+        // );
       }
     });
     if (!exist) {
-      cartItems.push({ ...product });
+      cartItems.push(product);
     }
-    console.log('>>>>', cartItems);
-    localStorage.setItem('Cart List', JSON.stringify(cartItems));
     dispatch(addProdBasketSuccess(cartItems));
+    localStorage.setItem('Cart List', JSON.stringify(cartItems));
   } else {
     dispatch(addProdBasketRequest());
     await API()
@@ -88,8 +101,10 @@ export const AddBasketProd = (product, quantity) => async (
 };
 
 export const RemoveBasketProd = (product) => async (dispatch, getState) => {
+  const user = localStorage.getItem('user_id');
   if (!user) {
     let cartItems = getState().Basket.localBasket.slice();
+    console.log('remove local', cartItems);
     let exist = false;
     cartItems.forEach((x) => {
       if (x.id === product.id && product.total_quantity > 1) {
@@ -102,8 +117,8 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
         .Basket.localBasket.slice()
         .filter((x) => x.id !== product.id);
     }
-    localStorage.setItem('Cart List', JSON.stringify(cartItems));
     dispatch(removeProdBasket(cartItems));
+    localStorage.setItem('Cart List', JSON.stringify(cartItems));
   } else {
     await API()
       .delete(`${ENDPOINTS.DELETEFROMBASKET}${product.id}`)
@@ -112,21 +127,4 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
       })
       .catch((err) => console.log(err));
   }
-};
-export const RemoveSingleBasketProd = (product) => (dispatch, getState) => {
-  let cartItems = getState().Basket.localBasket.slice();
-  let exist = false;
-  cartItems.forEach((x) => {
-    if (x.product_id === product.product_id && product.total_quantity > 1) {
-      exist = true;
-      x.quantity--;
-    }
-  });
-  if (!exist) {
-    cartItems = getState()
-      .basketProd.basket.slice()
-      .filter((x) => x.id !== product.id);
-  }
-  dispatch(removeProdBasket(cartItems));
-  localStorage.setItem('Cart List', JSON.stringify(cartItems));
 };
