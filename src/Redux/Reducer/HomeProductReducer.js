@@ -28,9 +28,13 @@ export const HomeContentReducer = (state = initialState, action) => {
     case FETCH_HOME_PRODUCTS_ERROR:
       return {
         ...state,
-        homeSlider: [],
         loading: true,
+        homeSlider: [],
+        homeBrands: [],
+        popularProducts: [],
+        commonProducts: [],
         neccessaryProducts: [],
+        homeBlogs: [],
       };
     default:
       return state;

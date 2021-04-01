@@ -32,20 +32,19 @@ const Banner = (props) => {
           '<i class="fa fa-angle-left"></i>',
           '<i class="fa fa-angle-right"></i>',
         ]}>
-        {sliders?.length > 0 &&
-          sliders?.map((banner) => (
-            <div className="slider-area " key={banner.photo}>
-              {/*col-12*/}
-              <div className="single-slider d-flex align-items-center">
-                <img
-                  className="slider_image"
-                  src={`./assets/images/${banner.photo}`}
-                  // src={`https:${banner.photo}`}
-                  alt="banners"
-                />
-              </div>
+        {props.sliders?.map((banner) => (
+          <div className="slider-area " key={banner.photo}>
+            {/*col-12*/}
+            <div className="single-slider d-flex align-items-center">
+              <img
+                className="slider_image"
+                // src={`./assets/images/${banner.photo}`}
+                src={`https:${banner.photo}`}
+                alt="banners"
+              />
             </div>
-          ))}
+          </div>
+        ))}
       </OwlCarousel>
     </div>
   );
