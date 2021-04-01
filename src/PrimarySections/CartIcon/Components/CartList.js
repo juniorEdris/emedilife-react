@@ -10,10 +10,7 @@ const CartList = (props) => {
   useEffect(() => {
     props.user && props.getCartItems();
   }, []);
-  console.log(
-    'local',
-    props.localCartList.map((x) => x.id)
-  );
+
   const removeFromCart = async (item) => {
     await props.removeProduct(item);
     props.user && (await props.getCartItems());

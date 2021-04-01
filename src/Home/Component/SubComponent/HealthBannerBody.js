@@ -28,7 +28,7 @@ const HealthBannerBody = (props) => {
             className="health_banner_image col-12 col-md-3 all-wide-banner"
             id={banner.id}>
             <img
-              src={`./assets/images/healthcare_banners/${banner.image}`}
+              src={`./assets/images/healthcare/${banner.image}`}
               alt={banner.id}
             />
           </div>
