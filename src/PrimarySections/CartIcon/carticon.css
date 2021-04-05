@@ -166,19 +166,15 @@
 }
 .cart_product_btn{
     width: 100%;
-    /* position: absolute; */
-    /* bottom: 0px; */
-    /* left: 0px; */
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
     background: var(--light-color);
-    /* padding-bottom: 15px; */
 }
 .cart_total{
-    background-color: var(--theme-color);
-    color: var(--light-color);
-    padding: 1rem 0;
+    color: var(--dark-color);
     text-transform: capitalize;
     margin-top: var(--margin-top);
-    text-align: center;
     font-size: 1rem;
 }
 .checkout_btn{

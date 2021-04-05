@@ -49,7 +49,7 @@ const FeatureBrands = (props) => {
   return (
     <div className="feature_brands mb-5">
       {props.brands?.length > 0 && (
-        <div className="container">
+        <div className="container-md-fluid">
           <SectionHeadingOne fontStyleOne={'Feature'} fontStyleTwo={'Brands'} />
           <div className="feature_slider box-shadow">
             <BrandSlider brands={props.brands} />

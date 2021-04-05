@@ -12,7 +12,7 @@ const Search = (props) => {
     toTheTop();
   }, []);
   return (
-    <div className="container mb-4">
+    <div className="container-md-fluid mb-4">
       <div className="search_medicine_wrapper row">
         <Sidebar
           category={category}

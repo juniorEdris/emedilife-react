@@ -9,7 +9,7 @@ const PrescriptionUpload = (props) => {
     toTheTop();
   }, []);
   return (
-    <div className="container">
+    <div className="container-md-fluid">
       <div className="prescription_upload row">
         <UploadSection />
         <PreviewSection />

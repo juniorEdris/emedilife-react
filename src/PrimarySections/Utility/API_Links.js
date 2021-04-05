@@ -1,4 +1,5 @@
 import Axios from 'axios';
+// export const DOMAIN = `https://admin.emedilife.com/`;
 export const DOMAIN = `https://medipathy.changetechbd.com/`;
 
 let BaseApi = Axios.create({

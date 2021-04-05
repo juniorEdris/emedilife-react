@@ -7,7 +7,7 @@ import DeliveryDetails from './SubComponents/DeliveryDetails';
 
 const DetailsHeader = (props) => {
   return (
-    <div className="container text-secondary mb-5">
+    <div className="text-secondary mb-5">
       <div className="row">
         <div className="col-12 col-md-4">
           <Slider />

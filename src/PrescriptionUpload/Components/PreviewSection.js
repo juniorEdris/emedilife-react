@@ -23,7 +23,7 @@ const PreviewSection = (props) => {
           </div>
           <div className="steps">
             <div className="steps_count">2</div>
-            <p>Recieve a confirmation Call</p>
+            <p>Recieve a confirmation call</p>
           </div>
           <div className="steps">
             <div className="steps_count">3</div>

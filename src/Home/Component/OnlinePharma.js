@@ -1,23 +1,19 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import PharmacyHeader from './SubComponent/PharmacyHeader'
-import PharmacyBody from './SubComponent/PharmacyBody'
+import React from 'react';
+import { connect } from 'react-redux';
+import PharmacyHeader from './SubComponent/PharmacyHeader';
+import PharmacyBody from './SubComponent/PharmacyBody';
 
 export const OnlinePharma = (props) => {
-    return (
-        <div className='home_online_pharmacy'>
-                <PharmacyHeader/>
-                <PharmacyBody/>
-        </div>
-    )
-}
+  return (
+    <div className="home_online_pharmacy">
+      <PharmacyHeader />
+      <PharmacyBody />
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnlinePharma)
+export default connect(mapStateToProps, mapDispatchToProps)(OnlinePharma);

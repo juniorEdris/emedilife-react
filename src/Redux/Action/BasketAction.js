@@ -52,8 +52,6 @@ export const AddBasketProd = (product, quantity) => async (
   getState
 ) => {
   const user = localStorage.getItem('user_id');
-  let cart = getState().Basket.localBasket.slice();
-  console.log('basket action add local', cart);
   // return action if its null
   if (product === null) return;
   if (!user) {

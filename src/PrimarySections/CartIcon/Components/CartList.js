@@ -102,17 +102,18 @@ const CartList = (props) => {
       </div>
       {/* cart product wrapper ends */}
       {/* cart product button starts */}
-      <div className="cart_product_btn">
-        <div className="cart_total">
+      <div className="cart_product_btn col-12">
+        <div className="cart_total row no-gutters justify-content-between">
+          <span>cart subtotal :</span>
           <span>
-            cart subtotal : &#2547;{' '}
+            &#2547;{' '}
             {!props.user
               ? getCartProdSubTotal(props.localCartList, props.user)
               : getCartProdSubTotal(props.cartList, props.user)}
           </span>
         </div>
         <div className="checkout_btn">
-          <Link to="/check-out" className="btn col-4">
+          <Link to="/check-out" className="btn w-100">
             Check Out
           </Link>
         </div>

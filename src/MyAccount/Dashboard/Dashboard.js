@@ -11,7 +11,7 @@ const Dashboard = (props) => {
   }, []);
   const [tab, setTab] = useState('dashboard');
   return (
-    <div className="dashboard_wrapper container">
+    <div className="dashboard_wrapper container-md-fluid">
       <div className="row">
         <div className="col-md-3 p-md-2">
           <DashSidebar tab={tab} setTab={setTab} />

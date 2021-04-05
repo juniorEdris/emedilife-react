@@ -135,6 +135,10 @@ h6 {
   pointer-events: none;
   opacity: 0.4;
 }
+  .container-md-fluid {
+    /* padding: 0 120px; */
+    padding: 0 70px;
+  }
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
 --------------------------------------------------------------------*/
@@ -229,7 +233,7 @@ ALL Section Heading css starts here
 .image_container img {
   width: 100%;
   height: 100%;
-  object-fit: none;
+  object-fit: contain;
 }
 
 /*Image nav button styles */
@@ -553,6 +557,7 @@ ALL Section Heading css starts here
   padding-right: 8px;
   padding-top: 8px;
   font-size: 17px;
+  color: var(--dark-color);
 }
 .header__searchIcon svg {
   color: var(--dark-color) !important;
@@ -570,6 +575,7 @@ ALL Section Heading css starts here
 .header__nav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .header__link {
   margin-right: 20px;

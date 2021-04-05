@@ -8,7 +8,7 @@ const NecessaryProducts = (props) => {
   return (
     <div className="necessary_product_section mb-5">
       {props.products?.length > 0 && (
-        <div className="container">
+        <div className="container-md-fluid">
           <SectionHeadingTwo
             textOne={'Neccesary Popular'}
             textTwo={'Products'}

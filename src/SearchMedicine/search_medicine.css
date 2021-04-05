@@ -122,3 +122,8 @@
       .rating_star{
           color: rgb(255, 217, 0);
       }
+
+      /* Body  single_banner image width */
+      .search_banner .single_banner img{
+        width: 100%;
+      }

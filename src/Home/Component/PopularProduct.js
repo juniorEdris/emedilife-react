@@ -89,7 +89,7 @@ const PopularProduct = (props) => {
   return (
     <div className="popular_product mb-3">
       {props.products.length > 0 && (
-        <div className="container">
+        <div className="container-md-fluid">
           <SectionHeadingOne
             fontStyleOne={'Popular'}
             fontStyleTwo={'Healthcare Products'}

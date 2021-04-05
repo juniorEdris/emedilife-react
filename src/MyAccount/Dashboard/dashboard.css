@@ -41,6 +41,9 @@
 .browse_nav_list ul li a{
     font-weight: 500!important;
 }
+.browse_nav_list ul li a:hover{
+    background-color: var(--muted-btn-color);
+}
 .dash_nav_list ul li a.active{
     color: var(--user-entry-btn);
 }

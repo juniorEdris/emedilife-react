@@ -8,6 +8,7 @@ import Logo from './SubComponents/Logo';
 import ProductCart from './SubComponents/ProductCart';
 import Search from './SubComponents/Search';
 import UserDropdown from './SubComponents/UserDropdown';
+import WishListIcon from './SubComponents/Wishlist';
 
 export const HeaderTop = (props) => {
   const [search, setSearch] = useState(false);
@@ -33,6 +34,7 @@ export const HeaderTop = (props) => {
           <img src="./assets/svg/icons/filter-list.svg" alt="" />
         </Link>
         <div className="header__nav">
+          <WishListIcon />
           <UserDropdown />
           <ProductCart handleChange={openSeacrhbox} />
         </div>

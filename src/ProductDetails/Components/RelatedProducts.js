@@ -5,7 +5,7 @@ import Product from '../../PrimarySections/SliderComponents/ProductSlider';
 
 const RelatedProducts = (props) => {
   return (
-    <div className="related_products container">
+    <div className="related_products">
       <h4 className="section_header">
         People Who Viewed This Item Also Viewed
       </h4>

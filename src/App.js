@@ -26,6 +26,7 @@ import { connect } from 'react-redux';
 import { getCartItems } from './Redux/Action/CartProductsAction';
 import { useEffect } from 'react';
 import Blog from './Blog/Blog';
+import WishList from './Wishlist/Wishlist';
 
 function App(props) {
   useEffect(() => {
@@ -51,6 +52,7 @@ function App(props) {
           <Route path="/check-out" component={CheckOut} />
           <Route path="/order-info" component={OrderInformation} />
           <Route path="/blog" component={Blog} />
+          <Route path="/wishlist" component={WishList} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon />

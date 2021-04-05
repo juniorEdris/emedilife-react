@@ -21,10 +21,12 @@ const Detailsindex = (props) => {
 
   return (
     <div className="product_details_container mt-4 mb-4">
-      <Header />
-      <Description />
-      <RelatedProducts />
-      <CartAddanime />
+      <div className="container-md-fluid">
+        <Header />
+        <Description />
+        <RelatedProducts />
+        <CartAddanime />
+      </div>
     </div>
   );
 };

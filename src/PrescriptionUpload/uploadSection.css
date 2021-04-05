@@ -3,6 +3,7 @@
     padding: 1.2rem 0;
     text-transform: capitalize;
     margin-bottom: var(--margin-bottom);
+    margin-top: var(--margin-top);
 }
 /* Upload Sections css here */
 .upload_section{
@@ -123,4 +124,7 @@ label.gallery-btn .gallery-btn-img{
 .steps p{
     color: var(--user-entry-btn);
     text-align: center;
+    padding: 0 1rem;
+    text-transform: none;
+
 }

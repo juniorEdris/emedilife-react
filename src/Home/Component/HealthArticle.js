@@ -7,7 +7,7 @@ const HealthArticle = (props) => {
   return (
     <div className="health_article mb-4">
       {props.blogs.length > 0 && (
-        <div className="container">
+        <div className="container-md-fluid">
           <SectionHeadingThree textOne={'Health'} textTwo={'Article'} />
           <Body />
         </div>

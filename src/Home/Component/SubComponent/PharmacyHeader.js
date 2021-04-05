@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const PharmacyHeader = (props) => {
   return (
     <div className="pharmacy_header">
-      <div className="container">
+      <div className="container-md-fluid">
         <div className="section_header pt-md-4">
           <h2>online pharmacy</h2>
         </div>

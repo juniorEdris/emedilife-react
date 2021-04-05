@@ -1,21 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import WideBanner from '../../PrimarySections/SectionUtils/WideBanner'
+import React from 'react';
+import { connect } from 'react-redux';
+import WideBanner from '../../PrimarySections/SectionUtils/WideBanner';
 
 const BannerSectionThree = (props) => {
-    return (
-        <div className='container'>
-            <WideBanner imagepath={'banners/banner3.png'}/>
-        </div>
-    )
-}
+  return (
+    <div className="">
+      <WideBanner imagepath={'banners/banner3.png'} />
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(BannerSectionThree)
+export default connect(mapStateToProps, mapDispatchToProps)(BannerSectionThree);
