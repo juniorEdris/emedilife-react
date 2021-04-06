@@ -94,7 +94,7 @@ export const AddBasketProd = (product, quantity) => async (
           dispatch(productStatusComplete());
         }, 3000);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.error));
   }
 };
 

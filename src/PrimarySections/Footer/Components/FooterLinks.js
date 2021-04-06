@@ -16,7 +16,7 @@ function FooterLinks() {
                 <Link to="/about-us">careers</Link>
               </li>
               <li>
-                <Link to="/about-us">press releases</Link>
+                <Link to="/blog">blogs</Link>
               </li>
               <li>
                 <Link to="/about-us">amazon cares</Link>

@@ -7,7 +7,7 @@ import BlogSidebar from './Components/BlogSidebar';
 const Blog = (props) => {
   return (
     <div className="blog_wrapper">
-      <div className="container">
+      <div className="container-md-fluid">
         <div className="row">
           <BlogList />
           <BlogSidebar />

@@ -16,13 +16,28 @@ import { GetHomeContents } from '../Redux/Action/HomeProductsAction';
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 
 const Index = (props) => {
+  const sliders = [
+    {
+      id: 1,
+      photo: './assets/images/Slider/012.jpg',
+    },
+    {
+      id: 2,
+      photo: './assets/images/Slider/013.jpg',
+    },
+    {
+      id: 3,
+      photo: './assets/images/Slider/014.jpg',
+    },
+  ];
   useEffect(() => {
     props.getHomeContents();
     toTheTop();
   }, []);
   return (
     <div>
-      <HomeSlider />
+      {/* <HomeSlider loading={props.loading} sliders={props.sliders} /> */}
+      <HomeSlider sliders={sliders} />
       <Features />
       <OnlinePharma />
       <FeatureBrands />
@@ -38,7 +53,10 @@ const Index = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  sliders: state.HomeContent.homeSlider,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),

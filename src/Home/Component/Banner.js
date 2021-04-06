@@ -12,11 +12,15 @@ const Banner = (props) => {
   const sliders = [
     {
       id: 1,
-      photo: 'homeSlider.jpg',
+      photo: '012.jpg',
     },
     {
       id: 2,
-      photo: 'homeSlider.jpg',
+      photo: '013.jpg',
+    },
+    {
+      id: 3,
+      photo: '014.jpg',
     },
   ];
 
@@ -38,8 +42,8 @@ const Banner = (props) => {
             <div className="single-slider d-flex align-items-center">
               <img
                 className="slider_image"
-                // src={`./assets/images/${banner.photo}`}
-                src={`https:${banner.photo}`}
+                src={banner.photo}
+                // src={`https:${banner.photo}`}
                 alt="banners"
               />
             </div>
@@ -51,8 +55,8 @@ const Banner = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.HomeContent.loading,
-  sliders: state.HomeContent.homeSlider,
+  // loading: state.HomeContent.loading,
+  // sliders: state.HomeContent.homeSlider,
 });
 
 const mapDispatchToProps = {};

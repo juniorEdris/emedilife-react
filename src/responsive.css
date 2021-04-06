@@ -17,10 +17,6 @@
 }
 @media (min-width: 992px) {
   /*and (max-width: 1199px) */
-  .ham-burger {
-    display: none !important;
-  }
-
   .header__option {
     display: flex;
     flex-direction: column;
@@ -31,7 +27,8 @@
     font-size:16px;
   }
   .header__option__lineTwo {
-    font-size: 16px;
+    font-size: 0.8rem;
+    /* font-size: 16px; */
     font-weight: 700;
   }
   .header_nav {
@@ -58,8 +55,9 @@
     display: none;
   }
   .cart_sidebar_route{
-    width: calc(85% - 50%)!important;
+    width: calc(85% - 60%)!important;
   }
+  .wishlist_body,
   .order_lists,.my_orders {
     overflow-x: hidden  !important;
 }
@@ -85,7 +83,12 @@
 }
 }
 @media (min-width: 768px) {
-  /*and (max-width: 991px) */
+  .header__nav {
+    width: 250px;
+}
+.ham-burger {
+  display: none !important;
+}
 
   .more_link {
     font-size: 0.5rem;
@@ -109,7 +112,6 @@
   .header__link {
     display: block;
   }
-
 }
 
 /* SM Small Device */

@@ -102,7 +102,7 @@
 }
 /* CartList CSS */
 .cart_product_wrapper{
- height: 60vh; 
+ height: 80vh; 
  overflow-y: scroll;
 }
 .cart_product_wrapper::-webkit-scrollbar {

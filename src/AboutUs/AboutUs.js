@@ -11,7 +11,7 @@ const AboutUs = (props) => {
     toTheTop();
   }, []);
   return (
-    <div className="about_page container">
+    <div className="about_page container-md-fluid">
       <AboutHeader />
       <AboutBody />
       <AboutFooter />
