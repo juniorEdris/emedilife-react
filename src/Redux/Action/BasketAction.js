@@ -51,12 +51,12 @@ export const AddBasketProd = (product, quantity) => async (
   dispatch,
   getState
 ) => {
+  console.log('order online>>>', product);
   const user = localStorage.getItem('user_id');
   // return action if its null
   if (product === null) return;
   if (!user) {
     let cartItems = getState().Basket.localBasket.slice();
-    console.log('basket action add local', cartItems);
     let exist = false;
     cartItems.forEach((x) => {
       // if (x.quantity === product.stock) {
@@ -94,7 +94,7 @@ export const AddBasketProd = (product, quantity) => async (
           dispatch(productStatusComplete());
         }, 3000);
       })
-      .catch((error) => console.log(error.error));
+      .catch((error) => console.log(error.Response));
   }
 };
 

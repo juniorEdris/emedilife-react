@@ -21,4 +21,9 @@ export const ENDPOINTS = {
   ADDTOBASKET: `api/product/add_to_cart`,
   DELETEFROMBASKET: `api/cart/delete_product/`,
   GETCARTITEMS: `api/user/cart_products`,
+  REGISTER: `api/app/register`,
+  LOGIN: `api/app/login`,
+  WISHLIST: `api/user/wishlist_products`,
+  WISHLIST_UPDATE: `api/user/wishlist_update/`, //ID
+  WISHLIST_DELETE: `api/delete/wishlist_product/`, //ID
 };

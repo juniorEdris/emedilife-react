@@ -177,6 +177,24 @@
     margin-top: var(--margin-top);
     font-size: 1rem;
 }
+.cart_dec_btn,.cart_inc_btn{
+    cursor: pointer;
+    color: var(--dark-color);
+    border: 1px solid var(--theme-color);
+    padding: 0.2rem;
+    height: 25px;
+    line-height: 18px;
+}
+.count_btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cart_dec_btn:hover,.cart_inc_btn:hover{
+    color: var(--light-color);
+    background-color: var(--theme-color);
+}
+/* CHECKOUT BUTTON */
 .checkout_btn{
     margin-top:  var(--margin-top);
     text-align: center;

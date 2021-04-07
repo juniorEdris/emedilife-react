@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RemoveBasketProd } from '../../../Redux/Action/BasketAction';
+import {
+  AddBasketProd,
+  RemoveBasketProd,
+} from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
 import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { getCartProdSubTotal } from '../../Utility';
@@ -15,6 +18,10 @@ const CartList = (props) => {
     await props.removeProduct(item);
     props.user && (await props.getCartItems());
   };
+  const addToCart = async (item) => {
+    await props.addToCart(item);
+    props.user && (await props.getCartItems());
+  };
   return (
     <div>
       <div className="cart_product_wrapper">
@@ -23,10 +30,21 @@ const CartList = (props) => {
             {props.localCartList?.map((item) => (
               <li key={item.id}>
                 <div className="cart_single_product">
+                  <div className="count_btn">
+                    <span
+                      className="cart_dec_btn"
+                      onClick={() => addToCart(item)}>
+                      <i className="fas fa-plus"></i>
+                    </span>
+                    <span
+                      className="cart_inc_btn"
+                      onClick={() => removeFromCart(item)}>
+                      <i className="fas fa-minus"></i>
+                    </span>
+                  </div>
                   <div className="cart_single_image">
                     <Link to={`productdetails?id=${item.id}`}>
                       <img
-                        // src="./assets/images/products/img-1.png"
                         src={`https:${item.photo}`}
                         alt="img-1"
                         onClick={() => props.getCartID(item.id)}
@@ -63,10 +81,21 @@ const CartList = (props) => {
               : props.cartList?.map((item) => (
                   <li key={item.product_id}>
                     <div className="cart_single_product">
+                      <div className="count_btn">
+                        <span
+                          className="cart_dec_btn"
+                          onClick={() => addToCart(item)}>
+                          <i className="fas fa-plus"></i>
+                        </span>
+                        <span
+                          className="cart_inc_btn"
+                          onClick={() => removeFromCart(item)}>
+                          <i className="fas fa-minus"></i>
+                        </span>
+                      </div>
                       <div className="cart_single_image">
                         <Link to={`productdetails?id=${item.product_id}`}>
                           <img
-                            // src="./assets/images/products/img-1.png"
                             src={`https:${item.photo}`}
                             alt="img-1"
                             onClick={() => props.getCartID(item.id)}
@@ -134,6 +163,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeProduct: (prod) => dispatch(RemoveBasketProd(prod)),
   getCartItems: () => dispatch(getCartItems()),
   getCartID: (id) => dispatch(getCartUpdateID(id)),
+  addToCart: (product) => dispatch(AddBasketProd(product)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartList);

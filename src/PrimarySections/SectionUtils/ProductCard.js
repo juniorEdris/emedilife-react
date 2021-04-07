@@ -11,8 +11,6 @@ const ProductCard = (props) => {
           <div className="product-thumb">
             <Link to={`/productdetails?id=${props.product.id}`}>
               <img
-                // src={`https://medipathy.changetechbd.com/assets/images/company/16146645099127.png`}
-                // src={`https://store.uparzon.com/assets/images/thumbnails/app/1601529115ADf6VNuh.jpg`}
                 src={`https:${props.product.photo}`}
                 className="pri-img"
                 alt={Truncate(props.product.name, 5)}
@@ -48,17 +46,17 @@ const ProductCard = (props) => {
               <span className="regular-price">
                 <span
                   className={` ${props.product.special && 'special-price'}`}>
-                  £{props.product?.unit_prices?.price}
+                  &#2547; {props.product?.unit_prices?.price}
                 </span>
               </span>
-              <span className="old-price">
-                <span>MRP:</span>
-                <del>
-                  {props.product?.unit_prices?.previous_price
-                    ? `£${props.product?.unit_prices?.previous_price}`
-                    : ''}
-                </del>
-              </span>
+              {props.product?.unit_prices?.previous_price ? (
+                <span className="old-price">
+                  <span>MRP:</span>
+                  <del> &#2547; props.product?.unit_prices?.previous_price</del>
+                </span>
+              ) : (
+                ''
+              )}
             </div>
             <Link
               className="btn-cart d-block text-center"

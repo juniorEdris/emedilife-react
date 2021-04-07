@@ -8,10 +8,12 @@ const Details = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
+  const [previousPrice, setPreviousPrice] = useState(0);
 
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
+    setPreviousPrice(x.previous_price);
   };
   const decrement = () => {
     setQuantity(quantity - 1);
@@ -92,10 +94,17 @@ const Details = (props) => {
               </span>
             </div>
           )}
-          <div className="details_old-price">
-            <span>MRP: </span>
-            <del>&#2547;132</del>
-          </div>
+          {props.details?.unit_prices && (
+            <div className="details_old-price">
+              <span>MRP: </span>
+              <del>
+                &#2547;
+                {previousPrice === 0
+                  ? props.details?.unit_prices[0].previous_price || 0
+                  : previousPrice}
+              </del>
+            </div>
+          )}
         </div>
         {props.details?.unit_prices && (
           <div className="details_qty">
@@ -150,9 +159,7 @@ const Details = (props) => {
           <button
             className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
             type="button"
-            onClick={() => addProduct(props.details)}
-            // disabled={!priceId}
-          >
+            onClick={() => addProduct(props.details)}>
             add to cart
           </button>
         </div>

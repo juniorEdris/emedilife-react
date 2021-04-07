@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
-import { API } from '../../../PrimarySections/Utility/API_Links';
+import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { setUserAction } from '../../../Redux/Action/UserAction';
 import { UserID } from '../../../PrimarySections/Utility';
 
 const UserEntry = (props) => {
   const [number, setNumber] = useState('');
   const [OTP, setOTP] = useState('');
-  const [OTPActive, setOTPActive] = useState(false);
   const [error, setError] = useState({});
   const register = async (e) => {
     e.preventDefault();
     setError({});
     await API()
-      .post(
-        `https://medipathy.changetechbd.com/api/app/register?phone=${number}`
-      )
+      .post(`${ENDPOINTS.REGISTER}?phone=${number}`)
       .then((res) => {
         console.log(res);
         if (res.data.data.id) {
-          setOTPActive(true);
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
         }
@@ -34,9 +29,7 @@ const UserEntry = (props) => {
     e.preventDefault();
     setError({});
     await API()
-      .post(
-        `https://medipathy.changetechbd.com/api/app/login?phone=${number}&otp=${OTP}`
-      )
+      .post(`${ENDPOINTS.LOGIN}?phone=${number}&otp=${OTP}`)
       .then((res) => {
         console.log(res);
         if (res.data.token) {

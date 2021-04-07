@@ -1,4 +1,7 @@
 /* PrescriptionUpload css here */
+.prescription_body{
+    /* min-height: 100vh; */
+}
 .prescription_upload{
     padding: 1.2rem 0;
     text-transform: capitalize;

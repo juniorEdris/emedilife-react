@@ -2,6 +2,7 @@
     background-color: var(--muted-btn-color);
     padding-top: var(--top-whitespace);
     padding-bottom: 3rem;
+    min-height: 100vh;
 }
 .wrapper_body{
     background-color: var(--light-color);
@@ -34,7 +35,7 @@
 .wishlist_table .wish_item_delete{
     cursor:pointer;
     width: 25px;
-    height: 25px;
+    font-size: 1.2rem;
     object-fit: contain;
 }
 .wishlist_table .wish_item_delete i{

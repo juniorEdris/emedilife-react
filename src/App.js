@@ -27,6 +27,7 @@ import { getCartItems } from './Redux/Action/CartProductsAction';
 import { useEffect } from 'react';
 import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
+import { OrderNotification } from './OrderNotify/OrderNotification';
 
 function App(props) {
   useEffect(() => {
@@ -53,6 +54,7 @@ function App(props) {
           <Route path="/order-info" component={OrderInformation} />
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
+          <Route path="/ordersucces" component={OrderNotification} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon />
