@@ -330,7 +330,7 @@ ALL Section Heading css starts here
   line-height: 20px;
 }
 .product-name{
-  min-height: 50px;
+  min-height: auto;
 }
 .product-name h5 a {
   font-weight: 400;
@@ -513,7 +513,8 @@ ALL Section Heading css starts here
   padding: 10px 20px;
 }
 .header__logo {
-  padding: 0 20px;
+  padding: 0 0px 0 20px;
+  width: 223px;
 }
 .header__search {
   width: 60%;

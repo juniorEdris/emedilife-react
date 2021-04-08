@@ -119,6 +119,13 @@
     .container-md-fluid {
     padding:0 15px;
   }
+  .single-slider{
+    height: 150px;
+    width: 100%;
+  }
+  .single-slider img.slider_image{
+    height: 100%;
+  }
   .section_heading_one{
     font-size: 1.7rem;
   }

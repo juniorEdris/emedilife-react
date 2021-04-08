@@ -54,7 +54,7 @@ function App(props) {
           <Route path="/order-info" component={OrderInformation} />
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
-          <Route path="/ordersucces" component={OrderNotification} />
+          <Route path="/ordersuccess" component={OrderNotification} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon />
