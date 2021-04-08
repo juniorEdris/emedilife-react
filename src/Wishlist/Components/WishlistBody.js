@@ -1,9 +1,23 @@
 import { connect } from 'react-redux';
+import { AddBasketProd } from '../../Redux/Action/BasketAction';
 
 const WishlistBody = (props) => {
   const Styles = {
     minWidth: '400px',
   };
+  const addProduct = async (item) => {
+    const product = {
+      id: item.id,
+      photo: item.photo,
+      name: item.name,
+      price: item.unit_price.price,
+      unit_prices_id: item.unit_price.id,
+      total_quantity: item.total_quantity,
+    };
+    await props.addToCart(product);
+    props.user && (await props.getCartItems());
+  };
+  console.log(props.products, props.loading);
   return (
     <div className="wishlist_body">
       <table class="table wishlist_table">
@@ -17,60 +31,76 @@ const WishlistBody = (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">
-              <div className="col wish_item_delete">
-                <i className="far fa-trash-alt"></i>
-              </div>
-            </th>
-            {/* <td>
+          {props.loading
+            ? 'loading'
+            : props.products?.map((product) => (
+                <tr>
+                  <th scope="row">
+                    <div
+                      className="col wish_item_delete"
+                      onClick={() => props.removeProd(product)}>
+                      <i className="far fa-trash-alt"></i>
+                    </div>
+                  </th>
+                  {/* <td>
               <div className="col wish_item_delete">
                 <i className="far fa-trash-alt"></i>
               </div>
             </td> */}
-            <td style={Styles}>
-              <div className="col-12">
-                <div className="row align-items-center flex-nowrap">
-                  <div className="wish_item_image col-3">
-                    <img
-                      src="./assets/images/products/img-1.png"
-                      alt="images"
-                    />
-                  </div>
-                  <div className="wish_item_name col-9">
-                    Omron HEM 7120 Fully Automatic
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div className="wish_item_prices">
-                <div className="row no-gutters justify-content-center flex-nowrap">
-                  <span className="mr-1">
-                    <del>৳188</del>
-                  </span>
-                  <span>৳150.00</span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div className="col-12 text-success">in stock</div>
-            </td>
-            <td>
-              <button className="btn btn-addcart text-light col-12">
-                <i className="fas fa-cart-plus mr-2"></i>{' '}
-                <span className="d-none d-md-inline">add to cart</span>
-              </button>
-            </td>
-          </tr>
+                  <td style={Styles}>
+                    <div className="col-12">
+                      <div className="row align-items-center flex-nowrap">
+                        <div className="wish_item_image col-3">
+                          <img
+                            // src="./assets/images/products/img-1.png"
+                            src={`https:${product.photo}`}
+                            alt={product.name}
+                          />
+                        </div>
+                        <div className="wish_item_name col-9">
+                          {product.name}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="wish_item_prices">
+                      <div className="row no-gutters justify-content-center flex-nowrap">
+                        {product.unit_price.previous_price !== null && (
+                          <span className="mr-1">
+                            <del>৳{product.unit_price.previous_price}</del>
+                          </span>
+                        )}
+                        <span>৳{product.unit_price.price}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="col-12 text-success">in stock</div>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-addcart text-light col-12"
+                      onClick={() => addProduct(product)}>
+                      <i className="fas fa-cart-plus mr-2"></i>
+                      <span className="d-none d-md-inline"> add to cart</span>
+                    </button>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  // loading: state.Wishlist.loading,
+  // wishlist: state.Wishlist.wishlist,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  // addToCart: (product, count) => dispatch(AddBasketProd(product)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishlistBody);

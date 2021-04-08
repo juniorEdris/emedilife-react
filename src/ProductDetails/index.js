@@ -25,13 +25,16 @@ const Detailsindex = (props) => {
         <Header />
         <Description />
         <RelatedProducts />
-        <CartAddanime />
+        <CartAddanime Msg={props.basketMsg} tabState={props.tabState} />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  basketMsg: state.Basket.basketmsg,
+  tabState: state.Basket.tabStatus,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getProductDetails: (id) => dispatch(GetProductDetails(id)),

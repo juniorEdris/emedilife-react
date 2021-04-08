@@ -8,6 +8,7 @@ function Logo() {
         <img
           className="header__logo"
           src={'assets/svg/logo_svg/logo.svg'}
+          // src={'assets/images/primary/emedilife-logo.png'}
           alt="Uparzon Logo"
         />
       </Link>

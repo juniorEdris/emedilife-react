@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import './cartanime.css';
 
 function CartAddanime(props) {
-  console.log('cart Anime', props.tabState, props.basketMsg);
+  console.log('cart Anime', props.tabState, props.Msg);
   return (
     <div
       className={`cart_added_animation ${
         props.tabState && 'animation_active'
       }`}>
       {/* <span class="lnr lnr-checkmark-circle"></span> */}
-      <h3>{props.basketMsg}</h3>
+      <h3>{props.Msg}</h3>
       {/* <span className="lnr lnr-cart" /> */}
     </div>
   );
 }
 const mapStateToProps = (state) => ({
-  basketMsg: state.Basket.basketmsg,
-  tabState: state.Basket.tabStatus,
+  // basketMsg: state.Basket.basketmsg,
+  // tabState: state.Basket.tabStatus,
 });
 export default connect(mapStateToProps)(CartAddanime);

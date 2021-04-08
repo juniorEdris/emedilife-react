@@ -52,7 +52,10 @@ const ProductCard = (props) => {
               {props.product?.unit_prices?.previous_price ? (
                 <span className="old-price">
                   <span>MRP:</span>
-                  <del> &#2547; props.product?.unit_prices?.previous_price</del>
+                  <del>
+                    {' '}
+                    &#2547; {props.product?.unit_prices?.previous_price}
+                  </del>
                 </span>
               ) : (
                 ''

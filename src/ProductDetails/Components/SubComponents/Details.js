@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AddBasketProd } from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
+import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
 const Details = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -32,6 +33,24 @@ const Details = (props) => {
     };
     await props.addToCart(product, quantity);
     props.user && (await props.getCartItems());
+  };
+  const addToWish = async (item) => {
+    const product = {
+      id: item.id,
+      photo: item.photo,
+      name: item.name,
+      unit_price: {
+        price: price === '' ? item.unit_prices[0].price : price,
+        previous_price:
+          previousPrice === ''
+            ? item.unit_prices[0].previous_price
+            : previousPrice,
+        unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
+      },
+      total_quantity: quantity,
+    };
+    await props.addToWish(product);
+    // props.user && (await props.getWishItems());
   };
   console.log('cart_id', props.cart_id);
   return (
@@ -67,21 +86,26 @@ const Details = (props) => {
           </small>
         </div>
         <div className="share_btns">
-          <Link to="/">
+          <Link to="#">
             {' '}
             <img
               className="share_btns_child share"
               src={'assets/svg/product_details/Icon ionic-md-share.svg'}
-              alt="Uparzon Logo"
+              alt="share button"
             />{' '}
           </Link>
-          <Link to="/">
+          <Link
+            to="#"
+            onClick={(e) => {
+              e.preventDefault();
+              addToWish(props.details);
+            }}>
             <img
               className="share_btns_child wishlist"
               src={
                 'assets/svg/product_details/Icon material-favorite-border.svg'
               }
-              alt="Uparzon Logo"
+              alt="add to wish list button"
             />{' '}
           </Link>
         </div>
@@ -178,5 +202,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (product, count) => dispatch(AddBasketProd(product, count)),
   getCartItems: () => dispatch(getCartItems()),
+  addToWish: (product) => dispatch(addToWishlistAction(product)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Details));

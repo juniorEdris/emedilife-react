@@ -51,7 +51,7 @@ export const AddBasketProd = (product, quantity) => async (
   dispatch,
   getState
 ) => {
-  console.log('order online>>>', product);
+  console.log(product);
   const user = localStorage.getItem('user_id');
   // return action if its null
   if (product === null) return;

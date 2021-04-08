@@ -1,6 +1,5 @@
 import Axios from 'axios';
 export const DOMAIN = `https://admin.emedilife.com/`;
-// export const DOMAIN = `https://medipathy.changetechbd.com/`;
 
 let BaseApi = Axios.create({
   baseURL: DOMAIN,
@@ -23,7 +22,9 @@ export const ENDPOINTS = {
   GETCARTITEMS: `api/user/cart_products`,
   REGISTER: `api/app/register`,
   LOGIN: `api/app/login`,
-  WISHLIST: `api/user/wishlist_products`,
-  WISHLIST_UPDATE: `api/user/wishlist_update/`, //ID
-  WISHLIST_DELETE: `api/delete/wishlist_product/`, //ID
+  GET_WISHLIST_ITEM: `api/user/wishlist_products`,
+  ADD_WISHLIST_ITEM: `api/product/add_to_wishlist?`,
+  UPDATE_WISHLIST_ITEM: `api/user/wishlist_update/`,
+  DELETE_WISHLIST_ITEM: `api/delete/wishlist_product/`,
+  USER_INFO: `api/get_user_info`,
 };

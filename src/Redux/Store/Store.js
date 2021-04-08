@@ -7,8 +7,10 @@ import { ProductDetailsReducer } from '../Reducer/ProductDetailsReducer';
 import { SearchReducer } from '../Reducer/SearchReducer';
 import { CartUpdateIDReducer } from '../Reducer/CartUpdateIDReducer';
 import { setUserReducer } from '../Reducer/UserReducer';
+import { WishlistReducer } from '../Reducer/WishlistReducer';
 export const initialState = {
   loading: true,
+  error: '',
   //HomeContents
   homeSlider: [],
   homeBrands: [],
@@ -29,11 +31,18 @@ export const initialState = {
   basketstatus: '',
   tabStatus: false,
   //   CartItems state
-  cartItems: [],
+  // cartItems: [],
   cart_update_id: '',
   user: localStorage.getItem('user_token')
     ? localStorage.getItem('user_token')
     : null,
+  //   Basket state
+  wishlist: [],
+  localWishlist: localStorage.getItem('Wish List')
+    ? JSON.parse(localStorage.getItem('Wish List'))
+    : [],
+  wishlistMsg: '',
+  wishlistStatus: '',
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -46,6 +55,7 @@ const store = createStore(
     CartItems: CartItemsReducer,
     CartID: CartUpdateIDReducer,
     User: setUserReducer,
+    Wishlist: WishlistReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))
