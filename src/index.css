@@ -320,7 +320,7 @@ ALL Section Heading css starts here
   padding: 1.375rem 0.625rem 1rem;
 }
 .manufacture-product {
-  /* min-height: 40px; */
+  /* min-height: 42px; */
   margin: 0.313rem 0;
 }
 .manufacture-product a {
@@ -358,14 +358,14 @@ ALL Section Heading css starts here
 }
 .btn-cart {
   width: 100%;
-  background: var(--primary-btn-color);
+  background: var(--nav-bg);
   border: medium none;
   border-radius: 0.313rem;
   color: var(--light-color);
   cursor: pointer;
   font-size: 0.6rem;
   margin-top: 10px;
-  padding: 0.313rem;
+  padding: 0.5rem 0;
   text-transform: uppercase;
 }
 .btn-cart:hover {
@@ -513,8 +513,8 @@ ALL Section Heading css starts here
   padding: 10px 20px;
 }
 .header__logo {
-  padding: 0 0px 0 20px;
-  width: 223px;
+  padding: 0 1.429rem 0 1.429rem;
+  width: 15.929rem;
 }
 .header__search {
   width: 60%;
@@ -540,7 +540,7 @@ ALL Section Heading css starts here
 }
 .header__search select {
   height: 40px;
-  width: 150px;
+  width: 170px;
   padding: 10px;
   outline: none;
   border: none;

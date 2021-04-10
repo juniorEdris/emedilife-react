@@ -31,26 +31,30 @@ const ProductCard = (props) => {
                 <Link
                   to={`/productdetails?id=${props.product.id}`}
                   title={props.product.name}>
-                  {Truncate(props.product.name, 30)}
+                  {Truncate(props.product.name, 10)}
                 </Link>
               </h5>
             </div>
             <div className="manufacture-product">
               {props.product.company && (
                 <span>
-                  <Link to={`/`}>by {props.product?.company}</Link>
+                  <Link to={`/`} title={props.product?.company}>
+                    by {props.product?.company}
+                  </Link>
                 </span>
               )}
             </div>
-            <div className="price-box">
-              <span className="regular-price">
+            <div className="price-box row no-gutters align-items-center">
+              <span className="regular-price p-0 m-0">
+                {' '}
+                {/*col-12 */}
                 <span
-                  className={` ${props.product.special && 'special-price'}`}>
+                  className={` ${props.product.special && 'special-price'} `}>
                   &#2547; {props.product?.unit_prices?.price}
                 </span>
               </span>
               {props.product?.unit_prices?.previous_price ? (
-                <span className="old-price">
+                <span className="old-price  p-0 m-0">
                   <span>MRP:</span>
                   <del>
                     {' '}
@@ -58,7 +62,12 @@ const ProductCard = (props) => {
                   </del>
                 </span>
               ) : (
-                ''
+                <span className="old-price  p-0 m-0">
+                  {' '}
+                  {/*  col-12*/}
+                  <span>MRP:</span>
+                  <del> &#2547; {'0.00'}</del>
+                </span>
               )}
             </div>
             <Link

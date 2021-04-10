@@ -10,7 +10,7 @@ const SearchProducts = (props) => {
           {props.loading
             ? 'Loading'
             : props.products?.map((product) => (
-                <div className="col-6 col-md-4" key={product.id}>
+                <div className="col-6 col-md-4 col-lg-3" key={product.id}>
                   <ProductCard product={product} key={product.id} />
                 </div>
               ))}

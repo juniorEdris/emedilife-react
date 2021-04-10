@@ -1,7 +1,10 @@
 import React, { memo, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AddBasketProd } from '../../../Redux/Action/BasketAction';
+import {
+  AddBasketProd,
+  updateCartItem,
+} from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
 import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
@@ -32,6 +35,14 @@ const Details = (props) => {
       total_quantity: quantity,
     };
     await props.addToCart(product, quantity);
+    props.user && (await props.getCartItems());
+  };
+  const updateCartItem = async (item) => {
+    await props.updateCart(
+      props.cart_id,
+      priceId === '' ? item.unit_prices[0].id : priceId,
+      quantity
+    );
     props.user && (await props.getCartItems());
   };
   const addToWish = async (item) => {
@@ -140,7 +151,11 @@ const Details = (props) => {
                     name="price_id"
                     id={x.unitType}
                     onChange={() => selectPackage(x)}
-                    checked={priceId === x.id}
+                    checked={
+                      priceId === ''
+                        ? props.details?.unit_prices[0].id === x.id
+                        : priceId === x.id
+                    }
                     required
                   />
                 ) : (
@@ -180,12 +195,21 @@ const Details = (props) => {
           </div>
         </div>
         <div className="details_buttons_wrapper mb-5">
-          <button
-            className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
-            type="button"
-            onClick={() => addProduct(props.details)}>
-            add to cart
-          </button>
+          {!props.cart_id ? (
+            <button
+              className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
+              type="button"
+              onClick={() => addProduct(props.details)}>
+              add to cart
+            </button>
+          ) : (
+            <button
+              className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
+              type="button"
+              onClick={() => updateCartItem(props.details)}>
+              update cart
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -203,5 +227,7 @@ const mapDispatchToProps = (dispatch) => ({
   addToCart: (product, count) => dispatch(AddBasketProd(product, count)),
   getCartItems: () => dispatch(getCartItems()),
   addToWish: (product) => dispatch(addToWishlistAction(product)),
+  updateCart: (cartId, unit_price_id, quantity) =>
+    dispatch(updateCartItem(cartId, unit_price_id, quantity)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Details));

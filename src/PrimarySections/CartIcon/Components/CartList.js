@@ -6,7 +6,10 @@ import {
   RemoveBasketProd,
 } from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
-import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
+import {
+  getCartUpdateID,
+  removeCartUpdateID,
+} from '../../../Redux/Action/CartUpdateIDAction';
 import { getCartProdSubTotal } from '../../Utility';
 
 const CartList = (props) => {
@@ -30,7 +33,7 @@ const CartList = (props) => {
             {props.localCartList?.map((item) => (
               <li key={item.id}>
                 <div className="cart_single_product">
-                  <div className="count_btn">
+                  {/* <div className="count_btn">
                     <span
                       className="cart_dec_btn"
                       onClick={() => addToCart(item)}>
@@ -41,7 +44,7 @@ const CartList = (props) => {
                       onClick={() => removeFromCart(item)}>
                       <i className="fas fa-minus"></i>
                     </span>
-                  </div>
+                  </div> */}
                   <div className="cart_single_image">
                     <Link to={`productdetails?id=${item.id}`}>
                       <img
@@ -81,7 +84,7 @@ const CartList = (props) => {
               : props.cartList?.map((item) => (
                   <li key={item.product_id}>
                     <div className="cart_single_product">
-                      <div className="count_btn">
+                      {/* <div className="count_btn">
                         <span
                           className="cart_dec_btn"
                           onClick={() => addToCart(item)}>
@@ -92,7 +95,7 @@ const CartList = (props) => {
                           onClick={() => removeFromCart(item)}>
                           <i className="fas fa-minus"></i>
                         </span>
-                      </div>
+                      </div> */}
                       <div className="cart_single_image">
                         <Link to={`productdetails?id=${item.product_id}`}>
                           <img
@@ -121,7 +124,10 @@ const CartList = (props) => {
                     </div>
                     <span
                       className="cart_product_cross"
-                      onClick={() => removeFromCart(item)}>
+                      onClick={() => {
+                        removeFromCart(item);
+                        props.removeCartID();
+                      }}>
                       &times;
                     </span>
                   </li>
@@ -138,7 +144,7 @@ const CartList = (props) => {
             &#2547;{' '}
             {!props.user
               ? getCartProdSubTotal(props.localCartList, props.user)
-              : getCartProdSubTotal(props.cartList, props.user)}
+              : getCartProdSubTotal(props.cartList, props.user) || 0}
           </span>
         </div>
         <div className="checkout_btn">
@@ -163,6 +169,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeProduct: (prod) => dispatch(RemoveBasketProd(prod)),
   getCartItems: () => dispatch(getCartItems()),
   getCartID: (id) => dispatch(getCartUpdateID(id)),
+  removeCartID: () => dispatch(removeCartUpdateID()),
   addToCart: (product) => dispatch(AddBasketProd(product)),
 });
 

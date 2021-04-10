@@ -126,3 +126,16 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
       .catch((err) => console.log(err));
   }
 };
+
+export const updateCartItem = (cartId, unit_price_id, quantity) => async (
+  dispatch
+) => {
+  await API()
+    .post(
+      `${ENDPOINTS.CART_UPDATE}${cartId}?unit_price_id=${unit_price_id}&total_quantity=${quantity}`
+    )
+    .then((res) => {
+      console.log('update_cart', res);
+    })
+    .catch((err) => console.log(err));
+};

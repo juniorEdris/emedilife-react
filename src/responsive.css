@@ -116,6 +116,12 @@
 
 /* SM Small Device */
 @media (max-width: 767px) {
+  /* .header__logo {
+    padding: 0;
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+} */
     .container-md-fluid {
     padding:0 15px;
   }
