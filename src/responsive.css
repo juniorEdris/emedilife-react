@@ -75,11 +75,11 @@
   .header_nav .more_link {
     font-size: 1rem;
 }
-.header__option span {
+/* .header__option span {
   font-size: 0.7rem;
-}
+} */
 .header__option span {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 }
 @media (min-width: 768px) {
@@ -108,6 +108,7 @@
     text-transform: capitalize;
     font-size: 0.5rem;
     line-height: 100%;
+    font-weight: 300;
   }
   .header__link {
     display: block;
@@ -116,12 +117,9 @@
 
 /* SM Small Device */
 @media (max-width: 767px) {
-  /* .header__logo {
-    padding: 0;
-    width: 180px;
-    height: auto;
-    object-fit: contain;
-} */
+.header{
+  padding: 0 20px;
+}
     .container-md-fluid {
     padding:0 15px;
   }
@@ -147,7 +145,11 @@
 }
 
 /* x-SM Small Device */
-@media (min-width: 320px) and (max-width: 479px) {
+@media (max-width: 360px) {
+  .header__logo{
+    width: 10.578rem;
+    padding: 0 0.5rem;
+  }
 }
 
 @media (max-width: 767px) {

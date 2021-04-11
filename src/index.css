@@ -492,7 +492,8 @@ ALL Section Heading css starts here
 }
 .ham-burger {
   display: block !important;
-  flex: 0 0 40px;
+  /* flex: 0 0 40px; */
+  margin-top: 10px;
 }
 .ham-burger a > span {
   height: 3px;
@@ -517,8 +518,9 @@ ALL Section Heading css starts here
   width: 15.929rem;
 }
 .header__search {
-  width: 60%;
+  width: 100%;
   position: relative;
+  padding: 0 0.5rem;
 }
 .data-list{
   position: absolute;
@@ -601,7 +603,7 @@ ALL Section Heading css starts here
   font-size: 13px;
 }
 .header__option__lineTwo {
-  font-size: 16px;
+  /* font-size: 16px; */
   font-weight: 700;
 }
 .header__option__basket {
@@ -622,6 +624,7 @@ ALL Section Heading css starts here
   object-fit: contain;
   /* margin-right: 5px; */
   font-size: 22px;
+  margin-top: -7px;
 }
 
 /*--------------------------------------------------------------------
@@ -644,6 +647,7 @@ ALL Section Heading css starts here
   padding: 0.2rem;
   font-size: 0.75rem;
   color: var(--light-color);
+  font-weight: 300;
 }
 .more_link a span {
   margin-right: 0.2rem;
