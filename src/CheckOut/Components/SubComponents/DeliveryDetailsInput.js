@@ -16,6 +16,7 @@ const DeliveryDetails = (props) => {
                 type="email"
                 className="form-control form-control-lg"
                 id="full_name"
+                defaultValue={props.info?.name}
               />
             </div>
             <div className="form-group col-md-6">
@@ -24,6 +25,7 @@ const DeliveryDetails = (props) => {
                 type="text"
                 className="form-control form-control-lg"
                 id="mobile"
+                defaultValue={props.info?.phone}
               />
             </div>
           </div>
@@ -34,21 +36,24 @@ const DeliveryDetails = (props) => {
               className="form-control form-control-lg"
               id="Email"
               placeholder="Email"
+              defaultValue={props.info?.email}
             />
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label htmlFor="inputState">District</label>
-              <select id="inputState" className="form-control form-control-lg">
+              <label htmlFor="district">District</label>
+              <select id="district" className="form-control form-control-lg">
                 <option selected>Choose...</option>
-                <option>District-one</option>
-                <option>District-two</option>
-                <option>District-three</option>
+                {props.info?.districts_lists?.map((district) => (
+                  <option value={district.id} key={district.name}>
+                    {district.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="inputState">Area</label>
-              <select id="inputState" className="form-control form-control-lg">
+              <label htmlFor="area">Area</label>
+              <select id="area" className="form-control form-control-lg">
                 <option selected>Choose...</option>
                 <option>Area-one</option>
                 <option>Area-two</option>
@@ -63,6 +68,7 @@ const DeliveryDetails = (props) => {
               className="form-control form-control-lg"
               id="address"
               placeholder="Apartment, studio, or floor"
+              defaultValue={props.info?.address}
             />
           </div>
         </form>
@@ -71,7 +77,12 @@ const DeliveryDetails = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.UserInfo.loading,
+  deliveryTypes: state.UserInfo.delivery_types,
+  info: state.UserInfo.info,
+  status: state.UserInfo.status,
+});
 
 const mapDispatchToProps = {};
 

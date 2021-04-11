@@ -143,7 +143,7 @@ const CartList = (props) => {
           <span>
             &#2547;{' '}
             {!props.user
-              ? getCartProdSubTotal(props.localCartList, props.user)
+              ? getCartProdSubTotal(props.localCartList, props.user) || 0
               : getCartProdSubTotal(props.cartList, props.user) || 0}
           </span>
         </div>

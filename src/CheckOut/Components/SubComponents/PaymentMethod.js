@@ -17,7 +17,7 @@ const PaymentMethod = (props) => {
                 name="blankRadio"
                 id="cashRadio"
                 value="option1"
-                checked
+                defaultChecked
               />
             </div>
             <div className="">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
 
 const PriceDetails = (props) => {
   const [coupon, setCoupon] = useState(false);
@@ -8,6 +9,25 @@ const PriceDetails = (props) => {
     e.preventDefault();
     setCoupon(!coupon);
   };
+  const total_amount = !props.user
+    ? getCartProdSubTotal(props.localCartList, props.user) || 0
+    : getCartProdSubTotal(props.cartList, props.user) || 0;
+  let delivery_charge;
+  props.deliveryTypes?.forEach((type) => {
+    if (type.conditional !== '1') {
+      type.delivery_charges.forEach((charge) => {
+        delivery_charge = charge.delivery_charge;
+      });
+    } else {
+      for (let i = 0; i <= type?.delivery_charges?.length; i++) {
+        if (total_amount >= type?.delivery_charges[i]?.min_order) {
+          delivery_charge = type?.delivery_charges[i]?.delivery_charge;
+          return delivery_charge;
+        }
+      }
+    }
+  });
+
   return (
     <div className="">
       <div className="price_details chekoutCard">
@@ -15,7 +35,22 @@ const PriceDetails = (props) => {
           <h4>Price Details</h4>
         </div>
         <div className="sub-Total">
-          <span>Subtotal</span> <span>&#2547; {(285).toFixed(2)}</span>
+          <span>Subtotal</span>{' '}
+          {!props.user ? (
+            <span>
+              &#2547;{' '}
+              {(
+                getCartProdSubTotal(props.localCartList, props.user) || 0
+              ).toFixed(2)}
+            </span>
+          ) : (
+            <span>
+              &#2547;{' '}
+              {(getCartProdSubTotal(props.cartList, props.user) || 0).toFixed(
+                2
+              )}
+            </span>
+          )}
         </div>
         <div className="coupon_anchore">
           <img src="./assets/svg/icons/discount.svg" alt="coupon_icon" />{' '}
@@ -46,23 +81,25 @@ const PriceDetails = (props) => {
           <div className="checkout_headings">
             <h4>Shipping Method</h4>
           </div>
-          <div className="row no-gutters align-items-center">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                name="exampleRadios"
-                id="delivery_list"
-                value="option1"
-              />
-            </div>
-            <div className="delivery_charge">
-              <label htmlFor="delivery_list" className="delivery_amount_hover">
-                <div className="col delivery_amount">
-                  Delivery Charge + &#2547;{28}
-                </div>
-                <div className="col delivery_time">1-3 Hours</div>
-              </label>
+          <div className="">
+            <div className="row no-gutters align-items-center">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  name="exampleRadios"
+                  id={'check'}
+                  value="option1"
+                />
+              </div>
+              <div className="delivery_charge">
+                <label htmlFor={'check'} className="delivery_amount_hover">
+                  <div className="col delivery_amount">
+                    Delivery Charge + &#2547; {delivery_charge || 0}
+                  </div>
+                  <div className="col delivery_time">1-3 Hours</div>
+                </label>
+              </div>
             </div>
           </div>
           <div className="border_top_section"></div>
@@ -81,7 +118,15 @@ const PriceDetails = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.UserInfo.loading,
+  deliveryTypes: state.UserInfo.delivery_types,
+  info: state.UserInfo.info,
+  status: state.UserInfo.status,
+  cartList: state.CartItems.basket,
+  localCartList: state.Basket.localBasket,
+  user: state.User.user,
+});
 
 const mapDispatchToProps = {};
 
