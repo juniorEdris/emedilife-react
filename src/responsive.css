@@ -93,6 +93,12 @@
   .more_link {
     font-size: 0.5rem;
   }
+  .header_nav {
+    position: relative;
+  }
+  .nav_links {
+    margin: 0 auto;
+  }
   .nav_links ul {
     display: -webkit-box;
     display: -moz-box;
@@ -109,6 +115,14 @@
     font-size: 0.5rem;
     line-height: 100%;
     font-weight: 300;
+  }
+  .nav_links ul li a.nav-all{
+    position: absolute;
+    top: 6px;
+    left: 14px;
+  }
+  .nav_links ul li a.see-more{
+    font-weight: 800;
   }
   .header__link {
     display: block;

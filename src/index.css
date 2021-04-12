@@ -184,6 +184,7 @@ ALL Section Heading css starts here
   font-weight: 600;
   margin-bottom: 2rem;
   border: 1px solid var(--dark-color);
+  text-align: center;
 }
 .section_heading_two span {
   font-weight: 600;
@@ -345,16 +346,19 @@ ALL Section Heading css starts here
 }
 .regular-price {
   font-size: 1.3rem;
-}
-.old-price {
-  font-size: 1rem;
-}
-.old-price::before {
-  content: '|';
   margin-right: 5px;
 }
+.old-price {
+  font-size: 0.7rem;
+}
+/* .old-price::before {
+  content: '|';
+} */
 .product-name h4 a {
   color: #111;
+}
+.product-item-btn{
+  padding: 0rem 0.625rem 0.625rem;
 }
 .btn-cart {
   width: 100%;
@@ -518,7 +522,7 @@ ALL Section Heading css starts here
   width: 15.929rem;
 }
 .header__search {
-  width: 100%;
+  width: 60%;
   position: relative;
   padding: 0 0.5rem;
 }
@@ -540,9 +544,9 @@ ALL Section Heading css starts here
   background-color: var(--light-color);
   border-radius: 0.425rem;
 }
-.header__search select {
+.header__search .selectDiv select {
   height: 40px;
-  width: 170px;
+  width: 120px;
   padding: 10px;
   outline: none;
   border: none;
@@ -550,6 +554,32 @@ ALL Section Heading css starts here
   color: var(--light-color);
   border-radius: 0.325rem 0 0 0.325rem;
   cursor: pointer;
+  -ms-word-break: normal;
+  word-break: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.selectDiv {
+  position: relative;
+}
+.selectDiv::after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: var(--light-color);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 14px;
+  /*Adjust for position however you want*/
+  
+  top: 10px;
+  padding: 0 0 2px;
+  /*left line */
+  
+  position: absolute;
+  pointer-events: none;
 }
 .header__searchInput {
   padding: 5px 15px !important;

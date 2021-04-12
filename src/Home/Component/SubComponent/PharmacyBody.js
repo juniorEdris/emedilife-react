@@ -65,15 +65,20 @@ export const PharmacyBody = (props) => {
           <div className="col-12 col-md-6 pharmacy_right">
             <div className="col m-auto">
               <iframe
-                width={853}
-                height={480}
+                // width={100}
+                height={300}
                 src="https://www.youtube.com/embed/QHBnlkBTOkM"
                 frameBorder={0}
                 title="video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+              {/* <video id="my-video" className="video-js" controls preload="auto"  height={300}  data-setup="{}">
+  <source src="MY_VIDEO.mp4" type="video/mp4" />
+  <source src="MY_VIDEO.webm" type="video/webm" />
+</video> */}
             </div>
+            {/*width={640}poster="MY_VIDEO_POSTER.jpg"*/}
           </div>
         </div>
       </div>

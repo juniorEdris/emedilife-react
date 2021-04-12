@@ -81,6 +81,7 @@
 .single_radio{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0.6rem;
     text-transform: capitalize;
 }
@@ -90,14 +91,30 @@
 .single_radio small{
     color: var(--muted-color);
 }
-/* .details_qty label{
-    color: #111;
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-right: 1.25rem;
-    text-transform: capitalize;
-    
-} */
+.radio_qty input{
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: var(--muted-btn-color);
+}
+.radio_qty_inc,.radio_qty_dec{
+    background: var(--nav-bg);
+    padding: 0.3rem;
+    color: var(--light-color);
+    font-size: 1rem;
+    cursor: pointer;
+}
+.radio_qty_inc{
+    border-radius: 0 0.25rem 0.25rem 0;
+}.radio_qty_dec{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+.radio_qty_inc:hover,.radio_qty_dec:hover{
+    background-color: var(--dark);
+}
 .product-qty {
     border: 1px solid #ddd;
     font-size: 1.1rem;
@@ -109,7 +126,7 @@
     text-align: center;
     position: relative;
 }
-.product-qty input {
+/* .product-qty input {
     border: medium none;
     height: 100%;
     padding: 0 15px;
@@ -136,7 +153,7 @@
     border-left: 1px solid #ccc;
     right: 0;
     height: 100%;
-}
+} */
 
 .product_details_wrapper .details_buttons_wrapper button{
     font-size: 1.4rem;

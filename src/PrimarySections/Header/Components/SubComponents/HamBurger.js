@@ -26,7 +26,10 @@ function HamBurger() {
               <Link to="/search-medicine">Shop</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact-us">Contact</Link>
+            </li>
+            <li>
+              <Link to="/blog">Contact</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>

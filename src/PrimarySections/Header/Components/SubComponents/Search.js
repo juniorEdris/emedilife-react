@@ -23,16 +23,18 @@ export const Search = (props) => {
   return (
     <div className="header__search d-none d-md-block">
       <div className="header__search_inner">
-        <select
-          name=""
-          id=""
-          onChange={(e) => setOption(e.target.value)}
-          value={option}>
-          <option value="1">Option</option>
-          <option value="2">hakjsd</option>
-          <option value="3">sdaufh</option>
-          <option value="4">asdklf;k</option>
-        </select>
+        <div className="selectDiv">
+          <select
+            name=""
+            id=""
+            onChange={(e) => setOption(e.target.value)}
+            value={option}>
+            <option value="1">Option</option>
+            <option value="2">hakjsd</option>
+            <option value="3">sdaufh</option>
+            <option value="4">asdklf;k</option>
+          </select>
+        </div>
         <input
           type="text"
           list="medicines"

@@ -31,20 +31,20 @@ const ProductCard = (props) => {
                 <Link
                   to={`/productdetails?id=${props.product.id}`}
                   title={props.product.name}>
-                  {Truncate(props.product.name, 10)}
+                  {props.product.name}
                 </Link>
               </h5>
             </div>
             <div className="manufacture-product">
               {props.product.company && (
                 <span>
-                  <Link to={`/`} title={props.product?.company}>
-                    by {props.product?.company}
+                  <Link to={`/`} title={props.product?.company} className="">
+                    by {Truncate(props.product?.company, 16)}
                   </Link>
                 </span>
               )}
             </div>
-            <div className="price-box row no-gutters align-items-center">
+            <div className="price-box row no-gutters align-items-center justify-content-between">
               <span className="regular-price p-0 m-0">
                 {' '}
                 {/*col-12 */}

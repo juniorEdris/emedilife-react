@@ -6,7 +6,7 @@ function NavList() {
     <div className="nav_links">
       <ul>
         <li>
-          <Link to="/all">
+          <Link to="/all" className="nav-all">
             <span class="lnr lnr-menu"></span> all
           </Link>
         </li>
@@ -40,23 +40,25 @@ function NavList() {
           <Link to="/computers">computers</Link>
         </li>
         <li>
-          <Link to="/computers">see more</Link>
+          <Link to="/computers" className="">
+            see more
+          </Link>
         </li>
         {/* <li>
-                    <Link to='/gift-ideas'>gift ideas</Link>
-                </li>
-                <li>
-                    <Link to='/home-kitchen'>home &amp; kitchen</Link>
-                </li>
-                <li>
-                    <Link to='/books'>books</Link>
-                </li>
-                <li>
-                    <Link to='/gift-cards'>gift cards</Link>
-                </li>
-                <li>
-                    <Link to='/sell'>sell</Link>
-                </li> */}
+          <Link to="/gift-ideas">gift ideas</Link>
+        </li>
+        <li>
+          <Link to="/home-kitchen">home &amp; kitchen</Link>
+        </li>
+        <li>
+          <Link to="/books">books</Link>
+        </li>
+        <li>
+          <Link to="/gift-cards">gift cards</Link>
+        </li>
+        <li>
+          <Link to="/sell">sell</Link>
+        </li> */}
       </ul>
     </div>
   );

@@ -6,9 +6,11 @@ const DetailsBody = (props) => {
   return (
     <div className="">
       <div className="p-0">
-        <div className="details__wrapper">
-          {renderDiv(props.details?.details) || 'none'}
-        </div>
+        {props.details?.details && (
+          <div className="details__wrapper">
+            {renderDiv(props.details?.details) || 'none'}
+          </div>
+        )}
       </div>
     </div>
   );

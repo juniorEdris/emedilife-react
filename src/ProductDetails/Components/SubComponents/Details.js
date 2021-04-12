@@ -13,7 +13,7 @@ const Details = (props) => {
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
   const [previousPrice, setPreviousPrice] = useState(0);
-
+  console.log('price_id', priceId);
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -145,7 +145,7 @@ const Details = (props) => {
           <div className="details_qty">
             {props.details?.unit_prices?.map((x) => (
               <div className="single_radio">
-                {props.cart_id ? (
+                <div className="">
                   <input
                     type="radio"
                     name="price_id"
@@ -158,29 +158,30 @@ const Details = (props) => {
                     }
                     required
                   />
-                ) : (
-                  <input
-                    type="radio"
-                    name="price_id"
-                    id={x.unitType}
-                    onChange={() => selectPackage(x)}
-                    checked={
-                      priceId === ''
-                        ? props.details?.unit_prices[0].id === x.id
-                        : priceId === x.id
-                    }
-                    required
-                  />
-                )}
-                <label htmlFor={x.unitType}>
-                  {x.unitType}{' '}
-                  <small className="radio_price">({x.price})</small>
-                </label>
+
+                  <label htmlFor={x.unitType}>
+                    {x.unitType}{' '}
+                    <small className="radio_price">({x.price})</small>
+                  </label>
+                </div>
+                <div className="radio_qty row align-items-center no-gutters ">
+                  <span
+                    className={`${
+                      quantity === 1 && 'pointer_disabled'
+                    } radio_qty_dec`}
+                    onClick={decrement}>
+                    <i className="fa fa-minus"></i>
+                  </span>
+                  <input type="text" readOnly value={quantity} />
+                  <span className={`radio_qty_inc`} onClick={increment}>
+                    <i class="fa fa-plus"></i>
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         )}
-        <div className="details_quantity">
+        {/* <div className="details_quantity">
           <label>Quantity :</label>
           <div className="product-qty mr-3">
             <input type="text" readOnly value={quantity} />
@@ -193,7 +194,7 @@ const Details = (props) => {
               <i class="fa fa-plus"></i>
             </span>
           </div>
-        </div>
+        </div> */}
         <div className="details_buttons_wrapper mb-5">
           {!props.cart_id ? (
             <button
