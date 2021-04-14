@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { AddBasketProd } from '../../Redux/Action/BasketAction';
 
 const WishlistBody = (props) => {
   const Styles = {
@@ -14,10 +13,10 @@ const WishlistBody = (props) => {
       unit_prices_id: item.unit_price.id,
       total_quantity: item.total_quantity,
     };
+    console.log('wishlist add to cart', product);
     await props.addToCart(product);
     props.user && (await props.getCartItems());
   };
-  console.log(props.products, props.loading);
   return (
     <div className="wishlist_body">
       <table class="table wishlist_table">

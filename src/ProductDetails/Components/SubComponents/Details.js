@@ -13,7 +13,7 @@ const Details = (props) => {
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
   const [previousPrice, setPreviousPrice] = useState(0);
-  console.log('price_id', priceId);
+
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -46,6 +46,7 @@ const Details = (props) => {
     props.user && (await props.getCartItems());
   };
   const addToWish = async (item) => {
+    console.log('add wish', item);
     const product = {
       id: item.id,
       photo: item.photo,

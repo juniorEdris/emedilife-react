@@ -51,7 +51,6 @@ export const AddBasketProd = (product, quantity) => async (
   dispatch,
   getState
 ) => {
-  console.log(product);
   const user = localStorage.getItem('user_id');
   // return action if its null
   if (product === null) return;
@@ -64,7 +63,7 @@ export const AddBasketProd = (product, quantity) => async (
       // }
       if (x.id === product.id) {
         exist = true;
-        x.total_quantity++;
+        x.total_quantity = quantity;
         // dispatch(
         //   addProdLocalBasketMsg({
         //     type: true,
@@ -101,20 +100,9 @@ export const AddBasketProd = (product, quantity) => async (
 export const RemoveBasketProd = (product) => async (dispatch, getState) => {
   const user = localStorage.getItem('user_id');
   if (!user) {
-    let cartItems = getState().Basket.localBasket.slice();
-    console.log('remove local', cartItems);
-    let exist = false;
-    cartItems.forEach((x) => {
-      if (x.id === product.id && product.total_quantity > 1) {
-        exist = true;
-        x.total_quantity--;
-      }
-    });
-    if (!exist) {
-      cartItems = getState()
-        .Basket.localBasket.slice()
-        .filter((x) => x.id !== product.id);
-    }
+    let cartItems = getState()
+      .Basket.localBasket.slice()
+      .filter((x) => x.id !== product.id);
     dispatch(removeProdBasket(cartItems));
     localStorage.setItem('Cart List', JSON.stringify(cartItems));
   } else {

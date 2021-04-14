@@ -14,6 +14,7 @@ import HealthArticle from './Component/HealthArticle';
 import AppBanner from './Component/AppBanner';
 import { GetHomeContents } from '../Redux/Action/HomeProductsAction';
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
+import SlickSlider from './Component/SlickSlider';
 
 const Index = (props) => {
   const sliders = [
@@ -37,6 +38,7 @@ const Index = (props) => {
   return (
     <div>
       {/* <HomeSlider loading={props.loading} sliders={props.sliders} /> */}
+      {/* <SlickSlider loading={props.loading} sliders={props.sliders} /> */}
       <HomeSlider sliders={sliders} />
       <Features />
       <OnlinePharma />

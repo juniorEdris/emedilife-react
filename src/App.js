@@ -29,6 +29,10 @@ import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
 import { OrderNotification } from './OrderNotify/OrderNotification';
 
+// slick
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 function App(props) {
   useEffect(() => {
     // props.getCartItems();

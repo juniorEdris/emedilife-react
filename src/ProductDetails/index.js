@@ -18,14 +18,19 @@ const Detailsindex = (props) => {
     // get back to the Top
     toTheTop();
   }, [prodID]);
-
+  console.log(props.wishlistMsg, props.wishState, '<<<<<<<<<<<<<<<');
   return (
     <div className="product_details_container mt-4 mb-4">
       <div className="container-md-fluid">
         <Header />
         <Description />
         <RelatedProducts />
-        <CartAddanime Msg={props.basketMsg} tabState={props.tabState} />
+        {props.basketMsg && (
+          <CartAddanime Msg={props.basketMsg} tabState={props.tabState} />
+        )}
+        {props.wishlistMsg && (
+          <CartAddanime Msg={props.wishlistMsg} tabState={props.wishState} />
+        )}
       </div>
     </div>
   );
@@ -34,6 +39,8 @@ const Detailsindex = (props) => {
 const mapStateToProps = (state) => ({
   basketMsg: state.Basket.basketmsg,
   tabState: state.Basket.tabStatus,
+  wishlistMsg: state.Wishlist.wishlistMsg,
+  wishState: state.Wishlist.wishlistStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

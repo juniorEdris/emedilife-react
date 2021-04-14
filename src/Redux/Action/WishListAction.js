@@ -10,6 +10,8 @@ import {
   GET_WISHLIST_REQUEST,
   GET_WISHLIST_SUCCESS,
   GET_WISHLIST_ERROR,
+  WISHCART_STATUS_SUCCESS,
+  WISHCART_STATUS_COMPLETE,
 } from '../Types';
 // GET WISHLIST ACTION PROCCESS
 const getWishItemRequest = () => ({
@@ -29,11 +31,14 @@ const addWishItemRequest = () => ({
   type: ADD_TO_WISHLIST_REQUEST,
 });
 
-const addWishItemOnlineSuccess = (res) => ({
-  type: ADD_TO_ONLINE_WISHLIST_SUCCESS,
-  message: res.message,
-  status: res.type,
-});
+const addWishItemOnlineSuccess = (res) => {
+  console.log('wish message', res);
+  return {
+    type: ADD_TO_ONLINE_WISHLIST_SUCCESS,
+    message: res.message,
+    status: res.type,
+  };
+};
 
 const addWishItemLocalSuccess = (product) => ({
   type: ADD_TO_LOCAL_WISHLIST_SUCCESS,
@@ -44,9 +49,20 @@ const removeProdLocalWish = (product) => ({
   type: REMOVE_FROM_LOCAL_WISHLIST,
   payload: product,
 });
-const removeProdOnlineWish = (product) => ({
-  type: REMOVE_FROM_ONLINE_WISHLIST,
-  payload: product,
+const removeProdOnlineWish = (message) => {
+  console.log('wish remove message', message);
+  return {
+    type: REMOVE_FROM_ONLINE_WISHLIST,
+    message,
+  };
+};
+const productStatusSuccess = () => ({
+  type: WISHCART_STATUS_SUCCESS,
+  status: true,
+});
+const productStatusComplete = () => ({
+  type: WISHCART_STATUS_COMPLETE,
+  status: false,
 });
 const addWishItemError = (error) => ({
   type: ADD_TO_WISHLIST_ERROR,
@@ -73,11 +89,14 @@ export const addToWishlistAction = (product) => async (dispatch, getState) => {
   } else {
     await API()
       .post(
-        `${ENDPOINTS.ADD_WISHLIST_ITEM}product_id=${product.id}&unit_price_id=${product.unit_prices_id}&total_quantity=${product.total_quantity}`
+        `${ENDPOINTS.ADD_WISHLIST_ITEM}product_id=${product.id}&unit_price_id=${product.unit_price.unit_prices_id}&total_quantity=${product.total_quantity}`
       )
       .then((res) => {
-        console.log('add wishlist', res.data);
+        dispatch(productStatusSuccess());
         dispatch(addWishItemOnlineSuccess(res.data));
+        setTimeout(() => {
+          dispatch(productStatusComplete());
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +117,7 @@ export const RemoveWishProd = (product) => async (dispatch, getState) => {
       .delete(`${ENDPOINTS.DELETE_WISHLIST_ITEM}${product.id}`)
       .then((res) => {
         console.log('remove wish item', res);
-        dispatch(removeProdOnlineWish());
+        dispatch(removeProdOnlineWish(res.data.message));
       })
       .catch((err) => {
         console.log(err);
@@ -112,7 +131,6 @@ export const getWishlistItems = () => async (dispatch) => {
   await API()
     .get(`${ENDPOINTS.GET_WISHLIST_ITEM}`)
     .then((res) => {
-      console.log('online wishlist items', res);
       dispatch(getWishItemSuccess(res.data.data));
     })
     .catch((error) => {

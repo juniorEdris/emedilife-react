@@ -25,6 +25,12 @@ const CartList = (props) => {
     await props.addToCart(item);
     props.user && (await props.getCartItems());
   };
+  console.log('====================================');
+  console.log(
+    'cart list',
+    props.cartList?.map((item) => item)
+  );
+  console.log('====================================');
   return (
     <div>
       <div className="cart_product_wrapper">
@@ -148,7 +154,10 @@ const CartList = (props) => {
           </span>
         </div>
         <div className="checkout_btn">
-          <Link to="/check-out" className="btn w-100">
+          <Link
+            // to={!props.user ? '#' : '/check-out'}
+            to={'/check-out'}
+            className={`${!props.user ? 'pointer_disabled' : ' '} btn w-100`}>
             Check Out
           </Link>
         </div>

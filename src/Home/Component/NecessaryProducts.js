@@ -14,7 +14,7 @@ const NecessaryProducts = (props) => {
             textTwo={'Products'}
           />
           <Body />
-          <SeeMoreBtn />
+          {props.products?.length > 24 && <SeeMoreBtn />}
         </div>
       )}
     </div>

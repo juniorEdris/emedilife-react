@@ -21,12 +21,6 @@ const WishList = (props) => {
     await props.removeWishProd(items);
     props.user && (await props.getWishlist());
   };
-  console.log(
-    'wishlist index',
-    props.basketMessage,
-    props.basketStatus,
-    props.localWishlist
-  );
   return (
     <div className="wishlist_wrapper">
       <div className="container-md-fluid ">
@@ -71,7 +65,7 @@ const WishList = (props) => {
               removeProd={removeFromCart}
             />
           )}
-          <CartAddanime Msg={props.wishMessage} tabState={props.wishStatus} />
+          {/* <CartAddanime Msg={props.wishMessage} tabState={props.wishStatus} /> */}
           <CartAddanime
             Msg={props.basketMessage}
             tabState={props.basketStatus}
@@ -88,8 +82,8 @@ const mapStateToProps = (state) => ({
   localWishlist: state.Wishlist.localWishlist,
   wishMessage: state.Wishlist.wishlistMsg,
   wishStatus: state.Wishlist.wishlistStatus,
-  basketMessage: state.Wishlist.wishlistMsg,
-  basketStatus: state.Wishlist.wishlistStatus,
+  basketMessage: state.Basket.basketmsg,
+  basketStatus: state.Basket.tabStatus,
   user: state.User.user,
 });
 const mapDispatchToProps = (dispatch) => ({

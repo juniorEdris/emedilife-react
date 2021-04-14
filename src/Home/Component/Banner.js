@@ -19,7 +19,7 @@ const Banner = (props) => {
         ]}>
         {props.sliders?.map((banner) => (
           <div className="slider-area " key={banner.photo}>
-            <div className="single-slider d-flex align-items-center">
+            <div className="single-slider">
               <img className="slider_image" src={banner.photo} alt="banners" />
             </div>
           </div>
