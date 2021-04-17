@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
 import SectionHeadingOne from '../../PrimarySections/SectionUtils/SectionHeadingOne';
@@ -56,6 +57,10 @@ const FeatureBrands = (props) => {
           </div>
         </div>
       )}
+      <div className="container-md-fluid">
+        <Skeleton width={'100%'} height={'50px'} className="mb-4" />
+        <Skeleton width={'100%'} height={'200px'} />
+      </div>
     </div>
   );
 };

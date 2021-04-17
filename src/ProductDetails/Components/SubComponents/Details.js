@@ -46,17 +46,17 @@ const Details = (props) => {
     props.user && (await props.getCartItems());
   };
   const addToWish = async (item) => {
-    console.log('add wish', item);
     const product = {
       id: item.id,
       photo: item.photo,
       name: item.name,
       unit_price: {
-        price: price === '' ? item.unit_prices[0].price : price,
+        price:
+          price === '' ? parseInt(item.unit_prices[0].price) : parseInt(price),
         previous_price:
           previousPrice === ''
-            ? item.unit_prices[0].previous_price
-            : previousPrice,
+            ? parseInt(item.unit_prices[0].previous_price)
+            : parseInt(previousPrice),
         unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
       },
       total_quantity: quantity,

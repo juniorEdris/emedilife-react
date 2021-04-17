@@ -32,7 +32,6 @@ const addWishItemRequest = () => ({
 });
 
 const addWishItemOnlineSuccess = (res) => {
-  console.log('wish message', res);
   return {
     type: ADD_TO_ONLINE_WISHLIST_SUCCESS,
     message: res.message,
@@ -70,7 +69,6 @@ const addWishItemError = (error) => ({
 });
 
 export const addToWishlistAction = (product) => async (dispatch, getState) => {
-  console.log('add wish cart>>>>>', product);
   dispatch(addWishItemRequest());
   if (!UserToken()) {
     const wishItems = getState().Wishlist.localWishlist.slice();

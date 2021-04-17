@@ -37,9 +37,9 @@ const Index = (props) => {
   }, []);
   return (
     <div>
-      {/* <HomeSlider loading={props.loading} sliders={props.sliders} /> */}
+      <HomeSlider loading={props.loading} sliders={props.sliders} />
       {/* <SlickSlider loading={props.loading} sliders={props.sliders} /> */}
-      <HomeSlider sliders={sliders} />
+      {/* <HomeSlider sliders={sliders} /> */}
       <Features />
       <OnlinePharma />
       <FeatureBrands />

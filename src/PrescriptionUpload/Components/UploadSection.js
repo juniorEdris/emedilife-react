@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction';
 
 const UploadSection = (props) => {
   const [images, setImages] = useState([]);
@@ -11,6 +12,10 @@ const UploadSection = (props) => {
       [...images].filter((x, index, arr) => arr.indexOf(x) !== i)
     );
   };
+  console.log(
+    'prescription frontend page',
+    [...images].map((image, i) => image)
+  );
   return (
     <div className="upload_section col col-md-8">
       {/* <div className="upload_section_top">
@@ -18,7 +23,7 @@ const UploadSection = (props) => {
       </div> */}
       <div className="upload_section_middle">
         <span className="">upload prescription</span>
-        <form action="">
+        <form action="" method="POST" encType="multipart/formdata">
           <div className="file_upload_btn mt-4 mb-3">
             <div className="image_preview row">
               {[...images].length > 0 ? (
@@ -63,7 +68,10 @@ const UploadSection = (props) => {
             </label>
           </div>
           <div className="submit_button">
-            <button type="submit" className="btn col offset-md-3 col-md-6">
+            <button
+              type="button"
+              className="btn col offset-md-3 col-md-6"
+              onClick={() => props.upload('raghib', images[0])}>
               Procced
             </button>
           </div>
@@ -75,6 +83,8 @@ const UploadSection = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  upload: (name, image) => dispatch(PrescriptionUpload(name, image)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadSection);

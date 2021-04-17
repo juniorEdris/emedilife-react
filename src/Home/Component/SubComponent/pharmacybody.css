@@ -1,0 +1,6 @@
+.video-js[tabindex="-1"]{
+    width:100%;
+}
+.vjs-big-play-button{
+    background-color: #dc3545!important;
+}

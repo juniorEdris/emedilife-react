@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './pharmacybody.css';
 
 export const PharmacyBody = (props) => {
   return (
@@ -64,7 +65,7 @@ export const PharmacyBody = (props) => {
           </div>
           <div className="col-12 col-md-6 pharmacy_right">
             <div className="col m-auto">
-              <iframe
+              {/* <iframe
                 // width={100}
                 height={300}
                 src="https://www.youtube.com/embed/QHBnlkBTOkM"
@@ -72,13 +73,27 @@ export const PharmacyBody = (props) => {
                 title="video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              />
-              {/* <video id="my-video" className="video-js" controls preload="auto"  height={300}  data-setup="{}">
-  <source src="MY_VIDEO.mp4" type="video/mp4" />
-  <source src="MY_VIDEO.webm" type="video/webm" />
-</video> */}
+              /> */}
+              <video
+                id="my-video"
+                className="video-js"
+                controls
+                preload="auto"
+                height={300}
+                width={640}
+                poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT13FesjhorFNXbg1yWWumvkyXqPCCBDWkfh1bCmoybAh_46l8akE4KWIgAbg&s=10"
+                data-setup="{}">
+                <source
+                  src="https://www.youtube.com/embed/QHBnlkBTOkM"
+                  type="video/mp4"
+                />
+                <source
+                  src="https://www.youtube.com/embed/QHBnlkBTOkM"
+                  type="video/webm"
+                />
+              </video>
             </div>
-            {/*width={640}poster="MY_VIDEO_POSTER.jpg"*/}
+            {/**/}
           </div>
         </div>
       </div>
