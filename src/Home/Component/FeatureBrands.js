@@ -49,18 +49,32 @@ const FeatureBrands = (props) => {
   ];
   return (
     <div className="feature_brands mb-5">
-      {props.brands?.length > 0 && (
+      {props.loading ? (
         <div className="container-md-fluid">
-          <SectionHeadingOne fontStyleOne={'Feature'} fontStyleTwo={'Brands'} />
-          <div className="feature_slider box-shadow">
-            <BrandSlider brands={props.brands} />
+          <Skeleton width={'100%'} height={'60px'} className="mb-4" />
+          <div className="row">
+            {Array(6)
+              .fill()
+              .map((x, i) => (
+                <div className="col-6 col-md-4 col-lg-2" key={i}>
+                  <Skeleton width={'100%'} height={'200px'} />
+                </div>
+              ))}
           </div>
         </div>
+      ) : (
+        props.brands?.length > 0 && (
+          <div className="container-md-fluid">
+            <SectionHeadingOne
+              fontStyleOne={'Feature'}
+              fontStyleTwo={'Brands'}
+            />
+            <div className="feature_slider box-shadow">
+              <BrandSlider brands={props.brands} />
+            </div>
+          </div>
+        )
       )}
-      <div className="container-md-fluid">
-        <Skeleton width={'100%'} height={'50px'} className="mb-4" />
-        <Skeleton width={'100%'} height={'200px'} />
-      </div>
     </div>
   );
 };

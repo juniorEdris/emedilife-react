@@ -5,36 +5,30 @@ import { DOMAIN } from '../../../PrimarySections/Utility/API_Links';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { products } from '../../../data';
 import './slider.css';
+import Skeleton from '@yisheng90/react-loading';
 
 const Slider = (props) => {
+  const loading = true;
   return (
     <div className="product_slider_wrapper">
-      <AliceCarousel
-        disableButtonsControls
-        animationDuration={100}
-        animationType={'fadeout'}
-        mouseTracking={true}
-        infinite={true}
-        swipeDelta={0}
-        autoPlayStrategy="default">
-        <img
-          src={`http:${props.details?.photo}`}
-          className="slider_image"
-          alt={props.details?.name}
-        />
-        {/* {props.details?.images?.map((image) => (
+      {props.loading ? (
+        <Skeleton width={'100%'} height={'390px'} />
+      ) : (
+        <AliceCarousel
+          disableButtonsControls
+          animationDuration={100}
+          animationType={'fadeout'}
+          mouseTracking={true}
+          infinite={true}
+          swipeDelta={0}
+          autoPlayStrategy="default">
           <img
-            src={`${DOMAIN}${props.details?.images_base_path}/${image.url}`}
+            src={`http:${props.details?.photo}`}
             className="slider_image"
             alt={props.details?.name}
           />
-        ))} */}
-      </AliceCarousel>
-      {/* <img
-        src={`http:${props.details?.photo}`}
-        className="slider_image"
-        alt={props.details?.name}
-      /> */}
+        </AliceCarousel>
+      )}
     </div>
   );
 };

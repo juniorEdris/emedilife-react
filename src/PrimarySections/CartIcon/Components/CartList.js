@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -86,7 +87,15 @@ const CartList = (props) => {
         ) : (
           <ul className="cart_sidebar_list">
             {props.loading
-              ? 'loading'
+              ? Array(5)
+                  .fill()
+                  .map((x, i) => (
+                    <Skeleton
+                      width={'100%'}
+                      height={'100px'}
+                      className="mb-4"
+                    />
+                  ))
               : props.cartList?.map((item) => (
                   <li key={item.product_id}>
                     <div className="cart_single_product">

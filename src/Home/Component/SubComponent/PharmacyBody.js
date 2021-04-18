@@ -64,36 +64,18 @@ export const PharmacyBody = (props) => {
             </div>
           </div>
           <div className="col-12 col-md-6 pharmacy_right">
-            <div className="col m-auto">
-              {/* <iframe
+            <div className="col m-auto plyr__video-embed" id="player">
+              <iframe
                 // width={100}
                 height={300}
                 src="https://www.youtube.com/embed/QHBnlkBTOkM"
                 frameBorder={0}
                 title="video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              /> */}
-              <video
-                id="my-video"
-                className="video-js"
-                controls
-                preload="auto"
-                height={300}
-                width={640}
-                poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT13FesjhorFNXbg1yWWumvkyXqPCCBDWkfh1bCmoybAh_46l8akE4KWIgAbg&s=10"
-                data-setup="{}">
-                <source
-                  src="https://www.youtube.com/embed/QHBnlkBTOkM"
-                  type="video/mp4"
-                />
-                <source
-                  src="https://www.youtube.com/embed/QHBnlkBTOkM"
-                  type="video/webm"
-                />
-              </video>
+                allowfullscreen={true}
+                allowtransparency
+                allow="autoplay"
+              />
             </div>
-            {/**/}
           </div>
         </div>
       </div>

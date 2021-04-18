@@ -57,7 +57,7 @@ export const Search = (props) => {
                     <div className="data-list col-12">
                       {props.results.map((result) => (
                         <Link
-                          to="/search-medicine"
+                          to={`/productdetails?id=${result.id}`}
                           onClick={(e) => searchList(e, result.id)}>
                           <div className="col search_list">{result.name}</div>
                         </Link>

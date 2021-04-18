@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -46,6 +47,12 @@ const WishList = (props) => {
                 removeProd={removeFromCart}
               />
             )
+          ) : props.loading ? (
+            <div className="pl-2 pr-2 pb-2">
+              <Skeleton width={'100%'} height="100px" className="mb-2" />
+              <Skeleton width={'100%'} height="100px" className="mb-2" />
+              <Skeleton width={'100%'} height="100px" className="mb-2" />
+            </div>
           ) : !props.wishlist?.length > 0 ? (
             <div className="col-12 p-5 text-center">
               <Link

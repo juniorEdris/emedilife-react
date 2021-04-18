@@ -10,8 +10,16 @@ const NecessaryProducts = (props) => {
     <div className="necessary_product_section mb-5">
       {props.loading ? (
         <div className="container-md-fluid">
-          <Skeleton width="100%" height={50} className="mb-4" />
-          <Skeleton width="100%" height={500} />
+          <Skeleton width="100%" height={60} className="mb-4" />
+          <div className="row">
+            {Array(6)
+              .fill()
+              .map((x, i) => (
+                <div className="col-6 col-md-4 col-lg-2" key={i}>
+                  <Skeleton width="100%" height={300} />
+                </div>
+              ))}
+          </div>
         </div>
       ) : (
         props.products?.length > 0 && (
