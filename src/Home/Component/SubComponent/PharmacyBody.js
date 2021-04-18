@@ -66,14 +66,13 @@ export const PharmacyBody = (props) => {
           <div className="col-12 col-md-6 pharmacy_right">
             <div className="col m-auto plyr__video-embed" id="player">
               <iframe
-                // width={100}
-                height={300}
                 src="https://www.youtube.com/embed/QHBnlkBTOkM"
                 frameBorder={0}
                 title="video"
                 allowfullscreen={true}
                 allowtransparency
                 allow="autoplay"
+                style={{ height: '100%' }}
               />
             </div>
           </div>
