@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SingleList from './SingleListItem';
 
-export const LatestBlog = (props) => {
+const LatestBlog = (props) => {
   return (
     <div className="">
       <div className="blog_list_heading">

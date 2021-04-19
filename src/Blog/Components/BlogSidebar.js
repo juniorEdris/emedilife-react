@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BlogCategory } from './SubComponents/BlogCategories';
-import { LatestBlog } from './SubComponents/LatestBlog';
+import BlogCategory from './SubComponents/BlogCategories';
+import LatestBlog from './SubComponents/LatestBlog';
 
 const BlogSidebar = (props) => {
   return (

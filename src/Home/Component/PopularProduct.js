@@ -97,7 +97,7 @@ const PopularProduct = (props) => {
               .fill()
               .map((x, i) => (
                 <div className="col-6 col-md-4 col-lg-2" key={i}>
-                  <Skeleton width={'100%'} height={'200px'} />
+                  <Skeleton width={'100%'} height={'300px'} />
                 </div>
               ))}
           </div>

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export const BlogCategory = (props) => {
+const BlogCategory = (props) => {
   return (
     <div className="blog_category">
       <div className="blog_list_heading">

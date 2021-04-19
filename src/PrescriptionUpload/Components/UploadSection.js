@@ -3,19 +3,28 @@ import { connect } from 'react-redux';
 import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction';
 
 const UploadSection = (props) => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState({ image: '' });
   const handleChange = (e) => {
-    setImages(e.target.files);
+    let files = e.target.files || e.dataTransfer.files;
+    if (!files.length) {
+      return;
+    } else {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        setImages({
+          image: e.target.result,
+        });
+      };
+      reader.readAsDataURL(files[0]);
+    }
   };
   const removeImage = (image, i) => {
-    setImages((images) =>
-      [...images].filter((x, index, arr) => arr.indexOf(x) !== i)
-    );
+    setImages({ image: '' });
+    // setImages((images) =>
+    //   [...images].filter((x, index, arr) => arr.indexOf(x) !== i)
+    // );
   };
-  console.log(
-    'prescription frontend page',
-    [...images].map((image, i) => image)
-  );
+  // console.log('prescription frontend page', images);
   return (
     <div className="upload_section col col-md-8">
       {/* <div className="upload_section_top">
@@ -26,15 +35,13 @@ const UploadSection = (props) => {
         <form action="" method="POST" encType="multipart/formdata">
           <div className="file_upload_btn mt-4 mb-3">
             <div className="image_preview row">
-              {[...images].length > 0 ? (
-                [...images].map((image, i) => (
-                  <div className="per_image col-6 p-1 ">
-                    <span
-                      className=" remove_picture lnr lnr-cross"
-                      onClick={() => removeImage(image, i)}></span>
-                    <img src={URL.createObjectURL(image)} alt="" />
-                  </div>
-                ))
+              {images.image !== '' ? (
+                <div className="per_image col-6 p-1 ">
+                  <span
+                    className=" remove_picture lnr lnr-cross"
+                    onClick={() => removeImage()}></span>
+                  <img src={images.image} alt="" />
+                </div>
               ) : (
                 <img
                   src={`./assets/svg/icons/upload.svg`}
@@ -71,7 +78,7 @@ const UploadSection = (props) => {
             <button
               type="button"
               className="btn col offset-md-3 col-md-6"
-              onClick={() => props.upload('raghib', images[0])}>
+              onClick={() => props.upload('raghib', images.image)}>
               Procced
             </button>
           </div>

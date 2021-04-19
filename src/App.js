@@ -28,6 +28,7 @@ import { useEffect } from 'react';
 import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
 import { OrderNotification } from './OrderNotify/OrderNotification';
+import BlogDetails from './BlogDetails';
 
 // slick
 import 'slick-carousel/slick/slick.css';
@@ -44,6 +45,7 @@ function App(props) {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/productdetails" component={ProductDetails} />
+          {/* <Route path="/single-blog" component={<BlogDetails />} /> */}
           <Route path="/upload-prescription" component={PrescriptionUpload} />
           <Route path="/login">
             {!props.User ? <UserEntry /> : <Redirect to="/dashboard" />}

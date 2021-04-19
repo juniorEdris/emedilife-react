@@ -19,6 +19,10 @@ export const initialState = {
   popularProducts: [],
   commonProducts: [],
   homeBlogs: [],
+  homeVideo: {},
+  healthCareBanner: [],
+  homewideBannner: {},
+  homeappBanner: {},
   //   Single Product details
   productDetails: {},
   //   Search Results

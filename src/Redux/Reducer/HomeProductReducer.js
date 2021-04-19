@@ -24,6 +24,10 @@ export const HomeContentReducer = (state = initialState, action) => {
         commonProducts: action.commonProducts,
         neccessaryProducts: action.neccessaryProducts,
         homeBlogs: action.homeBlogs,
+        homeVideo: action.video,
+        healthCareBanner: action.healthCareBanner,
+        homewideBannner: action.wideBannner,
+        homeappBanner: action.appBanner,
       };
     case FETCH_HOME_PRODUCTS_ERROR:
       return {
@@ -35,6 +39,7 @@ export const HomeContentReducer = (state = initialState, action) => {
         commonProducts: [],
         neccessaryProducts: [],
         homeBlogs: [],
+        homeVideo: [],
       };
     default:
       return state;

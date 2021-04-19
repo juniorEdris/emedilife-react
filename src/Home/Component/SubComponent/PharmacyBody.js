@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
 import './pharmacybody.css';
@@ -64,17 +65,23 @@ export const PharmacyBody = (props) => {
             </div>
           </div>
           <div className="col-12 col-md-6 pharmacy_right">
-            <div className="col m-auto plyr__video-embed" id="player">
-              <iframe
-                src="https://www.youtube.com/embed/QHBnlkBTOkM"
-                frameBorder={0}
-                title="video"
-                allowfullscreen={true}
-                allowtransparency
-                allow="autoplay"
-                style={{ height: '100%' }}
-              />
-            </div>
+            {props.loading ? (
+              <div className="col m-auto plyr__video-embed" id="player">
+                <Skeleton width={'100%'} height={326} />
+              </div>
+            ) : (
+              <div className="col m-auto plyr__video-embed" id="player">
+                <iframe
+                  src={`https://www.youtube.com/embed/${props.video.youtube_url}`}
+                  frameBorder={0}
+                  title="video"
+                  allowfullscreen={true}
+                  allowtransparency
+                  allow="autoplay"
+                  style={{ height: '100%' }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -82,7 +89,10 @@ export const PharmacyBody = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  video: state.HomeContent.homeVideo,
+});
 
 const mapDispatchToProps = {};
 
