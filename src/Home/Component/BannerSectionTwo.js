@@ -5,10 +5,8 @@ import WideBanner from '../../PrimarySections/SectionUtils/WideBanner';
 const BannerSectionTwo = (props) => {
   return (
     <div className="">
-      {/* <WideBanner imagepath={'banners/banner2.png'} /> */}
       <WideBanner
         loading={props.loading}
-        online={true}
         imagepath={props.banner?.image_full_path}
       />
     </div>
@@ -17,7 +15,7 @@ const BannerSectionTwo = (props) => {
 
 const mapStateToProps = (state) => ({
   loading: state.HomeContent.loading,
-  banner: state.HomeContent.homewideBannner,
+  banner: state.HomeContent.hometoplargeBannner,
 });
 
 const mapDispatchToProps = {};

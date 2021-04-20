@@ -19,9 +19,11 @@ const fetchHomeProductsSuccess = (res) => {
     commonProducts: res.common_products.data,
     homeBlogs: res.blogs,
     video: res.home_page_right_video,
+    brand_bottom_banner: res.brand_bottom_banner,
     healthCareBanner: res.top_small_banners.data,
-    wideBannner: res.top_large_banner,
-    appBanner: res.bottom_large_banner,
+    top_large_banner: res.top_large_banner,
+    bottom_large_banner: res.bottom_large_banner,
+    appBanner: res.footer_top_large_banner,
   };
 };
 const fetchHomeProductsError = (error) => ({

@@ -17,20 +17,6 @@ import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import SlickSlider from './Component/SlickSlider';
 
 const Index = (props) => {
-  const sliders = [
-    {
-      id: 1,
-      photo: './assets/images/Slider/012.jpg',
-    },
-    {
-      id: 2,
-      photo: './assets/images/Slider/013.jpg',
-    },
-    {
-      id: 3,
-      photo: './assets/images/Slider/014.jpg',
-    },
-  ];
   useEffect(() => {
     props.getHomeContents();
     toTheTop();
@@ -38,8 +24,6 @@ const Index = (props) => {
   return (
     <div>
       <HomeSlider loading={props.loading} sliders={props.sliders} />
-      {/* <SlickSlider loading={props.loading} sliders={props.sliders} /> */}
-      {/* <HomeSlider sliders={sliders} /> */}
       <Features />
       <OnlinePharma />
       <FeatureBrands />

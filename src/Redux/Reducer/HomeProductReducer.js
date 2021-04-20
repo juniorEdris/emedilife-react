@@ -25,8 +25,10 @@ export const HomeContentReducer = (state = initialState, action) => {
         neccessaryProducts: action.neccessaryProducts,
         homeBlogs: action.homeBlogs,
         homeVideo: action.video,
+        homebrandBtmBanner: action.brand_bottom_banner,
         healthCareBanner: action.healthCareBanner,
-        homewideBannner: action.wideBannner,
+        hometoplargeBannner: action.top_large_banner,
+        homebtmLargeBanner: action.bottom_large_banner,
         homeappBanner: action.appBanner,
       };
     case FETCH_HOME_PRODUCTS_ERROR:

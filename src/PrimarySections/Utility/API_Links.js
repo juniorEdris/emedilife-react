@@ -28,5 +28,6 @@ export const ENDPOINTS = {
   UPDATE_WISHLIST_ITEM: `api/user/wishlist_update/`,
   DELETE_WISHLIST_ITEM: `api/delete/wishlist_product/`,
   USER_INFO: `api/get_user_info`,
+  USER_UPDATE: `api/user_update`,
   PRESCRIPTION_UPLOAD: `api/app/prescription_store?`,
 };

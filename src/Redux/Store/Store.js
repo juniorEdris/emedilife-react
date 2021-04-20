@@ -21,8 +21,10 @@ export const initialState = {
   homeBlogs: [],
   homeVideo: {},
   healthCareBanner: [],
-  homewideBannner: {},
+  hometoplargeBannner: {},
+  homebtmLargeBanner: {},
   homeappBanner: {},
+  homebrandBtmBanner: {},
   //   Single Product details
   productDetails: {},
   //   Search Results

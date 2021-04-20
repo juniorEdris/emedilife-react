@@ -10,7 +10,7 @@ const Banner = (props) => {
     <div className="home_slider">
       {props.loading ? (
         <div className="">
-          <Skeleton width={'100%'} height="350px" />
+          <Skeleton width={'100%'} height="248px" />
         </div>
       ) : (
         <OwlCarousel

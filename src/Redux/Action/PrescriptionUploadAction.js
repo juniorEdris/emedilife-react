@@ -38,7 +38,7 @@ export const PrescriptionUpload = (name, image) => async (dispatch) => {
   // await API()
   //   .post(
   //     `${ENDPOINTS.PRESCRIPTION_UPLOAD}user_id=${user_id}&name=${'raghib'}`,
-  //     images
+  //     {images}
   //   )
   //   .then((res) => {
   //     console.log('response from web', res);

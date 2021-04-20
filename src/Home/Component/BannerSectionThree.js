@@ -5,12 +5,18 @@ import WideBanner from '../../PrimarySections/SectionUtils/WideBanner';
 const BannerSectionThree = (props) => {
   return (
     <div className="">
-      <WideBanner imagepath={'banners/banner3.png'} />
+      <WideBanner
+        loading={props.loading}
+        imagepath={props.banner?.image_full_path}
+      />
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  banner: state.HomeContent.homebtmLargeBanner,
+});
 
 const mapDispatchToProps = {};
 

@@ -1,7 +1,33 @@
-import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { StoreAccInfo } from '../../../../Redux/Action/AccountInfoAction';
 
 const EditInformation = (props) => {
+  const [inputs, setInputs] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    district: '',
+    area: '',
+  });
+
+  const handleChange = (e) => {
+    setInputs({ ...inputs, [e.target.id]: e.target.value });
+  };
+  const submitFrom = (e) => {
+    e.preventDefault();
+    props.storeInfo(inputs);
+    setInputs({
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      district: '',
+      area: '',
+    });
+  };
   return (
     <div className="edit_information">
       <div className="acc_dash_heading mb-5">
@@ -13,32 +39,29 @@ const EditInformation = (props) => {
         </div>
         <form>
           <div className="form-row">
-            <div className="form-group col-md-6">
-              <label htmlFor="first_name">First Name</label>
+            <div className="form-group col-12">
+              <label htmlFor="name">Full Name</label>
               <input
                 type="email"
                 className="form-control"
-                id="first_name"
-                placeholder="First Name"
-              />
-            </div>
-            <div className="form-group col-md-6">
-              <label htmlFor="last_name">Last name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="last_name"
-                placeholder="Last Name"
+                id="name"
+                placeholder="Full Name"
+                onChange={handleChange}
+                value={inputs.name}
               />
             </div>
           </div>
           <div className=" form-group">
             <label htmlFor="phone">Phone Number</label>
             <div className="input-group">
-              <div className="input-group-prepend">
-                <div className="input-group-text">+880</div>
-              </div>
-              <input type="text" className="form-control" id="phone" />
+              <input
+                type="text"
+                className="form-control"
+                id="phone"
+                onChange={handleChange}
+                value={inputs.phone}
+                placeholder="Phone number"
+              />
             </div>
           </div>
           <div className="form-group">
@@ -48,24 +71,55 @@ const EditInformation = (props) => {
               className="form-control"
               id="email"
               placeholder="Email"
+              onChange={handleChange}
+              value={inputs.email}
             />
           </div>
-          {/* <div className="form-group">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="gridCheck"
-              />
-              <label className="form-check-label ml-2" htmlFor="gridCheck">
-                <span className="btn btn-dark check-label">Save Address</span>
-              </label>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="district">District</label>
+              <select
+                id="district"
+                className="form-control form-control-lg"
+                onChange={handleChange}
+                value={inputs.district}>
+                <option selected>Choose...</option>
+                <option>Area-one</option>
+                <option>Area-two</option>
+                <option>Area-three</option>
+              </select>
             </div>
-          </div> */}
+            <div
+              className="form-group col-md-6"
+              onChange={handleChange}
+              value={inputs.area}>
+              <label htmlFor="area">Area</label>
+              <select id="area" className="form-control form-control-lg">
+                <option selected>Choose...</option>
+                <option>Area-one</option>
+                <option>Area-two</option>
+                <option>Area-three</option>
+              </select>
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              className="form-control form-control-lg"
+              id="address"
+              placeholder="Apartment, studio, or floor"
+              onChange={handleChange}
+              value={inputs.address}
+            />
+          </div>
           <div className="account_submit_btn">
-            <button type="submit" className="btn btn-primary col-md-4">
+            <Link
+              to="#"
+              onClick={submitFrom}
+              className="btn btn-primary col-md-4">
               Save Address
-            </button>
+            </Link>
           </div>
         </form>
       </div>
@@ -75,6 +129,8 @@ const EditInformation = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  storeInfo: (object) => dispatch(StoreAccInfo(object)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditInformation);
