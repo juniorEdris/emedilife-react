@@ -46,7 +46,7 @@
     border: 1px solid var(--theme-color);
     padding: 1.4rem;
 }
-.contact_form button{
+.contact_form .button{
     display: block;
     background-color: var(--user-entry-btn);
     color: var(--light-color);
@@ -55,7 +55,7 @@
     padding: 0.625rem 0;
     font-size: 1.2rem;
 }
-.contact_form button:hover{
+.contact_form .button:hover{
     background-color: var(--dark-color);
     color: var(--light-color);
 }

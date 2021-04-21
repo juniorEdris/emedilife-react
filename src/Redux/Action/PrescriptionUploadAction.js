@@ -24,29 +24,29 @@ const prescriptionUploadError = (error) => {
 };
 
 export const PrescriptionUpload = (name, image) => async (dispatch) => {
-  let images;
+  let fd = new FormData();
   if (image === '') {
     return;
   } else {
-    images = image;
+    fd.append('images', image);
   }
   const user_id = UserID();
-  // console.log('prescription upload', name, image, user_id, images);
+  console.log('prescription upload', fd);
   dispatch(prescriptionUploadRequest);
   dispatch(prescriptionUploadSuccess);
-  dispatch(prescriptionUploadError);
-  // await API()
-  //   .post(
-  //     `${ENDPOINTS.PRESCRIPTION_UPLOAD}user_id=${user_id}&name=${'raghib'}`,
-  //     {images}
-  //   )
-  //   .then((res) => {
-  //     console.log('response from web', res);
-  //     if (res.data.errors) {
-  //       console.log('errors alert');
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.log('error', error);
-  //   });
+  await API()
+    .post(
+      `${ENDPOINTS.PRESCRIPTION_UPLOAD}user_id=${user_id}&name=${'raghib'}`,
+      fd
+    )
+    .then((res) => {
+      console.log('response from web', res);
+      if (res.data.errors) {
+        console.log('errors alert');
+        dispatch(prescriptionUploadError(res.data.errors));
+      }
+    })
+    .catch((error) => {
+      console.log('error', error);
+    });
 };

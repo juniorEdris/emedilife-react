@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { SendContactMessage } from '../../Redux/Action/ContactMessageAction';
 
 const ContactForm = (props) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const sendMsg = (e) => {
+    e.preventDefault();
+    props.sendMsg(formData);
+  };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="contact_form offset-md-3 col-md-6 mb-5">
       <h1>Contact Form</h1>
@@ -12,39 +30,84 @@ const ContactForm = (props) => {
             className="form-control"
             id="formGroupExampleInput"
             placeholder="Name"
+            name="name"
+            onChange={handleChange}
           />
         </div>
+        {props.error?.name && (
+          <div className="mt-2 mb-2">
+            <p className="text-danger">{props.error.name}</p>
+          </div>
+        )}
         <div className="form-group">
           <input
             type="email"
             className="form-control"
             id="formGroupExampleInput2"
             placeholder="Email"
+            name="email"
+            onChange={handleChange}
           />
         </div>
+        {props.error?.email && (
+          <div className="mt-2 mb-2">
+            <p className="text-danger">{props.error.email}</p>
+          </div>
+        )}
         <div className="form-group">
           <input
             type="text"
             className="form-control"
-            id="formGroupExampleInput2"
+            id="formGroupExampleInput3"
             placeholder="Subject"
+            name="subject"
+            onChange={handleChange}
           />
         </div>
+        {props.error?.subject && (
+          <div className="mt-2 mb-2">
+            <p className="text-danger">{props.error.subject}</p>
+          </div>
+        )}
         <div class="form-group">
           <textarea
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="7"
-            placeholder="Message"></textarea>
+            placeholder="Message"
+            name="message"
+            onChange={handleChange}></textarea>
         </div>
-        <button className="btn">Send</button>
+        {props.error?.message && (
+          <div className="mt-2 mb-2">
+            <p className="text-danger">{props.error.message}</p>
+          </div>
+        )}
+        <Link
+          to="#"
+          onClick={sendMsg}
+          className={`${
+            formData.message.length === 0 && 'pointer_disabled'
+          } btn button`}>
+          Send
+        </Link>
       </form>
+      {props.success !== '' && (
+        <div className="mt-2 mb-2 text-center">
+          <p className="text-success">{props.success}</p>
+        </div>
+      )}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  error: state.Contact.error,
+  success: state.Contact.contactConfirm,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  sendMsg: (data) => dispatch(SendContactMessage(data)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

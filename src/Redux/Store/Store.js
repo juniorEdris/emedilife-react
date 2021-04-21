@@ -9,9 +9,10 @@ import { CartUpdateIDReducer } from '../Reducer/CartUpdateIDReducer';
 import { setUserReducer } from '../Reducer/UserReducer';
 import { WishlistReducer } from '../Reducer/WishlistReducer';
 import { UserInfoReducer } from '../Reducer/GetUserInfoReducer';
+import { ContactPageMsg } from '../Reducer/ContactMessageReducer';
+import { PrescriptionUploadReducer } from '../Reducer/PrescriptionUploadReducer';
 export const initialState = {
   loading: true,
-  error: '',
   //HomeContents
   homeSlider: [],
   homeBrands: [],
@@ -54,6 +55,11 @@ export const initialState = {
   deliveryTypes: [],
   info: {},
   status: '',
+  // Contact Page states
+  error: { name: '', email: '', subject: '', message: '', prescription: '' },
+  contactConfirm: '',
+  // Contact Page states
+  prescriptionSuccess: '',
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -68,6 +74,8 @@ const store = createStore(
     User: setUserReducer,
     Wishlist: WishlistReducer,
     UserInfo: UserInfoReducer,
+    Contact: ContactPageMsg,
+    Prescription: PrescriptionUploadReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

@@ -4,6 +4,7 @@ import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction'
 
 const UploadSection = (props) => {
   const [images, setImages] = useState({ image: '' });
+  console.log(props);
   const handleChange = (e) => {
     let files = e.target.files || e.dataTransfer.files;
     if (!files.length) {
@@ -15,8 +16,16 @@ const UploadSection = (props) => {
           image: e.target.result,
         });
       };
-      reader.readAsDataURL(files[0]);
+      const ddd = reader.readAsDataURL(files[0]);
+      console.log(reader, files, 'FFFF', ddd);
+      // setImages({
+      //   image: e.target.files,
+      // });
     }
+  };
+  const submitFrom = (e) => {
+    console.log('prescription frontend page', images);
+    // props.upload('raghib', images.image);
   };
   const removeImage = (image, i) => {
     setImages({ image: '' });
@@ -24,14 +33,18 @@ const UploadSection = (props) => {
     //   [...images].filter((x, index, arr) => arr.indexOf(x) !== i)
     // );
   };
-  // console.log('prescription frontend page', images);
   return (
     <div className="upload_section col col-md-8">
       {/* <div className="upload_section_top">
         <span>home/upload prescription</span>
-      </div> */}
+      </div> */}{' '}
       <div className="upload_section_middle">
         <span className="">upload prescription</span>
+        {props.error?.prescription && (
+          <div className="mt-2 mb-2 text-center">
+            <p className="text-danger">{props.error.prescription}</p>
+          </div>
+        )}
         <form action="" method="POST" encType="multipart/formdata">
           <div className="file_upload_btn mt-4 mb-3">
             <div className="image_preview row">
@@ -78,7 +91,7 @@ const UploadSection = (props) => {
             <button
               type="button"
               className="btn col offset-md-3 col-md-6"
-              onClick={() => props.upload('raghib', images.image)}>
+              onClick={submitFrom}>
               Procced
             </button>
           </div>
@@ -88,7 +101,10 @@ const UploadSection = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  success: state.Prescription.prescriptionSuccess,
+  error: state.Prescription.error,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   upload: (name, image) => dispatch(PrescriptionUpload(name, image)),

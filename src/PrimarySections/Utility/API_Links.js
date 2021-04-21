@@ -30,4 +30,5 @@ export const ENDPOINTS = {
   USER_INFO: `api/get_user_info`,
   USER_UPDATE: `api/user_update`,
   PRESCRIPTION_UPLOAD: `api/app/prescription_store?`,
+  SEND_CONTACT_MSG: `api/send/contact-us-message`,
 };
