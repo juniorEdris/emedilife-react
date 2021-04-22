@@ -31,4 +31,5 @@ export const ENDPOINTS = {
   USER_UPDATE: `api/user_update`,
   PRESCRIPTION_UPLOAD: `api/app/prescription_store?`,
   SEND_CONTACT_MSG: `api/send/contact-us-message`,
+  COUPON_TOKEN: `api/app/get_coupon_info/`,
 };

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCartProdSubTotal } from '../PrimarySections/Utility';
 import { getUserInfo } from '../Redux/Action/GetUserInfoAction';
 import './checkout.css';
 import CheckOutBody from './Components/CheckOutBody';
@@ -27,9 +28,12 @@ const CheckOut = (props) => {
             <Link to="/login">Click here to login</Link>
           </div>
           <div className="checkout_heading_right">
-            <div className="col p-0 m-0">
+            <div className="col p-0 m-0 d-flex align-items-center">
               <img src="./assets/svg/icons/shopping-cart.svg" alt="" />
-              &#2547; {12345}
+              &#2547;{' '}
+              {(getCartProdSubTotal(props.cartList, props.user) || 0).toFixed(
+                2
+              )}
             </div>
           </div>
         </div>
@@ -46,6 +50,7 @@ const mapStateToProps = (state) => ({
   deliveryTypes: state.UserInfo.delivery_types,
   info: state.UserInfo.info,
   status: state.UserInfo.status,
+  cartList: state.CartItems.basket,
 });
 
 const mapDispatchToProps = (dispatch) => ({

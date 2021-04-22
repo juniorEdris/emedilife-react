@@ -4,24 +4,26 @@ import { Link } from 'react-router-dom';
 import { LogOutAction } from '../../../../Redux/Action/UserAction';
 
 const UserDropdown = (props) => {
-  const [dropdown, setDropdown] = useState(false);
   return (
     <>
-      <Link
-        to="#"
-        className="header__link"
-        onClick={(e) => {
-          e.preventDefault();
-          setDropdown(!dropdown);
-        }}>
-        <div className="header__option">
-          <span className="header__option__lineOne">Sign In,</span>
-          <span className="header__option__lineTwo">
-            {props.user ? 'User' : `My Account`}
-          </span>
-        </div>
+      <Link to={!props.user ? '/login' : '/dashboard'} className="header__link">
+        {!props.user ? (
+          <div className="header__option">
+            <span className="header__option__lineOne">Sign In</span>
+            {/* <span className="header__option__lineTwo">Sign In</span> */}
+          </div>
+        ) : (
+          <div className="header__option">
+            <span className="header__option__lineOne">My account</span>
+            {/* <span
+              className="header__option__lineTwo"
+              onClick={() => props.logOut()}>
+              Logout
+            </span> */}
+          </div>
+        )}
       </Link>
-      {dropdown && (
+      {/* {dropdown && (
         <div className="dropdown">
           {!props.user ? (
             <ul>
@@ -49,7 +51,7 @@ const UserDropdown = (props) => {
             </ul>
           )}
         </div>
-      )}
+      )} */}
     </>
   );
 };

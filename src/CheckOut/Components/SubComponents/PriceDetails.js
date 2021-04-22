@@ -5,6 +5,9 @@ import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
 
 const PriceDetails = (props) => {
   const [coupon, setCoupon] = useState(false);
+  const [couponNum, setCouponNum] = useState({
+    coupon_number: '',
+  });
   const CouponInput = (e) => {
     e.preventDefault();
     setCoupon(!coupon);
@@ -12,22 +15,46 @@ const PriceDetails = (props) => {
   const total_amount = !props.user
     ? getCartProdSubTotal(props.localCartList, props.user) || 0
     : getCartProdSubTotal(props.cartList, props.user) || 0;
-  let delivery_charge;
+  let PriceContainer = {
+    delivery_charge: '',
+    min_order: 100,
+  };
   props.deliveryTypes?.forEach((type) => {
     if (type.conditional !== '1') {
       type.delivery_charges.forEach((charge) => {
-        delivery_charge = charge.delivery_charge;
+        PriceContainer = {
+          delivery_charge: charge.delivery_charge,
+        };
+        // delivery_charge = charge.delivery_charge;
       });
     } else {
       for (let i = 0; i <= type?.delivery_charges?.length; i++) {
         if (total_amount >= type?.delivery_charges[i]?.min_order) {
-          delivery_charge = type?.delivery_charges[i]?.delivery_charge;
-          return delivery_charge;
+          PriceContainer = {
+            delivery_charge: type?.delivery_charges[i]?.delivery_charge,
+            min_order: type?.delivery_charges[i]?.min_order,
+          };
+          return PriceContainer;
         }
       }
     }
   });
+  const final_total_amount = (
+    parseInt(getCartProdSubTotal(props.cartList, props.user)) +
+      parseInt(PriceContainer?.delivery_charge) || 0
+  ).toFixed(2);
+  console.log('pricedetails', PriceContainer);
 
+  // update state
+  const handleChange = (e) => {
+    setCouponNum({
+      [e.target.name]: e.target.value,
+    });
+  };
+  // Coupon Submit
+  const submitCoupon = () => {
+    console.log('duck', couponNum);
+  };
   return (
     <div className="">
       <div className="price_details chekoutCard">
@@ -70,9 +97,14 @@ const PriceDetails = (props) => {
                 id="coupon_number"
                 name="coupon_number"
                 placeholder="Coupon number"
+                onChange={handleChange}
+                value={couponNum.coupon_number}
               />
             </div>
-            <button type="submit" className="btn mb-2 col-md-3">
+            <button
+              type="button"
+              onClick={submitCoupon}
+              className="btn mb-2 col-md-3">
               Apply Coupon
             </button>
           </div>
@@ -95,7 +127,8 @@ const PriceDetails = (props) => {
               <div className="delivery_charge">
                 <label htmlFor={'check'} className="delivery_amount_hover">
                   <div className="col delivery_amount">
-                    Delivery Charge + &#2547; {delivery_charge || 0}
+                    Delivery Charge + &#2547;{' '}
+                    {PriceContainer?.delivery_charge || 0}
                   </div>
                   <div className="col delivery_time">1-3 Hours</div>
                 </label>
@@ -105,10 +138,18 @@ const PriceDetails = (props) => {
           <div className="border_top_section"></div>
           <div className="grand_total row no-gutters">
             <span className="grand_total_label">Grand Total</span>
-            <span className="grand_total_amount">&#2547; {284}</span>
+            <span className="grand_total_amount">
+              &#2547; {final_total_amount}
+            </span>
           </div>
           <div className="order_btn">
-            <button className="btn btn-primary  col-md-5">
+            <button
+              type="button"
+              className="btn btn-primary col-md-5"
+              disabled={
+                (getCartProdSubTotal(props.cartList, props.user) || 0) <
+                PriceContainer.min_order
+              }>
               Place Order Now
             </button>
           </div>

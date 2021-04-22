@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LogOutAction } from '../../../../Redux/Action/UserAction';
 
 const AccountInfo = (props) => {
   return (
@@ -20,6 +21,16 @@ const AccountInfo = (props) => {
         <div className="">
           <Link to="#">Change Password</Link>
         </div>
+        <div className="">
+          <Link
+            to="#"
+            onClick={(e) => {
+              e.preventDefault();
+              props.logOut();
+            }}>
+            Log out
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -27,6 +38,8 @@ const AccountInfo = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(LogOutAction()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);
