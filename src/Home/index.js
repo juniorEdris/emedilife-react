@@ -18,7 +18,6 @@ import SlickSlider from './Component/SlickSlider';
 
 const Index = (props) => {
   useEffect(() => {
-    props.getHomeContents();
     toTheTop();
   }, []);
   return (
@@ -44,8 +43,6 @@ const mapStateToProps = (state) => ({
   sliders: state.HomeContent.homeSlider,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getHomeContents: () => dispatch(GetHomeContents()),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

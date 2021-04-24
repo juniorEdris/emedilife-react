@@ -26,12 +26,6 @@ const CartList = (props) => {
     await props.addToCart(item);
     props.user && (await props.getCartItems());
   };
-  console.log('====================================');
-  console.log(
-    'cart list',
-    props.cartList?.map((item) => item)
-  );
-  console.log('====================================');
   return (
     <div>
       <div className="cart_product_wrapper">
@@ -112,28 +106,28 @@ const CartList = (props) => {
                         </span>
                       </div> */}
                       <div className="cart_single_image">
-                        <Link to={`productdetails?id=${item.product_id}`}>
+                        <Link to={`productdetails?id=${item?.product_id}`}>
                           <img
-                            src={`https:${item.photo}`}
+                            src={`https:${item?.photo}`}
                             alt="img-1"
-                            onClick={() => props.getCartID(item.id)}
+                            onClick={() => props.getCartID(item?.id)}
                           />
                         </Link>
                       </div>
                       <div className="cart_single_body">
                         <div className="cart_single_name">
                           <Link
-                            to={`productdetails?id=${item.product_id}`}
-                            onClick={() => props.getCartID(item.id)}>
-                            {item.name}
+                            to={`productdetails?id=${item?.product_id}`}
+                            onClick={() => props.getCartID(item?.id)}>
+                            {item?.name}
                           </Link>
                         </div>
                         <div className="cart_single_price">
                           <span className="cart_price">
-                            &#2547; {item.unit_price?.price}
+                            &#2547; {item?.unit_price?.price}
                           </span>
                           <span className="times">&times;</span>
-                          <span className="count">{item.total_quantity}</span>
+                          <span className="count">{item?.total_quantity}</span>
                         </div>
                       </div>
                     </div>

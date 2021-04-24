@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
+import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
   const [coupon, setCoupon] = useState(false);
@@ -54,6 +55,21 @@ const PriceDetails = (props) => {
   // Coupon Submit
   const submitCoupon = () => {
     console.log('duck', couponNum);
+  };
+
+  const PlaceOrder = (e) => {
+    e.preventDefault();
+    const data = {
+      name: '',
+      delivery_charge: '',
+      coupon_id: '',
+      coupon_discount: '',
+      payment_method: '',
+      district_id: '',
+      area_id: '',
+      address: '',
+      zip: '',
+    };
   };
   return (
     <div className="">
@@ -149,7 +165,8 @@ const PriceDetails = (props) => {
               disabled={
                 (getCartProdSubTotal(props.cartList, props.user) || 0) <
                 PriceContainer.min_order
-              }>
+              }
+              onClick={PlaceOrder}>
               Place Order Now
             </button>
           </div>
@@ -169,6 +186,8 @@ const mapStateToProps = (state) => ({
   user: state.User.user,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  order: (data) => dispatch(PlaceOrder(data)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PriceDetails);

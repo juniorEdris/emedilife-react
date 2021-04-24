@@ -32,4 +32,5 @@ export const ENDPOINTS = {
   PRESCRIPTION_UPLOAD: `api/app/prescription_store?`,
   SEND_CONTACT_MSG: `api/send/contact-us-message`,
   COUPON_TOKEN: `api/app/get_coupon_info/`,
+  PLACE_ORDER: `api/app/make_order`,
 };

@@ -21,64 +21,71 @@ export const Search = (props) => {
   };
 
   return (
-    <div className="header__search d-none d-md-block">
-      <div className="header__search_inner">
-        <div className="selectDiv">
-          <select
-            name=""
-            id=""
-            onChange={(e) => setOption(e.target.value)}
-            value={option}>
-            <option value="1">Option</option>
-            <option value="2">hakjsd</option>
-            <option value="3">sdaufh</option>
-            <option value="4">asdklf;k</option>
-          </select>
+    <div className="header__search_container">
+      <div className="header__search d-none d-md-block">
+        <div className="header__search_inner">
+          <div className="selectDiv">
+            <select
+              name=""
+              id=""
+              onChange={(e) => setOption(e.target.value)}
+              value={option}>
+              <option value="1">Option</option>
+              <option value="2">hakjsd</option>
+              <option value="3">sdaufh</option>
+              <option value="4">asdklf;k</option>
+            </select>
+          </div>
+          <input
+            type="text"
+            list="medicines"
+            className="header__searchInput"
+            onKeyUp={() => setList(true)}
+            onChange={handleChange}
+            value={input}
+          />
+          <Link to="#" className="header__searchIcon">
+            <i className=" fas fa-search" title="search"></i>
+          </Link>
         </div>
-        <input
-          type="text"
-          list="medicines"
-          className="header__searchInput"
-          onKeyUp={() => setList(true)}
-          onChange={handleChange}
-          value={input}
-        />
-        <Link to="#" className="header__searchIcon">
-          <i className=" fas fa-search" title="search"></i>
-        </Link>
-      </div>
-      {input.length > 0 && (
-        <div className="">
-          {list && (
-            <div className="">
-              {props.results !== undefined ? (
-                <div className="">
-                  {!props.loading ? (
-                    <div className="data-list col-12">
-                      {props.results.map((result) => (
-                        <Link
-                          to={`/productdetails?id=${result.id}`}
-                          onClick={(e) => searchList(e, result.id)}>
-                          <div className="col search_list">{result.name}</div>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="data-list col-12">
-                      <div className="header_search_list_loader">
-                        loading...
+        {input.length > 0 && (
+          <div className="">
+            {list && (
+              <div className="">
+                {props.results !== undefined ? (
+                  <div className="">
+                    {!props.loading ? (
+                      <div className="data-list col-12">
+                        {props.results.map((result) => (
+                          <Link
+                            to={`/productdetails?id=${result.id}`}
+                            onClick={(e) => searchList(e, result.id)}>
+                            <div className="col search_list">{result.name}</div>
+                          </Link>
+                        ))}
                       </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="data-list col-12">
-                  <div className="header_search_list_loader">No results!</div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+                    ) : (
+                      <div className="data-list col-12">
+                        <div className="header_search_list_loader">
+                          loading...
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="data-list col-12">
+                    <div className="header_search_list_loader">No results!</div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+      {input.length > 0 && list && (
+        <div
+          className="data-list-back-drop"
+          onClick={() => setList(false)}></div>
       )}
     </div>
   );

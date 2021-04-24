@@ -33,10 +33,11 @@ import BlogDetails from './BlogDetails';
 // slick
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { GetHomeContents } from './Redux/Action/HomeProductsAction';
 
 function App(props) {
   useEffect(() => {
-    // props.getCartItems();
+    props.getHomeContents();
   }, []);
   return (
     <Router>
@@ -75,6 +76,6 @@ const mapStateToProps = (state) => ({
   User: state.User.user,
 });
 const mapDispatchToProps = (dispatch) => ({
-  getCartItems: () => dispatch(getCartItems()),
+  getHomeContents: () => dispatch(GetHomeContents()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

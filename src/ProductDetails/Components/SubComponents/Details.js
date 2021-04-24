@@ -14,7 +14,6 @@ const Details = (props) => {
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
   const [previousPrice, setPreviousPrice] = useState(0);
-  const loading = true;
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -31,7 +30,7 @@ const Details = (props) => {
       id: item.id,
       photo: item.photo,
       name: item.name,
-      price: price === '' ? item.unit_prices[0].price : price,
+      price: price === '' ? item.unit_prices[0]?.price : price,
       unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
       total_quantity: quantity,
     };
@@ -41,7 +40,7 @@ const Details = (props) => {
   const updateCartItem = async (item) => {
     await props.updateCart(
       props.cart_id,
-      priceId === '' ? item.unit_prices[0].id : priceId,
+      priceId === '' ? item.unit_prices[0]?.id : priceId,
       quantity
     );
     props.user && (await props.getCartItems());
@@ -53,24 +52,22 @@ const Details = (props) => {
       name: item.name,
       unit_price: {
         price:
-          price === '' ? parseInt(item.unit_prices[0].price) : parseInt(price),
+          price === '' ? parseInt(item.unit_prices[0]?.price) : parseInt(price),
         previous_price:
           previousPrice === ''
-            ? parseInt(item.unit_prices[0].previous_price)
+            ? parseInt(item.unit_prices[0]?.previous_price)
             : parseInt(previousPrice),
-        unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
+        unit_prices_id: priceId === '' ? item.unit_prices[0]?.id : priceId,
       },
       total_quantity: quantity,
     };
     await props.addToWish(product);
-    // props.user && (await props.getWishItems());
   };
   return (
     <div className="product_details_wrapper">
       {props.loading ? (
         <div className="product_details_caption">
           <div className="details_product-name">
-            {/* skeleton */}
             <Skeleton className="mb-3" width={'100%'} height={50} />
           </div>
           <div className="details_ratings mb-2">
@@ -96,7 +93,12 @@ const Details = (props) => {
           <div className="details_product-name">
             <p title={props.details?.name}>{props.details?.name}</p>
           </div>
-          <div className="details_ratings mb-2">
+          <div className="details_generic mb-2">
+            <small>
+              generic: <Link to={`/`}>paracitaml</Link>
+            </small>
+          </div>
+          {/* <div className="details_ratings mb-2">
             <span className={`rated`}>
               <i className="fa fa-star" />
             </span>
@@ -113,10 +115,10 @@ const Details = (props) => {
               <i className="fa fa-star" />
             </span>
             <span className="review_count">250+ reviews</span>
-          </div>
+          </div> */}
           <div className="details_manufacture-product">
             <small>
-              brand:{' '}
+              company:{' '}
               <Link to="/">
                 {props.details?.company !== null ? props.details?.company : ''}
               </Link>
@@ -151,7 +153,7 @@ const Details = (props) => {
               <div className="details_regular-price">
                 <span className="">
                   &#2547;{' '}
-                  {price === '' ? props.details?.unit_prices[0].price : price}
+                  {price === '' ? props.details?.unit_prices[0]?.price : price}
                 </span>
               </div>
             )}
@@ -161,7 +163,7 @@ const Details = (props) => {
                 <del>
                   &#2547;
                   {previousPrice === 0
-                    ? props.details?.unit_prices[0].previous_price || 0
+                    ? props.details?.unit_prices[0]?.previous_price || 0
                     : previousPrice}
                 </del>
               </div>
@@ -179,26 +181,48 @@ const Details = (props) => {
                       onChange={() => selectPackage(x)}
                       checked={
                         priceId === ''
-                          ? props.details?.unit_prices[0].id === x.id
+                          ? props.details?.unit_prices[0]?.id === x.id
                           : priceId === x.id
                       }
                       required
                     />
 
-                    <label htmlFor={x.unitType}>
+                    <label htmlFor={x.unitType} onClick={() => setQuantity(1)}>
                       {x.unitType}{' '}
                       <small className="radio_price">({x.price})</small>
                     </label>
                   </div>
-                  <div className="radio_qty row align-items-center no-gutters ">
+                  <div
+                    className={`
+                      ${
+                        priceId === ''
+                          ? props.details?.unit_prices[0]?.id === x.id
+                            ? ''
+                            : 'pointer_disabled'
+                          : priceId === x.id
+                          ? ''
+                          : 'pointer_disabled'
+                      } radio_qty row align-items-center no-gutters `}>
                     <span
                       className={`${
-                        quantity === 1 && 'pointer_disabled'
+                        quantity === 1 && 'counter_disabled'
                       } radio_qty_dec`}
                       onClick={decrement}>
                       <i className="fa fa-minus"></i>
                     </span>
-                    <input type="text" readOnly value={quantity} />
+                    <input
+                      type="text"
+                      readOnly
+                      value={
+                        priceId === ''
+                          ? props.details?.unit_prices[0].id === x.id
+                            ? quantity
+                            : 1
+                          : priceId === x.id
+                          ? quantity
+                          : 1
+                      }
+                    />
                     <span className={`radio_qty_inc`} onClick={increment}>
                       <i class="fa fa-plus"></i>
                     </span>
@@ -207,33 +231,22 @@ const Details = (props) => {
               ))}
             </div>
           )}
-          {/* <div className="details_quantity">
-          <label>Quantity :</label>
-          <div className="product-qty mr-3">
-            <input type="text" readOnly value={quantity} />
-            <span
-              class={`dec qtybtn ${quantity === 1 && 'pointer_disabled'}`}
-              onClick={decrement}>
-              <i className="fa fa-minus"></i>
-            </span>
-            <span className={`inc qtybtn`} onClick={increment}>
-              <i class="fa fa-plus"></i>
-            </span>
-          </div>
-        </div> */}
-          <div className="details_buttons_wrapper mb-5">
+          <div className="details_buttons_wrapper mt-5">
             {!props.cart_id ? (
               <button
                 className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
                 type="button"
-                onClick={() => addProduct(props.details)}>
+                onClick={() => addProduct(props.details)}
+                disabled={!props.details?.unit_prices}>
                 add to cart
               </button>
             ) : (
               <button
                 className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
                 type="button"
-                onClick={() => updateCartItem(props.details)}>
+                onClick={() => updateCartItem(props.details)}
+                disabled={!props.details?.unit_prices}>
+                {' '}
                 update cart
               </button>
             )}

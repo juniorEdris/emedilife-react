@@ -7,36 +7,36 @@ const ProductCard = (props) => {
   return (
     <div className="">
       <div className="product-section">
-        <div className={`product-item`} id={props.product.id}>
+        <div className={`product-item`} id={props.product?.id}>
           <div className="product-thumb">
-            <Link to={`/productdetails?id=${props.product.id}`}>
+            <Link to={`/productdetails?id=${props.product?.id}`}>
               <img
-                src={`https:${props.product.photo}`}
+                src={`https:${props.product?.photo}`}
                 className="pri-img"
-                alt={Truncate(props.product.name, 5)}
+                alt={Truncate(props.product?.name, 5)}
               />
             </Link>
 
             <div className="box-label">
               <div className="label-product label_sale">
                 <span>
-                  {props.product.sale ? `-${props.product.sale}%` : ''}
+                  {props.product?.sale ? `-${props.product?.sale}%` : ''}
                 </span>
               </div>
             </div>
           </div>
           <div className="product-caption">
             <div className="product-name">
-              <h5>
+              <h5 className="">
                 <Link
-                  to={`/productdetails?id=${props.product.id}`}
-                  title={props.product.name}>
-                  {props.product.name}
+                  to={`/productdetails?id=${props.product?.id}`}
+                  title={props.product?.name}>
+                  {Truncate(props.product?.name, 30)}
                 </Link>
               </h5>
             </div>
             <div className="manufacture-product">
-              {props.product.company && (
+              {props.product?.company && (
                 <span>
                   <Link to={`/`} title={props.product?.company} className="">
                     by {Truncate(props.product?.company, 16)}
@@ -49,7 +49,7 @@ const ProductCard = (props) => {
                 {' '}
                 {/*col-12 */}
                 <span
-                  className={` ${props.product.special && 'special-price'} `}>
+                  className={` ${props.product?.special && 'special-price'} `}>
                   &#2547; {props.product?.unit_prices?.price}
                 </span>
               </span>
@@ -72,7 +72,7 @@ const ProductCard = (props) => {
             </div>
             <Link
               className="btn-cart d-block text-center"
-              to={`/productdetails?id=${props.product.id}`}>
+              to={`/productdetails?id=${props.product?.id}`}>
               show details
             </Link>
           </div>

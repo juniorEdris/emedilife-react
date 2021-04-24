@@ -1,8 +1,10 @@
 import { initialState } from '../Store/Store';
 import {
+  ADD_TO_BASKET_REQUEST,
   ADD_TO_BASKET_MSG,
   ADD_TO_BASKET_SUCCESS,
   ADD_TO_SERVER_BASKET_SUCCESS,
+  ADD_TO_SERVER_BASKET_REQUEST,
   BASKET_STATUS_COMPLETE,
   BASKET_STATUS_SUCCESS,
   REMOVE_FROM_BASKET,
@@ -10,6 +12,13 @@ import {
 
 export const AddBasketReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_TO_BASKET_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        basketmsg: [],
+        basketstatus: false,
+      };
     case ADD_TO_SERVER_BASKET_SUCCESS:
       return {
         ...state,
@@ -25,7 +34,6 @@ export const AddBasketReducer = (state = initialState, action) => {
         basketstatus: action.status,
       };
     case ADD_TO_BASKET_MSG:
-      console.log('msg', action.message);
       return {
         basketmsg: action.message,
         tabStatus: action.status,

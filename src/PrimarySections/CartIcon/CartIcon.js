@@ -24,7 +24,6 @@ const CartIcon = (props) => {
           allProd.push(x.total_quantity);
         });
     return allProd.reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    // return allProd;
   };
   return (
     <div className="">
@@ -47,6 +46,9 @@ const CartIcon = (props) => {
         </div>
       </Link>
       <CartSidebar cart={cart} setCart={setCart} cartLength={cartLength} />
+      {cart && (
+        <div className="cart-back-drop" onClick={() => setCart(false)}></div>
+      )}
     </div>
   );
 };

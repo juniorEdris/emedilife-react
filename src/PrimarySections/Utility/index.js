@@ -22,7 +22,7 @@ export function useQuery() {
 
 // Short the alphabets
 export const Truncate = (str, n) => {
-  return str?.length > n ? str.substr(0, n - 1) + '' : str;
+  return str?.length > n ? str.substr(0, n - 1) + '...' : str;
 };
 // export const Truncate = (str, n) => {
 //   return str?.length > n ? str.substr(0, n - 1) + '....' : str;
@@ -32,11 +32,11 @@ export const getCartProdSubTotal = (basket, user) =>
   user
     ? basket?.reduce(
         (amount, item) =>
-          parseInt(item.unit_price.price * item.total_quantity) + amount,
+          parseInt(item.unit_price?.price * item?.total_quantity) + amount,
         0
       )
     : basket?.reduce(
-        (amount, item) => parseInt(item.price * item.total_quantity) + amount,
+        (amount, item) => parseInt(item?.price * item?.total_quantity) + amount,
         0
       );
 

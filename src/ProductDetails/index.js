@@ -24,7 +24,7 @@ const Detailsindex = (props) => {
       <div className="container-md-fluid">
         <Header />
         <Description />
-        <RelatedProducts />
+        {/* <RelatedProducts /> */}
         {props.basketMsg && (
           <CartAddanime Msg={props.basketMsg} tabState={props.tabState} />
         )}

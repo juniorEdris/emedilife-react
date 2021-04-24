@@ -331,8 +331,9 @@ ALL Section Heading css starts here
   line-height: 20px;
 }
 .product-name{
-  min-height: auto;
+  min-height: 40px;
 }
+
 .product-name h5 a {
   font-weight: 400;
   padding: 5px 0;
@@ -521,17 +522,34 @@ ALL Section Heading css starts here
   padding: 0 1.429rem 0 1.429rem;
   width: 15.929rem;
 }
+.header__search_container {
+width:60%
+}
 .header__search {
-  width: 60%;
+  width: 100%;
   position: relative;
   padding: 0 0.5rem;
 }
+.data-list-back-drop{
+  position: absolute;
+  min-height: calc(100% - 102px);
+  width: 100%;
+  background: var(--dark-color);
+  opacity: 0.4;
+  z-index: 999;
+  left: 0;
+  top: 102px;
+  cursor: pointer;
+}
 .data-list{
   position: absolute;
-  background:var(--datalist-bg-color) ;
-  padding: 0.625rem;
-  font-size: 1.2rem;
-  z-index: 1000;
+    background: var(--datalist-bg-color);
+    padding: 0.625rem;
+    font-size: 1.2rem;
+    z-index: 1000;
+    width: 98%;
+    height: 60vh;
+    overflow-y: scroll;
 }
 .data-list div{
   padding: 0.325rem 0;

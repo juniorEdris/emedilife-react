@@ -11,6 +11,7 @@ import { WishlistReducer } from '../Reducer/WishlistReducer';
 import { UserInfoReducer } from '../Reducer/GetUserInfoReducer';
 import { ContactPageMsg } from '../Reducer/ContactMessageReducer';
 import { PrescriptionUploadReducer } from '../Reducer/PrescriptionUploadReducer';
+import { PlaceOrderReducer } from '../Reducer/PlaceOrderReducer';
 export const initialState = {
   loading: true,
   //HomeContents
@@ -60,6 +61,9 @@ export const initialState = {
   contactConfirm: '',
   // Contact Page states
   prescriptionSuccess: '',
+  // Place Orders states
+  place_order_msg: '',
+  order_error: '',
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -76,6 +80,7 @@ const store = createStore(
     UserInfo: UserInfoReducer,
     Contact: ContactPageMsg,
     Prescription: PrescriptionUploadReducer,
+    PlaceOrder: PlaceOrderReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

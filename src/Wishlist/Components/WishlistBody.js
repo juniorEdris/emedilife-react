@@ -51,9 +51,8 @@ const WishlistBody = (props) => {
                       <div className="row align-items-center flex-nowrap">
                         <div className="wish_item_image col-3">
                           <img
-                            // src="./assets/images/products/img-1.png"
-                            src={`https:${product.photo}`}
-                            alt={product.name}
+                            src={`https:${product?.photo}`}
+                            alt={product?.name}
                           />
                         </div>
                         <div className="wish_item_name col-9">
@@ -65,12 +64,12 @@ const WishlistBody = (props) => {
                   <td>
                     <div className="wish_item_prices">
                       <div className="row no-gutters justify-content-center flex-nowrap">
-                        {product.unit_price.previous_price !== null && (
+                        {product.unit_price?.previous_price !== null && (
                           <span className="mr-1">
-                            <del>৳{product.unit_price.previous_price}</del>
+                            <del>৳{product.unit_price?.previous_price}</del>
                           </span>
                         )}
-                        <span>৳{product.unit_price.price}</span>
+                        <span>৳{product.unit_price?.price}</span>
                       </div>
                     </div>
                   </td>
@@ -93,13 +92,8 @@ const WishlistBody = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  // loading: state.Wishlist.loading,
-  // wishlist: state.Wishlist.wishlist,
-});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({
-  // addToCart: (product, count) => dispatch(AddBasketProd(product)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishlistBody);
