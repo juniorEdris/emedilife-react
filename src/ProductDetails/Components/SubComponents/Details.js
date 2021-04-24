@@ -1,5 +1,5 @@
 import Skeleton from '@yisheng90/react-loading';
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -7,6 +7,7 @@ import {
   updateCartItem,
 } from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
+import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
 const Details = (props) => {
@@ -14,6 +15,9 @@ const Details = (props) => {
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
   const [previousPrice, setPreviousPrice] = useState(0);
+  useEffect(() => {
+    props.getCartID('');
+  }, []);
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -31,7 +35,7 @@ const Details = (props) => {
       photo: item.photo,
       name: item.name,
       price: price === '' ? item.unit_prices[0]?.price : price,
-      unit_prices_id: priceId === '' ? item.unit_prices[0].id : priceId,
+      unit_prices_id: priceId === '' ? item.unit_prices[0]?.id : priceId,
       total_quantity: quantity,
     };
     await props.addToCart(product, quantity);
@@ -234,18 +238,20 @@ const Details = (props) => {
           <div className="details_buttons_wrapper mt-5">
             {!props.cart_id ? (
               <button
-                className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
+                className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
                 onClick={() => addProduct(props.details)}
-                disabled={!props.details?.unit_prices}>
+                // disabled={!props.details?.unit_prices === false && true}
+              >
                 add to cart
               </button>
             ) : (
               <button
-                className="details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2"
+                className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
                 onClick={() => updateCartItem(props.details)}
-                disabled={!props.details?.unit_prices}>
+                // disabled={!props.details?.unit_prices === false && true}
+              >
                 {' '}
                 update cart
               </button>
@@ -270,5 +276,6 @@ const mapDispatchToProps = (dispatch) => ({
   addToWish: (product) => dispatch(addToWishlistAction(product)),
   updateCart: (cartId, unit_price_id, quantity) =>
     dispatch(updateCartItem(cartId, unit_price_id, quantity)),
+  getCartID: (id) => dispatch(getCartUpdateID(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Details));
