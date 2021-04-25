@@ -27,7 +27,7 @@ import { getCartItems } from './Redux/Action/CartProductsAction';
 import { useEffect } from 'react';
 import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
-import { OrderNotification } from './OrderNotify/OrderNotification';
+import OrderNotification from './OrderNotify/OrderNotification';
 import BlogDetails from './BlogDetails';
 
 // slick

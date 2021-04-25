@@ -12,20 +12,27 @@ export const PlaceOrderReducer = (state = initialState, action) => {
         loading: true,
         place_order_msg: '',
         order_error: '',
+        place_order_status: '',
+        place_order_id: '',
       };
     case PLACE_ORDER_SUCCESS:
       return {
         ...state,
-        loading: true,
-        place_order_msg: action.res,
+        loading: false,
+        place_order_msg: action.res.message,
+        place_order_status: action.res.status,
+        place_order_id: action.res.order_id,
         order_error: '',
       };
     case PLACE_ORDER_ERROR:
+      console.log(action.error);
       return {
         ...state,
         loading: true,
         place_order_msg: '',
         order_error: action.error,
+        place_order_status: '',
+        place_order_id: '',
       };
     default:
       return { ...state };

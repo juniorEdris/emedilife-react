@@ -10,16 +10,9 @@ const CheckOut = (props) => {
   useEffect(() => {
     props.user && props.getUserInfo();
   }, []);
-  console.log(
-    'checkout index',
-    props.loading,
-    props.deliveryTypes,
-    props.info,
-    props.status
-  );
   return (
     <div className="checkout_wrapper">
-      <div className="container">
+      <div className={`container`}>
         {/* CHECKOUT HEADING STARTS HERE */}
         <div className="checkout_heading">
           <div className="checkout_heading_left col">
@@ -51,6 +44,7 @@ const mapStateToProps = (state) => ({
   info: state.UserInfo.info,
   status: state.UserInfo.status,
   cartList: state.CartItems.basket,
+  orderSuccessLoading: state.PlaceOrder.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

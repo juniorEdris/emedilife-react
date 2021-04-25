@@ -7,7 +7,7 @@ import CartSidebar from './Components/CartSidebar';
 import { getCartProdSubTotal } from '../../PrimarySections/Utility';
 
 const CartIcon = (props) => {
-  useEffect(() => {}, [props.user]);
+  // useEffect(() => {}, [props.user]);
   const [cart, setCart] = useState(false);
   const sidebarOpen = (e) => {
     e.preventDefault();

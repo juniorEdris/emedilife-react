@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
+import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
+  const history = useHistory();
   const [coupon, setCoupon] = useState(false);
   const [couponNum, setCouponNum] = useState({
     coupon_number: '',
@@ -25,6 +27,7 @@ const PriceDetails = (props) => {
       type.delivery_charges.forEach((charge) => {
         PriceContainer = {
           delivery_charge: charge.delivery_charge,
+          min_order: charge.min_order,
         };
         // delivery_charge = charge.delivery_charge;
       });
@@ -44,7 +47,6 @@ const PriceDetails = (props) => {
     parseInt(getCartProdSubTotal(props.cartList, props.user)) +
       parseInt(PriceContainer?.delivery_charge) || 0
   ).toFixed(2);
-  console.log('pricedetails', PriceContainer);
 
   // update state
   const handleChange = (e) => {
@@ -53,26 +55,32 @@ const PriceDetails = (props) => {
     });
   };
   // Coupon Submit
-  const submitCoupon = () => {
-    console.log('duck', couponNum);
+  const submitCoupon = (e) => {
+    e.preventDefault();
+    API()
+      .post(`${ENDPOINTS.COUPON_TOKEN}${couponNum.coupon_number}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const PlaceOrder = (e) => {
     e.preventDefault();
     const data = {
-      name: '',
-      delivery_charge: '',
+      ...props.details,
       coupon_id: '',
       coupon_discount: '',
-      payment_method: '',
-      district_id: '',
-      area_id: '',
-      address: '',
-      zip: '',
+      payment_type: props.type,
     };
+    props.order(data);
   };
+  props.orderSuccess && history.push('/ordersuccess');
   return (
     <div className="">
+      {props.orderSuccessLoading && <h2>Order Success Loading</h2>}
       <div className="price_details chekoutCard">
         <div className="checkout_headings">
           <h4>Price Details</h4>
@@ -161,10 +169,10 @@ const PriceDetails = (props) => {
           <div className="order_btn">
             <button
               type="button"
-              className="btn btn-primary col-md-5"
+              className={` btn btn-primary col-md-5`}
               disabled={
-                (getCartProdSubTotal(props.cartList, props.user) || 0) <
-                PriceContainer.min_order
+                PriceContainer.min_order >
+                (getCartProdSubTotal(props.cartList, props.user) || 0)
               }
               onClick={PlaceOrder}>
               Place Order Now
@@ -184,6 +192,10 @@ const mapStateToProps = (state) => ({
   cartList: state.CartItems.basket,
   localCartList: state.Basket.localBasket,
   user: state.User.user,
+  orderSuccessLoading: state.PlaceOrder.loading,
+  orderStatus: state.PlaceOrder.place_order_status,
+  orderSuccess: state.PlaceOrder.place_order_msg,
+  orderError: state.PlaceOrder.order_error,
 });
 
 const mapDispatchToProps = (dispatch) => ({

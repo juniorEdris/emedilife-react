@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const PaymentMethod = (props) => {
+  const handleChange = (e) => {
+    props.setType(e.target.value);
+  };
   return (
     <div className="payment_method chekoutCard">
       <div className="checkout_headings">
@@ -16,8 +19,9 @@ const PaymentMethod = (props) => {
                 type="radio"
                 name="blankRadio"
                 id="cashRadio"
-                value="option1"
+                value="Cash on Delivery"
                 defaultChecked
+                onChange={handleChange}
               />
             </div>
             <div className="">
@@ -30,14 +34,15 @@ const PaymentMethod = (props) => {
               </label>
             </div>
           </div>
-          <div className="row no-gutters">
+          {/* <div className="row no-gutters">
             <div className="form-check">
               <input
                 className="form-check-input position-static check-box"
                 type="radio"
                 name="blankRadio"
                 id="cardRadio"
-                value="option1"
+                value="card"
+                onChange={handleChange}
               />
             </div>
             <div className="">
@@ -49,7 +54,7 @@ const PaymentMethod = (props) => {
                 />
               </label>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -1,24 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import DeliveryDetailsInput from './SubComponents/DeliveryDetailsInput';
 import PaymentMethod from './SubComponents/PaymentMethod';
 import PriceDetails from './SubComponents/PriceDetails';
 
 const CheckOutBody = (props) => {
+  const [DeliveryDetails, setDeliveryDetails] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    district: '',
+    area: '',
+    address: '',
+    zip: '',
+  });
+  const [paymentType, setPaymentType] = useState('Cash on Delivery');
+
+  useEffect(() => {
+    setDeliveryDetails({
+      name: props.info?.name,
+      phone: props.info?.phone,
+      email: props.info?.email,
+      district: props.info?.district || '',
+      area: props.info?.area || '',
+      address: props.info?.address,
+      zip: props.info?.zip || '',
+    });
+  }, [props]);
+  console.log('checkbody', paymentType, DeliveryDetails);
   return (
     <div className="checkout_body row">
       <div className="col-md-6">
-        <DeliveryDetailsInput />
-        <PaymentMethod />
+        <DeliveryDetailsInput
+          details={DeliveryDetails}
+          setDetails={setDeliveryDetails}
+        />
+        <PaymentMethod type={paymentType} setType={setPaymentType} />
       </div>
       <div className="col-md-6">
-        <PriceDetails />
+        <PriceDetails details={DeliveryDetails} type={paymentType} />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  info: state.UserInfo.info,
+});
 
 const mapDispatchToProps = (dispatch) => ({});
 
