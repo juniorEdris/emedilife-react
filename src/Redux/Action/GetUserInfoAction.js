@@ -24,7 +24,6 @@ export const getUserInfo = () => async (dispatch) => {
   await API()
     .get(ENDPOINTS.USER_INFO)
     .then((res) => {
-      console.log('get user info', res);
       dispatch(getUserInfoSuccess(res.data));
     })
     .catch((error) => {

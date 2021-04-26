@@ -12,7 +12,7 @@ const OrderNotification = (props) => {
   }, []);
   return (
     <div className="order_notification container-md-fluid mt-5 mb-5">
-      <div className="popup_wrapper col-7 offset-3">
+      <div className="popup_wrapper col-7 ">
         <div className="popup_header">
           <div className="success_header">
             <h3 className="">Your order has been submitted!</h3>

@@ -25,20 +25,20 @@ const placeOrderError = (err) => {
 };
 
 export const PlaceOrder = (data) => async (dispatch) => {
-  console.log('placeorderaction', data);
   dispatch(placeOrderRequest());
   await API()
     .post(
       `${ENDPOINTS.PLACE_ORDER}?name=${data.name}&email=${
         data.email
-      }&delivery_charge=${'100'}&coupon_id=${data.coupon_id}&coupon_discount=${
-        data.coupon_discount
-      }&payment_method=${data.payment_type}&district_id=${
-        data.district
-      }&area_id=${data.area}&address=${data.address}&zip=${data.zip}`
+      }&delivery_charge=${'100'}&coupon_id=${
+        data.coupon_id || ''
+      }&coupon_discount=${data.coupon_discount || ''}&payment_method=${
+        data.payment_type
+      }&district_id=${data.district}&area_id=${data.area}&address=${
+        data.address
+      }&zip=${data.zip}`
     )
     .then((res) => {
-      console.log('Place Order action', res);
       if (!res.data.status) {
         dispatch(placeOrderError(res.data));
       } else {

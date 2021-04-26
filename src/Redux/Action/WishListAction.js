@@ -49,7 +49,6 @@ const removeProdLocalWish = (product) => ({
   payload: product,
 });
 const removeProdOnlineWish = (message) => {
-  console.log('wish remove message', message);
   return {
     type: REMOVE_FROM_ONLINE_WISHLIST,
     message,
@@ -114,7 +113,6 @@ export const RemoveWishProd = (product) => async (dispatch, getState) => {
     await API()
       .delete(`${ENDPOINTS.DELETE_WISHLIST_ITEM}${product.id}`)
       .then((res) => {
-        console.log('remove wish item', res);
         dispatch(removeProdOnlineWish(res.data.message));
       })
       .catch((err) => {

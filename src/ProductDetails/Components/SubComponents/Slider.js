@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AliceCarousel from 'react-alice-carousel';
-import { DOMAIN } from '../../../PrimarySections/Utility/API_Links';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { products } from '../../../data';
 import './slider.css';
 import Skeleton from '@yisheng90/react-loading';
 
 const Slider = (props) => {
-  const loading = true;
   return (
     <div className="product_slider_wrapper">
       {props.loading ? (

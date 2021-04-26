@@ -1,5 +1,7 @@
+import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
+import Pagination from '../../../PrimarySections/Pagination/Pagination';
 import ProductCard from '../../../PrimarySections/SectionUtils/ProductCard';
 
 const SearchProducts = (props) => {
@@ -8,7 +10,13 @@ const SearchProducts = (props) => {
       {props.products !== undefined ? (
         <div className="row">
           {props.loading
-            ? 'Loading'
+            ? Array(4)
+                .fill()
+                .map((s, i) => (
+                  <div className="col-6 col-md-4 col-lg-3">
+                    <Skeleton width="100%" height={354} />
+                  </div>
+                ))
             : props.products?.map((product) => (
                 <div className="col-6 col-md-4 col-lg-3" key={product.id}>
                   <ProductCard product={product} key={product.id} />
@@ -18,6 +26,7 @@ const SearchProducts = (props) => {
       ) : (
         'no results'
       )}
+      <Pagination />
     </div>
   );
 };

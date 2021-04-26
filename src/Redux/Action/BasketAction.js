@@ -14,11 +14,14 @@ const addProdBasketRequest = (product) => ({
   type: ADD_TO_BASKET_REQUEST,
   payload: {},
 });
-const addProdServerBasketSuccess = (res) => ({
-  type: ADD_TO_SERVER_BASKET_SUCCESS,
-  status: res.type,
-  message: res.message,
-});
+const addProdServerBasketSuccess = (res) => {
+  console.log(res);
+  return {
+    type: ADD_TO_SERVER_BASKET_SUCCESS,
+    status: res.type,
+    message: res.message,
+  };
+};
 const addProdBasketSuccess = (product) => ({
   type: ADD_TO_BASKET_SUCCESS,
   payload: { product },
@@ -118,12 +121,19 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
 export const updateCartItem = (cartId, unit_price_id, quantity) => async (
   dispatch
 ) => {
+  dispatch(addProdBasketRequest());
   await API()
     .post(
       `${ENDPOINTS.CART_UPDATE}${cartId}?unit_price_id=${unit_price_id}&total_quantity=${quantity}`
     )
     .then((res) => {
-      console.log('update_cart', res);
+      if (res.data.message) {
+        dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
+        dispatch(productStatusSuccess());
+        setTimeout(() => {
+          dispatch(productStatusComplete());
+        }, 3000);
+      }
     })
     .catch((err) => console.log(err));
 };

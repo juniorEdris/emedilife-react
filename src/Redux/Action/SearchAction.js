@@ -24,12 +24,13 @@ export const GetSearchResults = (
   keywords,
   category,
   subcategory,
-  childcategory
+  childcategory,
+  page
 ) => async (dispatch) => {
   dispatch(fetchSearchRequest());
 
   await API()
-    .get(`${ENDPOINTS.SEARCH}${keywords}`)
+    .get(`${ENDPOINTS.SEARCH}${keywords}&page=${page}`)
     .then((res) => {
       dispatch(fetchSearchSuccess(res.data.data));
     })

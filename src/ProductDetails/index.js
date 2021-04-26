@@ -18,7 +18,6 @@ const Detailsindex = (props) => {
     // get back to the Top
     toTheTop();
   }, [prodID]);
-  console.log(props.wishlistMsg, props.wishState, '<<<<<<<<<<<<<<<');
   return (
     <div className="product_details_container mt-4 mb-4">
       <div className="container-md-fluid">

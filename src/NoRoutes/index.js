@@ -1,11 +1,11 @@
-import React from 'react'
+import './noroute.css';
 
-function index() {
-    return (
-        <div>
-            <h5 className='text-danger'>404 not found</h5>
-        </div>
-    )
-}
+const index = () => {
+  return (
+    <div className="no_routes">
+      <h1 className="text-danger">404 not found</h1>
+    </div>
+  );
+};
 
-export default index
+export default index;

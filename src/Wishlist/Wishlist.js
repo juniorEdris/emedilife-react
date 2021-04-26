@@ -18,7 +18,6 @@ const WishList = (props) => {
     UserToken() && props.getWishlist();
   }, []);
   const removeFromCart = async (items) => {
-    console.log('remove', items);
     await props.removeWishProd(items);
     props.user && (await props.getWishlist());
   };

@@ -27,7 +27,6 @@ const CheckOutBody = (props) => {
       zip: props.info?.zip || '',
     });
   }, [props]);
-  console.log('checkbody', paymentType, DeliveryDetails);
   return (
     <div className="checkout_body row">
       <div className="col-md-6">

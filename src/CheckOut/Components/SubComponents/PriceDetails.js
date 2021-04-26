@@ -11,13 +11,19 @@ const PriceDetails = (props) => {
   const [couponNum, setCouponNum] = useState({
     coupon_number: '',
   });
+  const [offer, setOffer] = useState({});
+  // Coupon input state
   const CouponInput = (e) => {
     e.preventDefault();
     setCoupon(!coupon);
   };
+
+  // GET TOTAL PRICE
   const total_amount = !props.user
     ? getCartProdSubTotal(props.localCartList, props.user) || 0
     : getCartProdSubTotal(props.cartList, props.user) || 0;
+
+  // GET DELIVERY & MIN ORDER
   let PriceContainer = {
     delivery_charge: '',
     min_order: 100,
@@ -43,41 +49,47 @@ const PriceDetails = (props) => {
       }
     }
   });
+  // GET TOTAL AMOUNT
   const final_total_amount = (
     parseInt(getCartProdSubTotal(props.cartList, props.user)) +
       parseInt(PriceContainer?.delivery_charge) || 0
   ).toFixed(2);
 
-  // update state
+  // SET COUPON NUMBER
   const handleChange = (e) => {
     setCouponNum({
       [e.target.name]: e.target.value,
     });
   };
-  // Coupon Submit
+  // COUPON SUBMIT
   const submitCoupon = (e) => {
     e.preventDefault();
     API()
-      .post(`${ENDPOINTS.COUPON_TOKEN}${couponNum.coupon_number}`)
+      .get(`${ENDPOINTS.COUPON_TOKEN}${couponNum.coupon_number}`)
       .then((res) => {
-        console.log(res);
+        setOffer(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  // PLACE ORDER FUNCTION
   const PlaceOrder = (e) => {
     e.preventDefault();
     const data = {
       ...props.details,
-      coupon_id: '',
-      coupon_discount: '',
+      coupon_id: offer.id,
+      coupon_discount: offer.price,
       payment_type: props.type,
     };
     props.order(data);
+    setOffer({});
   };
+
+  // PUSH TO ORDER SUCCESS NOTIFICATION
   props.orderSuccess && history.push('/ordersuccess');
+
   return (
     <div className="">
       {props.orderSuccessLoading && <h2>Order Success Loading</h2>}

@@ -26,7 +26,6 @@ export const WishlistReducer = (state = initialState, action) => {
         error: '',
       };
     case ADD_TO_LOCAL_WISHLIST_SUCCESS:
-      console.log('local-success', action.product);
       return {
         ...state,
         loading: false,
@@ -34,16 +33,14 @@ export const WishlistReducer = (state = initialState, action) => {
         error: '',
       };
     case ADD_TO_ONLINE_WISHLIST_SUCCESS:
-      console.log('online-success', action.message, action.status);
       return {
         ...state,
         loading: false,
         wishlistMsg: action.message,
-        wishlistStatus: action.status,
+        wishlistStatus: true,
         error: '',
       };
     case REMOVE_FROM_LOCAL_WISHLIST:
-      console.log('local-remove-success', action.product);
       return {
         ...state,
         loading: false,
@@ -51,7 +48,6 @@ export const WishlistReducer = (state = initialState, action) => {
         error: '',
       };
     case REMOVE_FROM_ONLINE_WISHLIST:
-      console.log('online-remove-success', action.product);
       return {
         ...state,
         loading: false,
@@ -88,7 +84,6 @@ export const WishlistReducer = (state = initialState, action) => {
         error: action.error,
       };
     case ADD_TO_WISHCART_MSG:
-      console.log('msg', action.message);
       return {
         basketmsg: action.message,
         tabStatus: action.status,
