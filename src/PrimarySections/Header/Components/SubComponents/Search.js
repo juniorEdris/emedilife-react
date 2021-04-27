@@ -9,7 +9,7 @@ export const Search = (props) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState(false);
   useEffect(() => {
-    props.getSearchResults(input);
+    input.length > 0 && props.getSearchResults({ keywords: input });
   }, [input, option]);
 
   const handleChange = (e) => {
@@ -21,8 +21,8 @@ export const Search = (props) => {
   };
 
   return (
-    <div className="header__search_container">
-      <div className="header__search d-none d-md-block">
+    <div className="header__search_container d-none d-md-block">
+      <div className="header__search ">
         <div className="header__search_inner">
           <div className="selectDiv">
             <select
@@ -43,6 +43,7 @@ export const Search = (props) => {
             onKeyUp={() => setList(true)}
             onChange={handleChange}
             value={input}
+            placeholder="Search medicine,injections"
           />
           <Link to="#" className="header__searchIcon">
             <i className=" fas fa-search" title="search"></i>
@@ -55,13 +56,15 @@ export const Search = (props) => {
                 {props.results !== undefined ? (
                   <div className="">
                     {!props.loading ? (
-                      <div className="data-list col-12">
+                      <div className="data-list col-12 p-0">
                         {props.results.map((result) => (
-                          <Link
-                            to={`/productdetails?id=${result.id}`}
-                            onClick={(e) => searchList(e, result.id)}>
-                            <div className="col search_list">{result.name}</div>
-                          </Link>
+                          <div className="col search_list">
+                            <Link
+                              to={`/productdetails?id=${result.id}`}
+                              onClick={(e) => searchList(e, result.id)}>
+                              {result.name}
+                            </Link>
+                          </div>
                         ))}
                       </div>
                     ) : (

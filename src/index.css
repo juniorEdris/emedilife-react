@@ -553,9 +553,15 @@ width:60%
     overflow-y: scroll;
 }
 .data-list div{
-  padding: 0.325rem 0;
+  padding: 0.325rem 1rem;
   /* color: var(--muted-color);
   font-weight: 300; */
+}
+.data-list div:hover{ 
+  background-color: var(--dark-color);
+}
+.data-list div:hover a{ 
+  color: var(--light-color);
 }
 .header__search_inner {
   display: flex;

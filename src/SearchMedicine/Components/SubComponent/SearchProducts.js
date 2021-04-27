@@ -1,10 +1,19 @@
 import Skeleton from '@yisheng90/react-loading';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Pagination from '../../../PrimarySections/Pagination/Pagination';
 import ProductCard from '../../../PrimarySections/SectionUtils/ProductCard';
+import {
+  GetCategoryResults,
+  GetSearchResults,
+} from '../../../Redux/Action/SearchAction';
 
 const SearchProducts = (props) => {
+  const [page, setpage] = useState(1);
+  useEffect(() => {
+    props.getCategoryProducts({ page });
+  }, [page]);
+
   return (
     <div className="search_body_products">
       {props.products !== undefined ? (
@@ -26,7 +35,9 @@ const SearchProducts = (props) => {
       ) : (
         'no results'
       )}
-      <Pagination />
+      {props.pages?.links?.length > 0 && (
+        <Pagination page={page} pages={props.pages} setPage={setpage} />
+      )}
     </div>
   );
 };
@@ -34,8 +45,12 @@ const SearchProducts = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.Search.loading,
   products: state.Search.searchResults,
+  pages: state.Search.pages,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  getProducts: (data) => dispatch(GetSearchResults(data)),
+  getCategoryProducts: (data) => dispatch(GetCategoryResults(data)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchProducts);

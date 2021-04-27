@@ -43,12 +43,17 @@
 }
 
 /* Search Component Css */
-.search_list{
+.search_list a{
     color: var(--user-entry-btn);
     font-weight: 600;
     font-size: 1rem;
     text-transform: capitalize;
+    display: block;
 }
+/* .search_list a:hover{
+    background:var(--dark-color);
+    color:var(--light-color);
+} */
 
 /* User Drop Down css */
 

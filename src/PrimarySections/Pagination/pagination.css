@@ -10,8 +10,13 @@
     cursor: pointer;
     text-transform: capitalize;
     border-radius: 0.25rem;
+    margin-bottom: 0.7rem;
 }
 .pagination ul li:hover{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+.pagination ul li.active{
     background-color: var(--dark-color);
     color: var(--light-color);
 }

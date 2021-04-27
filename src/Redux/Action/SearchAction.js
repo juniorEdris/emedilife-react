@@ -12,7 +12,8 @@ const fetchSearchRequest = () => ({
 const fetchSearchSuccess = (res) => {
   return {
     type: SEARCH_PRODUCTS_SUCCESS,
-    searchResults: res,
+    searchResults: res.data,
+    pages: res.meta,
   };
 };
 const fetchSearchError = (error) => ({
@@ -20,19 +21,28 @@ const fetchSearchError = (error) => ({
   error,
 });
 
-export const GetSearchResults = (
-  keywords,
-  category,
-  subcategory,
-  childcategory,
-  page
-) => async (dispatch) => {
+export const GetSearchResults = (data) => async (dispatch) => {
+  const { keywords = '', category, subcategory, childcategory, page } = data;
   dispatch(fetchSearchRequest());
 
   await API()
-    .get(`${ENDPOINTS.SEARCH}${keywords}&page=${page}`)
+    .get(`${ENDPOINTS.SEARCH}?keyword=${keywords}&per_page=20`)
     .then((res) => {
-      dispatch(fetchSearchSuccess(res.data.data));
+      dispatch(fetchSearchSuccess(res.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(fetchSearchError(error));
+    });
+};
+export const GetCategoryResults = (data) => async (dispatch) => {
+  const { keywords, category, subcategory, childcategory, page } = data;
+  dispatch(fetchSearchRequest());
+
+  await API()
+    .get(`${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}`)
+    .then((res) => {
+      dispatch(fetchSearchSuccess(res.data));
     })
     .catch((error) => {
       console.log(error);

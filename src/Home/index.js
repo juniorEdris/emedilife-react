@@ -14,7 +14,6 @@ import HealthArticle from './Component/HealthArticle';
 import AppBanner from './Component/AppBanner';
 import { GetHomeContents } from '../Redux/Action/HomeProductsAction';
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
-import SlickSlider from './Component/SlickSlider';
 
 const Index = (props) => {
   useEffect(() => {

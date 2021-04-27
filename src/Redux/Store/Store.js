@@ -14,6 +14,7 @@ import { PrescriptionUploadReducer } from '../Reducer/PrescriptionUploadReducer'
 import { PlaceOrderReducer } from '../Reducer/PlaceOrderReducer';
 export const initialState = {
   loading: true,
+  pages: [],
   //HomeContents
   homeSlider: [],
   homeBrands: [],

@@ -55,6 +55,7 @@ function App(props) {
             {!props.User ? <Redirect to="/login" /> : <Dashboard />}
           </Route>
           <Route path="/search-medicine" component={SearchMedicine} />
+          {/* <Route path="/allProducts" component={SearchMedicine} /> */}
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
           <Route path="/check-out" component={CheckOut} />

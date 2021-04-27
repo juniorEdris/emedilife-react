@@ -6,41 +6,40 @@ function NavList() {
     <div className="nav_links">
       <ul>
         <li>
-          <Link to="/all" className="nav-all">
+          <Link to="/" className="nav-all">
             <span class="lnr lnr-menu"></span> all
           </Link>
         </li>
         <li>
-          <Link to="/bestsellers">best sellers</Link>
+          <Link to="/">best sellers</Link>{' '}
+          {/*"/bestsellers" <span className="lnr lnr-chevron-down" />*/}
         </li>
         <li>
-          <Link to="/todaysdeals">todays deals</Link>
+          <Link to="/">todays deals</Link>
         </li>
         <li>
-          <Link to="/mobiles">mobiles</Link>
+          <Link to="/">mobiles</Link>
         </li>
         <li>
-          <Link to="/prime">
-            prime <span className="lnr lnr-chevron-down" />
-          </Link>
+          <Link to="/">prime</Link>
         </li>
         <li>
-          <Link to="/fashion">fashion</Link>
+          <Link to="/">fashion</Link>
         </li>
         <li>
-          <Link to="/customer-service">customer service</Link>
+          <Link to="/">customer service</Link>
         </li>
         <li>
-          <Link to="/amazon-pay">amazon pay</Link>
+          <Link to="/">amazon pay</Link>
         </li>
         <li>
-          <Link to="/electronice">electronics</Link>
+          <Link to="/">electronics</Link>
         </li>
         <li>
-          <Link to="/computers">computers</Link>
+          <Link to="/">computers</Link>
         </li>
         <li>
-          <Link to="/computers" className="">
+          <Link to="/" className="">
             see more
           </Link>
         </li>
