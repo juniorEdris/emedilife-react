@@ -192,8 +192,8 @@ const Details = (props) => {
                     />
 
                     <label htmlFor={x.unitType} onClick={() => setQuantity(1)}>
-                      {x.unitType}{' '}
-                      <small className="radio_price">({x.price})</small>
+                      {x.unit_quantity} {x.unitType}{' '}
+                      <small className="radio_price">(&#2547; {x.price})</small>
                     </label>
                   </div>
                   <div

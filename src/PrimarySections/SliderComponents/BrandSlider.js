@@ -13,20 +13,20 @@ const BrandSlider = (props) => {
     dots: false,
     responsive: {
       0: {
-        items: 2,
-        nav: false,
+        items: 3.5,
+        // nav: false,
       },
       700: {
         items: 3,
       },
       900: {
-        items: 5,
+        items: 4,
       },
-      1200: {
+      1000: {
         items: 6,
       },
-      1400: {
-        items: 7,
+      1550: {
+        items: 8,
       },
     },
   };

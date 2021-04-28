@@ -10,9 +10,9 @@ import {
 
 const SearchProducts = (props) => {
   const [page, setpage] = useState(1);
-  useEffect(() => {
-    props.getCategoryProducts({ page });
-  }, [page]);
+  // useEffect(() => {
+  //   props.getCategoryProducts({ page });
+  // }, [page]);
 
   return (
     <div className="search_body_products">

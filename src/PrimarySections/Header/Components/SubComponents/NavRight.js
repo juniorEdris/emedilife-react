@@ -1,12 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NavRight() {
-    return (
-        <div className='more_link'>
-           <Link to='#'><span>Shopping made easy</span></Link><span>|</span> <Link to=''><span>Download the app</span></Link>
-        </div>
-    )
+  return (
+    <div className="more_link">
+      <Link to="#">
+        <span>Shopping made easy</span>
+      </Link>
+      <span>|</span>{' '}
+      <Link to="#">
+        <span>Download the app</span>
+      </Link>
+    </div>
+  );
 }
 
-export default NavRight
+export default NavRight;

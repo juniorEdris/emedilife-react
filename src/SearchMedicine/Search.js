@@ -14,15 +14,16 @@ const Search = (props) => {
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('');
   const [page, setPage] = useState(1);
-  const [per_page, setPerpage] = useState(0);
-  const query = useQuery();
-  const pageNum = query.get('page');
+  // const [per_page, setPerpage] = useState(0);
+  // const query = useQuery();
+  // const pageNum = query.get('page');
+  // const id = query.get('id');
   useEffect(() => {
     toTheTop();
-    !pageNum && props.getProducts({ keywords: '' });
-    pageNum > 0 && setPerpage(pageNum);
-    pageNum > 0 && props.getCategoryProducts({ page: page });
-  }, [pageNum, page]);
+    // !pageNum && !id && props.getProducts({ keywords: '' });
+    // pageNum > 0 && setPerpage(pageNum);
+    // pageNum > 0 && props.getCategoryProducts({ page: page });
+  }, []);
   return (
     <div className="container-md-fluid mb-4">
       <div className="search_medicine_wrapper row">
@@ -45,4 +46,4 @@ const mapDispatchToProps = (dispatch) => ({
   getCategoryProducts: (data) => dispatch(GetCategoryResults(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Search));

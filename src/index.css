@@ -226,10 +226,12 @@ ALL Section Heading css starts here
 --------------------------------------------------------------------*/
 /*Image slider starts here */
 .image_container {
-  border-radius: 0.625rem;
+  border-radius: 2rem;
   height: 180px;
   border: 1px solid var(--shadow-color);
   background: var(--light-color);
+  box-shadow: var(--box-shadow-1);
+  margin: 1rem 0;
 }
 .image_container img {
   width: 100%;
@@ -302,6 +304,7 @@ ALL Section Heading css starts here
 }
 .product-thumb {
   position: relative;
+  height: 150px;
 }
 
 .product-thumb a {
@@ -309,10 +312,12 @@ ALL Section Heading css starts here
   display: block;
   border-radius: 0.625rem;
   overflow: hidden;
+  height: 100%;
 }
 .product-thumb a img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  /* height: auto; */
   object-fit: contain;
 }
 .product-caption {
@@ -966,6 +971,7 @@ Home Online Pharmacy Area css starts here
   width: 30px;
   height: 30px;
   padding: 0.3rem;
+  margin-right: 0.635rem;
 }
 /*--------------------------------------------------------------------
 Feature Brands css starts here

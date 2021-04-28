@@ -57,10 +57,10 @@
   .cart_sidebar_route{
     width: calc(85% - 60%)!important;
   }
-  .wishlist_body,
+  /* .wishlist_body,
   .order_lists,.my_orders {
     overflow-x: hidden  !important;
-}
+} */
 }
 /* ===================================== */
 @media (min-width: 991px) {

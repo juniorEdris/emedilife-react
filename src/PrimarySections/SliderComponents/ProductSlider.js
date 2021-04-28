@@ -21,7 +21,13 @@ const ProductSlider = (props) => {
         items: 3,
       },
       900: {
-        items: 5,
+        items: 4,
+      },
+      1000: {
+        items: 5.5,
+      },
+      1550: {
+        items: 7.5,
       },
     },
   };

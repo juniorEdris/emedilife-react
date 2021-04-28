@@ -9,7 +9,7 @@ export const Search = (props) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState(false);
   useEffect(() => {
-    input.length > 0 && props.getSearchResults({ keywords: input });
+    props.getSearchResults({ keywords: input });
   }, [input, option]);
 
   const handleChange = (e) => {

@@ -86,9 +86,15 @@
 }
 
 /* Order History */
-.order_lists,.my_orders {
+.order_lists,.my_orders,.primary_table {
     margin-bottom:2.7rem;
     overflow-x: scroll;
+    height: 350px;
+    overflow: auto;
+}
+.order_lists,.my_orders,.primary_table th,
+.order_lists,.my_orders,.primary_table td{
+    vertical-align: middle !important;
 }
 
 .order_header{

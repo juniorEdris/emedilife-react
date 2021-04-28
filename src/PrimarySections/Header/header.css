@@ -83,3 +83,8 @@
     color: var(--dark);
     text-transform: capitalize;
 }
+/* navlink disabled */
+/* .nav_links li a {
+    pointer-events: none;
+    cursor: pointer;
+} */
