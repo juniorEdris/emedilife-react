@@ -9,9 +9,8 @@ export const Search = (props) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState(false);
   useEffect(() => {
-    props.getSearchResults({ keywords: input });
+    props.getSearchResults({ keywords: input, category: option });
   }, [input, option]);
-
   const handleChange = (e) => {
     setInput(e.target.value);
   };
@@ -30,10 +29,12 @@ export const Search = (props) => {
               id=""
               onChange={(e) => setOption(e.target.value)}
               value={option}>
-              <option value="1">Option</option>
-              <option value="2">hakjsd</option>
-              <option value="3">sdaufh</option>
-              <option value="4">asdklf;k</option>
+              <option value="">All</option>
+              {props.categories?.map((cat) => (
+                <option value={cat.id} key={cat.id}>
+                  {cat.name.en}
+                </option>
+              ))}
             </select>
           </div>
           <input
@@ -58,7 +59,7 @@ export const Search = (props) => {
                     {!props.loading ? (
                       <div className="data-list col-12 p-0">
                         {props.results.map((result) => (
-                          <div className="col search_list">
+                          <div className="col search_list" key={result.id}>
                             <Link
                               to={`/productdetails?id=${result.id}`}
                               onClick={(e) => searchList(e, result.id)}>
@@ -97,11 +98,11 @@ export const Search = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.Search.loading,
   results: state.Search.searchResults,
+  categories: state.HomeContent.categories,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getSearchResults: (keywords, category, subcategory, childcategory) =>
-    dispatch(GetSearchResults(keywords, category, subcategory, childcategory)),
+  getSearchResults: (data) => dispatch(GetSearchResults(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

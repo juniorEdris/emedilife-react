@@ -70,17 +70,19 @@ export const PharmacyBody = (props) => {
                 <Skeleton width={'100%'} height={326} />
               </div>
             ) : (
-              <div className="col m-auto plyr__video-embed" id="player">
-                <iframe
-                  src={`https://www.youtube.com/embed/${props.video.youtube_url}`}
-                  frameBorder={0}
-                  title="video"
-                  allowfullscreen={true}
-                  allowtransparency
-                  allow="autoplay"
-                  style={{ height: '100%' }}
-                />
-              </div>
+              props.video?.youtube_url && (
+                <div className="col m-auto plyr__video-embed" id="player">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${props.video?.youtube_url}`}
+                    frameBorder={0}
+                    title="video"
+                    allowfullscreen={true}
+                    allowtransparency
+                    allow="autoplay"
+                    style={{ height: '100%' }}
+                  />
+                </div>
+              )
             )}
           </div>
         </div>

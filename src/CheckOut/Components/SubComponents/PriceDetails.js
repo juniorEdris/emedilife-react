@@ -65,7 +65,7 @@ const PriceDetails = (props) => {
   const submitCoupon = (e) => {
     e.preventDefault();
     API()
-      .get(`${ENDPOINTS.COUPON_TOKEN}${couponNum.coupon_number}`)
+      .post(`${ENDPOINTS.COUPON_TOKEN}?coupon_code=${couponNum.coupon_number}`)
       .then((res) => {
         setOffer(res.data);
       })

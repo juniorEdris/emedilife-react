@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,26 +12,32 @@ const AccountInfo = (props) => {
         <Link to="#">edit</Link>
       </div>
       <h5 className="pl-4 pr-4">Contact Information</h5>
-      <div className="account_details">
-        <div className="pt-3 pb-3">
-          <h3>Eftekar Raghib</h3>
-        </div>
-        <div className="">
-          <span>eftekarraghib@gmail.com</span>
-        </div>
-        <div className="">
-          <Link to="#">Change Password</Link>
-        </div>
-        <div className="">
-          <Link
-            to="#"
-            onClick={(e) => {
-              e.preventDefault();
-              props.logOut();
-            }}>
-            Log out
-          </Link>
-        </div>
+      <div className="">
+        {props.loading ? (
+          <Skeleton width={`100%`} height={`150px`} />
+        ) : (
+          <div className="account_details">
+            <div className="pt-3 pb-3">
+              <h3>{props.info?.name}</h3>
+            </div>
+            <div className="">
+              <span>{props.info?.email}</span>
+            </div>
+            <div className="">
+              <Link to="#">Change Password</Link>
+            </div>
+            <div className="">
+              <Link
+                to="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.logOut();
+                }}>
+                Log out
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

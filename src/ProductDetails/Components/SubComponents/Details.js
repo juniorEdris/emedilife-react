@@ -177,7 +177,7 @@ const Details = (props) => {
             <div className="details_qty">
               {props.details?.unit_prices?.map((x) => (
                 <div className="single_radio">
-                  <div className="">
+                  <div className="" onClick={() => setQuantity(1)}>
                     <input
                       type="radio"
                       name="price_id"
@@ -191,7 +191,7 @@ const Details = (props) => {
                       required
                     />
 
-                    <label htmlFor={x.unitType} onClick={() => setQuantity(1)}>
+                    <label htmlFor={x.unitType}>
                       {x.unit_quantity} {x.unitType}{' '}
                       <small className="radio_price">(&#2547; {x.price})</small>
                     </label>

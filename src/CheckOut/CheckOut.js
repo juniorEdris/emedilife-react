@@ -8,7 +8,7 @@ import CheckOutBody from './Components/CheckOutBody';
 
 const CheckOut = (props) => {
   useEffect(() => {
-    props.user && props.getUserInfo();
+    // props.user && props.getUserInfo();
   }, []);
   return (
     <div className="checkout_wrapper">

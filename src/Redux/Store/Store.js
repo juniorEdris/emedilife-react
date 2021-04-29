@@ -12,10 +12,13 @@ import { UserInfoReducer } from '../Reducer/GetUserInfoReducer';
 import { ContactPageMsg } from '../Reducer/ContactMessageReducer';
 import { PrescriptionUploadReducer } from '../Reducer/PrescriptionUploadReducer';
 import { PlaceOrderReducer } from '../Reducer/PlaceOrderReducer';
+import { SingleCompanyProducts } from '../Reducer/SingleBrandReducer';
+import { OrderListsReducer } from '../Reducer/OrderListReducer';
 export const initialState = {
   loading: true,
   pages: [],
   //HomeContents
+  categories: [],
   homeSlider: [],
   homeBrands: [],
   neccessaryProducts: [],
@@ -32,6 +35,7 @@ export const initialState = {
   productDetails: {},
   //   Search Results
   searchResults: [],
+  search_pages: [],
   //   Basket state
   basket: [],
   localBasket: localStorage.getItem('Cart List')
@@ -65,6 +69,12 @@ export const initialState = {
   // Place Orders states
   place_order_msg: '',
   order_error: '',
+  // Single Company Products
+  company_products: [],
+  company_pages: [],
+  // Order Lists
+  orders: [],
+  order_pages: [],
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -82,6 +92,8 @@ const store = createStore(
     Contact: ContactPageMsg,
     Prescription: PrescriptionUploadReducer,
     PlaceOrder: PlaceOrderReducer,
+    SingleCompany: SingleCompanyProducts,
+    OrderList: OrderListsReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

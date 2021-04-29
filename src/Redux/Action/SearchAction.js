@@ -26,7 +26,9 @@ export const GetSearchResults = (data) => async (dispatch) => {
   dispatch(fetchSearchRequest());
 
   await API()
-    .get(`${ENDPOINTS.SEARCH}?keyword=${keywords}&per_page=20`)
+    .get(
+      `${ENDPOINTS.SEARCH}?keyword=${keywords}&category_id=${category}&per_page=20`
+    )
     .then((res) => {
       dispatch(fetchSearchSuccess(res.data));
     })

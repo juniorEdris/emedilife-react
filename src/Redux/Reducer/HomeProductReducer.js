@@ -10,14 +10,26 @@ export const HomeContentReducer = (state = initialState, action) => {
     case FETCH_HOME_PRODUCTS_REQUEST:
       return {
         ...state,
-        homeSlider: [],
         loading: true,
+        categories: [],
+        homeSlider: [],
+        homeBrands: [],
+        popularProducts: [],
+        commonProducts: [],
         neccessaryProducts: [],
+        homeBlogs: [],
+        homeVideo: [],
+        homebrandBtmBanner: [],
+        healthCareBanner: [],
+        hometoplargeBannner: [],
+        homebtmLargeBanner: [],
+        homeappBanner: [],
       };
     case FETCH_HOME_PRODUCTS_SUCCESS:
       return {
         ...state,
         loading: false,
+        categories: action.categories,
         homeSlider: action.slider,
         homeBrands: action.homeBrands,
         popularProducts: action.popularProducts,
@@ -35,6 +47,7 @@ export const HomeContentReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        categories: [],
         homeSlider: [],
         homeBrands: [],
         popularProducts: [],
@@ -42,6 +55,11 @@ export const HomeContentReducer = (state = initialState, action) => {
         neccessaryProducts: [],
         homeBlogs: [],
         homeVideo: [],
+        homebrandBtmBanner: [],
+        healthCareBanner: [],
+        hometoplargeBannner: [],
+        homebtmLargeBanner: [],
+        homeappBanner: [],
       };
     default:
       return state;

@@ -45,7 +45,7 @@ const SearchProducts = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.Search.loading,
   products: state.Search.searchResults,
-  pages: state.Search.pages,
+  pages: state.Search.search_pages,
 });
 
 const mapDispatchToProps = (dispatch) => ({

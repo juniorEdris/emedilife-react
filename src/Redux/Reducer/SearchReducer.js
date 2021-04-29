@@ -12,21 +12,21 @@ export const SearchReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         searchResults: [],
-        pages: [],
+        search_pages: [],
       };
     case SEARCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         loading: false,
         searchResults: action.searchResults,
-        pages: action.pages,
+        search_pages: action.pages,
       };
     case SEARCH_PRODUCTS_ERROR:
       return {
         ...state,
         loading: true,
         searchResults: [],
-        pages: [],
+        search_pages: [],
       };
     default:
       return state;

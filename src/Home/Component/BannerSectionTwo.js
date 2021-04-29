@@ -5,10 +5,14 @@ import WideBanner from '../../PrimarySections/SectionUtils/WideBanner';
 const BannerSectionTwo = (props) => {
   return (
     <div className="">
-      <WideBanner
-        loading={props.loading}
-        imagepath={props.banner?.image_full_path}
-      />
+      {props.banner?.image_full_path && (
+        <div className="">
+          <WideBanner
+            loading={props.loading}
+            imagepath={props.banner?.image_full_path}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -34,11 +34,18 @@ import BlogDetails from './BlogDetails';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { GetHomeContents } from './Redux/Action/HomeProductsAction';
+import { getUserInfo } from './Redux/Action/GetUserInfoAction';
+import { getSingleCompanyProducts } from './Redux/Action/SingleBrandProductsAction';
+import { getOrderList } from './Redux/Action/OrderListAction';
 
 function App(props) {
   useEffect(() => {
     props.getHomeContents();
+    props.User && props.getUserInfo();
+    props.User && props.getOrderList();
+    props.singleCompany();
   }, []);
+  console.log('APP PAGE', props);
   return (
     <Router>
       <div className="App">
@@ -75,8 +82,14 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
   User: state.User.user,
+  singlebrand: state.SingleCompany.company_products,
+  singlebrandpage: state.SingleCompany.company_pages,
 });
 const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),
+  getUserInfo: () => dispatch(getUserInfo()),
+  singleCompany: (data) =>
+    dispatch(getSingleCompanyProducts({ company_id: 2 })),
+  getOrderList: () => dispatch(getOrderList()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

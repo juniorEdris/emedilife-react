@@ -25,14 +25,16 @@ const HealthCareBanner = (props) => {
           </div>
         </div>
       ) : (
-        <div className="container-md-fluid">
-          <SectionHeadingOne
-            fontStyleOne={'Healthcare'}
-            fontStyleTwo={'and More'}
-            reverse={true}
-          />
-          <Body />
-        </div>
+        props.banners?.length > 0 && (
+          <div className="container-md-fluid">
+            <SectionHeadingOne
+              fontStyleOne={'Healthcare'}
+              fontStyleTwo={'and More'}
+              reverse={true}
+            />
+            <Body />
+          </div>
+        )
       )}
     </div>
   );
