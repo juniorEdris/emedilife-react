@@ -15,7 +15,6 @@ const addProdBasketRequest = (product) => ({
   payload: {},
 });
 const addProdServerBasketSuccess = (res) => {
-  console.log(res);
   return {
     type: ADD_TO_SERVER_BASKET_SUCCESS,
     status: res.type,

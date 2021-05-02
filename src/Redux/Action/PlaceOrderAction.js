@@ -3,6 +3,7 @@ import {
   PLACE_ORDER_REQUEST,
   PLACE_ORDER_SUCCESS,
   PLACE_ORDER_ERROR,
+  PLACE_ORDER_COMPLETE,
 } from '../Types';
 const placeOrderRequest = () => {
   return {
@@ -21,6 +22,11 @@ const placeOrderError = (err) => {
   return {
     type: PLACE_ORDER_ERROR,
     err,
+  };
+};
+const placeOrderComplete = () => {
+  return {
+    type: PLACE_ORDER_COMPLETE,
   };
 };
 
@@ -49,3 +55,6 @@ export const PlaceOrder = (data) => async (dispatch) => {
       console.log(error);
     });
 };
+
+export const PlaceOrderClearState = () => (dispatch) =>
+  dispatch(placeOrderComplete());

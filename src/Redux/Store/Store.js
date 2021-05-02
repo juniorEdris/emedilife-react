@@ -75,6 +75,7 @@ export const initialState = {
   // Contact Page states
   prescriptionSuccess: '',
   // Place Orders states
+  placingOrder: false,
   place_order_msg: '',
   order_error: '',
   // Single Company Products

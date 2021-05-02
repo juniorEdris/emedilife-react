@@ -3,12 +3,21 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import { getCartItems } from '../Redux/Action/CartProductsAction';
+import { PlaceOrderClearState } from '../Redux/Action/PlaceOrderAction';
 import './ordernotify.css';
 
 const OrderNotification = (props) => {
   useEffect(() => {
     props.getCartItems();
     toTheTop();
+    setTimeout(() => {
+      props.clearOrder();
+    }, 10000);
+    return () => {
+      clearTimeout(() => {
+        props.clearOrder();
+      }, 10000);
+    };
   }, []);
   return (
     <div className="order_notification container-md-fluid mt-5 mb-5">
@@ -22,7 +31,7 @@ const OrderNotification = (props) => {
               <p className="order_number">Order Number: #{props.orderNumber}</p>
             )}
             <p className="popup_text">
-              We will call you to confirm your delivery address an d the total
+              We will call you to confirm your delivery address and the total
               price. *The total price of your order may vary depending on market
               prices of individual products, relevant discounts, and your promo
               code.
@@ -36,7 +45,10 @@ const OrderNotification = (props) => {
             <img src="./assets/images/primary/logo.png" width={70} alt="logo" />
           </p>
           <div className="back_btn">
-            <Link to="/" className="btn btn-success col-md-5">
+            <Link
+              to="/"
+              className="btn btn-success col-md-5"
+              onClick={() => props.clearOrder()}>
               Back to homepage
             </Link>
           </div>
@@ -53,6 +65,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCartItems: () => dispatch(getCartItems()),
+  clearOrder: () => dispatch(PlaceOrderClearState()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderNotification);

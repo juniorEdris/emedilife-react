@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
@@ -6,12 +6,16 @@ import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
+  const [offer, setOffer] = useState({});
+  useEffect(() => {
+    setOffer({});
+  }, []);
   const history = useHistory();
   const [coupon, setCoupon] = useState(false);
+  const [couponLoading, setCouponLoading] = useState(false);
   const [couponNum, setCouponNum] = useState({
     coupon_number: '',
   });
-  const [offer, setOffer] = useState({});
   // Coupon input state
   const CouponInput = (e) => {
     e.preventDefault();
@@ -63,11 +67,13 @@ const PriceDetails = (props) => {
   };
   // COUPON SUBMIT
   const submitCoupon = (e) => {
+    setCouponLoading(true);
     e.preventDefault();
     API()
       .post(`${ENDPOINTS.COUPON_TOKEN}?coupon_code=${couponNum.coupon_number}`)
       .then((res) => {
-        setOffer(res.data);
+        setOffer(res.data.data);
+        setCouponLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -84,15 +90,14 @@ const PriceDetails = (props) => {
       payment_type: props.type,
     };
     props.order(data);
-    setOffer({});
   };
 
   // PUSH TO ORDER SUCCESS NOTIFICATION
-  props.orderSuccess && history.push('/ordersuccess');
+  // props.orderSuccess && history.push('/ordersuccess');
+  props.orderStatus && history.push('/ordersuccess');
 
   return (
     <div className="">
-      {props.orderSuccessLoading && <h2>Order Success Loading</h2>}
       <div className="price_details chekoutCard">
         <div className="checkout_headings">
           <h4>Price Details</h4>
@@ -140,8 +145,9 @@ const PriceDetails = (props) => {
             <button
               type="button"
               onClick={submitCoupon}
-              className="btn mb-2 col-md-3">
-              Apply Coupon
+              className="btn mb-2 col-md-3"
+              disabled={couponLoading}>
+              {couponLoading ? 'Loading...' : 'Apply Coupon'}
             </button>
           </div>
         )}
@@ -150,8 +156,17 @@ const PriceDetails = (props) => {
             <h4>Shipping Method</h4>
           </div>
           <div className="">
+            <div className="row m-0 col-12">
+              <p className="mr-3 discount_amount mb-0">Sub Total: </p>{' '}
+              <span className="discount_amount">
+                &#2547;{' '}
+                {(getCartProdSubTotal(props.cartList, props.user) || 0).toFixed(
+                  2
+                )}
+              </span>
+            </div>
             <div className="row no-gutters align-items-center">
-              <div className="form-check">
+              {/* <div className="form-check">
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -159,7 +174,7 @@ const PriceDetails = (props) => {
                   id={'check'}
                   value="option1"
                 />
-              </div>
+              </div> */}
               <div className="delivery_charge">
                 <label htmlFor={'check'} className="delivery_amount_hover">
                   <div className="col delivery_amount">
@@ -170,12 +185,24 @@ const PriceDetails = (props) => {
                 </label>
               </div>
             </div>
+
+            <div className="row m-0 col-12">
+              <p className="mr-3 discount_amount mb-0">Discount: </p>{' '}
+              <span className="discount_amount">
+                &#2547; {offer?.price ? Number(offer.price).toFixed(2) : 0}
+              </span>
+            </div>
           </div>
           <div className="border_top_section"></div>
           <div className="grand_total row no-gutters">
             <span className="grand_total_label">Grand Total</span>
             <span className="grand_total_amount">
-              &#2547; {final_total_amount}
+              &#2547;{' '}
+              {offer?.price
+                ? (final_total_amount - Number(offer.price).toFixed(2)).toFixed(
+                    2
+                  ) || 0
+                : final_total_amount}
             </span>
           </div>
           <div className="order_btn">
@@ -187,7 +214,7 @@ const PriceDetails = (props) => {
                 (getCartProdSubTotal(props.cartList, props.user) || 0)
               }
               onClick={PlaceOrder}>
-              Place Order Now
+              {props.orderSuccessLoading ? 'Ordering' : 'Place Order Now'}
             </button>
           </div>
         </div>

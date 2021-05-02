@@ -31,7 +31,7 @@ export const ENDPOINTS = {
   USER_UPDATE: `api/user_update`,
   PRESCRIPTION_UPLOAD: `api/app/prescription_store?`,
   SEND_CONTACT_MSG: `api/send/contact-us-message`,
-  COUPON_TOKEN: `api/app/verify_coupon`,
+  COUPON_TOKEN: `api/verify_coupon`,
   PLACE_ORDER: `api/app/make_order`,
   SINGLE_BRAND_PRODUCTS: `api/web/product_by_company`,
   GET_ORDER_LIST: `api/get_orders`,

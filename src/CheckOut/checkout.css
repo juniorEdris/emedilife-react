@@ -105,6 +105,11 @@
     margin-top: 1rem;
     font-size: var(--primary-text-size);
 }
+.discount_amount{
+    color: var(--muted-color);
+    margin-top: 0.5rem;
+    font-size: var(--primary-text-size);
+}
 .delivery_time{
     font-weight: 300;
 }
