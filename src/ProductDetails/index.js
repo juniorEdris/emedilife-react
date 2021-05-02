@@ -23,7 +23,7 @@ const Detailsindex = (props) => {
       <div className="container-md-fluid">
         <Header />
         <Description />
-        {/* <RelatedProducts /> */}
+        {props.relatedProducts.length > 0 && <RelatedProducts />}
         {props.basketMsg && (
           <CartAddanime Msg={props.basketMsg} tabState={props.tabState} />
         )}
@@ -40,6 +40,7 @@ const mapStateToProps = (state) => ({
   tabState: state.Basket.tabStatus,
   wishlistMsg: state.Wishlist.wishlistMsg,
   wishState: state.Wishlist.wishlistStatus,
+  relatedProducts: state.ProductDetails.suggestions,
 });
 
 const mapDispatchToProps = (dispatch) => ({

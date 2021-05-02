@@ -26,15 +26,13 @@ const SingleBrandSuccessError = (error) => {
 };
 
 export const getSingleCompanyProducts = (data) => async (dispatch) => {
-  console.log('single brand prod 1', data);
   dispatch(SingleBrandRequest());
 
   API()
     .post(
-      `${ENDPOINTS.SINGLE_BRAND_PRODUCTS}?company_id=${data.company_id}&per_page=20`
+      `${ENDPOINTS.SINGLE_BRAND_PRODUCTS}?company_id=${data.company_id}&per_page=20&page=${data.page}`
     )
     .then((res) => {
-      console.log('single brand prod 2', res.data);
       dispatch(SingleBrandSuccess(res.data));
     })
     .catch((error) => {

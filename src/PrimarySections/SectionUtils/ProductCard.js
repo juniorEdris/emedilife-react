@@ -5,7 +5,7 @@ import { Truncate } from '../Utility';
 
 const ProductCard = (props) => {
   return (
-    <div className="">
+    <div className="" key={props.product.name}>
       <div className="product-section">
         <div className={`product-item`} id={props.product?.id}>
           <div className="product-thumb">

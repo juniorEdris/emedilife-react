@@ -99,27 +99,13 @@ const Details = (props) => {
           </div>
           <div className="details_generic mb-2">
             <small>
-              generic: <Link to={`/`}>paracitaml</Link>
+              generic:{' '}
+              <Link to={`/generic-products?id=${props.details?.generic_id}`}>
+                {props.details?.generic_name}
+              </Link>
             </small>
           </div>
-          {/* <div className="details_ratings mb-2">
-            <span className={`rated`}>
-              <i className="fa fa-star" />
-            </span>
-            <span className={`rated`}>
-              <i className="fa fa-star" />
-            </span>
-            <span className={`rated`}>
-              <i className="fa fa-star" />
-            </span>
-            <span className={`rated`}>
-              <i className="fa fa-star" />
-            </span>
-            <span className={`not-rated`}>
-              <i className="fa fa-star" />
-            </span>
-            <span className="review_count">250+ reviews</span>
-          </div> */}
+
           <div className="details_manufacture-product">
             <small>
               company:{' '}

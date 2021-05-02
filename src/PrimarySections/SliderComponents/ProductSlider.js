@@ -42,7 +42,7 @@ const ProductSlider = (props) => {
           '<i class="fa fa-angle-right"></i>',
         ]}>
         {props.products?.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard key={product.name} product={product} />
         ))}
       </OwlCarousel>
     </div>

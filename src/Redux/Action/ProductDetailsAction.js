@@ -13,6 +13,7 @@ const fetchProductDetailsSuccess = (res) => {
   return {
     type: FETCH_PRODUCT_DETAILS_SUCCESS,
     details: res,
+    related: res.related_product,
   };
 };
 const fetchProductDetailsError = (error) => ({

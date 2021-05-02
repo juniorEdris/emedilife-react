@@ -14,6 +14,10 @@ import { PrescriptionUploadReducer } from '../Reducer/PrescriptionUploadReducer'
 import { PlaceOrderReducer } from '../Reducer/PlaceOrderReducer';
 import { SingleCompanyProducts } from '../Reducer/SingleBrandReducer';
 import { OrderListsReducer } from '../Reducer/OrderListReducer';
+import { NeccessaryProdReducer } from '../Reducer/NeccessaryProductsReducer';
+import { GenericProductsReducer } from '../Reducer/GenericProductsReducer';
+import { BlogListReducer } from '../Reducer/BlogListReducer';
+import { SingleBlogReducer } from '../Reducer/SingleBlogReducer';
 export const initialState = {
   loading: true,
   pages: [],
@@ -31,8 +35,12 @@ export const initialState = {
   homebtmLargeBanner: {},
   homeappBanner: {},
   homebrandBtmBanner: {},
+  // Neccessary Page states
+  neccessaryResults: [],
+  neccessary_pages: [],
   //   Single Product details
   productDetails: {},
+  suggestions: [],
   //   Search Results
   searchResults: [],
   search_pages: [],
@@ -75,12 +83,21 @@ export const initialState = {
   // Order Lists
   orders: [],
   order_pages: [],
+  // Generic Products States
+  genericProducts: [],
+  genericPages: [],
+  // Blog List state
+  blogLists: [],
+  blogsPage: [],
+  // Single Blog state
+  singleBlog: {},
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers({
     HomeContent: HomeContentReducer,
+    NeccessaryContent: NeccessaryProdReducer,
     ProductDetails: ProductDetailsReducer,
     Search: SearchReducer,
     Basket: AddBasketReducer,
@@ -94,6 +111,9 @@ const store = createStore(
     PlaceOrder: PlaceOrderReducer,
     SingleCompany: SingleCompanyProducts,
     OrderList: OrderListsReducer,
+    GenericProducts: GenericProductsReducer,
+    AllBlogs: BlogListReducer,
+    SingleBlog: SingleBlogReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

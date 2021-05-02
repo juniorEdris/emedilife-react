@@ -26,13 +26,11 @@ const OrderListError = (error) => {
 };
 
 export const getOrderList = (data) => async (dispatch) => {
-  console.log('order list 1', data);
   dispatch(OrderListRequest());
 
   API()
     .get(`${ENDPOINTS.GET_ORDER_LIST}`)
     .then((res) => {
-      console.log('order list 2', res.data);
       dispatch(OrderListSuccess(res.data));
     })
     .catch((error) => {

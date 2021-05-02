@@ -37,15 +37,18 @@ import { GetHomeContents } from './Redux/Action/HomeProductsAction';
 import { getUserInfo } from './Redux/Action/GetUserInfoAction';
 import { getSingleCompanyProducts } from './Redux/Action/SingleBrandProductsAction';
 import { getOrderList } from './Redux/Action/OrderListAction';
+import NeccessaryProducts from './NeccessaryProducts/NeccessaryPage';
+import CompanyProducts from './CompanyProducts/CompanyProducts';
+import GenericProducts from './GenericProducts/GenericProducts';
+import { getBlogList } from './Redux/Action/BlogListAction';
 
 function App(props) {
   useEffect(() => {
     props.getHomeContents();
+    // props.getBlogList();
     props.User && props.getUserInfo();
     props.User && props.getOrderList();
-    props.singleCompany();
   }, []);
-  console.log('APP PAGE', props);
   return (
     <Router>
       <div className="App">
@@ -53,7 +56,7 @@ function App(props) {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/productdetails" component={ProductDetails} />
-          {/* <Route path="/single-blog" component={<BlogDetails />} /> */}
+          <Route path="/single-blog" component={BlogDetails} />
           <Route path="/upload-prescription" component={PrescriptionUpload} />
           <Route path="/login">
             {!props.User ? <UserEntry /> : <Redirect to="/dashboard" />}
@@ -61,8 +64,11 @@ function App(props) {
           <Route path="/dashboard">
             {!props.User ? <Redirect to="/login" /> : <Dashboard />}
           </Route>
-          <Route path="/search-medicine" component={SearchMedicine} />
-          {/* <Route path="/allProducts" component={SearchMedicine} /> */}
+          {/* <Route path="/search-medicine" component={SearchMedicine} /> */}
+          <Route path="/generic-products" component={GenericProducts} />
+          <Route path="/company-medicines" component={CompanyProducts} />
+          <Route path="/more-medicines" component={NeccessaryProducts} />
+          <Route path="/blog-details" component={BlogDetails} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
           <Route path="/check-out" component={CheckOut} />
@@ -82,14 +88,11 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
   User: state.User.user,
-  singlebrand: state.SingleCompany.company_products,
-  singlebrandpage: state.SingleCompany.company_pages,
 });
 const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),
   getUserInfo: () => dispatch(getUserInfo()),
-  singleCompany: (data) =>
-    dispatch(getSingleCompanyProducts({ company_id: 2 })),
   getOrderList: () => dispatch(getOrderList()),
+  // getBlogList: () => dispatch(getBlogList()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

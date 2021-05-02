@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SeeMoreBtn = (props) => {
   return (
     <div className="">
-      <Link to="/search-medicine?page=1" className="btn-more" type="button">
+      <Link to="/more-medicines" className="btn-more" type="button">
         see more
       </Link>
     </div>

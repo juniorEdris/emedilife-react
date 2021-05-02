@@ -42,7 +42,7 @@ const BrandSlider = (props) => {
         ]}>
         {props.brands?.map((brand) => (
           <div className="brand_container image_container col" key={brand.id}>
-            <Link to={`/search-medicine?id=${brand.id}`}>
+            <Link to={`/company-medicines?id=${brand.id}`}>
               <img src={`https:${brand.photo}`} alt={brand.name} />
             </Link>
           </div>

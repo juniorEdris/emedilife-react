@@ -38,16 +38,5 @@ export const GetSearchResults = (data) => async (dispatch) => {
     });
 };
 export const GetCategoryResults = (data) => async (dispatch) => {
-  const { keywords, category, subcategory, childcategory, page } = data;
-  dispatch(fetchSearchRequest());
-
-  await API()
-    .get(`${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}`)
-    .then((res) => {
-      dispatch(fetchSearchSuccess(res.data));
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch(fetchSearchError(error));
-    });
+  console.log('THIS ACTION WILL BE REMOVEN');
 };

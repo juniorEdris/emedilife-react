@@ -20,9 +20,6 @@ const Search = (props) => {
   // const id = query.get('id');
   useEffect(() => {
     toTheTop();
-    // !pageNum && !id && props.getProducts({ keywords: '' });
-    // pageNum > 0 && setPerpage(pageNum);
-    // pageNum > 0 && props.getCategoryProducts({ page: page });
   }, []);
   return (
     <div className="container-md-fluid mb-4">
