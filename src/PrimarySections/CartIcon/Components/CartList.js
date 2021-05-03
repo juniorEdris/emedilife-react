@@ -158,9 +158,8 @@ const CartList = (props) => {
         </div>
         <div className="checkout_btn">
           <Link
-            // to={!props.user ? '#' : '/check-out'}
-            to={'/check-out'}
-            className={`${!props.user ? 'pointer_disabled' : ' '} btn w-100`}>
+            to={!props.user ? '/login' : '/check-out'}
+            className={`btn w-100`}>
             Check Out
           </Link>
         </div>

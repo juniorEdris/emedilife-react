@@ -13,6 +13,7 @@ export const SingleCompanyProducts = (state = initialState, action) => {
         ...state,
         loading: true,
         company_products: [],
+        company_categories: [],
         company_pages: [],
       };
     case SINGLE_BRAND_PRODUCT_SUCCESS:
@@ -20,6 +21,7 @@ export const SingleCompanyProducts = (state = initialState, action) => {
         ...state,
         loading: false,
         company_products: action.results,
+        company_categories: action.categories,
         company_pages: action.pages,
       };
     case SINGLE_BRAND_PRODUCT_ERROR:
@@ -27,6 +29,7 @@ export const SingleCompanyProducts = (state = initialState, action) => {
         ...state,
         loading: true,
         company_products: [],
+        company_categories: [],
         company_pages: [],
       };
     default:

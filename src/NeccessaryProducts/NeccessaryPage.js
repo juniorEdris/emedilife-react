@@ -9,11 +9,13 @@ const NeccessaryProducts = (props) => {
   const [sort, setSort] = useState('');
   const [page, setPage] = useState(1);
   useEffect(() => {
-    props.getProducts({ page });
-  }, [page]);
+    props.getProducts({ page, category_id: category });
+  }, [page, category]);
   return (
     <div className="neccessary_product_wrapper">
       <AllProducts
+        home
+        categories={props.categories}
         category={category}
         setCategory={setCategory}
         sort={sort}
@@ -31,6 +33,7 @@ const NeccessaryProducts = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.NeccessaryContent.loading,
   products: state.NeccessaryContent.neccessaryResults,
+  categories: state.NeccessaryContent.neccessaryCategories,
   pages: state.NeccessaryContent.neccessary_pages,
 });
 

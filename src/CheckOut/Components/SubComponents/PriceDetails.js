@@ -211,7 +211,8 @@ const PriceDetails = (props) => {
               className={` btn btn-primary col-md-5`}
               disabled={
                 PriceContainer.min_order >
-                (getCartProdSubTotal(props.cartList, props.user) || 0)
+                  (getCartProdSubTotal(props.cartList, props.user) || 0) ||
+                props.orderSuccessLoading
               }
               onClick={PlaceOrder}>
               {props.orderSuccessLoading ? 'Ordering' : 'Place Order Now'}
@@ -231,7 +232,7 @@ const mapStateToProps = (state) => ({
   cartList: state.CartItems.basket,
   localCartList: state.Basket.localBasket,
   user: state.User.user,
-  orderSuccessLoading: state.PlaceOrder.loading,
+  orderSuccessLoading: state.PlaceOrder.placingOrder,
   orderStatus: state.PlaceOrder.place_order_status,
   orderSuccess: state.PlaceOrder.place_order_msg,
   orderError: state.PlaceOrder.order_error,

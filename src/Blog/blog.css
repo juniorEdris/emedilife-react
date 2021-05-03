@@ -7,10 +7,10 @@
     background-color: var(--nav-bg);
 }
 .blog_wrapper {
-    background-color: var(--gray-second-color);
     padding: var(--top-whitespace) 0;
 }
-.blog_list{
+.blog_wrapper.bg-blog{
+    background-color: var(--gray-second-color);
 }
 
 /*========================================

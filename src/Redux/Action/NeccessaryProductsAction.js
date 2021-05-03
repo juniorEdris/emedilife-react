@@ -10,11 +10,11 @@ const fetchNeccessaryRequest = () => ({
 });
 
 const fetchNeccessarySuccess = (res) => {
-  console.log('necce action', res);
   return {
     type: NECCESSARY_PRODUCTS_SUCCESS,
-    results: res.data,
-    pages: res.meta,
+    results: res.products.data,
+    categories: res.categories,
+    pages: res.products.meta,
   };
 };
 const fetchNeccessaryError = (error) => ({
@@ -23,11 +23,13 @@ const fetchNeccessaryError = (error) => ({
 });
 
 export const GetNeccessaryProducts = (data) => async (dispatch) => {
-  const { keywords, category, subcategory, childcategory, page } = data;
+  const { keywords, category_id, subcategory, childcategory, page } = data;
   dispatch(fetchNeccessaryRequest());
 
   await API()
-    .get(`${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}`)
+    .get(
+      `${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}&category_id=${category_id}`
+    )
     .then((res) => {
       dispatch(fetchNeccessarySuccess(res.data));
     })

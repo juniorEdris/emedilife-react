@@ -11,11 +11,12 @@ const CompanyProducts = (props) => {
   const query = useQuery();
   const id = query.get('id');
   useEffect(() => {
-    props.getProducts({ page, company_id: id });
-  }, [page, id]);
+    props.getProducts({ page, company_id: id, category_id: category });
+  }, [page, id, category]);
   return (
     <div className="company_products_wrapper">
       <AllProducts
+        categories={props.categories}
         category={category}
         setCategory={setCategory}
         sort={sort}
@@ -33,6 +34,7 @@ const CompanyProducts = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.SingleCompany.loading,
   products: state.SingleCompany.company_products,
+  categories: state.SingleCompany.company_categories,
   pages: state.SingleCompany.company_pages,
 });
 

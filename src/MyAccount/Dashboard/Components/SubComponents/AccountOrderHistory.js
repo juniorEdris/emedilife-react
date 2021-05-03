@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const AccountOrderHistory = (props) => {
-  console.log('dashboard orders', props);
   return (
     <div className="">
       <div className="order_header pl-4 pr-4">
@@ -22,7 +21,7 @@ const AccountOrderHistory = (props) => {
               <tr>
                 <th scope="col">Order#</th>
                 <th scope="col">Date</th>
-                <th scope="col">Ship To</th>
+                {/* <th scope="col">Ship To</th> */}
                 <th scope="col">Order Total</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
@@ -32,12 +31,12 @@ const AccountOrderHistory = (props) => {
               {props.orders?.map((order) => (
                 <tr className="trow-light" key={order.id}>
                   <th scope="row">
-                    <div className="col">{order.order_number}</div>
+                    <div className="col">#{order.order_number}</div>
                   </th>
                   <td>{order.order_date}</td>
-                  <td>Eftekar Raghib</td>
+                  {/* <td>Eftekar Raghib</td> */}
                   <td>Tk {order.pay_amount}</td>
-                  <td>{order.payment_status}</td>
+                  <td>{order.delivery_status}</td>
                   <td>
                     <div className="col-12">
                       <Link

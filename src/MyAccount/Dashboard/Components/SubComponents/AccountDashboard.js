@@ -5,6 +5,12 @@ import AccountInfo from './AccountInfo';
 import OrderHistory from './AccountOrderHistory';
 
 const AccountDashboard = (props) => {
+  console.log(
+    '>>>>>>>>>>>>>>',
+    props.pendingOrders,
+    props.completeOrders,
+    props.proccessingOrders
+  );
   return (
     <div className="account_dashboard">
       <div className="acc_dash_heading">
@@ -31,7 +37,7 @@ const AccountDashboard = (props) => {
       {/* order history start here */}
       <OrderHistory
         loading={props.orderLoading}
-        orders={props.orders}
+        orders={props.pendingOrders}
         orderPages={props.orderPages}
       />
       {/* Account information start here */}
@@ -44,6 +50,9 @@ const mapStateToProps = (state) => ({
   infoLoading: state.UserInfo.loading,
   info: state.UserInfo.info,
   orderLoading: state.OrderList.loading,
+  pendingOrders: state.OrderList.pendingOrders,
+  proccessingOrders: state.OrderList.onDeliverOrders,
+  completeOrders: state.OrderList.completedOrders,
   orders: state.OrderList.orders,
   orderPages: state.OrderList.order_pages,
 });

@@ -12,13 +12,25 @@ export const OrderListsReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         orders: [],
+        pendingorders: [],
+        completedOrders: [],
         order_pages: [],
+        onDeliverOrders: [],
       };
     case GET_ORDER_LIST_SUCCESS:
       return {
         ...state,
         loading: false,
         orders: action.results,
+        pendingOrders: action.results.filter(
+          (x) => x.delivery_status !== 'completed'
+        ),
+        completedOrders: action.results.filter(
+          (x) => x.delivery_status === 'completed'
+        ),
+        onDeliverOrders: action.results.filter(
+          (x) => x.delivery_status === 'on delivery'
+        ),
         order_pages: action.pages,
       };
     case GET_ORDER_LIST_ERROR:
@@ -26,7 +38,10 @@ export const OrderListsReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         orders: [],
+        pendingorders: [],
+        completedOrders: [],
         order_pages: [],
+        onDeliverOrders: [],
       };
     default:
       return {

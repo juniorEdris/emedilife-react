@@ -29,7 +29,6 @@ export const getSingleBlog = (id) => async (dispatch) => {
     .post(`${ENDPOINTS.GET_SINGLE_BLOG}?blog_id=${id}`)
     .then((res) => {
       dispatch(getBlogSuccess(res.data));
-      console.log(res);
     })
     .catch((error) => {
       console.log(error);

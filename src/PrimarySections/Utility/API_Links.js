@@ -39,4 +39,5 @@ export const ENDPOINTS = {
   GENERIC_PRODUCTS: `api/web/product_by_generic`,
   GET_BLOG_LIST: `api/web/get_blog_lists`,
   GET_SINGLE_BLOG: `api/web/get_blog_details`,
+  GET_SINGLE_ORDER: `api/get_order_details`,
 };

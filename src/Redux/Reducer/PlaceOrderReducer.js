@@ -10,7 +10,7 @@ export const PlaceOrderReducer = (state = initialState, action) => {
     case PLACE_ORDER_REQUEST:
       return {
         ...state,
-        // placingOrder: true,
+        placingOrder: true,
         loading: true,
         place_order_msg: '',
         order_error: '',
@@ -20,7 +20,7 @@ export const PlaceOrderReducer = (state = initialState, action) => {
     case PLACE_ORDER_SUCCESS:
       return {
         ...state,
-        // placingOrder: false,
+        placingOrder: false,
         loading: false,
         place_order_msg: action.res.message,
         place_order_status: action.res.status,
@@ -30,7 +30,7 @@ export const PlaceOrderReducer = (state = initialState, action) => {
     case PLACE_ORDER_COMPLETE:
       return {
         ...state,
-        // placingOrder: true,
+        placingOrder: false,
         loading: false,
         place_order_msg: '',
         order_error: '',
@@ -41,7 +41,7 @@ export const PlaceOrderReducer = (state = initialState, action) => {
       console.log(action.error);
       return {
         ...state,
-        // placingOrder: true,
+        placingOrder: true,
         loading: true,
         place_order_msg: '',
         order_error: action.error,

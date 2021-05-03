@@ -1,6 +1,8 @@
+import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Truncate } from '../../PrimarySections/Utility';
 
 const OrderProducts = (props) => {
   return (
@@ -9,45 +11,49 @@ const OrderProducts = (props) => {
         <thead class="thead-primary">
           <tr>
             <th scope="col">Product Name</th>
-            <th scope="col">Model</th>
+            <th scope="col">Type</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Total</th>
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
-          <tr className="trow-light">
-            <td>Corestin 5mg Tab.</td>
-            <td>BM10245</td>
-            <td>8</td>
-            <td>BDT 12.50</td>
-            <td>BDT 125.00</td>
-            <td>
-              <Link to="/order-info" className="table_link">
-                <img
+        {props.loading ? (
+          <tbody>
+            {Array(4)
+              .fill()
+              .map((tr) => (
+                <tr>
+                  <td colSpan={6}>
+                    <Skeleton width={'100%'} height={30} />
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        ) : (
+          <tbody>
+            {props.order?.cart?.map((item) => (
+              <tr className="trow-light" key={item.product_id}>
+                <td>{Truncate(item.name, 15)}</td>
+                <td>{item.unitType}</td>
+                <td>{item.unit_quantity}</td>
+                <td>BDT {item.price}</td>
+                <td>BDT {(item.price * item.unit_quantity).toFixed(2)}</td>
+                <td>
+                  <Link
+                    to={`/productdetails?id=${item.product_id}`}
+                    className="table_link">
+                    {/* <img
                   src="./assets/svg/icons/light-shopping-cart.svg"
                   alt="cart img"
-                />
-              </Link>
-            </td>
-          </tr>
-          <tr className="trow-light">
-            <td>Corestin 5mg Tab.</td>
-            <td>BM10245</td>
-            <td>8</td>
-            <td>BDT 12.50</td>
-            <td>BDT 125.00</td>
-            <td>
-              <Link to="/order-info" className="table_link">
-                <img
-                  src="./assets/svg/icons/light-shopping-cart.svg"
-                  alt="cart img"
-                />
-              </Link>
-            </td>
-          </tr>
-        </tbody>
+                /> */}
+                    View Details
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        )}
       </table>
     </div>
   );

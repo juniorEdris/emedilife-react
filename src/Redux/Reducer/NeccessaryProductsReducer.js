@@ -12,6 +12,7 @@ export const NeccessaryProdReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         neccessaryResults: [],
+        neccessaryCategories: [],
         neccessary_pages: [],
       };
     case NECCESSARY_PRODUCTS_SUCCESS:
@@ -19,6 +20,7 @@ export const NeccessaryProdReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         neccessaryResults: action.results,
+        neccessaryCategories: action.categories,
         neccessary_pages: action.pages,
       };
     case NECCESSARY_PRODUCTS_ERROR:
@@ -26,6 +28,7 @@ export const NeccessaryProdReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         neccessaryResults: [],
+        neccessaryCategories: [],
         neccessary_pages: [],
       };
     default:

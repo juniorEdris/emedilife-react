@@ -6,7 +6,7 @@ import BlogSidebar from './Components/BlogSidebar';
 
 const Blog = (props) => {
   return (
-    <div className="blog_wrapper">
+    <div className={`${props.loading ? '' : 'bg-blog'} blog_wrapper`}>
       <div className="container-md-fluid">
         <div className="row">
           <BlogList />
@@ -17,7 +17,9 @@ const Blog = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.AllBlogs.loading,
+});
 
 const mapDispatchToProps = {};
 

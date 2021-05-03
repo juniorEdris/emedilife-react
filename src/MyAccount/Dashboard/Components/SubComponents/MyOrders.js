@@ -1,3 +1,4 @@
+import dateFormat from 'dateformat';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,56 +15,42 @@ const MyOrders = (props) => {
           <tr>
             <th scope="col">Order#</th>
             <th scope="col">Date</th>
-            <th scope="col">Ship To</th>
+            {/* <th scope="col">Ship To</th> */}
             <th scope="col">Order Total</th>
             <th scope="col">Status</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr className="trow-light">
-            <th scope="row">#123456789</th>
-            <td>03-04-2021</td>
-            <td>Eftekar Raghib</td>
-            <td>Tk 123</td>
-            <td>on hold</td>
-            <td>
-              <Link to="/order-info" className="table_link">
-                view order
-              </Link>
-            </td>
-          </tr>
-          <tr className="trow-light">
-            <th scope="row">#123456789</th>
-            <td>03-04-2021</td>
-            <td>Eftekar Raghib</td>
-            <td>Tk 123</td>
-            <td>on hold</td>
-            <td>
-              <Link to="#" className="table_link">
-                view order
-              </Link>
-            </td>
-          </tr>
-          <tr className="trow-light">
-            <th scope="row">#123456789</th>
-            <td>03-04-2021</td>
-            <td>Eftekar Raghib</td>
-            <td>Tk 123</td>
-            <td>on hold</td>
-            <td>
-              <Link to="/order-info" className="table_link">
-                view order
-              </Link>
-            </td>
-          </tr>
+          {props.completedOrders?.map((order) => (
+            <tr className="trow-light" key={order.id}>
+              <th scope="row">#{order.order_number}</th>
+              <td>
+                {dateFormat(
+                  order.order_date,
+                  'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                )}
+              </td>
+              {/* <td>Eftekar Raghib</td> */}
+              <td>Tk {order.pay_amount}</td>
+              <td>{order.delivery_status}</td>
+              <td>
+                <Link to={`/order-info?id=${order.id}`} className="table_link">
+                  view order
+                </Link>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.OrderList.loading,
+  completedOrders: state.OrderList.completedOrders,
+});
 
 const mapDispatchToProps = {};
 

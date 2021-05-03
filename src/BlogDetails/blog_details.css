@@ -1,8 +1,10 @@
-.blog_details_wrapper{
+.blog_details_wrapper.bg_blog{
     background:var(--gray-second-color);
 }
+.blog_details_wrapper_body{
+    padding-top: var(--top-whitespace) ;
+}
 .blog_details_header{
-    margin-top: var(--top-whitespace) ;
     text-transform: capitalize;
     color: var(--nav-bg);
 }

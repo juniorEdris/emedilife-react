@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Sidebar from './SubComponents/Sidebar';
+import Sidebar from '../Blog/Components/BlogSidebar';
 import BlogDetails from './SubComponents/SingleBlogDetails';
 import './blog_details.css';
 import { getSingleBlog } from '../Redux/Action/SingleBlogAction';
@@ -13,10 +13,15 @@ export const Index = (props) => {
     props.getSingleBlog(id);
   }, [id]);
   return (
-    <div className="blog_details_wrapper p-0 col-12">
-      <div className="row">
-        <BlogDetails blog={props.blog} />
-        <Sidebar />
+    <div
+      className={`${
+        props.loading ? '' : 'bg_blog'
+      } blog_details_wrapper p-0 col-12`}>
+      <div className="blog_details_wrapper_body">
+        <div className="row">
+          <BlogDetails loading={props.loading} blog={props.blog} />
+          <Sidebar loading={props.loading} />
+        </div>
       </div>
     </div>
   );

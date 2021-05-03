@@ -143,7 +143,11 @@ const Details = (props) => {
               <div className="details_regular-price">
                 <span className="">
                   &#2547;{' '}
-                  {price === '' ? props.details?.unit_prices[0]?.price : price}
+                  {price === ''
+                    ? (props.details?.unit_prices[0]?.price * quantity).toFixed(
+                        2
+                      )
+                    : (price * quantity).toFixed(2)}
                 </span>
               </div>
             )}

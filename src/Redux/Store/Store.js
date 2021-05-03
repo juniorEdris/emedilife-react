@@ -18,6 +18,7 @@ import { NeccessaryProdReducer } from '../Reducer/NeccessaryProductsReducer';
 import { GenericProductsReducer } from '../Reducer/GenericProductsReducer';
 import { BlogListReducer } from '../Reducer/BlogListReducer';
 import { SingleBlogReducer } from '../Reducer/SingleBlogReducer';
+import { SingleOrderReducer } from '../Reducer/SingleOrderReducer';
 export const initialState = {
   loading: true,
   pages: [],
@@ -37,6 +38,7 @@ export const initialState = {
   homebrandBtmBanner: {},
   // Neccessary Page states
   neccessaryResults: [],
+  neccessaryCategories: [],
   neccessary_pages: [],
   //   Single Product details
   productDetails: {},
@@ -80,9 +82,13 @@ export const initialState = {
   order_error: '',
   // Single Company Products
   company_products: [],
+  company_categories: [],
   company_pages: [],
   // Order Lists
   orders: [],
+  pendingOrders: [],
+  completedOrders: [],
+  onDeliverOrders: [],
   order_pages: [],
   // Generic Products States
   genericProducts: [],
@@ -92,6 +98,8 @@ export const initialState = {
   blogsPage: [],
   // Single Blog state
   singleBlog: {},
+  // Single Order state
+  orderDetails: {},
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -115,6 +123,7 @@ const store = createStore(
     GenericProducts: GenericProductsReducer,
     AllBlogs: BlogListReducer,
     SingleBlog: SingleBlogReducer,
+    SingleOrder: SingleOrderReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

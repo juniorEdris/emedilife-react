@@ -14,8 +14,9 @@ const SingleBrandRequest = () => {
 const SingleBrandSuccess = (res) => {
   return {
     type: SINGLE_BRAND_PRODUCT_SUCCESS,
-    results: res.data,
-    pages: res.meta,
+    results: res.products.data,
+    categories: res.categories,
+    pages: res.products.meta,
   };
 };
 
@@ -30,7 +31,7 @@ export const getSingleCompanyProducts = (data) => async (dispatch) => {
 
   API()
     .post(
-      `${ENDPOINTS.SINGLE_BRAND_PRODUCTS}?company_id=${data.company_id}&per_page=20&page=${data.page}`
+      `${ENDPOINTS.SINGLE_BRAND_PRODUCTS}?company_id=${data.company_id}&per_page=20&page=${data.page}&category_id=${data.category_id}`
     )
     .then((res) => {
       dispatch(SingleBrandSuccess(res.data));

@@ -16,7 +16,7 @@ const fetchHomeProductsSuccess = (res) => {
     slider: res.sliders,
     homeBrands: res.companies.data,
     popularProducts: res.trending_products.data,
-    neccessaryProducts: res.products,
+    neccessaryProducts: res.products.data,
     commonProducts: res.common_products.data,
     homeBlogs: res.blogs,
     video: res.home_page_right_video,
