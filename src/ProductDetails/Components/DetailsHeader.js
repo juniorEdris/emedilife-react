@@ -13,7 +13,7 @@ const DetailsHeader = (props) => {
           <Slider />
         </div>
         <div className="col-12 col-md-4">
-          <Details />
+          <Details prodID={props.prodID} />
         </div>
         <div className="col-12 col-md-4 wrapper">
           <DeliveryDetails />

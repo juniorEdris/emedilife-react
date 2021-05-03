@@ -14,7 +14,6 @@ const UserEntry = (props) => {
     await API()
       .post(`${ENDPOINTS.REGISTER}?phone=${number}`)
       .then((res) => {
-        console.log(res);
         if (res.data.data.id) {
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
@@ -31,7 +30,6 @@ const UserEntry = (props) => {
     await API()
       .post(`${ENDPOINTS.LOGIN}?phone=${number}&otp=${OTP}`)
       .then((res) => {
-        console.log(res);
         if (res.data.token) {
           localStorage.setItem('user_token', res.data.token);
           props.setUser();

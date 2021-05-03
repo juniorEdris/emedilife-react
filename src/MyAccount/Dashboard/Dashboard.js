@@ -4,10 +4,14 @@ import DashBody from './Components/DashBody';
 import DashSidebar from './Components/DashSidebar';
 import { getCartItems } from '../../Redux/Action/CartProductsAction';
 import './dashboard.css';
+import { getUserInfo } from '../../Redux/Action/GetUserInfoAction';
+import { getOrderList } from '../../Redux/Action/OrderListAction';
 
 const Dashboard = (props) => {
   useEffect(() => {
     props.getCartItems();
+    props.User && props.getUserInfo();
+    props.User && props.getOrderList();
   }, []);
   const [tab, setTab] = useState('dashboard');
   return (
@@ -24,10 +28,14 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  User: state.User.user,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getCartItems: () => dispatch(getCartItems()),
+  getUserInfo: () => dispatch(getUserInfo()),
+  getOrderList: () => dispatch(getOrderList()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

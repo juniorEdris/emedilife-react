@@ -34,18 +34,6 @@ const CartList = (props) => {
             {props.localCartList?.map((item) => (
               <li key={item.id}>
                 <div className="cart_single_product">
-                  {/* <div className="count_btn">
-                    <span
-                      className="cart_dec_btn"
-                      onClick={() => addToCart(item)}>
-                      <i className="fas fa-plus"></i>
-                    </span>
-                    <span
-                      className="cart_inc_btn"
-                      onClick={() => removeFromCart(item)}>
-                      <i className="fas fa-minus"></i>
-                    </span>
-                  </div> */}
                   <div className="cart_single_image">
                     <Link to={`productdetails?id=${item.id}`}>
                       <img
@@ -72,7 +60,10 @@ const CartList = (props) => {
                 </div>
                 <span
                   className="cart_product_cross"
-                  onClick={() => removeFromCart(item)}>
+                  onClick={() => {
+                    removeFromCart(item);
+                    props.removeCartID();
+                  }}>
                   &times;
                 </span>
               </li>

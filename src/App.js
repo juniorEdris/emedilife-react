@@ -35,19 +35,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { GetHomeContents } from './Redux/Action/HomeProductsAction';
 import { getUserInfo } from './Redux/Action/GetUserInfoAction';
-import { getSingleCompanyProducts } from './Redux/Action/SingleBrandProductsAction';
 import { getOrderList } from './Redux/Action/OrderListAction';
 import NeccessaryProducts from './NeccessaryProducts/NeccessaryPage';
 import CompanyProducts from './CompanyProducts/CompanyProducts';
 import GenericProducts from './GenericProducts/GenericProducts';
-import { getBlogList } from './Redux/Action/BlogListAction';
 
 function App(props) {
   useEffect(() => {
     props.getHomeContents();
-    // props.getBlogList();
-    props.User && props.getUserInfo();
-    props.User && props.getOrderList();
+    // props.User && props.getUserInfo();
+    // props.User && props.getOrderList();
   }, []);
   return (
     <Router>
@@ -57,7 +54,9 @@ function App(props) {
           <Route exact path="/" component={Home} />
           <Route path="/productdetails" component={ProductDetails} />
           <Route path="/single-blog" component={BlogDetails} />
-          <Route path="/upload-prescription" component={PrescriptionUpload} />
+          <Route path="/upload-prescription">
+            {!props.User ? <Redirect to="/login" /> : <PrescriptionUpload />}
+          </Route>
           <Route path="/login">
             {!props.User ? <UserEntry /> : <Redirect to="/dashboard" />}
           </Route>
@@ -93,6 +92,5 @@ const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderList: () => dispatch(getOrderList()),
-  // getBlogList: () => dispatch(getBlogList()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

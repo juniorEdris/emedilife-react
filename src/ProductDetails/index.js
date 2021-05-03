@@ -10,6 +10,7 @@ import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import CartAddanime from '../PrimarySections/CartAddAnime/CartAddanime';
 
 const Detailsindex = (props) => {
+  console.log('wish check', props.wishlistMsg, props.wishState);
   // get ID from query /productdetails?id=${product.id}`
   const query = useQuery();
   const prodID = query.get('id');
@@ -21,7 +22,7 @@ const Detailsindex = (props) => {
   return (
     <div className="product_details_container mt-4 mb-4">
       <div className="container-md-fluid">
-        <Header />
+        <Header prodID={prodID} />
         <Description />
         {props.relatedProducts.length > 0 && <RelatedProducts />}
         {props.basketMsg && (

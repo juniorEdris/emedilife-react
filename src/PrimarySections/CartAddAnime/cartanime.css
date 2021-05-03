@@ -1,7 +1,7 @@
 .cart_added_animation {
     position: fixed;
     top: 80px;
-    right: -500px;
+    right: -1000px;
     z-index: 2000;
     background: var(--theme-color);
     color: var(--light-color);

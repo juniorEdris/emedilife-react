@@ -5,12 +5,6 @@ import AccountInfo from './AccountInfo';
 import OrderHistory from './AccountOrderHistory';
 
 const AccountDashboard = (props) => {
-  console.log(
-    '>>>>>>>>>>>>>>',
-    props.pendingOrders,
-    props.completeOrders,
-    props.proccessingOrders
-  );
   return (
     <div className="account_dashboard">
       <div className="acc_dash_heading">

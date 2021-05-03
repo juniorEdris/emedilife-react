@@ -84,9 +84,9 @@ export const WishlistReducer = (state = initialState, action) => {
         error: action.error,
       };
     case ADD_TO_WISHCART_MSG:
+      console.log(action.message);
       return {
-        basketmsg: action.message,
-        tabStatus: action.status,
+        wishlistMsg: action.message,
       };
     case WISHCART_STATUS_SUCCESS:
       return {

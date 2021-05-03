@@ -12,6 +12,7 @@ import {
   GET_WISHLIST_ERROR,
   WISHCART_STATUS_SUCCESS,
   WISHCART_STATUS_COMPLETE,
+  ADD_TO_WISHCART_MSG,
 } from '../Types';
 // GET WISHLIST ACTION PROCCESS
 const getWishItemRequest = () => ({
@@ -43,6 +44,13 @@ const addWishItemLocalSuccess = (product) => ({
   type: ADD_TO_LOCAL_WISHLIST_SUCCESS,
   product,
 });
+const addWishItemLocalMsg = (message) => {
+  console.log(message);
+  return {
+    type: ADD_TO_WISHCART_MSG,
+    message,
+  };
+};
 
 const removeProdLocalWish = (product) => ({
   type: REMOVE_FROM_LOCAL_WISHLIST,
@@ -75,11 +83,21 @@ export const addToWishlistAction = (product) => async (dispatch, getState) => {
     wishItems.forEach((x) => {
       if (x.id === product.id) {
         exist = true;
+        dispatch(productStatusSuccess());
+        dispatch(addWishItemLocalMsg('Exsist Msg'));
+        setTimeout(() => {
+          dispatch(productStatusComplete());
+        }, 3000);
         return;
       }
     });
     if (!exist) {
-      wishItems.push(product); //,count:1
+      wishItems.push(product);
+      dispatch(productStatusSuccess());
+      dispatch(addWishItemLocalMsg('message'));
+      setTimeout(() => {
+        dispatch(productStatusComplete());
+      }, 3000);
     }
     dispatch(addWishItemLocalSuccess(wishItems));
     localStorage.setItem('Wish List', JSON.stringify(wishItems));

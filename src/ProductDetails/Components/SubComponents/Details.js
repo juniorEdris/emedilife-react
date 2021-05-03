@@ -17,7 +17,11 @@ const Details = (props) => {
   const [previousPrice, setPreviousPrice] = useState(0);
   useEffect(() => {
     props.getCartID('');
-  }, []);
+    setPrice('');
+    setPriceId('');
+    setPreviousPrice(0);
+    setQuantity(1);
+  }, [props.prodID]);
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -42,11 +46,15 @@ const Details = (props) => {
     props.user && (await props.getCartItems());
   };
   const updateCartItem = async (item) => {
-    await props.updateCart(
-      props.cart_id,
-      priceId === '' ? item.unit_prices[0]?.id : priceId,
-      quantity
-    );
+    await props.updateCart({
+      id: item.id,
+      cart_id: props.cart_id,
+      photo: item.photo,
+      name: item.name,
+      price: price === '' ? item.unit_prices[0]?.price : price,
+      unit_prices_id: priceId === '' ? item.unit_prices[0]?.id : priceId,
+      total_quantity: quantity,
+    });
     props.user && (await props.getCartItems());
   };
   const addToWish = async (item) => {
@@ -230,18 +238,14 @@ const Details = (props) => {
               <button
                 className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
-                onClick={() => addProduct(props.details)}
-                // disabled={!props.details?.unit_prices === false && true}
-              >
+                onClick={() => addProduct(props.details)}>
                 add to cart
               </button>
             ) : (
               <button
                 className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
-                onClick={() => updateCartItem(props.details)}
-                // disabled={!props.details?.unit_prices === false && true}
-              >
+                onClick={() => updateCartItem(props.details)}>
                 {' '}
                 update cart
               </button>
@@ -258,14 +262,15 @@ const mapStateToProps = (state) => ({
   details: state.ProductDetails.productDetails,
   cart_id: state.CartID.cart_update_id,
   user: state.User.user,
+  cartList: state.CartItems.basket,
+  localCartList: state.Basket.localBasket,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addToCart: (product, count) => dispatch(AddBasketProd(product, count)),
   getCartItems: () => dispatch(getCartItems()),
   addToWish: (product) => dispatch(addToWishlistAction(product)),
-  updateCart: (cartId, unit_price_id, quantity) =>
-    dispatch(updateCartItem(cartId, unit_price_id, quantity)),
+  updateCart: (data) => dispatch(updateCartItem(data)),
   getCartID: (id) => dispatch(getCartUpdateID(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(memo(Details));
