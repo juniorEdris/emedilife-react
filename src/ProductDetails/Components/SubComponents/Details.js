@@ -117,7 +117,7 @@ const Details = (props) => {
           <div className="details_manufacture-product">
             <small>
               company:{' '}
-              <Link to="/">
+              <Link to={`/company-medicines?id=${props.details?.company_id}`}>
                 {props.details?.company !== null ? props.details?.company : ''}
               </Link>
             </small>

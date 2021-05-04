@@ -69,7 +69,9 @@ const DeliveryDetails = (props) => {
         </div>
       ) : (
         <div className="other_brands_btn">
-          <Link to="/" className="btn col-7">
+          <Link
+            to={`/otherbrands?id=${props.details?.generic_id}`}
+            className="btn col-7">
             other brands
           </Link>
         </div>

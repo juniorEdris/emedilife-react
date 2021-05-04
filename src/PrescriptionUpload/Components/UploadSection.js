@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction';
+import { NameInput } from './NameInput';
 
 const UploadSection = (props) => {
   const [images, setImages] = useState({ image: '' });
+  const [input, setInput] = useState({ name: '' });
   console.log(props);
   const handleChange = (e) => {
     let files = e.target.files || e.dataTransfer.files;
@@ -22,6 +24,11 @@ const UploadSection = (props) => {
       //   image: e.target.files,
       // });
     }
+  };
+  const inputChange = (e) => {
+    setInput({
+      [e.target.name]: e.target.value,
+    });
   };
   const submitFrom = (e) => {
     console.log('prescription frontend page', images);
@@ -46,6 +53,11 @@ const UploadSection = (props) => {
           </div>
         )}
         <form action="" method="POST" encType="multipart/formdata">
+          <NameInput
+            input={input}
+            setInput={setInput}
+            inputChange={inputChange}
+          />
           <div className="file_upload_btn mt-4 mb-3">
             <div className="image_preview row">
               {images.image !== '' ? (

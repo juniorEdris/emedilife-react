@@ -1,6 +1,6 @@
 /* PrescriptionUpload css here */
 .prescription_body{
-    /* min-height: 100vh; */
+    min-height: 100vh;
 }
 .prescription_upload{
     padding: 1.2rem 0;
@@ -130,4 +130,13 @@ label.gallery-btn .gallery-btn-img{
     padding: 0 1rem;
     text-transform: none;
 
+}
+/* Name Input Css Here */
+.name_nput_wrapper .prescription_name{
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+}
+.name_nput_wrapper .prescription_name_label{
+    font-size: 1.2rem;
+    
 }

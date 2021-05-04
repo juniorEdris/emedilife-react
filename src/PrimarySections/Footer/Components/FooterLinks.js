@@ -13,16 +13,16 @@ function FooterLinks() {
                 <Link to="/about-us">about us</Link>
               </li>
               <li>
-                <Link to="/about-us">careers</Link>
+                <Link to="/">careers</Link>
               </li>
               <li>
                 <Link to="/blog">blogs</Link>
               </li>
               <li>
-                <Link to="/about-us">amazon cares</Link>
+                <Link to="/">amazon cares</Link>
               </li>
               <li>
-                <Link to="/about-us">gift a smile</Link>
+                <Link to="/">gift a smile</Link>
               </li>
             </ul>
           </div>
@@ -33,16 +33,16 @@ function FooterLinks() {
                 <Link to="/contact-us">contact us</Link>
               </li>
               <li>
-                <Link to="/about-us">careers</Link>
+                <Link to="/">Facebook</Link>
               </li>
               <li>
-                <Link to="/about-us">press releases</Link>
+                <Link to="/">Twitter</Link>
               </li>
               <li>
-                <Link to="/about-us">amazon cares</Link>
+                <Link to="/">Instagram</Link>
               </li>
               <li>
-                <Link to="/about-us">gift a smile</Link>
+                <Link to="/">gift a smile</Link>
               </li>
             </ul>
           </div>
@@ -53,16 +53,16 @@ function FooterLinks() {
                 <Link to="/about-us">about us</Link>
               </li>
               <li>
-                <Link to="/about-us">careers</Link>
+                <Link to="/">careers</Link>
               </li>
               <li>
-                <Link to="/about-us">press releases</Link>
+                <Link to="/">press releases</Link>
               </li>
               <li>
-                <Link to="/about-us">amazon cares</Link>
+                <Link to="/">emedilife cares</Link>
               </li>
               <li>
-                <Link to="/about-us">gift a smile</Link>
+                <Link to="/">gift a smile</Link>
               </li>
             </ul>
           </div>
@@ -70,19 +70,22 @@ function FooterLinks() {
             <h5>Let us Help You</h5>
             <ul className="links">
               <li>
-                <Link to="/about-us">about us</Link>
+                <Link to="/">COVID-19 and emedilife</Link>
               </li>
               <li>
-                <Link to="/about-us">careers</Link>
+                <Link to="/dashboard">your Account</Link>
               </li>
               <li>
-                <Link to="/about-us">press releases</Link>
+                <Link to="/">Return Centre</Link>
               </li>
               <li>
-                <Link to="/about-us">amazon cares</Link>
+                <Link to="/">100% Purchase Protection</Link>
               </li>
               <li>
-                <Link to="/about-us">gift a smile</Link>
+                <Link to="/">Assistancy</Link>
+              </li>
+              <li>
+                <Link to="/contact-us">Help</Link>
               </li>
             </ul>
           </div>

@@ -5,12 +5,14 @@ import './blog_details.css';
 import { getSingleBlog } from '../Redux/Action/SingleBlogAction';
 import { useEffect } from 'react';
 import { useQuery } from '../PrimarySections/Utility';
+import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 
 export const Index = (props) => {
   const query = useQuery();
   const id = query.get('id');
   useEffect(() => {
     props.getSingleBlog(id);
+    toTheTop();
   }, [id]);
   return (
     <div

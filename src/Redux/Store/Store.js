@@ -19,6 +19,8 @@ import { GenericProductsReducer } from '../Reducer/GenericProductsReducer';
 import { BlogListReducer } from '../Reducer/BlogListReducer';
 import { SingleBlogReducer } from '../Reducer/SingleBlogReducer';
 import { SingleOrderReducer } from '../Reducer/SingleOrderReducer';
+import { OtherBrandsReducer } from '../Reducer/OtherBrandsReducer';
+import { CategoryBasedProdReducer } from '../Reducer/CategoryBasedProdReducer';
 export const initialState = {
   loading: true,
   pages: [],
@@ -100,6 +102,14 @@ export const initialState = {
   singleBlog: {},
   // Single Order state
   orderDetails: {},
+  // Other Brands State
+  otherBrands: [],
+  otherBrandsPage: [],
+  otherBrandsCat: [],
+  // Category Based State
+  categoryProducts: [],
+  categoryLists: [],
+  categorypages: [],
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -124,6 +134,8 @@ const store = createStore(
     AllBlogs: BlogListReducer,
     SingleBlog: SingleBlogReducer,
     SingleOrder: SingleOrderReducer,
+    OtherBrands: OtherBrandsReducer,
+    CategoryProducts: CategoryBasedProdReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

@@ -39,6 +39,8 @@ import { getOrderList } from './Redux/Action/OrderListAction';
 import NeccessaryProducts from './NeccessaryProducts/NeccessaryPage';
 import CompanyProducts from './CompanyProducts/CompanyProducts';
 import GenericProducts from './GenericProducts/GenericProducts';
+import CategoryBasedProducts from './CategoryBasedProducts/CategoryBasedProducts';
+import OtherBrands from './OtherBrands/OtherBrands';
 
 function App(props) {
   useEffect(() => {
@@ -63,7 +65,8 @@ function App(props) {
           <Route path="/dashboard">
             {!props.User ? <Redirect to="/login" /> : <Dashboard />}
           </Route>
-          {/* <Route path="/search-medicine" component={SearchMedicine} /> */}
+          <Route path="/category-products" component={CategoryBasedProducts} />
+          <Route path="/otherbrands" component={OtherBrands} />
           <Route path="/generic-products" component={GenericProducts} />
           <Route path="/company-medicines" component={CompanyProducts} />
           <Route path="/more-medicines" component={NeccessaryProducts} />

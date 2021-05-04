@@ -21,7 +21,10 @@ const BrowseNav = (props) => {
                   ))
               : props.categories?.map((cat) => (
                   <li>
-                    <Link to="#" className="" key={cat.id}>
+                    <Link
+                      to={`/category-products?id=${cat.id}`}
+                      className=""
+                      key={cat.id}>
                       {cat.name.en}
                     </Link>
                   </li>
