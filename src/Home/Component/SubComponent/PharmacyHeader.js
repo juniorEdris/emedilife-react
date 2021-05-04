@@ -16,7 +16,7 @@ export const PharmacyHeader = (props) => {
                 <p>Need Medicines on regular basis?</p>
               </div>
               <div className="buttons">
-                <Link to="!#" className="btn">
+                <Link to="#" className="btn">
                   Subscribe now
                 </Link>
               </div>
@@ -36,7 +36,7 @@ export const PharmacyHeader = (props) => {
                 <p>Dont Have a Prescription</p>
               </div>
               <div className="buttons">
-                <Link to="!#" className="btn">
+                <Link to="#" className="btn">
                   get started
                 </Link>
               </div>

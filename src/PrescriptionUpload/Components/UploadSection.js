@@ -4,26 +4,12 @@ import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction'
 import { NameInput } from './NameInput';
 
 const UploadSection = (props) => {
-  const [images, setImages] = useState({ image: '' });
+  const [error, setError] = useState('');
+  const [images, setImages] = useState({ image: '', photo: '' });
   const [input, setInput] = useState({ name: '' });
-  console.log(props);
   const handleChange = (e) => {
-    let files = e.target.files || e.dataTransfer.files;
-    if (!files.length) {
-      return;
-    } else {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        setImages({
-          image: e.target.result,
-        });
-      };
-      const ddd = reader.readAsDataURL(files[0]);
-      console.log(reader, files, 'FFFF', ddd);
-      // setImages({
-      //   image: e.target.files,
-      // });
-    }
+    setError('');
+    setImages({ photo: e.target.files[0] });
   };
   const inputChange = (e) => {
     setInput({
@@ -31,14 +17,16 @@ const UploadSection = (props) => {
     });
   };
   const submitFrom = (e) => {
-    console.log('prescription frontend page', images);
-    // props.upload('raghib', images.image);
+    if (images.photo) {
+      const fd = new FormData();
+      fd.append('images', images.photo, images.photo.name);
+      props.upload(input.name, fd);
+    } else {
+      setError('Select an Image');
+    }
   };
   const removeImage = (image, i) => {
-    setImages({ image: '' });
-    // setImages((images) =>
-    //   [...images].filter((x, index, arr) => arr.indexOf(x) !== i)
-    // );
+    setImages({ photo: '' });
   };
   return (
     <div className="upload_section col col-md-8">
@@ -60,12 +48,12 @@ const UploadSection = (props) => {
           />
           <div className="file_upload_btn mt-4 mb-3">
             <div className="image_preview row">
-              {images.image !== '' ? (
+              {images.photo !== '' ? (
                 <div className="per_image col-6 p-1 ">
                   <span
                     className=" remove_picture lnr lnr-cross"
                     onClick={() => removeImage()}></span>
-                  <img src={images.image} alt="" />
+                  <img src={URL.createObjectURL(images.photo)} alt="" />
                 </div>
               ) : (
                 <img
@@ -88,6 +76,16 @@ const UploadSection = (props) => {
             <span className="text-muted">
               upload photo of your prescription
             </span>
+            {props.status && (
+              <div className="">
+                <span className="text-success">{props.success}</span>
+              </div>
+            )}
+            {error.length > 0 && (
+              <div className="">
+                <span className="text-danger">{error}</span>
+              </div>
+            )}
             <label
               for="file-upload"
               className="gallery-btn btn col offset-md-3 col-md-6 btn-block btn-outlined">
@@ -103,7 +101,8 @@ const UploadSection = (props) => {
             <button
               type="button"
               className="btn col offset-md-3 col-md-6"
-              onClick={submitFrom}>
+              onClick={submitFrom}
+              disabled={input.name.length < 1}>
               Procced
             </button>
           </div>
@@ -115,6 +114,7 @@ const UploadSection = (props) => {
 
 const mapStateToProps = (state) => ({
   success: state.Prescription.prescriptionSuccess,
+  status: state.Prescription.prescriptionStatus,
   error: state.Prescription.error,
 });
 

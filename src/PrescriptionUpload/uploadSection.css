@@ -32,6 +32,12 @@
     padding:0.5rem ;
     justify-content: center;
 }
+.image_preview img{
+    height: 230px;
+    width: 100%;
+    max-width: 230px;
+    object-fit: contain;
+}
 .image_preview .remove_picture{
     position: absolute;
     top: 0.5rem;

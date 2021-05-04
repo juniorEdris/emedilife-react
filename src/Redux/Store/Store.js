@@ -76,8 +76,9 @@ export const initialState = {
   // Contact Page states
   error: { name: '', email: '', subject: '', message: '', prescription: '' },
   contactConfirm: '',
-  // Contact Page states
+  // Prescription states
   prescriptionSuccess: '',
+  prescriptionStatus: false,
   // Place Orders states
   placingOrder: false,
   place_order_msg: '',
