@@ -164,6 +164,9 @@
     background-color: var(--dark-color);
     
 }
+.cart_product_cross  a{
+    color: var(--light-color) !important;
+}
 .cart_product_btn{
     width: 100%;
     position: absolute;

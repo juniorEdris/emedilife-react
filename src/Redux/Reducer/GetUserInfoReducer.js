@@ -3,6 +3,7 @@ import {
   GET_USER_INFO_ERROR,
   GET_USER_INFO_REQUEST,
   GET_USER_INFO_SUCCESS,
+  GET_USER_AREAS,
 } from '../Types';
 
 export const UserInfoReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ export const UserInfoReducer = (state = initialState, action) => {
         delivery_types: [],
         info: [],
         status: [],
+        userAreas: [],
       };
     case GET_USER_INFO_SUCCESS:
       return {
@@ -22,6 +24,7 @@ export const UserInfoReducer = (state = initialState, action) => {
         delivery_types: action.deliveryTypes,
         info: action.info,
         status: action.status,
+        userAreas: [],
       };
     case GET_USER_INFO_ERROR:
       return {
@@ -31,6 +34,12 @@ export const UserInfoReducer = (state = initialState, action) => {
         info: [],
         status: [],
         error: action.error,
+        userAreas: [],
+      };
+    case GET_USER_AREAS:
+      return {
+        ...state,
+        userAreas: action.areas,
       };
     default:
       return {

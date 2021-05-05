@@ -10,7 +10,6 @@ const logoutSuccess = (user) => ({
 });
 
 export const setUserAction = (user) => (dispatch, getState) => {
-  console.log('useraction', user);
   dispatch(setUser(true));
 };
 export const LogOutAction = () => (dispatch, getState) => {

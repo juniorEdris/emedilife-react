@@ -1,0 +1,9 @@
+.copyright {
+    text-align: center;
+    background-color: rgba(168,6,114,100%);
+    color: var(--light-color);
+}
+.copyright p{
+    margin: 0;
+    padding: 0.5rem 0;
+}

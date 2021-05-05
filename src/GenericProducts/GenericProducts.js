@@ -9,7 +9,7 @@ const GenericProducts = (props) => {
   const [sort, setSort] = useState('');
   const [page, setPage] = useState(1);
   const query = useQuery();
-  const id = query.get('id');
+  const id = query.get('generic-id');
   useEffect(() => {
     props.getProducts({ page, id });
   }, [page, id]);

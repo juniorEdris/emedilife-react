@@ -6,7 +6,9 @@ import PharmacyBody from './SubComponent/PharmacyBody';
 export const OnlinePharma = (props) => {
   return (
     <div className="home_online_pharmacy">
-      <PharmacyHeader />
+      <PharmacyHeader
+        loginSuccessPageRedirectTo={props.loginSuccessPageRedirectTo}
+      />
       <PharmacyBody />
     </div>
   );

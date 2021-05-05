@@ -3,6 +3,7 @@ import {
   GET_USER_INFO_ERROR,
   GET_USER_INFO_REQUEST,
   GET_USER_INFO_SUCCESS,
+  GET_USER_AREAS,
 } from '../Types';
 
 const getUserInfoRequest = () => ({
@@ -18,6 +19,10 @@ const getUserInfoError = (error) => ({
   type: GET_USER_INFO_ERROR,
   error,
 });
+//  Get Areas
+const GetUserArea = (areas) => {
+  return { type: GET_USER_AREAS, areas };
+};
 
 export const getUserInfo = () => async (dispatch) => {
   dispatch(getUserInfoRequest());
@@ -29,4 +34,10 @@ export const getUserInfo = () => async (dispatch) => {
     .catch((error) => {
       console.log(error.Response);
     });
+};
+
+export const GetAreaOption = (id) => (dispatch, getState) => {
+  let userInfo = getState().UserInfo.info.districts_lists;
+  const areas = userInfo?.slice().filter((x) => x.id === Number(id));
+  dispatch(GetUserArea(areas));
 };

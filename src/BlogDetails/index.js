@@ -9,7 +9,7 @@ import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 
 export const Index = (props) => {
   const query = useQuery();
-  const id = query.get('id');
+  const id = query.get('blog-id');
   useEffect(() => {
     props.getSingleBlog(id);
     toTheTop();

@@ -17,7 +17,10 @@ const CartSidebar = (props) => {
             className="lnr lnr-arrow-right"
             onClick={() => props.setCart(false)}></span>
         </div>
-        <CartList />
+        <CartList
+          setCart={props.setCart}
+          loginSuccessPageRedirectTo={props.loginSuccessPageRedirectTo}
+        />
       </div>
     </div>
   );

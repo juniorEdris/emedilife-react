@@ -156,7 +156,7 @@ const PriceDetails = (props) => {
             <h4>Shipping Method</h4>
           </div>
           <div className="">
-            <div className="row m-0 col-12">
+            <div className="row justify-content-between m-0 p-0 col-12">
               <p className="mr-3 discount_amount mb-0">Sub Total: </p>{' '}
               <span className="discount_amount">
                 &#2547;{' '}
@@ -175,21 +175,24 @@ const PriceDetails = (props) => {
                   value="option1"
                 />
               </div> */}
-              <div className="delivery_charge">
+              <div className="delivery_charge row justify-content-between m-0 col-12">
                 <label htmlFor={'check'} className="delivery_amount_hover">
-                  <div className="col delivery_amount">
-                    Delivery Charge + &#2547;{' '}
-                    {PriceContainer?.delivery_charge || 0}
+                  <div className="col delivery_amount p-0 m-0">
+                    Delivery Charge +
                   </div>
-                  <div className="col delivery_time">1-3 Hours</div>
+                  <div className="col delivery_time p-0 m-0">1-3 Hours</div>
                 </label>
+                <div className="">
+                  &#2547; {PriceContainer?.delivery_charge || 0}
+                </div>
               </div>
             </div>
 
-            <div className="row m-0 col-12">
-              <p className="mr-3 discount_amount mb-0">Discount: </p>{' '}
+            <div className="row justify-content-between m-0 col-12 p-0">
+              <p className=" discount_amount mb-0">Discount: </p>{' '}
               <span className="discount_amount">
-                &#2547; {offer?.price ? Number(offer.price).toFixed(2) : 0}
+                &#2547;{' '}
+                {offer?.price ? Number(offer.price).toFixed(2) : (0).toFixed(2)}
               </span>
             </div>
           </div>
@@ -212,7 +215,9 @@ const PriceDetails = (props) => {
               disabled={
                 PriceContainer.min_order >
                   (getCartProdSubTotal(props.cartList, props.user) || 0) ||
-                props.orderSuccessLoading
+                props.orderSuccessLoading ||
+                props.details.district === '' ||
+                props.details.area === ''
               }
               onClick={PlaceOrder}>
               {props.orderSuccessLoading ? 'Ordering' : 'Place Order Now'}

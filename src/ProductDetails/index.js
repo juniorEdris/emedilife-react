@@ -10,7 +10,6 @@ import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import CartAddanime from '../PrimarySections/CartAddAnime/CartAddanime';
 
 const Detailsindex = (props) => {
-  console.log('wish check', props.wishlistMsg, props.wishState);
   // get ID from query /productdetails?id=${product.id}`
   const query = useQuery();
   const prodID = query.get('id');

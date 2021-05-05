@@ -1,7 +1,7 @@
 import Skeleton from '@yisheng90/react-loading';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   AddBasketProd,
   RemoveBasketProd,
@@ -11,17 +11,31 @@ import {
   getCartUpdateID,
   removeCartUpdateID,
 } from '../../../Redux/Action/CartUpdateIDAction';
-import { getCartProdSubTotal } from '../../Utility';
+import { getCartProdSubTotal, useQuery } from '../../Utility';
 
 const CartList = (props) => {
+  const router = useHistory();
+  const query = useQuery();
+
   useEffect(() => {
     props.user && props.getCartItems();
   }, []);
 
   const removeFromCart = async (item) => {
     await props.removeProduct(item);
+    const id = query.get('id');
+    let redirect = '';
+    if (id) {
+      redirect = `/productdetails?id=${id}`;
+    } else {
+      redirect = `${router.location.pathname}${
+        router.location.search && router.location.search
+      }`;
+    }
+    router.replace(redirect);
     props.user && (await props.getCartItems());
   };
+
   const addToCart = async (item) => {
     await props.addToCart(item);
     props.user && (await props.getCartItems());
@@ -35,7 +49,7 @@ const CartList = (props) => {
               <li key={item.id}>
                 <div className="cart_single_product">
                   <div className="cart_single_image">
-                    <Link to={`productdetails?id=${item.id}`}>
+                    <Link to={`/updatecartproduct?id=${item.id}`}>
                       <img
                         src={`https:${item.photo}`}
                         alt="img-1"
@@ -46,7 +60,7 @@ const CartList = (props) => {
                   <div className="cart_single_body">
                     <div className="cart_single_name">
                       <Link
-                        to={`productdetails?id=${item.id}`}
+                        to={`/updatecartproduct?id=${item.id}`}
                         onClick={() => props.getCartID(item.id)}>
                         {item.name}
                       </Link>
@@ -97,7 +111,7 @@ const CartList = (props) => {
                         </span>
                       </div> */}
                       <div className="cart_single_image">
-                        <Link to={`productdetails?id=${item?.product_id}`}>
+                        <Link to={`/updatecartproduct?id=${item?.product_id}`}>
                           <img
                             src={`https:${item?.photo}`}
                             alt="img-1"
@@ -108,7 +122,7 @@ const CartList = (props) => {
                       <div className="cart_single_body">
                         <div className="cart_single_name">
                           <Link
-                            to={`productdetails?id=${item?.product_id}`}
+                            to={`/updatecartproduct?id=${item?.product_id}`}
                             onClick={() => props.getCartID(item?.id)}>
                             {item?.name}
                           </Link>
@@ -149,8 +163,12 @@ const CartList = (props) => {
         </div>
         <div className="checkout_btn">
           <Link
-            to={!props.user ? '/login' : '/check-out'}
-            className={`btn w-100`}>
+            to={'/check-out'}
+            className={`btn w-100`}
+            onClick={(e) => {
+              props.loginSuccessPageRedirectTo('/check-out');
+              props.setCart(false);
+            }}>
             Check Out
           </Link>
         </div>

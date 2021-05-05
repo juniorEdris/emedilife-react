@@ -1,7 +1,7 @@
 import Skeleton from '@yisheng90/react-loading';
 import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   AddBasketProd,
   updateCartItem,
@@ -11,12 +11,15 @@ import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
 const Details = (props) => {
+  const router = useHistory();
+  const path = router.location.pathname;
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
   const [previousPrice, setPreviousPrice] = useState(0);
+
   useEffect(() => {
-    props.getCartID('');
+    // props.getCartID('');
     setPrice('');
     setPriceId('');
     setPreviousPrice(0);
@@ -108,7 +111,8 @@ const Details = (props) => {
           <div className="details_generic mb-2">
             <small>
               generic:{' '}
-              <Link to={`/generic-products?id=${props.details?.generic_id}`}>
+              <Link
+                to={`/generic-products?generic-id=${props.details?.generic_id}`}>
                 {props.details?.generic_name}
               </Link>
             </small>
@@ -117,7 +121,8 @@ const Details = (props) => {
           <div className="details_manufacture-product">
             <small>
               company:{' '}
-              <Link to={`/company-medicines?id=${props.details?.company_id}`}>
+              <Link
+                to={`/company-medicines?company-id=${props.details?.company_id}`}>
                 {props.details?.company !== null ? props.details?.company : ''}
               </Link>
             </small>
@@ -154,8 +159,8 @@ const Details = (props) => {
                   {price === ''
                     ? (props.details?.unit_prices[0]?.price * quantity).toFixed(
                         2
-                      )
-                    : (price * quantity).toFixed(2)}
+                      ) || 0
+                    : (price * quantity).toFixed(2) || 0}
                 </span>
               </div>
             )}
@@ -234,7 +239,7 @@ const Details = (props) => {
             </div>
           )}
           <div className="details_buttons_wrapper mt-5">
-            {!props.cart_id ? (
+            {path !== '/updatecartproduct' ? (
               <button
                 className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"

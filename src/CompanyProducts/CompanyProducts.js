@@ -9,7 +9,7 @@ const CompanyProducts = (props) => {
   const [sort, setSort] = useState('');
   const [page, setPage] = useState(1);
   const query = useQuery();
-  const id = query.get('id');
+  const id = query.get('company-id');
   useEffect(() => {
     props.getProducts({ page, company_id: id, category_id: category });
   }, [page, id, category]);

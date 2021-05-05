@@ -72,6 +72,7 @@ export const initialState = {
   //   UserInfo state
   deliveryTypes: [],
   info: {},
+  userAreas: [],
   status: '',
   // Contact Page states
   error: { name: '', email: '', subject: '', message: '', prescription: '' },

@@ -15,7 +15,6 @@ import ProductDetails from './ProductDetails';
 import UserEntry from './MyAccount/UserActivity/index';
 import Dashboard from './MyAccount/Dashboard/Dashboard';
 import PrescriptionUpload from './PrescriptionUpload/PrescriptionUpload';
-import SearchMedicine from './SearchMedicine/Search';
 import AboutUs from './AboutUs/AboutUs';
 import CartIcon from './PrimarySections/CartIcon/CartIcon';
 import ContactUs from './ContactUs/ContactUs';
@@ -24,7 +23,7 @@ import CheckOut from './CheckOut/CheckOut';
 import OrderInformation from './OrderInformation/OrderInformation';
 import { connect } from 'react-redux';
 import { getCartItems } from './Redux/Action/CartProductsAction';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
 import OrderNotification from './OrderNotify/OrderNotification';
@@ -41,8 +40,14 @@ import CompanyProducts from './CompanyProducts/CompanyProducts';
 import GenericProducts from './GenericProducts/GenericProducts';
 import CategoryBasedProducts from './CategoryBasedProducts/CategoryBasedProducts';
 import OtherBrands from './OtherBrands/OtherBrands';
+import { CopyRight } from './CopyRight/CopyRight';
 
 function App(props) {
+  const [nextPage, setNextPage] = useState('/dashboard');
+  const loginSuccessPageRedirectTo = (path) => {
+    setNextPage(path);
+  };
+
   useEffect(() => {
     props.getHomeContents();
     // props.User && props.getUserInfo();
@@ -53,14 +58,23 @@ function App(props) {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/productdetails" component={ProductDetails} />
+          <Route exact path="/">
+            <Home loginSuccessPageRedirectTo={loginSuccessPageRedirectTo} />
+          </Route>
+          <Route path="/productdetails">
+            <ProductDetails />
+          </Route>
+          <Route path="/updatecartproduct" component={ProductDetails} />
           <Route path="/single-blog" component={BlogDetails} />
           <Route path="/upload-prescription">
             {!props.User ? <Redirect to="/login" /> : <PrescriptionUpload />}
           </Route>
           <Route path="/login">
-            {!props.User ? <UserEntry /> : <Redirect to="/dashboard" />}
+            {!props.User ? (
+              <UserEntry pathRedirect={nextPage} />
+            ) : (
+              <Redirect to="/dashboard" />
+            )}
           </Route>
           <Route path="/dashboard">
             {!props.User ? <Redirect to="/login" /> : <Dashboard />}
@@ -73,16 +87,19 @@ function App(props) {
           <Route path="/blog-details" component={BlogDetails} />
           <Route path="/about-us" component={AboutUs} />
           <Route path="/contact-us" component={ContactUs} />
-          <Route path="/check-out" component={CheckOut} />
+          <Route path="/check-out">
+            {!props.User ? <Redirect to="/login" /> : <CheckOut />}
+          </Route>
           <Route path="/order-info" component={OrderInformation} />
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/ordersuccess" component={OrderNotification} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
-        <CartIcon />
+        <CartIcon loginSuccessPageRedirectTo={loginSuccessPageRedirectTo} />
         <BackToTop />
         <Footer />
+        <CopyRight />
       </div>
     </Router>
   );

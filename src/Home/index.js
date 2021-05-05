@@ -23,7 +23,9 @@ const Index = (props) => {
     <div>
       <HomeSlider loading={props.loading} sliders={props.sliders} />
       <Features />
-      <OnlinePharma />
+      <OnlinePharma
+        loginSuccessPageRedirectTo={props.loginSuccessPageRedirectTo}
+      />
       <FeatureBrands />
       <BannerSection />
       <PopularProduct />

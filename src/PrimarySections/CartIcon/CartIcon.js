@@ -45,7 +45,12 @@ const CartIcon = (props) => {
           )}
         </div>
       </Link>
-      <CartSidebar cart={cart} setCart={setCart} cartLength={cartLength} />
+      <CartSidebar
+        cart={cart}
+        setCart={setCart}
+        cartLength={cartLength}
+        loginSuccessPageRedirectTo={props.loginSuccessPageRedirectTo}
+      />
       {cart && (
         <div className="cart-back-drop" onClick={() => setCart(false)}></div>
       )}

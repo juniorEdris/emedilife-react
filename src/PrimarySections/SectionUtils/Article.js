@@ -22,7 +22,7 @@ function Article(props) {
             overflow: 'hidden',
             maxHeight: '10rem',
           }}></div>
-        <Link to={`/single-blog?id=${props.post.id}`}>Read More</Link>
+        <Link to={`/single-blog?blog-id=${props.post.id}`}>Read More</Link>
       </div>
     </div>
   );

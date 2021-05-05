@@ -58,8 +58,11 @@ const DeliveryDetails = (props) => {
                 id="district"
                 className="form-control form-control-lg"
                 name="district"
-                onChange={handleChange}>
-                <option selected>Choose...</option>
+                onChange={handleChange}
+                required>
+                <option value="" selected>
+                  Choose...
+                </option>
                 {props.info?.districts_lists?.map((district) => (
                   <option value={district.id} key={district.name}>
                     {district.name}
@@ -73,11 +76,16 @@ const DeliveryDetails = (props) => {
                 id="area"
                 className="form-control form-control-lg"
                 name="area"
-                onChange={handleChange}>
-                <option selected>Choose...</option>
-                <option>Area-one</option>
-                <option>Area-two</option>
-                <option>Area-three</option>
+                onChange={handleChange}
+                required>
+                <option value="" selected>
+                  Choose...
+                </option>
+                {props.useArea[0]?.areas?.map((area) => (
+                  <option value={area.id} key={area.name}>
+                    {area.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -118,6 +126,7 @@ const mapStateToProps = (state) => ({
   deliveryTypes: state.UserInfo.delivery_types,
   info: state.UserInfo.info,
   status: state.UserInfo.status,
+  useArea: state.UserInfo.userAreas,
 });
 
 const mapDispatchToProps = {};

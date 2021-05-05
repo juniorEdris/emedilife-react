@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { connect } from 'react-redux';
 import { setUserAction } from '../../../Redux/Action/UserAction';
 import { UserID } from '../../../PrimarySections/Utility';
+import { useHistory } from 'react-router';
 
 const UserEntry = (props) => {
+  const history = useHistory();
   const [number, setNumber] = useState('');
   const [OTP, setOTP] = useState('');
+  // const [userId, setUser] = useState(false);
   const [error, setError] = useState({});
+  // useEffect(() => {
+  //   if (UserID()) {
+  //     setUser(false);
+  //     setTimeout(() => {
+  //       setError({});
+  //       localStorage.removeItem('user_id');
+  //     }, 120000);
+  //   }
+  //   return () => {
+  //     clearTimeout(() => {
+  //       localStorage.removeItem('user_id');
+  //     }, 120000);
+  //   };
+  // }, [userId]);
   const register = async (e) => {
     e.preventDefault();
     setError({});
@@ -17,6 +34,7 @@ const UserEntry = (props) => {
         if (res.data.data.id) {
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
+          // setUser(true);
         }
       })
       .catch((error) => {
@@ -33,6 +51,7 @@ const UserEntry = (props) => {
         if (res.data.token) {
           localStorage.setItem('user_token', res.data.token);
           props.setUser();
+          history.push(`${props.pathRedirect}`);
         } else if (!res.data.status) {
           setError({
             otpErrMessage: res.data.message,
@@ -85,6 +104,9 @@ const UserEntry = (props) => {
                               <div className="error-handler">
                                 {error.otpErrMessage}
                               </div>
+                              {error.otp && (
+                                <div className="text-success">{error.otp}</div>
+                              )}
                             </div>
                           </div>
                         )}
@@ -106,9 +128,6 @@ const UserEntry = (props) => {
           </div>
           <div className="user_msg_text col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
             By Clicking continue, you agree with our Privacy Policy
-            {error.otp && (
-              <div className="error-handler">Your OTP : {error.otp}</div>
-            )}
           </div>
         </div>{' '}
         {/* end of row */}
@@ -118,7 +137,9 @@ const UserEntry = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setUserAction(user)),

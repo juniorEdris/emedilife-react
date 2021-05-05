@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { GetAreaOption } from '../../Redux/Action/GetUserInfoAction';
 import DeliveryDetailsInput from './SubComponents/DeliveryDetailsInput';
 import PaymentMethod from './SubComponents/PaymentMethod';
 import PriceDetails from './SubComponents/PriceDetails';
@@ -27,6 +28,9 @@ const CheckOutBody = (props) => {
       zip: props.info?.zip || '',
     });
   }, [props]);
+  useEffect(() => {
+    props.getArea(DeliveryDetails.district);
+  }, [DeliveryDetails.district]);
   return (
     <div className="checkout_body row">
       <div className="col-md-6">
@@ -47,6 +51,8 @@ const mapStateToProps = (state) => ({
   info: state.UserInfo.info,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  getArea: (id) => dispatch(GetAreaOption(id)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckOutBody);

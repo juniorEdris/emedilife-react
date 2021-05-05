@@ -166,6 +166,7 @@ export const updateCartItem = (product) => async (dispatch, getState) => {
     }
     cartItems.forEach((x) => {
       if (x.id === id) {
+        x.price = price;
         x.total_quantity = total_quantity;
         x.unit_prices_id = unit_prices_id;
         dispatch(

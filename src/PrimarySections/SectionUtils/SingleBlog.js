@@ -33,7 +33,7 @@ const SingleBlog = (props) => {
         {renderDiv(details)}
         <div className="blog_read_btn mt-2">
           <Link
-            to={`/blog-details?id=${props.blog.id}`}
+            to={`/blog-details?blog-id=${props.blog.id}`}
             className="btn col-12 col-md-3">
             Read More
           </Link>

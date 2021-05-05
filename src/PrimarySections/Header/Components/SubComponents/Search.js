@@ -62,7 +62,10 @@ export const Search = (props) => {
                           <div className="col search_list" key={result.id}>
                             <Link
                               to={`/productdetails?id=${result.id}`}
-                              onClick={(e) => searchList(e, result.id)}>
+                              onClick={(e) => {
+                                searchList(e, result.id);
+                                setInput('');
+                              }}>
                               {result.name}
                             </Link>
                           </div>
@@ -89,7 +92,10 @@ export const Search = (props) => {
       {input.length > 0 && list && (
         <div
           className="data-list-back-drop"
-          onClick={() => setList(false)}></div>
+          onClick={() => {
+            setList(false);
+            setInput('');
+          }}></div>
       )}
     </div>
   );

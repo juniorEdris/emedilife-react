@@ -38,7 +38,10 @@ const ProductCard = (props) => {
             <div className="manufacture-product">
               {props.product?.company && (
                 <span>
-                  <Link to={`/`} title={props.product?.company} className="">
+                  <Link
+                    to={`/company-medicines?company-id=${props.product?.company_id}`}
+                    title={props.product?.company}
+                    className="">
                     by {Truncate(props.product?.company, 16)}
                   </Link>
                 </span>

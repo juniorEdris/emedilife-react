@@ -1,8 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export const PharmacyHeader = (props) => {
+  const router = useHistory();
+
+  const uploadPrescription = () => {
+    router.push('/upload-prescription');
+    props.loginSuccessPageRedirectTo('/upload-prescription');
+  };
+
   return (
     <div className="pharmacy_header">
       <div className="container-md-fluid">
@@ -26,9 +33,12 @@ export const PharmacyHeader = (props) => {
                 <p>Have a Prescription</p>
               </div>
               <div className="buttons">
-                <Link to="/upload-prescription" className="btn">
+                {/* <Link to="/upload-prescription" className="btn">
                   Upload your prescription
-                </Link>
+                </Link> */}
+                <a className="btn" onClick={uploadPrescription}>
+                  Upload your prescription
+                </a>
               </div>
             </div>
             <div className="col-12 col-md-4 section-three">

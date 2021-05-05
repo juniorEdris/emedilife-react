@@ -1,21 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import UserEntry from './Components/UserEntry'
+import React from 'react';
+import { connect } from 'react-redux';
+import UserEntry from './Components/UserEntry';
 
- const MyAccount = (props) => {
-    return (
-        <div className='my_account'>
-            <UserEntry/>
-        </div>
-    )
-}
+const MyAccount = (props) => {
+  return (
+    <div className="my_account">
+      <UserEntry pathRedirect={props.pathRedirect} />
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyAccount)
+export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);
