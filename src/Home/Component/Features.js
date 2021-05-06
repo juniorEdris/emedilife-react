@@ -6,12 +6,12 @@ export const Features = (props) => {
   const images = [
     {
       id: 1,
-      image: 'widest_range.svg',
+      image: 'genuine_medicine.svg',
       name: 'Genuine medicine',
     },
     {
       id: 2,
-      image: 'genuine_medicine.svg',
+      image: 'widest_range.svg',
       name: 'Widest range',
     },
     {

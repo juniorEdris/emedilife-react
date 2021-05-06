@@ -2,10 +2,27 @@ import Skeleton from '@yisheng90/react-loading';
 import dateFormat from 'dateformat';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const OrderDetails = (props) => {
+  const cancelOrder = (e) => {
+    e.preventDefault();
+    console.log('remove order');
+  };
   return (
     <div className="order_information_details">
+      {/* <div className="col-12">
+        <div className="row">
+          <h5 className="order_info_heading flex-grow-1">Order Details</h5>
+          <Link
+            to="#"
+            className="btn cancel_order_btn bg-danger"
+            onClick={cancelOrder}>
+            {' '}
+            cancel order
+          </Link>
+        </div>
+      </div> */}
       <h5 className="order_info_heading">Order Details</h5>
       {props.loading ? (
         <div className="col-12 mt-2 ">
@@ -14,8 +31,15 @@ const OrderDetails = (props) => {
       ) : (
         <div className="col-12 row justify-content-between">
           <div className="col-md-6 p-0 pr-md-3">
-            <div className="list_content">
-              Order-ID:{props.order?.order_number}
+            <div className="list_content row justify-content-between align-items-center m-0">
+              Order-ID:{props.order?.order_number}{' '}
+              <Link
+                to="#"
+                className="btn cancel_order_btn bg-danger"
+                onClick={cancelOrder}>
+                {' '}
+                cancel order
+              </Link>
             </div>
             <div className="list_content">
               Payment Method: {props.order?.method}
