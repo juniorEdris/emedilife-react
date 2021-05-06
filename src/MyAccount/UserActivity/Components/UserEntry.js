@@ -4,27 +4,22 @@ import { connect } from 'react-redux';
 import { setUserAction } from '../../../Redux/Action/UserAction';
 import { UserID } from '../../../PrimarySections/Utility';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const UserEntry = (props) => {
   const history = useHistory();
   const [number, setNumber] = useState('');
   const [OTP, setOTP] = useState('');
   // const [userId, setUser] = useState(false);
+  const [resendOtpActive, setResendOtpActive] = useState(false);
   const [error, setError] = useState({});
-  // useEffect(() => {
-  //   if (UserID()) {
-  //     setUser(false);
-  //     setTimeout(() => {
-  //       setError({});
-  //       localStorage.removeItem('user_id');
-  //     }, 120000);
-  //   }
-  //   return () => {
-  //     clearTimeout(() => {
-  //       localStorage.removeItem('user_id');
-  //     }, 120000);
-  //   };
-  // }, [userId]);
+  const activeResendButton = () => {
+    setTimeout(() => {
+      setError({});
+      setResendOtpActive(true);
+      console.log('active resend btn active');
+    }, 120000);
+  };
   const register = async (e) => {
     e.preventDefault();
     setError({});
@@ -34,7 +29,7 @@ const UserEntry = (props) => {
         if (res.data.data.id) {
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
-          // setUser(true);
+          // activeResendButton();
         }
       })
       .catch((error) => {
@@ -45,9 +40,13 @@ const UserEntry = (props) => {
   const login = async (e) => {
     e.preventDefault();
     setError({});
+    if (!number) {
+      setError({ loginErrMessage: 'Provide a valid number.' });
+    }
     await API()
       .post(`${ENDPOINTS.LOGIN}?phone=${number}&otp=${OTP}`)
       .then((res) => {
+        console.log(res);
         if (res.data.token) {
           localStorage.setItem('user_token', res.data.token);
           props.setUser();
@@ -101,11 +100,26 @@ const UserEntry = (props) => {
                                 onChange={(e) => setOTP(e.target.value)}
                                 required
                               />
-                              <div className="error-handler">
-                                {error.otpErrMessage}
+                              <div className="resend_otp_button">
+                                <Link to="#" onClick={register}>
+                                  Resend
+                                </Link>{' '}
+                                OTP request
                               </div>
+                              {error.loginErrMessage && (
+                                <div className="error-handler">
+                                  {error.loginErrMessage}
+                                </div>
+                              )}
+                              {error.otpErrMessage && (
+                                <div className="error-handler">
+                                  {error.otpErrMessage}
+                                </div>
+                              )}
                               {error.otp && (
-                                <div className="text-success">{error.otp}</div>
+                                <div className="text-success otp_msg">
+                                  {error.otp}
+                                </div>
                               )}
                             </div>
                           </div>

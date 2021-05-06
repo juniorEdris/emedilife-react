@@ -25,6 +25,7 @@ const AccountOrderHistory = (props) => {
                 <th scope="col">Order Total</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
+                {/* <th scope="col"></th> */}
               </tr>
             </thead>
             <tbody>
@@ -38,14 +39,23 @@ const AccountOrderHistory = (props) => {
                   <td>Tk {order.pay_amount}</td>
                   <td>{order.delivery_status}</td>
                   <td>
-                    <div className="col-12">
+                    <div className="order-table-btn">
                       <Link
                         to={`/order-info?id=${order.id}`}
-                        className="table_link">
+                        className="table_link d-block">
                         view order
                       </Link>
                     </div>
                   </td>
+                  {/* <td>
+                    <div className="order-table-btn">
+                      <Link
+                        to={`/order-info?id=${order.id}`}
+                        className="table_link d-block">
+                        Cancel order
+                      </Link>
+                    </div>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

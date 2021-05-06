@@ -11,27 +11,40 @@ const CheckOut = (props) => {
     props.user && props.getUserInfo();
   }, []);
   return (
-    <div className="checkout_wrapper">
-      <div className={`container`}>
-        {/* CHECKOUT HEADING STARTS HERE */}
-        <div className="checkout_heading">
-          <div className="checkout_heading_left col">
-            <h3>Checkout</h3>
-            <span>Returning Customer?</span>{' '}
-            <Link to="/login">Click here to login</Link>
-          </div>
-          <div className="checkout_heading_right">
-            <div className="col p-0 m-0 d-flex align-items-center">
-              <img src="./assets/svg/icons/shopping-cart.svg" alt="" />
-              &#2547;{' '}
-              {(getCartProdSubTotal(props.cartList, props.user) || 0).toFixed(
-                2
-              )}
-            </div>
+    <div className="">
+      {props.orderSuccessLoading && (
+        <div className="order_loading">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
-        {/* CHECKOUT BODY STARTS HERE */}
-        <CheckOutBody />
+      )}
+
+      <div className="checkout_wrapper">
+        <div className={`container`}>
+          {/* CHECKOUT HEADING STARTS HERE */}
+          <div className="checkout_heading">
+            <div className="checkout_heading_left col">
+              <h3>Checkout</h3>
+              <span>Returning Customer?</span>{' '}
+              <Link to="/login">Click here to login</Link>
+            </div>
+            <div className="checkout_heading_right">
+              <div className="col p-0 m-0 d-flex align-items-center">
+                <img src="./assets/svg/icons/shopping-cart.svg" alt="" />
+                &#2547;{' '}
+                {(getCartProdSubTotal(props.cartList, props.user) || 0).toFixed(
+                  2
+                )}
+              </div>
+            </div>
+          </div>
+          {/* CHECKOUT BODY STARTS HERE */}
+          <CheckOutBody />
+        </div>
       </div>
     </div>
   );
@@ -44,7 +57,7 @@ const mapStateToProps = (state) => ({
   info: state.UserInfo.info,
   status: state.UserInfo.status,
   cartList: state.CartItems.basket,
-  orderSuccessLoading: state.PlaceOrder.loading,
+  orderSuccessLoading: state.PlaceOrder.placingOrder,
 });
 
 const mapDispatchToProps = (dispatch) => ({

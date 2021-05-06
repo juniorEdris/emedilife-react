@@ -106,8 +106,10 @@ h6 {
   object-fit: contain;
 }
 .error-handler {
-  margin-top: 0.6rem;
   color: rgb(211, 15, 15);
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  text-transform: capitalize;
 }
 /* Dashboard table primary css */
 .primary_table table{
@@ -1117,4 +1119,16 @@ Article css starts here
   border-radius: 0.1rem !important;
   height: 50px;
   font-size: 1.3rem;
+}
+.resend_otp_button a:hover,
+.otp_msg,
+.resend_otp_button{
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  text-transform: capitalize;
+}
+.resend_otp_button a{
+  color:var(--theme-color);
+  text-decoration: underline;
 }

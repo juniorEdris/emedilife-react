@@ -13,6 +13,7 @@ import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 const Details = (props) => {
   const router = useHistory();
   const path = router.location.pathname;
+  console.log(path);
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
@@ -25,6 +26,7 @@ const Details = (props) => {
     setPreviousPrice(0);
     setQuantity(1);
   }, [props.prodID]);
+  useEffect(() => {}, [path]);
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);

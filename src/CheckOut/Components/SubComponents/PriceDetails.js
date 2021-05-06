@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
+  console.log(props.deliveryTypes);
   const [offer, setOffer] = useState({});
   useEffect(() => {
     setOffer({});
@@ -56,7 +58,9 @@ const PriceDetails = (props) => {
   // GET TOTAL AMOUNT
   const final_total_amount = (
     parseInt(getCartProdSubTotal(props.cartList, props.user)) +
-      parseInt(PriceContainer?.delivery_charge) || 0
+      Number(PriceContainer?.delivery_charge) ||
+    getCartProdSubTotal(props.cartList, props.user) ||
+    0
   ).toFixed(2);
 
   // SET COUPON NUMBER
@@ -155,6 +159,12 @@ const PriceDetails = (props) => {
           <div className="checkout_headings">
             <h4>Shipping Method</h4>
           </div>
+          <div className="text-right">
+            {' '}
+            <small className="minimum order text-muted">
+              minimum order price &#2547; {PriceContainer?.min_order || 0}
+            </small>
+          </div>
           <div className="">
             <div className="row justify-content-between m-0 p-0 col-12">
               <p className="mr-3 discount_amount mb-0">Sub Total: </p>{' '}
@@ -196,6 +206,7 @@ const PriceDetails = (props) => {
               </span>
             </div>
           </div>
+
           <div className="border_top_section"></div>
           <div className="grand_total row no-gutters">
             <span className="grand_total_label">Grand Total</span>
@@ -213,14 +224,25 @@ const PriceDetails = (props) => {
               type="button"
               className={` btn btn-primary col-md-5`}
               disabled={
-                PriceContainer.min_order >
-                  (getCartProdSubTotal(props.cartList, props.user) || 0) ||
+                Number(PriceContainer?.min_order) >
+                  getCartProdSubTotal(props.cartList, props.user) ||
                 props.orderSuccessLoading ||
                 props.details.district === '' ||
-                props.details.area === ''
+                props.details.area === '' ||
+                props.details.zip === '' ||
+                props.details.address === ''
+              }
+              title={
+                (Number(PriceContainer?.min_order) >
+                  (getCartProdSubTotal(props.cartList, props.user) || 0) &&
+                  `minimum order price ${PriceContainer?.min_order}tk`) ||
+                (props.details.district === '' && 'select a district') ||
+                (props.details.area === '' && 'select a area') ||
+                (props.details.zip === '' && 'provide a zip code') ||
+                (props.details.address === '' && 'provide an address')
               }
               onClick={PlaceOrder}>
-              {props.orderSuccessLoading ? 'Ordering' : 'Place Order Now'}
+              {props.orderSuccessLoading ? 'Ordering...' : 'Place Order Now'}
             </button>
           </div>
         </div>

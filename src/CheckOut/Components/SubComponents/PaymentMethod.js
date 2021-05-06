@@ -11,7 +11,7 @@ const PaymentMethod = (props) => {
         <h4>Payment Method</h4>
       </div>
       <div className="payment_select col-12">
-        <div className="row select-payment">
+        <div className="row justify-content-center select-payment">
           <div className="row no-gutters">
             <div className="form-check">
               <input
@@ -34,7 +34,7 @@ const PaymentMethod = (props) => {
               </label>
             </div>
           </div>
-          {/* <div className="row no-gutters">
+          <div className="row no-gutters pointer_disabled">
             <div className="form-check">
               <input
                 className="form-check-input position-static check-box"
@@ -54,7 +54,7 @@ const PaymentMethod = (props) => {
                 />
               </label>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
