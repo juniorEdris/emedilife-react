@@ -650,23 +650,29 @@ width:60%
 /* .header__link {
   margin-right: 20px;
 } */
-.header__link {
+.header__link,a.header__option__lineTwo.header_logout {
   color: var(--light-color);
   text-decoration: none;
   display: none;
 }
-.header__link:hover {
+.header__link .header_my_account ,
+a.header__option__lineTwo.header_logout {
   color: var(--light-color);
 }
-.header__option:hover {
+.header__link .header_my_account:hover ,
+a.header__option__lineTwo.header_logout:hover {
+  color: var(--light-color);
   opacity: 0.7;
 }
+/* .header__option:hover {
+} */
 .header__option {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.header__option__lineOne {
+.header__option__lineOne,
+a.header__option__lineTwo.header_logout {
   font-size: 13px;
 }
 .header__option__lineTwo {

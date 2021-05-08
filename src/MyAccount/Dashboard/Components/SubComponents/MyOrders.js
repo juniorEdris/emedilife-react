@@ -24,20 +24,30 @@ const MyOrders = (props) => {
         <tbody>
           {props.completedOrders?.map((order) => (
             <tr className="trow-light" key={order.id}>
-              <th scope="row">#{order.order_number}</th>
+              <th scope="row">
+                <div className="order-table-id">#{order.order_number}</div>
+              </th>
               <td>
-                {dateFormat(
-                  order.order_date,
-                  'dddd, mmmm dS, yyyy, h:MM:ss TT'
-                )}
+                <div className="order-table-date">
+                  {dateFormat(
+                    order.order_date,
+                    'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                  )}
+                </div>
               </td>
               {/* <td>Eftekar Raghib</td> */}
-              <td>Tk {order.pay_amount}</td>
+              <td>
+                <div className="order-table-price">Tk {order.pay_amount}</div>
+              </td>
               <td>{order.delivery_status}</td>
               <td>
-                <Link to={`/order-info?id=${order.id}`} className="table_link">
-                  view order
-                </Link>
+                <div className="order-table-btn">
+                  <Link
+                    to={`/order-info?id=${order.id}`}
+                    className="table_link d-block">
+                    view order
+                  </Link>
+                </div>
               </td>
             </tr>
           ))}

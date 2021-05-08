@@ -170,6 +170,16 @@
 .check-label{
     border-radius: 0px;
 }
+.order-table-id{
+    width: 100%;
+}
+.order-table-date{
+    width: 350px;
+    
+}
+.order-table-price{
+    width: 100%;
+}
 .order-table-btn{
     width: 130px;
 }

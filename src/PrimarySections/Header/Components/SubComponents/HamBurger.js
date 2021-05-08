@@ -23,9 +23,9 @@ function HamBurger(props) {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/search-medicine">Shop</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/contact-us">Contact</Link>
             </li>

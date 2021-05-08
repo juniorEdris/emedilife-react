@@ -27,7 +27,7 @@ const CheckOutBody = (props) => {
       address: props.info?.address,
       zip: props.info?.zip || '',
     });
-  }, [props]);
+  }, [props.info]);
   useEffect(() => {
     props.getArea(DeliveryDetails.district);
   }, [DeliveryDetails.district]);

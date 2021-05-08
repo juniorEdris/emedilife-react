@@ -10,8 +10,8 @@ import { getOrderList } from '../../Redux/Action/OrderListAction';
 const Dashboard = (props) => {
   useEffect(() => {
     props.getCartItems();
-    props.User && props.getUserInfo();
-    props.User && props.getOrderList();
+    props.User && props.getUserInfo(); //!props.info &&
+    props.User && props.getOrderList(); //!props.orders.length > 1 &&
   }, []);
   const [tab, setTab] = useState('dashboard');
   return (
@@ -30,6 +30,8 @@ const Dashboard = (props) => {
 
 const mapStateToProps = (state) => ({
   User: state.User.user,
+  info: state.UserInfo.info,
+  orders: state.OrderList.orders,
 });
 
 const mapDispatchToProps = (dispatch) => ({

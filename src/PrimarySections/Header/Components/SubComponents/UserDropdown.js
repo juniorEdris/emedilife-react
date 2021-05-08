@@ -6,23 +6,38 @@ import { LogOutAction } from '../../../../Redux/Action/UserAction';
 const UserDropdown = (props) => {
   return (
     <>
-      <Link to={!props.user ? '/login' : '/dashboard'} className="header__link">
-        {!props.user ? (
-          <div className="header__option">
-            <span className="header__option__lineOne">Sign In</span>
+      {!props.user ? (
+        <div className="header__option">
+          <Link
+            to={!props.user ? '/login' : '/dashboard'}
+            className="header__link">
+            <span className="header__option__lineOne header_my_account">
+              Sign In
+            </span>
             {/* <span className="header__option__lineTwo">Sign In</span> */}
-          </div>
-        ) : (
-          <div className="header__option">
-            <span className="header__option__lineOne">My account</span>
-            {/* <span
-              className="header__option__lineTwo"
-              onClick={() => props.logOut()}>
-              Logout
-            </span> */}
-          </div>
-        )}
-      </Link>
+          </Link>
+        </div>
+      ) : (
+        <div className="header__option">
+          <Link
+            to={!props.user ? '/login' : '/dashboard'}
+            className="header__link">
+            <span className="header__option__lineOne header_my_account">
+              My account
+            </span>
+          </Link>
+          <Link
+            to="#"
+            className="header__option__lineTwo header_logout"
+            onClick={(e) => {
+              e.preventDefault();
+              props.logOut();
+            }}>
+            Logout
+          </Link>
+        </div>
+      )}
+
       {/* {dropdown && (
         <div className="dropdown">
           {!props.user ? (

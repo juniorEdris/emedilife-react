@@ -78,7 +78,7 @@
 /* .header__option span {
   font-size: 0.7rem;
 } */
-.header__option span {
+.header__option {
   margin-left: 1rem;
 }
 }
@@ -124,7 +124,7 @@
   .nav_links ul li a.see-more{
     font-weight: 800;
   }
-  .header__link {
+  .header__link,a.header__option__lineTwo.header_logout {
     display: block;
   }
 }
