@@ -30,7 +30,7 @@ const CheckOut = (props) => {
             <div className="checkout_heading_left col">
               <h3>Checkout</h3>
               <span>Returning Customer?</span>{' '}
-              <Link to="/login">Click here to login</Link>
+              {/* <Link to="/login">Click here to login</Link> */}
             </div>
             <div className="checkout_heading_right">
               <div className="col p-0 m-0 d-flex align-items-center">

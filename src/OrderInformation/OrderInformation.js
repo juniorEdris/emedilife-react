@@ -8,7 +8,6 @@ import OrderProducts from './Components/OrderProducts';
 import './order_information.css';
 
 const OrderInformation = (props) => {
-  console.log(props);
   const query = useQuery();
   const id = query.get('id');
   useEffect(() => {
@@ -20,7 +19,11 @@ const OrderInformation = (props) => {
         <div className="order-information-heading">
           <h3>Order Information</h3>
         </div>
-        <OrderDetails loading={props.loading} order={props.singleorder} />
+        <OrderDetails
+          loading={props.loading}
+          order={props.singleorder}
+          order_id={id}
+        />
         <AddressSection loading={props.loading} order={props.singleorder} />
         <OrderProducts loading={props.loading} order={props.singleorder} />
       </div>

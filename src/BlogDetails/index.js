@@ -20,7 +20,7 @@ export const Index = (props) => {
         props.loading ? '' : 'bg_blog'
       } blog_details_wrapper p-0 col-12`}>
       <div className="blog_details_wrapper_body">
-        <div className="row">
+        <div className="row ">
           <BlogDetails loading={props.loading} blog={props.blog} />
           <Sidebar loading={props.loading} />
         </div>

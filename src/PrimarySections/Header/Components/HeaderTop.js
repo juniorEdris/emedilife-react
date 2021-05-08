@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { GetSearchResults } from '../../../Redux/Action/SearchAction';
 import ResponsiveFilter from '../../ResponsiveFilter.js/ResponsiveFilter';
 import ResponsiveSearch from '../../ResponsiveSearch/ResponsiveSearch';
 import HamBurger from './SubComponents/HamBurger';
@@ -13,19 +14,34 @@ import WishListIcon from './SubComponents/Wishlist';
 export const HeaderTop = (props) => {
   const [search, setSearch] = useState(false);
   const [filter, setFilter] = useState(false);
+  const [option, setOption] = useState('');
+  const [input, setInput] = useState('');
+  const [list, setList] = useState(false);
   const openSeacrhbox = (e) => {
     e.preventDefault();
     setSearch(!search);
+    setFilter(false);
   };
   const openFilterbox = (e) => {
     e.preventDefault();
     setFilter(!filter);
+    setSearch(false);
   };
+  useEffect(() => {
+    props.getSearchResults({ keywords: input, category: option });
+  }, [input, option]);
   return (
     <nav className="header">
       <HamBurger />
       <Logo />
-      <Search />
+      <Search
+        option={option}
+        setOption={setOption}
+        input={input}
+        setInput={setInput}
+        list={list}
+        setList={setList}
+      />
       <div className="header__right row align-items-center">
         <Link
           to="#"
@@ -39,14 +55,42 @@ export const HeaderTop = (props) => {
           <ProductCart handleChange={openSeacrhbox} />
         </div>
       </div>
-      {search && <ResponsiveSearch setSearch={setSearch} />}
-      {filter && <ResponsiveFilter />}
+      {search && (
+        <ResponsiveSearch
+          setSearch={setSearch}
+          option={option}
+          setOption={setOption}
+          input={input}
+          setInput={setInput}
+          list={list}
+          setList={setList}
+        />
+      )}
+      {search && (
+        <div
+          className="responsive_backdrop d-md-none"
+          onClick={() => {
+            setList(false);
+            setSearch(false);
+            setInput('');
+          }}></div>
+      )}
+      {filter && <ResponsiveFilter option={option} setOption={setOption} />}
+      {filter && (
+        <div
+          className="responsive_backdrop d-md-none"
+          onClick={() => {
+            setFilter(false);
+          }}></div>
+      )}
     </nav>
   );
 };
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => ({
+  getSearchResults: (data) => dispatch(GetSearchResults(data)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderTop);

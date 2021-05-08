@@ -5,18 +5,13 @@ import { GetSearchResults } from '../../../../Redux/Action/SearchAction';
 
 export const Search = (props) => {
   const history = useHistory();
-  const [option, setOption] = useState('');
-  const [input, setInput] = useState('');
-  const [list, setList] = useState(false);
-  useEffect(() => {
-    props.getSearchResults({ keywords: input, category: option });
-  }, [input, option]);
+
   const handleChange = (e) => {
-    setInput(e.target.value);
+    props.setInput(e.target.value);
   };
 
   const searchList = (e) => {
-    setList(false);
+    props.setList(false);
   };
 
   return (
@@ -27,8 +22,8 @@ export const Search = (props) => {
             <select
               name=""
               id=""
-              onChange={(e) => setOption(e.target.value)}
-              value={option}>
+              onChange={(e) => props.setOption(e.target.value)}
+              value={props.option}>
               <option value="">All</option>
               {props.categories?.map((cat) => (
                 <option value={cat.id} key={cat.id}>
@@ -41,18 +36,18 @@ export const Search = (props) => {
             type="text"
             list="medicines"
             className="header__searchInput"
-            onKeyUp={() => setList(true)}
+            onKeyUp={() => props.setList(true)}
             onChange={handleChange}
-            value={input}
+            value={props.input}
             placeholder="Search medicine,injections"
           />
           <Link to="#" className="header__searchIcon">
             <i className=" fas fa-search" title="search"></i>
           </Link>
         </div>
-        {input.length > 0 && (
+        {props.input.length > 0 && (
           <div className="">
-            {list && (
+            {props.list && (
               <div className="">
                 {props.results !== undefined ? (
                   <div className="">
@@ -64,7 +59,7 @@ export const Search = (props) => {
                               to={`/productdetails?id=${result.id}`}
                               onClick={(e) => {
                                 searchList(e, result.id);
-                                setInput('');
+                                props.setInput('');
                               }}>
                               {result.name}
                             </Link>
@@ -89,12 +84,12 @@ export const Search = (props) => {
           </div>
         )}
       </div>
-      {input.length > 0 && list && (
+      {props.input.length > 0 && props.list && (
         <div
           className="data-list-back-drop"
           onClick={() => {
-            setList(false);
-            setInput('');
+            props.setList(false);
+            props.setInput('');
           }}></div>
       )}
     </div>

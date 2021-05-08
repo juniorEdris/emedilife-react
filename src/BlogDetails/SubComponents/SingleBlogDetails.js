@@ -4,7 +4,7 @@ import { renderDiv } from '../../PrimarySections/Utility';
 
 const BlogDetails = (props) => {
   return (
-    <div className="blog_details col-md-9" key={props.blog.id}>
+    <div className="blog_details col-md-8" key={props.blog.id}>
       <div className="blog_details_header col-12">
         <div className="container-md-fluid">
           {props.loading ? (

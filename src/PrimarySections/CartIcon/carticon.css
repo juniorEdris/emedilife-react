@@ -8,7 +8,7 @@
     position: fixed;
     right: 5px;
     text-align: center;
-    z-index: 1000;
+    z-index: 994;
     /* border: 1px solid var(--theme-color); */
     border-radius: 0.3rem;
 }

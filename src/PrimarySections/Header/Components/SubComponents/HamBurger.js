@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-function HamBurger() {
+function HamBurger(props) {
   const [sidebar, setSidebar] = useState(false);
   return (
     <div className="ham-burger">
@@ -29,22 +30,35 @@ function HamBurger() {
               <Link to="/contact-us">Contact</Link>
             </li>
             <li>
-              <Link to="/blog">Contact</Link>
+              <Link to="/blog">Blogs</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
+            {!props.user ? (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
             <li>
               <Link to="/wishlist">Wishlist</Link>
             </li>
           </ul>
         </div>
       </div>
+      {sidebar && (
+        <div
+          className="responsive_backdrop top-0 d-md-none"
+          onClick={() => {
+            setSidebar(false);
+          }}></div>
+      )}
     </div>
   );
 }
-
-export default HamBurger;
+const mapStateToProps = (state) => ({
+  user: state.User.user,
+});
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStateToProps, mapDispatchToProps)(HamBurger);

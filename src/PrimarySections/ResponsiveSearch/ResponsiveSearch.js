@@ -7,36 +7,36 @@ import './responsivesearch.css';
 
 const ResponsiveSearch = (props) => {
   const history = useHistory();
-  const [option, setOption] = useState('');
-  const [input, setInput] = useState('');
-  const [list, setList] = useState(false);
-  useEffect(() => {
-    props.getSearchResults(input);
-  }, [input, option]);
 
   const searchList = (e) => {
-    setList(false);
+    props.setList(false);
+    props.setInput('');
     props.setSearch(false);
   };
   return (
     <div className="responsive_search d-md-none">
       <form action="">
-        <div className="row">
-          <input
-            type="text"
-            name="search"
-            id=""
-            className="search_input"
-            placeholder="Search by brands and generic names"
-            onKeyUp={() => setList(true)}
-            onChange={(e) => setInput(e.target.value)}
-            value={input}
-          />
+        <div className="row align-items-center">
+          <div className="flex-grow-1">
+            <input
+              type="text"
+              name="search"
+              id=""
+              className="search_input"
+              placeholder="Search by brands and generic names"
+              onKeyUp={() => props.setList(true)}
+              onChange={(e) => props.setInput(e.target.value)}
+              value={props.input}
+            />
+          </div>
+          <div className="">
+            <span className="lnr lnr-magnifier"></span>
+          </div>
         </div>
       </form>
-      {input.length > 0 && (
+      {props.input.length > 0 && (
         <div className="">
-          {list && (
+          {props.list && (
             <div className="">
               {props.results !== undefined ? (
                 <div className="">
@@ -44,14 +44,14 @@ const ResponsiveSearch = (props) => {
                     <div className="data-list col-12">
                       {props.results.map((result) => (
                         <Link
-                          to="/search-medicine"
+                          to={`/productdetails?id=${result.id}`}
                           onClick={(e) => searchList(e, result.id)}>
                           <div className="col search_list">{result.name}</div>
                         </Link>
                       ))}
                     </div>
                   ) : (
-                    <div className="data-list col-12">
+                    <div className="data-list responsive-data-list col-12">
                       <div className="header_search_list_loader">
                         loading...
                       </div>

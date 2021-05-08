@@ -35,6 +35,29 @@
 }
 
 .cancel_order_btn{
-    color: var(--light-color);
+    color: var(--muted-color);
     text-transform: capitalize;
+}
+.cancel_order_btn:hover{
+    text-decoration: underline;
+}
+.cancel_order_popup{
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.cancel_order_backdrop{
+        position: absolute;
+        top:0 !important;
+        min-height: 100%;
+        width: 100%;
+        background: var(--dark-color);
+        opacity: 0.4;
+        z-index: 997;
+        left: 0;
+        top: 76px;
+        cursor: pointer;
 }
