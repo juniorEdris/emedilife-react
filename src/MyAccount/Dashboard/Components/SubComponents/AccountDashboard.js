@@ -35,7 +35,11 @@ const AccountDashboard = (props) => {
         orderPages={props.orderPages}
       />
       {/* Account information start here */}
-      <AccountInfo loading={props.infoLoading} info={props.info} />
+      <AccountInfo
+        loading={props.infoLoading}
+        info={props.info}
+        setTab={props.setTab}
+      />
     </div>
   );
 };

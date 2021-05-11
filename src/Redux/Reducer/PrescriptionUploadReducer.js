@@ -11,6 +11,7 @@ export const PrescriptionUploadReducer = (state = initialState, action) => {
     case PRESCRIPTION_UPLOAD_REQUEST:
       return {
         ...state,
+        uploadloading: true,
         prescriptionSuccess: 'Prescription upload loading',
         prescriptionStatus: true,
         error: {},
@@ -18,6 +19,7 @@ export const PrescriptionUploadReducer = (state = initialState, action) => {
     case PRESCRIPTION_UPLOAD_SUCCESS:
       return {
         ...state,
+        uploadloading: false,
         prescriptionSuccess: action.results,
         prescriptionStatus: action.status,
         error: {},
@@ -25,6 +27,7 @@ export const PrescriptionUploadReducer = (state = initialState, action) => {
     case PRESCRIPTION_UPLOAD_SUCCESS_COMPLETE:
       return {
         ...state,
+        uploadloading: false,
         prescriptionSuccess: '',
         prescriptionStatus: false,
         error: {},

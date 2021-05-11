@@ -33,7 +33,7 @@ const prescriptionUploadError = (error) => {
 
 export const PrescriptionUpload = (name, image) => async (dispatch) => {
   const user_id = localStorage.getItem('user_id');
-  dispatch(prescriptionUploadRequest);
+  dispatch(prescriptionUploadRequest());
   await API()
     .post(
       `${ENDPOINTS.PRESCRIPTION_UPLOAD}user_id=${user_id}&name=${name}`,
@@ -46,7 +46,7 @@ export const PrescriptionUpload = (name, image) => async (dispatch) => {
         dispatch(prescriptionUploadSuccess(res.data));
         setTimeout(() => {
           dispatch(prescriptionUploadComplete());
-        }, 4000);
+        }, 6000);
       }
     })
     .catch((error) => {

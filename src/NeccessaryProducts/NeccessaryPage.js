@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
 import { useQuery } from '../PrimarySections/Utility';
-import { GetNeccessaryProducts } from '../Redux/Action/NeccessaryProductsAction';
+import {
+  GetNeccessaryProducts,
+  getNeccessrySortedProducts,
+} from '../Redux/Action/NeccessaryProductsAction';
 
 const NeccessaryProducts = (props) => {
   const [category, setCategory] = useState('');
@@ -11,6 +14,9 @@ const NeccessaryProducts = (props) => {
   useEffect(() => {
     props.getProducts({ page, category_id: category });
   }, [page, category]);
+  useEffect(() => {
+    props.getSortingProducts({ sortingType: sort });
+  }, [sort]);
   return (
     <div className="neccessary_product_wrapper">
       <AllProducts
@@ -39,6 +45,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: (data) => dispatch(GetNeccessaryProducts(data)),
+  getSortingProducts: (data) => dispatch(getNeccessrySortedProducts(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NeccessaryProducts);

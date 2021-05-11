@@ -80,7 +80,11 @@ const UserEntry = (props) => {
                               type="text"
                               className="form-control input"
                               id="number"
-                              placeholder="Enter your phone number"
+                              placeholder={
+                                !UserID()
+                                  ? 'Enter phone number'
+                                  : 'Enter phone number for OTP message'
+                              }
                               value={number}
                               onChange={(e) => setNumber(e.target.value)}
                               required
@@ -100,8 +104,13 @@ const UserEntry = (props) => {
                                 onChange={(e) => setOTP(e.target.value)}
                                 required
                               />
+                              {error.otp && (
+                                <div className="text-success otp_msg">
+                                  <small>{error.otp}</small>
+                                </div>
+                              )}
                               <div className="resend_otp_button">
-                                <Link to="#" onClick={register}>
+                                <Link to="#" onClick={register} className="">
                                   Resend
                                 </Link>{' '}
                                 OTP request
@@ -113,12 +122,7 @@ const UserEntry = (props) => {
                               )}
                               {error.otpErrMessage && (
                                 <div className="error-handler">
-                                  {error.otpErrMessage}
-                                </div>
-                              )}
-                              {error.otp && (
-                                <div className="text-success otp_msg">
-                                  {error.otp}
+                                  <small>{error.otpErrMessage}</small>
                                 </div>
                               )}
                             </div>

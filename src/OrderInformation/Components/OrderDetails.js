@@ -3,6 +3,7 @@ import dateFormat from 'dateformat';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import OrderCancel from '../../OrderNotify/OrderCancel';
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 
 const OrderDetails = (props) => {
@@ -32,36 +33,7 @@ const OrderDetails = (props) => {
   return (
     <div className="">
       {response.cancelStatus && (
-        <div className="">
-          <div className="cancel_order_popup">
-            <div className="row no-gutters justify-content-center">
-              <div className="popup_wrapper col-7 ">
-                <div className="popup_header">
-                  <div className="success_header">
-                    <h3 className="text-capitalize">{response.cancelMsg}</h3>
-                  </div>
-                </div>
-                <div className="popup_footer">
-                  {/* <img
-                    src="./assets/images/primary/logo.png"
-                    width={70}
-                    alt="logo"
-                  /> */}
-                  <div className="back_btn">
-                    <Link to="/" className="btn btn-success col-md-5 mt-3">
-                      Back to homepage
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="cancel_order_backdrop"
-            onClick={() => {
-              setResponse({ cancelStatus: false });
-            }}></div>
-        </div>
+        <OrderCancel response={response.cancelMsg} setResponse={setResponse} />
       )}
       <div className="order_information_details">
         {/* <div className="col-12">

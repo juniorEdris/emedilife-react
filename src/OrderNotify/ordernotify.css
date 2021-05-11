@@ -38,3 +38,21 @@
     font-weight: 700;
     padding: 0.8rem 0;
 }
+/* Order Cancel  */
+.close_box{
+    width: 30px;
+    height: 30px;
+    padding-left: 0.1rem;
+    line-height: 27px;
+    background: var(--danger);
+    color: var(--light);
+    position: absolute;
+    top: -6px;
+    font-size: 1.7rem;
+    right: -7px;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+.close_box:hover{
+    background: var(--dark-color) !important;
+}

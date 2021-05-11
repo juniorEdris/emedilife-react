@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 996;
     width: 100%;
     -webkit-box-shadow: 0 2px 8px rgb(0 0 0 / 27%);
     box-shadow: 0 2px 8px rgb(0 0 0 / 27%);
@@ -23,6 +23,10 @@
 }
 .sidebar_route_list{
     padding: 1rem;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
 }
 .top-0{
     top: 0 !important;
@@ -39,17 +43,20 @@
 .sidebar_route_list li a{
     display: block;
     color: #fff;
+    text-transform: capitalize;
 }
 .cross .lnr {
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    float: right;
+    /* float: right; */
     background-color: #fff;
-    border-radius: 3rem;
+    /* border-radius: 3rem; */
     padding: 0.6rem;
-    margin-top: 0.3rem;
-    margin-right: 0.3rem;
+    /* margin-top: 0.3rem; */
+    /* margin-right: 0.3rem; */
+    position: absolute;
+    right: -35px;
 }
 .cross .lnr:hover{
     color: #fff;
@@ -96,6 +103,23 @@
     display: block;
     color: var(--dark);
     text-transform: capitalize;
+}
+/* CATEGORY SIDEBAR CSS */
+.category_sidebar{
+    /* Useable from app.js */
+    min-height: 100% !important;
+    top: 0 !important;
+}
+.category_sidebar_list{
+    /* Useable from app.js */
+    height: 100% !important;
+}
+.category_sidebar_backdrop{
+    height: 100% !important;
+    top: 0 !important;
+}
+.category_sidebar_list_active{
+    background-color: #111 !important;
 }
 
 @keyframes scale-in-ver-top {

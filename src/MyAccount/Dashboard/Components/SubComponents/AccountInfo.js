@@ -9,7 +9,9 @@ const AccountInfo = (props) => {
     <div className="account_information">
       <div className="order_header pl-4 pr-4">
         <span>Account Information</span>
-        <Link to="#">edit</Link>
+        <Link to="#" onClick={() => props.setTab('account')}>
+          edit
+        </Link>
       </div>
       <h5 className="pl-4 pr-4">Contact Information</h5>
       <div className="">
@@ -23,15 +25,20 @@ const AccountInfo = (props) => {
           </div>
           <div className="">
             {props.loading ? (
-              <Skeleton width={'100%'} height={50} />
+              <Skeleton width={'100%'} height={30} />
             ) : (
               <span>{props.info?.email}</span>
             )}
           </div>
           <div className="">
-            <Link to="#">Change Password</Link>
+            {props.loading ? (
+              <Skeleton width={'100%'} height={30} />
+            ) : (
+              <Link to="#">Change Password</Link>
+            )}
           </div>
-          <div className="">
+
+          {/* <div className="">
             <Link
               to="#"
               onClick={(e) => {
@@ -40,7 +47,7 @@ const AccountInfo = (props) => {
               }}>
               Log out
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

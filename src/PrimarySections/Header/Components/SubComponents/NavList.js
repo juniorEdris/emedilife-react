@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavList() {
+function NavList(props) {
+  const allCategory = (e) => {
+    e.preventDefault();
+    props.setCategoryBar(!props.categoryBar);
+    console.log(props.categoryBar);
+  };
   return (
     <div className="nav_links">
       <ul>
         <li>
-          <Link to="#" className="nav-all">
+          <Link to="#" className="nav-all" onClick={allCategory}>
             <span class="lnr lnr-menu"></span> all
           </Link>
         </li>

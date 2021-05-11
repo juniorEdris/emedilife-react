@@ -5,6 +5,7 @@ import { StoreAccInfo } from '../../../../Redux/Action/AccountInfoAction';
 import { GetAreaOption } from '../../../../Redux/Action/GetUserInfoAction';
 
 const EditInformation = (props) => {
+  console.log(props.loading, props.response);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
@@ -36,8 +37,7 @@ const EditInformation = (props) => {
     props.storeInfo(inputs);
     setInputs({
       name: '',
-      email: '',
-      phone: '',
+
       address: '',
       district: '',
       area: '',
@@ -64,10 +64,13 @@ const EditInformation = (props) => {
                 onChange={handleChange}
                 value={inputs.name}
               />
+              {inputs.name === '' && (
+                <small className="text-danger">Please provide your name.</small>
+              )}
             </div>
           </div>
           <div className=" form-group">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="phone">Mobile</label>
             <div className="input-group">
               <input
                 type="text"
@@ -77,6 +80,13 @@ const EditInformation = (props) => {
                 value={inputs.phone}
                 placeholder="Phone number"
               />
+              <div className="col-12">
+                {inputs.phone === '' && (
+                  <small className="text-danger">
+                    Please provide your mobile number.
+                  </small>
+                )}
+              </div>
             </div>
           </div>
           <div className="form-group">
@@ -89,6 +99,11 @@ const EditInformation = (props) => {
               onChange={handleChange}
               value={inputs.email}
             />
+            {inputs.email === '' && (
+              <small className="text-danger">
+                Please provide your email address.
+              </small>
+            )}
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
@@ -108,6 +123,11 @@ const EditInformation = (props) => {
                   </option>
                 ))}
               </select>
+              {inputs.district === '' && (
+                <small className="text-danger">
+                  Please provide your discrict name.
+                </small>
+              )}
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="area">Area</label>
@@ -126,6 +146,11 @@ const EditInformation = (props) => {
                   </option>
                 ))}
               </select>
+              {inputs.area === '' && (
+                <small className="text-danger">
+                  Please provide your area name.
+                </small>
+              )}
             </div>
           </div>
           <div className="form-group">
@@ -138,12 +163,19 @@ const EditInformation = (props) => {
               onChange={handleChange}
               value={inputs.address}
             />
+            {inputs.address === '' && (
+              <small className="text-danger">
+                Please provide your address.
+              </small>
+            )}
           </div>
           <div className="account_submit_btn">
             <Link
               to="#"
               onClick={submitFrom}
-              className="btn btn-primary col-md-4">
+              className={`${
+                inputs.address === '' && 'pointer_disabled'
+              } btn btn-primary col-md-4`}>
               Save Address
             </Link>
           </div>
@@ -156,6 +188,8 @@ const EditInformation = (props) => {
 const mapStateToProps = (state) => ({
   info: state.UserInfo.info,
   userArea: state.UserInfo.userAreas,
+  loading: state.AccountInfo.storeInfoloading,
+  response: state.AccountInfo.storeInfoStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

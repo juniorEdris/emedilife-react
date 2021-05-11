@@ -5,3 +5,6 @@
     CheckOut And Dashboard Area select,
     Dashboard All API
     make Place order Error an object field
+
+    # NEW
+        > LocalStorage Wishlist and Cartlist products to server on user login.

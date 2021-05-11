@@ -608,7 +608,7 @@ width:60%
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
-  right: 14px;
+  right: 8px;
   /*Adjust for position however you want*/
   
   top: 10px;
@@ -1126,15 +1126,26 @@ Article css starts here
   height: 50px;
   font-size: 1.3rem;
 }
+.login-box button:hover {
+  background: var(--dark-color);
+  color: var(--light-color);
+}
 .resend_otp_button a:hover,
 .otp_msg,
 .resend_otp_button{
-  margin: 1rem 0;
-  font-size: 1.2rem;
+  margin-top: 1rem ;
+  font-size: 1.1rem;
   color: var(--dark-color);
   text-transform: capitalize;
+  text-align: center;
 }
 .resend_otp_button a{
-  color:var(--theme-color);
-  text-decoration: underline;
+  color: var(--light-color);
+  padding: 0.4rem;
+  background: var(--user-entry-btn);
+  border-radius: 0.25rem;
+}
+.resend_otp_button a:hover{
+  color: var(--light-color);
+  background: var(--dark-color);
 }

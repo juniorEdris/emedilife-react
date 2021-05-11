@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
 import { useQuery } from '../PrimarySections/Utility';
-import { getSingleCompanyProducts } from '../Redux/Action/SingleBrandProductsAction';
+import {
+  getCompanySortedProducts,
+  getSingleCompanyProducts,
+} from '../Redux/Action/SingleBrandProductsAction';
+import { getSortedProducts } from '../Redux/Reducer/SortProductsReducer';
 
 const CompanyProducts = (props) => {
   const [category, setCategory] = useState('');
@@ -13,6 +17,9 @@ const CompanyProducts = (props) => {
   useEffect(() => {
     props.getProducts({ page, company_id: id, category_id: category });
   }, [page, id, category]);
+  useEffect(() => {
+    props.getSortingProducts({ sortingType: sort });
+  }, [sort]);
   return (
     <div className="company_products_wrapper">
       <AllProducts
@@ -40,6 +47,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: (data) => dispatch(getSingleCompanyProducts(data)),
+  getSortingProducts: (data) => dispatch(getCompanySortedProducts(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyProducts);

@@ -18,6 +18,7 @@ import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 const Index = (props) => {
   useEffect(() => {
     toTheTop();
+    props.setCategoryID('');
   }, []);
   return (
     <div>

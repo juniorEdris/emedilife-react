@@ -47,7 +47,7 @@ const OrderNotification = (props) => {
           <div className="back_btn">
             <Link
               to="/"
-              className="btn btn-success col-md-5"
+              className="btn btn-success col-8 col-md-5"
               onClick={() => props.clearOrder()}>
               Back to homepage
             </Link>

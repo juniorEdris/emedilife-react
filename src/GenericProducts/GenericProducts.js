@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
 import { useQuery } from '../PrimarySections/Utility';
-import { GetGenericResults } from '../Redux/Action/GenericProductsAction';
+import {
+  GetGenericResults,
+  getGenericSortedProducts,
+} from '../Redux/Action/GenericProductsAction';
 
 const GenericProducts = (props) => {
   const [category, setCategory] = useState('');
@@ -13,6 +16,9 @@ const GenericProducts = (props) => {
   useEffect(() => {
     props.getProducts({ page, id });
   }, [page, id]);
+  // useEffect(() => {
+  //   props.getSortedProducts({ sortingType: sort });
+  // }, [sort]);
   return (
     <div className="generic_products_wrapper">
       <AllProducts
@@ -38,6 +44,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: (data) => dispatch(GetGenericResults(data)),
+  getSortedProducts: (data) => dispatch(getGenericSortedProducts(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenericProducts);

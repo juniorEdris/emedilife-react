@@ -9,6 +9,9 @@ import { getCartProdSubTotal } from '../../PrimarySections/Utility';
 const CartIcon = (props) => {
   // useEffect(() => {}, [props.user]);
   const [cart, setCart] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = cart ? 'hidden' : '';
+  }, [cart]);
   const sidebarOpen = (e) => {
     e.preventDefault();
     setCart(!cart);

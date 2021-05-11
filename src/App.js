@@ -41,9 +41,13 @@ import GenericProducts from './GenericProducts/GenericProducts';
 import CategoryBasedProducts from './CategoryBasedProducts/CategoryBasedProducts';
 import OtherBrands from './OtherBrands/OtherBrands';
 import { CopyRight } from './CopyRight/CopyRight';
+import OrderCancel from './OrderNotify/OrderCancel';
+import CategorySidebar from './PrimarySections/Header/Components/SubComponents/CategorySidebar';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
+  const [categoryBar, setCategoryBar] = useState(false);
+  const [categoryID, setCategoryID] = useState('');
   const loginSuccessPageRedirectTo = (path) => {
     setNextPage(path);
   };
@@ -53,13 +57,26 @@ function App(props) {
     // props.User && props.getUserInfo();
     // props.User && props.getOrderList();
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = categoryBar ? 'hidden' : '';
+  }, [categoryBar]);
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header categoryBar={categoryBar} setCategoryBar={setCategoryBar} />
+        <CategorySidebar
+          categoryBar={categoryBar}
+          setCategoryBar={setCategoryBar}
+          categoryID={categoryID}
+          setCategoryID={setCategoryID}
+        />
         <Switch>
           <Route exact path="/">
-            <Home loginSuccessPageRedirectTo={loginSuccessPageRedirectTo} />
+            <Home
+              loginSuccessPageRedirectTo={loginSuccessPageRedirectTo}
+              categoryID={categoryID}
+              setCategoryID={setCategoryID}
+            />
           </Route>
           <Route path="/productdetails">
             <ProductDetails />
@@ -94,6 +111,7 @@ function App(props) {
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/ordersuccess" component={OrderNotification} />
+          {/* <Route path="/ordercancel" component={OrderCancel} /> */}
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon loginSuccessPageRedirectTo={loginSuccessPageRedirectTo} />

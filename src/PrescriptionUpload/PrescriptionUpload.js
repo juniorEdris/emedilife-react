@@ -10,6 +10,16 @@ const PrescriptionUpload = (props) => {
   }, []);
   return (
     <div className="container-md-fluid prescription_body">
+      {props.loading && (
+        <div className="prescription_loading">
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
       <div className="prescription_upload row">
         <UploadSection />
         <PreviewSection />
@@ -18,7 +28,10 @@ const PrescriptionUpload = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.Prescription.uploadloading,
+  success: state.Prescription.prescriptionSuccess,
+});
 
 const mapDispatchToProps = {};
 

@@ -127,6 +127,10 @@
   .header__link,a.header__option__lineTwo.header_logout {
     display: block;
   }
+    /* CATEGORY SIDEBAR CSS */
+.category_sidebar_list{
+  width: 30% !important;
+}
 }
 
 /* SM Small Device */
@@ -153,6 +157,7 @@
   .data-list{
     position: unset;
   }
+
 }
 
 @media (min-width: 480px) and (max-width: 575px) {

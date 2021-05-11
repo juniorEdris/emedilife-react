@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function HamBurger(props) {
   const [sidebar, setSidebar] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = sidebar ? 'hidden' : '';
+  }, [sidebar]);
   return (
     <div className="ham-burger">
       <Link to="#" onClick={() => setSidebar(true)}>
@@ -21,28 +24,40 @@ function HamBurger(props) {
           </div>
           <ul className="sidebar_route_list">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => setSidebar(false)}>
+                Home
+              </Link>
             </li>
             {/* <li>
               <Link to="/search-medicine">Shop</Link>
             </li> */}
             <li>
-              <Link to="/contact-us">Contact</Link>
+              <Link to="/contact-us" onClick={() => setSidebar(false)}>
+                Contact
+              </Link>
             </li>
             <li>
-              <Link to="/blog">Blogs</Link>
+              <Link to="/blog" onClick={() => setSidebar(false)}>
+                Blogs
+              </Link>
             </li>
             {!props.user ? (
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login" onClick={() => setSidebar(false)}>
+                  Login
+                </Link>
               </li>
             ) : (
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard" onClick={() => setSidebar(false)}>
+                  Dashboard
+                </Link>
               </li>
             )}
             <li>
-              <Link to="/wishlist">Wishlist</Link>
+              <Link to="/wishlist" onClick={() => setSidebar(false)}>
+                Wishlist
+              </Link>
             </li>
           </ul>
         </div>

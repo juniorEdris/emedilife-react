@@ -8,6 +8,7 @@ const DeliveryDetails = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="">
       <div className="delivery_details chekoutCard">
@@ -26,6 +27,9 @@ const DeliveryDetails = (props) => {
                 name="name"
                 onChange={handleChange}
               />
+              {props.details.name === '' && (
+                <div className="text-danger">Please provide your name.</div>
+              )}
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="mobile">Mobile</label>
@@ -37,6 +41,11 @@ const DeliveryDetails = (props) => {
                 name="phone"
                 onChange={handleChange}
               />
+              {props.details.phone === '' && (
+                <small className="text-danger">
+                  Please provide your mobile number.
+                </small>
+              )}
             </div>
           </div>
           <div className="form-group">
@@ -50,6 +59,11 @@ const DeliveryDetails = (props) => {
               name="email"
               onChange={handleChange}
             />
+            {props.details.email === '' && (
+              <small className="text-danger">
+                Please provide your email address.
+              </small>
+            )}
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
@@ -69,6 +83,11 @@ const DeliveryDetails = (props) => {
                   </option>
                 ))}
               </select>
+              {props.details.district === '' && (
+                <small className="text-danger">
+                  Please provide your district name.
+                </small>
+              )}
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="area">Area</label>
@@ -87,6 +106,11 @@ const DeliveryDetails = (props) => {
                   </option>
                 ))}
               </select>
+              {props.details.area === '' && (
+                <small className="text-danger">
+                  Please provide your area name.
+                </small>
+              )}
             </div>
           </div>
           <div className="form-row">
@@ -101,6 +125,11 @@ const DeliveryDetails = (props) => {
                 name="address"
                 onChange={handleChange}
               />
+              {props.details.address === '' && (
+                <small className="text-danger">
+                  Please provide your address.
+                </small>
+              )}
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="zip">Zip</label>
@@ -113,6 +142,11 @@ const DeliveryDetails = (props) => {
                 name="zip"
                 onChange={handleChange}
               />
+              {props.details.zip === '' && (
+                <small className="text-danger">
+                  Please provide your zip code.
+                </small>
+              )}
             </div>
           </div>
         </form>
@@ -132,3 +166,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeliveryDetails);
+
+//
+// area
+// address
+// zip

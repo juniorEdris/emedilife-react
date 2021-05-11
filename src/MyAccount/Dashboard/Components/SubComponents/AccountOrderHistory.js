@@ -1,4 +1,5 @@
 import Skeleton from '@yisheng90/react-loading';
+import dateFormat from 'dateformat';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,11 +33,22 @@ const AccountOrderHistory = (props) => {
               {props.orders?.map((order) => (
                 <tr className="trow-light" key={order.id}>
                   <th scope="row">
-                    <div className="col">#{order.order_number}</div>
+                    <div className="order-table-id">#{order.order_number}</div>
                   </th>
-                  <td>{order.order_date}</td>
+                  <td>
+                    <div className="order-table-date">
+                      {dateFormat(
+                        order.order_date,
+                        'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                      )}
+                    </div>
+                  </td>
                   {/* <td>Eftekar Raghib</td> */}
-                  <td>Tk {order.pay_amount}</td>
+                  <td>
+                    <div className="order-table-price">
+                      Tk {order.pay_amount}
+                    </div>
+                  </td>
                   <td>{order.delivery_status}</td>
                   <td>
                     <div className="order-table-btn">

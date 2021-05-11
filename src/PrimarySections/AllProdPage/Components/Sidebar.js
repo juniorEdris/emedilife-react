@@ -5,9 +5,17 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
   const sorting = [
+    // {
+    //   id: 1,
+    //   name: 'relevance',
+    // },
     {
-      id: 1,
-      name: 'relevance',
+      id: 4,
+      name: 'price low to high',
+    },
+    {
+      id: 5,
+      name: 'price high to low',
     },
     {
       id: 2,
@@ -16,14 +24,6 @@ const Sidebar = (props) => {
     {
       id: 3,
       name: 'name z to a',
-    },
-    {
-      id: 4,
-      name: 'price low to high',
-    },
-    {
-      id: 5,
-      name: 'price high to low',
     },
   ];
 

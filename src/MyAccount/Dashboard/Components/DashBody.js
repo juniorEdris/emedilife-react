@@ -7,7 +7,7 @@ import MyOrders from './SubComponents/MyOrders';
 const DashBody = (props) => {
   return (
     <div className="dashboard_body">
-      {props.tab === 'dashboard' && <AccountDashboard />}
+      {props.tab === 'dashboard' && <AccountDashboard setTab={props.setTab} />}
       {props.tab === 'account' && <EditInformation />}
       {props.tab === 'order' && <MyOrders />}
     </div>

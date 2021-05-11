@@ -21,6 +21,7 @@ import { SingleBlogReducer } from '../Reducer/SingleBlogReducer';
 import { SingleOrderReducer } from '../Reducer/SingleOrderReducer';
 import { OtherBrandsReducer } from '../Reducer/OtherBrandsReducer';
 import { CategoryBasedProdReducer } from '../Reducer/CategoryBasedProdReducer';
+import { AccountInfoReducer } from '../Reducer/AccountInfoReducer';
 export const initialState = {
   loading: true,
   pages: [],
@@ -78,7 +79,8 @@ export const initialState = {
   error: { name: '', email: '', subject: '', message: '', prescription: '' },
   contactConfirm: '',
   // Prescription states
-  prescriptionSuccess: '',
+  uploadloading: false,
+  prescriptionSuccess: 'Uploading...',
   prescriptionStatus: false,
   // Place Orders states
   placingOrder: false,
@@ -112,6 +114,9 @@ export const initialState = {
   categoryProducts: [],
   categoryLists: [],
   categorypages: [],
+  // Account Info state
+  storeInfoloading: false,
+  storeInfoStatus: '',
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -138,6 +143,7 @@ const store = createStore(
     SingleOrder: SingleOrderReducer,
     OtherBrands: OtherBrandsReducer,
     CategoryProducts: CategoryBasedProdReducer,
+    AccountInfo: AccountInfoReducer,
   }),
   initialState,
   composeEnhancers(applyMiddleware(thunk))

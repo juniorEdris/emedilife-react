@@ -113,6 +113,7 @@ const UploadSection = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+  loading: state.Prescription.uploadloading,
   success: state.Prescription.prescriptionSuccess,
   status: state.Prescription.prescriptionStatus,
   error: state.Prescription.error,

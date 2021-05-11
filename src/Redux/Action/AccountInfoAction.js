@@ -23,15 +23,16 @@ const submitAccountInfoError = (res) => {
 
 export const StoreAccInfo = (object) => async (dispatch) => {
   dispatch(submitAccountInfoReq());
-  console.log('accinfoaction', object);
   await API()
     .post(
       `${ENDPOINTS.USER_UPDATE}?name=${object.name}&email=${object.email}&phone=${object.phone}&address=${object.address}&district_id=${object.district}&area_id${object.area}`
     ) //&photo=${}
     .then((res) => {
+      dispatch(submitAccountInfoSuccess());
       console.log(res);
     })
     .catch((err) => {
+      dispatch(submitAccountInfoError());
       console.log(err);
     });
 };

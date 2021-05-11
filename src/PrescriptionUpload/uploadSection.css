@@ -146,3 +146,18 @@ label.gallery-btn .gallery-btn-img{
     font-size: 1.2rem;
     
 }
+/* Prescription loading */
+.prescription_loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--heading-color);
+    width: 100%;
+    z-index: 2000;
+    opacity: 0.4;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

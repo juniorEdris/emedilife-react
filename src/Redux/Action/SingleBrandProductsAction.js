@@ -1,5 +1,6 @@
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 import {
+  FILTER_PRODUCTS,
   SINGLE_BRAND_PRODUCT_ERROR,
   SINGLE_BRAND_PRODUCT_REQUEST,
   SINGLE_BRAND_PRODUCT_SUCCESS,
@@ -26,6 +27,13 @@ const SingleBrandSuccessError = (error) => {
   };
 };
 
+const filterProducts = (product, price) => {
+  return {
+    type: FILTER_PRODUCTS,
+    product,
+  };
+};
+
 export const getSingleCompanyProducts = (data) => async (dispatch) => {
   dispatch(SingleBrandRequest());
 
@@ -40,4 +48,22 @@ export const getSingleCompanyProducts = (data) => async (dispatch) => {
       dispatch(SingleBrandSuccessError());
       console.log(error);
     });
+};
+
+export const getCompanySortedProducts = (data) => (dispatch, getState) => {
+  console.log(data);
+  const sortedProds = getState().SingleCompany.company_products.slice();
+
+  if (data.sortingType === 'price low to high') {
+    sortedProds.sort((a, b) =>
+      Number(a.unit_prices?.price) > Number(b.unit_prices?.price) ? 1 : -1
+    );
+  } else if (data.sortingType === 'price high to low') {
+    sortedProds.sort((a, b) =>
+      Number(a.unit_prices?.price) < Number(b.unit_prices?.price) ? 1 : -1
+    );
+  } else {
+    sortedProds.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
+  dispatch(filterProducts(sortedProds, data.sortingType));
 };

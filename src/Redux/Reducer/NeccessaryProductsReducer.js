@@ -1,5 +1,6 @@
 import { initialState } from '../Store/Store';
 import {
+  FILTER_NECCESSARY_PRODUCTS,
   NECCESSARY_PRODUCTS_ERROR,
   NECCESSARY_PRODUCTS_REQUEST,
   NECCESSARY_PRODUCTS_SUCCESS,
@@ -30,6 +31,11 @@ export const NeccessaryProdReducer = (state = initialState, action) => {
         neccessaryResults: [],
         neccessaryCategories: [],
         neccessary_pages: [],
+      };
+    case FILTER_NECCESSARY_PRODUCTS:
+      return {
+        ...state,
+        neccessaryResults: action.product,
       };
     default:
       return state;
