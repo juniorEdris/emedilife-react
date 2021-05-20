@@ -1,18 +1,15 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
-import { getCartItems } from '../Redux/Action/CartProductsAction';
-import { PlaceOrderClearState } from '../Redux/Action/PlaceOrderAction';
-import './ordernotify.css';
+import { Link } from 'react-router-dom';
+import './popup.css';
 
-const OrderCancel = (props) => {
+export const PopUp = (props) => {
   return (
-    <div className="">
-      <div className="cancel_order_popup">
+    <div>
+      <div className=" primary_popup_wrapper">
         <div className="row no-gutters justify-content-center">
-          <div className="popup_wrapper col-7 ">
-            <div className="close_box" onClick={props.close}>
+          <div className="inner_popup_wrapper col-7 ">
+            <div className="primary_close_box" onClick={props.close}>
               &times;
             </div>
             <div className="popup_header">
@@ -26,25 +23,25 @@ const OrderCancel = (props) => {
                     width={70}
                     alt="logo"
                   /> */}
-              <div className="back_btn">
+              <div className="primary_back_btn back_btn">
                 <Link
                   to="#"
                   onClick={props.close}
                   className="btn btn-success col-8 col-md-5 mt-3">
-                  Back to Dashboard
+                  Close
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="cancel_order_backdrop" onClick={props.close}></div>
+      <div className="primary_popup_backdrop" onClick={props.close}></div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderCancel);
+export default connect(mapStateToProps, mapDispatchToProps)(PopUp);

@@ -1,14 +1,16 @@
+/* eslint-disable no-self-compare */
 /* eslint-disable no-mixed-operators */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { PopUp } from '../../../PrimarySections/SectionUtils/PopUp';
 import { getCartProdSubTotal } from '../../../PrimarySections/Utility';
 import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
-  console.log(props.deliveryTypes);
   const [offer, setOffer] = useState({});
+  const [error, setError] = useState('');
   useEffect(() => {
     setOffer({});
   }, []);
@@ -83,25 +85,50 @@ const PriceDetails = (props) => {
         console.log(error);
       });
   };
-
   // PLACE ORDER FUNCTION
   const PlaceOrder = (e) => {
     e.preventDefault();
-    const data = {
-      ...props.details,
-      coupon_id: offer.id,
-      coupon_discount: offer.price,
-      payment_type: props.type,
-    };
-    props.order(data);
+    setError('');
+    if (
+      props.details?.name === '' ||
+      props.details?.phone === '' ||
+      props.details?.email === '' ||
+      props.details?.district === '' ||
+      props.details?.area === '' ||
+      props.details?.address === ''
+    ) {
+      setError('Please fill all the delivery details.');
+    } else if (!props.cartList?.length > 0) {
+      setError('your cart is empty');
+    } else if (
+      Number(PriceContainer?.min_order) >
+      (getCartProdSubTotal(props.cartList, props.user) || 0)
+    ) {
+      setError(`minimum order price ${PriceContainer?.min_order}tk`);
+    } else {
+      const data = {
+        ...props.details,
+        coupon_id: offer.id,
+        coupon_discount: offer.price,
+        payment_type: props.type,
+        delivery_charge: PriceContainer.delivery_charge,
+      };
+      props.order(data);
+    }
   };
 
   // PUSH TO ORDER SUCCESS NOTIFICATION
-  // props.orderSuccess && history.push('/ordersuccess');
   props.orderStatus && history.push('/ordersuccess');
-
+  // Close the popup
+  const closePopup = (e) => {
+    e.preventDefault();
+    setError('');
+  };
   return (
     <div className="">
+      {error && (
+        <PopUp response={error} setResponse={setError} close={closePopup} />
+      )}
       <div className="price_details chekoutCard">
         <div className="checkout_headings">
           <h4>Price Details</h4>
@@ -223,24 +250,6 @@ const PriceDetails = (props) => {
             <button
               type="button"
               className={` btn btn-primary col-md-5`}
-              disabled={
-                Number(PriceContainer?.min_order) >
-                  getCartProdSubTotal(props.cartList, props.user) ||
-                props.orderSuccessLoading ||
-                props.details.district === '' ||
-                props.details.area === '' ||
-                props.details.zip === '' ||
-                props.details.address === ''
-              }
-              title={
-                (Number(PriceContainer?.min_order) >
-                  (getCartProdSubTotal(props.cartList, props.user) || 0) &&
-                  `minimum order price ${PriceContainer?.min_order}tk`) ||
-                (props.details.district === '' && 'select a district') ||
-                (props.details.area === '' && 'select a area') ||
-                (props.details.zip === '' && 'provide a zip code') ||
-                (props.details.address === '' && 'provide an address')
-              }
               onClick={PlaceOrder}>
               {props.orderSuccessLoading ? 'Ordering...' : 'Place Order Now'}
             </button>

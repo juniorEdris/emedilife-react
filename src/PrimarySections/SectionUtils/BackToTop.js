@@ -23,9 +23,9 @@ function BackToTop() {
   };
   return (
     <div className="back_to_top">
-      <span className="flat-btn" onClick={headToTop}>
+      {/* <span className="flat-btn" onClick={headToTop}>
         Back to Top
-      </span>
+      </span> */}
       <div className="scroll-top not-visible" onClick={headToTop}>
         <span class="lnr lnr-arrow-up"></span>
       </div>

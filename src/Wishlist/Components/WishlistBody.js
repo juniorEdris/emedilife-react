@@ -6,7 +6,7 @@ const WishlistBody = (props) => {
   };
   const addProduct = async (item) => {
     const product = {
-      id: item.id,
+      id: item.product_id,
       photo: item.photo,
       name: item.name,
       price: item.unit_price.price,

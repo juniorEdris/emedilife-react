@@ -78,7 +78,11 @@ const DeliveryDetails = (props) => {
                   Choose...
                 </option>
                 {props.info?.districts_lists?.map((district) => (
-                  <option value={district.id} key={district.name}>
+                  <option
+                    value={district.id}
+                    key={district.name}
+                    // selected={Number(props.details?.district) === district.id}
+                  >
                     {district.name}
                   </option>
                 ))}
@@ -101,7 +105,11 @@ const DeliveryDetails = (props) => {
                   Choose...
                 </option>
                 {props.useArea[0]?.areas?.map((area) => (
-                  <option value={area.id} key={area.name}>
+                  <option
+                    value={area.id}
+                    key={area.name}
+                    // selected={Number(props.details?.area) === area.id}
+                  >
                     {area.name}
                   </option>
                 ))}
@@ -114,7 +122,7 @@ const DeliveryDetails = (props) => {
             </div>
           </div>
           <div className="form-row">
-            <div className="form-group col-md-6">
+            <div className="form-group col-12">
               <label htmlFor="address">Address</label>
               <input
                 type="text"
@@ -131,7 +139,7 @@ const DeliveryDetails = (props) => {
                 </small>
               )}
             </div>
-            <div className="form-group col-md-6">
+            {/* <div className="form-group col-md-6">
               <label htmlFor="zip">Zip</label>
               <input
                 type="text"
@@ -147,7 +155,7 @@ const DeliveryDetails = (props) => {
                   Please provide your zip code.
                 </small>
               )}
-            </div>
+            </div> */}
           </div>
         </form>
       </div>

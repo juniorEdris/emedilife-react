@@ -36,7 +36,7 @@ export const PlaceOrder = (data) => async (dispatch) => {
     .post(
       `${ENDPOINTS.PLACE_ORDER}?name=${data.name}&email=${
         data.email
-      }&delivery_charge=${'100'}&coupon_id=${
+      }&delivery_charge=${data.delivery_charge}&coupon_id=${
         data.coupon_id || ''
       }&coupon_discount=${data.coupon_discount || ''}&payment_method=${
         data.payment_type

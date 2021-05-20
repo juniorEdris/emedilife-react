@@ -3,7 +3,6 @@ import HeaderTop from './Components/HeaderTop';
 import Navigation from './Components/HeaderNav';
 import './header.css';
 import { connect } from 'react-redux';
-import CategorySidebar from './Components/SubComponents/CategorySidebar';
 
 function Index(props) {
   const [stickyNav, setStickyNav] = useState(false);
@@ -33,10 +32,6 @@ function Index(props) {
         categoryBar={props.categoryBar}
         setCategoryBar={props.setCategoryBar}
       />
-      {/* <CategorySidebar
-        categoryBar={props.categoryBar}
-        setCategoryBar={props.setCategoryBar}
-      /> */}
     </div>
   );
 }

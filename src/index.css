@@ -138,6 +138,9 @@ h6 {
   pointer-events: none;
   opacity: 0.4;
 }
+.pointer_none{
+  pointer-events: none;
+}
   .container-md-fluid {
     /* padding: 0 120px; */
     padding: 0 70px;
@@ -585,11 +588,8 @@ width:60%
   width: 120px;
   padding: 10px;
   padding-right: 32px;
-  outline: none;
   border: none;
-  background: var(--nav-bg);
-  color: var(--light-color);
-  border-radius: 0.325rem 0 0 0.325rem;
+  color: var(--nav-bg);
   cursor: pointer;
   -ms-word-break: normal;
   word-break: normal;
@@ -603,7 +603,7 @@ width:60%
 .selectDiv::after {
   content: '<>';
   font: 17px "Consolas", monospace;
-  color: var(--light-color);
+  color: var(--nav-bg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -621,16 +621,23 @@ width:60%
 .header__searchInput {
   padding: 5px 15px !important;
   border: none;
+  border-radius: 0.325rem 0 0 0.325rem;
   width: 100%;
 }
 .header__searchIcon {
   padding-right: 8px;
   padding-top: 8px;
+  padding: 8px 10px 0px 10px;
   font-size: 17px;
-  color: var(--dark-color);
+  color: var(--light-color);
+  border-radius: 0 0.325rem 0.325rem 0;
+  background: var(--nav-bg);
 }
 .header__searchIcon svg {
-  color: var(--dark-color) !important;
+  color: var(--light-color) !important;
+}
+.header__searchIcon:hover {
+  background: var(--dark-color);
 }
 .header__right {
   padding-right: 10px; /*<--*/
@@ -1094,7 +1101,7 @@ Article css starts here
             --------------------------------------------------------------------*/
 .user_entry {
   color: var(--dark-color);
-  padding: 20% 0;
+  padding: 5% 0;
 }
 .user_entry .login-form {
   padding: 0px 50px 40px;

@@ -1,6 +1,12 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LogOutAction } from '../../../Redux/Action/UserAction';
 
 const AccountNav = (props) => {
+  const logOut = (e) => {
+    e.preventDefault();
+    props.logOut();
+  };
   return (
     <div className="">
       <div className="account_nav">
@@ -33,6 +39,11 @@ const AccountNav = (props) => {
                 My Order
               </Link>
             </li>
+            <li>
+              <Link to="#" onClick={logOut}>
+                Log out
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -40,4 +51,7 @@ const AccountNav = (props) => {
   );
 };
 
-export default AccountNav;
+const mapDispatchToProps = (dispatch) => ({
+  logOut: () => dispatch(LogOutAction()),
+});
+export default connect((state) => ({}), mapDispatchToProps)(AccountNav);

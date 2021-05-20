@@ -7,26 +7,28 @@ const UserDropdown = (props) => {
   return (
     <>
       {!props.user ? (
-        <div className="header__option">
+        <div className="header__option pl-1">
           <Link
             to={!props.user ? '/login' : '/dashboard'}
             className="header__link">
             <span className="header__option__lineOne header_my_account">
               Sign In
             </span>
+            {/* <span className="lnr lnr-user"></span> */}
             {/* <span className="header__option__lineTwo">Sign In</span> */}
           </Link>
         </div>
       ) : (
-        <div className="header__option">
+        <div className="header__option pl-1">
           <Link
             to={!props.user ? '/login' : '/dashboard'}
             className="header__link">
             <span className="header__option__lineOne header_my_account">
               My account
             </span>
+            {/* <span className="lnr lnr-user"></span> */}
           </Link>
-          <Link
+          {/* <Link
             to="#"
             className="header__option__lineTwo header_logout"
             onClick={(e) => {
@@ -34,7 +36,7 @@ const UserDropdown = (props) => {
               props.logOut();
             }}>
             Logout
-          </Link>
+          </Link> */}
         </div>
       )}
 

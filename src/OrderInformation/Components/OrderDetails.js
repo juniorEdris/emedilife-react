@@ -13,6 +13,11 @@ const OrderDetails = (props) => {
     cancelMsg: '',
     cancelStatus: false,
   });
+  const goTodash = (e) => {
+    e.preventDefault();
+    setResponse({ cancelStatus: false });
+    history.push('/dashboard');
+  };
   const cancelOrder = (e) => {
     e.preventDefault();
     API()
@@ -33,7 +38,11 @@ const OrderDetails = (props) => {
   return (
     <div className="">
       {response.cancelStatus && (
-        <OrderCancel response={response.cancelMsg} setResponse={setResponse} />
+        <OrderCancel
+          response={response.cancelMsg}
+          setResponse={setResponse}
+          close={goTodash}
+        />
       )}
       <div className="order_information_details">
         {/* <div className="col-12">

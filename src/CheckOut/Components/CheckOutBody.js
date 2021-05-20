@@ -16,20 +16,20 @@ const CheckOutBody = (props) => {
     zip: '',
   });
   const [paymentType, setPaymentType] = useState('Cash on Delivery');
-
   useEffect(() => {
     setDeliveryDetails({
       name: props.info?.name,
       phone: props.info?.phone,
       email: props.info?.email,
-      district: props.info?.district || '',
-      area: props.info?.area || '',
+      district: props.info?.district_i || '',
+      area: props.info?.area_i || '',
       address: props.info?.address,
       zip: props.info?.zip || '',
     });
   }, [props.info]);
   useEffect(() => {
     props.getArea(DeliveryDetails.district);
+    setDeliveryDetails({ ...DeliveryDetails, area: '' });
   }, [DeliveryDetails.district]);
   return (
     <div className="checkout_body row">

@@ -18,6 +18,15 @@ export const Search = (props) => {
     <div className="header__search_container d-none d-md-block">
       <div className="header__search ">
         <div className="header__search_inner">
+          <input
+            type="text"
+            list="medicines"
+            className="header__searchInput"
+            onKeyUp={() => props.setList(true)}
+            onChange={handleChange}
+            value={props.input}
+            placeholder="Search medicine,injections"
+          />
           <div className="selectDiv">
             <select
               name=""
@@ -32,15 +41,6 @@ export const Search = (props) => {
               ))}
             </select>
           </div>
-          <input
-            type="text"
-            list="medicines"
-            className="header__searchInput"
-            onKeyUp={() => props.setList(true)}
-            onChange={handleChange}
-            value={props.input}
-            placeholder="Search medicine,injections"
-          />
           <Link to="#" className="header__searchIcon">
             <i className=" fas fa-search" title="search"></i>
           </Link>

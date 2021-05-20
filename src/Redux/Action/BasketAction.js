@@ -51,61 +51,59 @@ const productStatusComplete = () => ({
   status: false,
 });
 
-export const AddBasketProd = (product, quantity) => async (
-  dispatch,
-  getState
-) => {
-  const user = localStorage.getItem('user_id');
-  // return action if its null
-  if (product === null) return;
-  if (!user) {
-    let cartItems = getState().Basket.localBasket.slice();
-    let exist = false;
-    cartItems.forEach((x) => {
-      if (x.id === product.id) {
-        exist = true;
+export const AddBasketProd =
+  (product, quantity) => async (dispatch, getState) => {
+    const user = localStorage.getItem('user_id');
+    // return action if its null
+    if (product === null) return;
+    if (!user) {
+      let cartItems = getState().Basket.localBasket.slice();
+      let exist = false;
+      cartItems.forEach((x) => {
+        if (x.id === product.id) {
+          exist = true;
+          dispatch(
+            addProdLocalBasketMsg({
+              type: true,
+              message: 'Already Exist in cart',
+            })
+          );
+          // dispatch(productStatusSuccess('Already Exist in cart'));
+          setTimeout(() => {
+            dispatch(productStatusComplete());
+          }, 3000);
+        }
+      });
+      if (!exist) {
+        cartItems.push(product);
         dispatch(
           addProdLocalBasketMsg({
             type: true,
-            message: 'Already Exist in cart',
+            message: 'Product Added To Cart Successfully..',
           })
         );
-        // dispatch(productStatusSuccess('Already Exist in cart'));
         setTimeout(() => {
           dispatch(productStatusComplete());
         }, 3000);
       }
-    });
-    if (!exist) {
-      cartItems.push(product);
-      dispatch(
-        addProdLocalBasketMsg({
-          type: true,
-          message: 'Product Added To Cart Successfully..',
+      dispatch(addProdBasketSuccess(cartItems));
+      localStorage.setItem('Cart List', JSON.stringify(cartItems));
+    } else {
+      dispatch(addProdBasketRequest());
+      await API()
+        .post(
+          `${ENDPOINTS.ADDTOBASKET}?product_id=${product.id}&unit_price_id=${product.unit_prices_id}&total_quantity=${product.total_quantity}`
+        )
+        .then((res) => {
+          dispatch(addProdServerBasketSuccess(res.data));
+          dispatch(productStatusSuccess());
+          setTimeout(() => {
+            dispatch(productStatusComplete());
+          }, 3000);
         })
-      );
-      setTimeout(() => {
-        dispatch(productStatusComplete());
-      }, 3000);
+        .catch((error) => console.log(error.Response));
     }
-    dispatch(addProdBasketSuccess(cartItems));
-    localStorage.setItem('Cart List', JSON.stringify(cartItems));
-  } else {
-    dispatch(addProdBasketRequest());
-    await API()
-      .post(
-        `${ENDPOINTS.ADDTOBASKET}?product_id=${product.id}&unit_price_id=${product.unit_prices_id}&total_quantity=${product.total_quantity}`
-      )
-      .then((res) => {
-        dispatch(addProdServerBasketSuccess(res.data));
-        dispatch(productStatusSuccess());
-        setTimeout(() => {
-          dispatch(productStatusComplete());
-        }, 3000);
-      })
-      .catch((error) => console.log(error.Response));
-  }
-};
+  };
 
 export const RemoveBasketProd = (product) => async (dispatch, getState) => {
   const user = localStorage.getItem('user_id');
@@ -135,15 +133,8 @@ export const RemoveBasketProd = (product) => async (dispatch, getState) => {
 };
 
 export const updateCartItem = (product) => async (dispatch, getState) => {
-  const {
-    id,
-    cart_id,
-    name,
-    photo,
-    price,
-    total_quantity,
-    unit_prices_id,
-  } = product;
+  const { id, cart_id, name, photo, price, total_quantity, unit_prices_id } =
+    product;
 
   dispatch(addProdBasketRequest());
   const user = localStorage.getItem('user_id');

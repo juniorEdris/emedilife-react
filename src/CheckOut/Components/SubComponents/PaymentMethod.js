@@ -34,7 +34,7 @@ const PaymentMethod = (props) => {
               </label>
             </div>
           </div>
-          <div className="row no-gutters pointer_disabled">
+          <div className="row no-gutters pointer_none">
             <div className="form-check">
               <input
                 className="form-check-input position-static check-box"

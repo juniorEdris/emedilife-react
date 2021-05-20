@@ -51,9 +51,9 @@
   .back_to_top span.flat-btn {
     display: block;
   }
-  .scroll-top {
+  /* .scroll-top {
     display: none;
-  }
+  } */
   .cart_sidebar_route{
     width: calc(85% - 60%)!important;
   }
