@@ -20,34 +20,16 @@ const AccountInfo = (props) => {
             {props.loading ? (
               <Skeleton width={`100%`} height={`50px`} />
             ) : (
-              <h3>{props.info?.name}</h3>
+              <h3 className="user_name">{props.info?.name || 'User name'}</h3>
             )}
           </div>
           <div className="">
             {props.loading ? (
               <Skeleton width={'100%'} height={30} />
             ) : (
-              <span>{props.info?.email}</span>
+              <span>{props.info?.email || 'User email'}</span>
             )}
           </div>
-          <div className="">
-            {props.loading ? (
-              <Skeleton width={'100%'} height={30} />
-            ) : (
-              <Link to="#">Change Password</Link>
-            )}
-          </div>
-
-          {/* <div className="">
-            <Link
-              to="#"
-              onClick={(e) => {
-                e.preventDefault();
-                props.logOut();
-              }}>
-              Log out
-            </Link>
-          </div> */}
         </div>
       </div>
     </div>

@@ -107,7 +107,7 @@ function App(props) {
           <Route path="/check-out">
             {!props.User ? <Redirect to="/login" /> : <CheckOut />}
           </Route>
-          <Route path="/order-info" component={OrderInformation} />
+          {/* <Route path="/order-info" component={OrderInformation} /> */}
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/ordersuccess" component={OrderNotification} />

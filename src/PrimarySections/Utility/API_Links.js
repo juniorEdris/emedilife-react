@@ -40,4 +40,5 @@ export const ENDPOINTS = {
   GET_BLOG_LIST: `api/web/get_blog_lists`,
   GET_SINGLE_BLOG: `api/web/get_blog_details`,
   GET_SINGLE_ORDER: `api/get_order_details`,
+  LOG_OUT: `api/app/logout`,
 };

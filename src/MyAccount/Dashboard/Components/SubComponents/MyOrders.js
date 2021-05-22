@@ -22,7 +22,7 @@ const MyOrders = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.completedOrders?.map((order) => (
+          {props.allOrders?.map((order) => (
             <tr className="trow-light" key={order.id}>
               <th scope="row">
                 <div className="order-table-id">#{order.order_number}</div>
@@ -43,8 +43,14 @@ const MyOrders = (props) => {
               <td>
                 <div className="order-table-btn">
                   <Link
-                    to={`/order-info?id=${order.id}`}
-                    className="table_link d-block">
+                    to={`#`}
+                    // to={`/order-info?id=${order.id}`}
+                    className="table_link d-block"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      props.setTab('orderInfo');
+                      props.setOrderId(order.id);
+                    }}>
                     view order
                   </Link>
                 </div>
@@ -60,6 +66,7 @@ const MyOrders = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.OrderList.loading,
   completedOrders: state.OrderList.completedOrders,
+  allOrders: state.OrderList.orders,
 });
 
 const mapDispatchToProps = {};

@@ -38,18 +38,29 @@
     font-weight: 300;
     display: block;
 }
-.browse_nav_list ul li a{
-    font-weight: 500!important;
-}
-.browse_nav_list ul li a:hover{
-    background-color: var(--muted-btn-color);
-}
 .dash_nav_list ul li a.active{
     color: var(--user-entry-btn);
 }
 .dash_nav_list ul li a:hover{
     color: var(--user-entry-btn);
     font-weight: 300;
+}
+.dash_nav_list ul li.logout a{
+    font-weight: 400;
+    color: var(--light-color);
+    background-color: var(--theme-color);
+    text-align: center;
+
+}
+.dash_nav_list ul li.logout a:hover{
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+.browse_nav_list ul li a{
+    font-weight: 500!important;
+}
+.browse_nav_list ul li a:hover{
+    background-color: var(--muted-btn-color);
 }
 /* MY DASHBOARD CSS STARTS HERE (DASHBOARD BODY) */
 /* Account Dashboard */
@@ -143,6 +154,9 @@
     box-shadow: var(--box-shadow-1);
     -webkit-box-shadow: var(--box-shadow-1);
     margin-bottom: 2.7rem;
+}
+.account_details .user_name{
+    text-transform: capitalize;
 }
 /* EDIT INFORMATION CSS STARTS HERE */
 .info_heading h3{

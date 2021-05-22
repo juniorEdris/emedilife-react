@@ -36,7 +36,7 @@ export const OrderListsReducer = (state = initialState, action) => {
     case GET_ORDER_LIST_ERROR:
       return {
         ...state,
-        loading: true,
+        loading: false,
         orders: [],
         pendingorders: [],
         completedOrders: [],

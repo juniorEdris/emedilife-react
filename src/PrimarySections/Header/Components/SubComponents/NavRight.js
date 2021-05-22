@@ -7,7 +7,7 @@ function NavRight() {
       <Link to="#">
         <span>Shopping made easy</span>
       </Link>
-      <span>|</span>{' '}
+      <span className="divider">|</span>{' '}
       <Link to="#">
         <span>Download the app</span>
       </Link>

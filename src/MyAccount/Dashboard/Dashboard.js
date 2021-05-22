@@ -24,18 +24,24 @@ const Dashboard = (props) => {
       };
       arr.push(data);
     });
-    console.log('loacal products', arr);
+    console.log('loacal products to server', arr);
   }, []);
   const [tab, setTab] = useState('dashboard');
+  const [orderId, setOrderId] = useState('');
   return (
     <div className="dashboard_wrapper container-md-fluid">
       {props.loading && <SpinLoader />}
       <div className="row">
-        <div className="col-md-3 p-md-2">
+        <div className="col-md-3 col-xl-2 p-md-2">
           <DashSidebar tab={tab} setTab={setTab} />
         </div>
-        <div className="col-md-9 p-md-2">
-          <DashBody tab={tab} setTab={setTab} />
+        <div className="col-md-9 col-xl-10 p-md-2">
+          <DashBody
+            tab={tab}
+            setTab={setTab}
+            orderId={orderId}
+            setOrderId={setOrderId}
+          />
         </div>
       </div>
     </div>

@@ -31,10 +31,16 @@ export const getOrderList = (data) => async (dispatch) => {
   API()
     .get(`${ENDPOINTS.GET_ORDER_LIST}`)
     .then((res) => {
-      dispatch(OrderListSuccess(res.data));
+      if (res.data.status === false) {
+        dispatch(OrderListError());
+        console.log(res.data);
+      } else {
+        dispatch(OrderListSuccess(res.data));
+        console.log(res.data.data);
+      }
     })
     .catch((error) => {
-      dispatch(OrderListError());
+      // dispatch(OrderListError());
       console.log(error);
     });
 };

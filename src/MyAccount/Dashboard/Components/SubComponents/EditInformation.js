@@ -79,6 +79,7 @@ const EditInformation = (props) => {
                 onChange={handleChange}
                 value={inputs.phone}
                 placeholder="Phone number"
+                readOnly
               />
               <div className="col-12">
                 {inputs.phone === '' && (

@@ -151,7 +151,7 @@ const CartList = (props) => {
       </div>
       {/* cart product wrapper ends */}
       {/* cart product button starts */}
-      <div className="cart_product_btn col-12">
+      <div className="cart_product_btn col-12 p-0">
         <div className="cart_total row no-gutters justify-content-between">
           <span>cart subtotal :</span>
           <span>

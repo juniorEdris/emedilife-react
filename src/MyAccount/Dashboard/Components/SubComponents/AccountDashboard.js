@@ -20,7 +20,7 @@ const AccountDashboard = (props) => {
             <img src="./assets/svg/icons/acc_qoutes.svg" alt="" />
 
             <p>
-              Hello {props.info?.name}, <br />
+              Hello {props.info?.name || 'User name'}, <br />
               From your My Account Dashboard you have the ability to view a
               snapshopt of your recent account activity and update your account
               information. Select a link below to view or edit information.
@@ -33,6 +33,10 @@ const AccountDashboard = (props) => {
         loading={props.orderLoading}
         orders={props.pendingOrders}
         orderPages={props.orderPages}
+        tab={props.tab}
+        setTab={props.setTab}
+        orderId={props.orderId}
+        setOrderId={props.setOrderId}
       />
       {/* Account information start here */}
       <AccountInfo

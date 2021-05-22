@@ -175,10 +175,13 @@
     background: var(--light-color);
 }
 .cart_total{
-    color: var(--dark-color);
     text-transform: capitalize;
-    margin-top: var(--margin-top);
+    /* margin-top: var(--margin-top); */
     font-size: 1rem;
+    background: var(--nav-bg);
+    color: var(--light-color);
+    padding: 1rem 0.7rem;
+    font-weight: 700;
 }
 .cart_dec_btn,.cart_inc_btn{
     cursor: pointer;
@@ -201,6 +204,7 @@
 .checkout_btn{
     margin-top:  var(--margin-top);
     text-align: center;
+    padding: 0 1rem;
 }
 .checkout_btn a{
     background-color: var(--user-entry-btn);

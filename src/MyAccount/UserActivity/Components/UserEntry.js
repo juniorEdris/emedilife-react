@@ -46,7 +46,7 @@ const UserEntry = (props) => {
     await API()
       .post(`${ENDPOINTS.LOGIN}?phone=${number}&otp=${OTP}`)
       .then((res) => {
-        console.log(res);
+        console.log('otp response', res);
         if (res.data.token) {
           localStorage.setItem('user_token', res.data.token);
           props.setUser();

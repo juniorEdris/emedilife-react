@@ -25,7 +25,7 @@ export const StoreAccInfo = (object) => async (dispatch) => {
   dispatch(submitAccountInfoReq());
   await API()
     .post(
-      `${ENDPOINTS.USER_UPDATE}?name=${object.name}&email=${object.email}&phone=${object.phone}&address=${object.address}&district_id=${object.district}&area_id${object.area}`
+      `${ENDPOINTS.USER_UPDATE}?name=${object.name}&email=${object.email}&address=${object.address}&district_id=${object.district}&area_id${object.area}`
     ) //&photo=${}
     .then((res) => {
       dispatch(submitAccountInfoSuccess());

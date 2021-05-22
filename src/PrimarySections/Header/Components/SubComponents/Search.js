@@ -27,7 +27,7 @@ export const Search = (props) => {
             value={props.input}
             placeholder="Search medicine,injections"
           />
-          <div className="selectDiv">
+          {/* <div className="selectDiv">
             <select
               name=""
               id=""
@@ -40,7 +40,7 @@ export const Search = (props) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <Link to="#" className="header__searchIcon">
             <i className=" fas fa-search" title="search"></i>
           </Link>

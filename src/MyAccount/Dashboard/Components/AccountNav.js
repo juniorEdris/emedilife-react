@@ -39,7 +39,7 @@ const AccountNav = (props) => {
                 My Order
               </Link>
             </li>
-            <li>
+            <li className="logout">
               <Link to="#" onClick={logOut}>
                 Log out
               </Link>

@@ -26,7 +26,7 @@ const UserDropdown = (props) => {
             <span className="header__option__lineOne header_my_account">
               My account
             </span>
-            {/* <span className="lnr lnr-user"></span> */}
+            {/* <img src="./assets/svg/icons/user.svg" alt="user" /> */}
           </Link>
           {/* <Link
             to="#"
