@@ -76,7 +76,7 @@ const EditInformation = (props) => {
                 type="text"
                 className="form-control"
                 id="phone"
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={inputs.phone}
                 placeholder="Phone number"
                 readOnly
@@ -141,7 +141,7 @@ const EditInformation = (props) => {
                 <option selected value="">
                   Choose...
                 </option>
-                {props.userArea[0]?.areas?.map((area) => (
+                {props.userArea[0] && props.userArea[0]?.areas?.map((area) => (
                   <option value={area.id} key={area.name}>
                     {area.name}
                   </option>

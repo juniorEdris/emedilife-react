@@ -18,8 +18,13 @@ export const LogOutAction = () => async (dispatch, getState) => {
     .post(`${ENDPOINTS.LOG_OUT}`)
     .then((res) => {
       console.log('logout', res);
-      localStorage.removeItem('user_token');
-      localStorage.removeItem('user_id');
+      if (res.data.status === "success") {
+        localStorage.removeItem('user_token');
+        localStorage.removeItem('user_id');
+        console.log('log out success');
+      } else { 
+        console.log('log out failed');
+      }
     })
     .catch((err) => {
       console.log(err);

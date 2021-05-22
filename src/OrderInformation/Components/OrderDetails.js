@@ -7,6 +7,7 @@ import OrderCancel from '../../OrderNotify/OrderCancel';
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 
 const OrderDetails = (props) => {
+  console.log(props.order?.delivery_status,'45454');
   const history = useHistory();
   const [response, setResponse] = useState({
     loading: false,
@@ -16,7 +17,8 @@ const OrderDetails = (props) => {
   const goTodash = (e) => {
     e.preventDefault();
     setResponse({ cancelStatus: false });
-    history.push('/dashboard');
+    // history.push('/dashboard');
+    props.setTab('dashboard')
   };
   const cancelOrder = (e) => {
     e.preventDefault();

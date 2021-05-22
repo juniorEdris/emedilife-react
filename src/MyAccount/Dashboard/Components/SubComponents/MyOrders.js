@@ -1,3 +1,4 @@
+import Skeleton from '@yisheng90/react-loading';
 import dateFormat from 'dateformat';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -7,10 +8,18 @@ const MyOrders = (props) => {
   return (
     <div className="my_orders primary_table">
       <div className="order_header">
-        <span>Completed Orders</span>
+        <span>All Orders</span>
         <Link to="#">view all</Link>
       </div>
-      <table class="table">
+      {props.loading ?
+        <div className="">
+        <Skeleton height={350} width={'100%'} />
+      </div>
+      : props.allOrders?.length < 1 ? (
+        <div className=" d-flex align-items-center justify-content-center null_result">
+          <h3 className="">No orders yet!</h3>
+        </div>
+      ): <table class="table">
         <thead class="thead-primary">
           <tr>
             <th scope="col">Order#</th>
@@ -58,7 +67,7 @@ const MyOrders = (props) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>}
     </div>
   );
 };
@@ -72,3 +81,18 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrders);
+
+
+/*
+
+  {props.loading ? (
+        <div className="order_lists primary_table">
+          <Skeleton height={350} width={'100%'} />
+        </div>
+      ) : props.orders?.length < 1 ? (
+        <div className=" order_lists primary_table d-flex align-items-center justify-content-center null_result">
+          <h3 className="">No orders yet!</h3>
+        </div>
+      )
+
+*/

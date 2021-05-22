@@ -56,11 +56,15 @@ const UploadSection = (props) => {
                   <img src={URL.createObjectURL(images.photo)} alt="" />
                 </div>
               ) : (
+                <label
+                for="file-upload">
                 <img
                   src={`./assets/svg/icons/upload.svg`}
                   className="file-input-img"
                   alt=""
-                />
+                    />
+                  </label>
+                  
               )}
             </div>
             <div className="">

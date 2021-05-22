@@ -17,7 +17,7 @@ const AccountOrderHistory = (props) => {
   for (let i = 0; i <= 3; i++) {
     recentOrders.push(props.orders[i]);
   }
-  console.log(recentOrders, 'recentOrders');
+  console.log(recentOrders, 'recentOrders',props.orders.length);
   return (
     <div className="">
       <div className="order_header pl-4 pr-4">
@@ -30,9 +30,9 @@ const AccountOrderHistory = (props) => {
         <div className="order_lists primary_table">
           <Skeleton height={350} width={'100%'} />
         </div>
-      ) : props.orders?.length < 0 ? (
-        <div className="text-center pt-3 pb-3 null_result">
-          <h4 className="">No orders found</h4>
+      ) : props.orders?.length < 1 ? (
+        <div className=" order_lists primary_table d-flex align-items-center justify-content-center null_result">
+          <h3 className="">No orders yet!</h3>
         </div>
       ) : props.orders?.length > 3 ? (
         <div className="order_lists primary_table">

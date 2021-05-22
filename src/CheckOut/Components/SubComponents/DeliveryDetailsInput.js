@@ -39,7 +39,8 @@ const DeliveryDetails = (props) => {
                 id="mobile"
                 defaultValue={props.info?.phone}
                 name="phone"
-                onChange={handleChange}
+                // onChange={handleChange}
+                readOnly
               />
               {props.details.phone === '' && (
                 <small className="text-danger">

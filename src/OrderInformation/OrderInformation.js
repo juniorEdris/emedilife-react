@@ -25,6 +25,9 @@ const OrderInformation = (props) => {
           loading={props.loading}
           order={props.singleorder}
           // order_id={id}
+          order_id={props.orderId}
+          tab={props.tab}
+          setTab={props.setTab}
         />
         <AddressSection loading={props.loading} order={props.singleorder} />
         <OrderProducts loading={props.loading} order={props.singleorder} />

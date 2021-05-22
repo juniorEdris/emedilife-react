@@ -25,9 +25,16 @@ const ProductSlider = (props) => {
       },
       1000: {
         items: 5.5,
+        // freeDrag:true,
       },
       1550: {
         items: 7.5,
+        // freeDrag:true,
+      },
+      1700: {
+        items: 7,
+    // freeDrag:true,
+        // center:true,
       },
     },
   };

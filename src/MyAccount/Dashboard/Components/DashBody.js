@@ -29,6 +29,8 @@ const DashBody = (props) => {
         <OrderInformation
           orderId={props.orderId}
           setOrderId={props.setOrderId}
+          tab={props.tab}
+          setTab={props.setTab}
         />
       )}
     </div>
