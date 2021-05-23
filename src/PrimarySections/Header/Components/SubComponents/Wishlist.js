@@ -5,7 +5,7 @@ const WishListIcon = () => {
     <>
       <Link to="/wishlist" className="header__link">
         <div className="header__option">
-          <span className="header__option__lineOne">
+          <span className="header__option__lineOne header_wishlist">
             <img
               src="./assets/svg/icons/nav-wishlist.svg"
               alt="wishlist icon"

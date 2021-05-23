@@ -12,7 +12,8 @@ const UserDropdown = (props) => {
             to={!props.user ? '/login' : '/dashboard'}
             className="header__link">
             <span className="header__option__lineOne header_my_account">
-              Sign In
+              <img src="./assets/svg/icons/login.svg" alt="login icon" /> Sign
+              In
             </span>
             {/* <span className="lnr lnr-user"></span> */}
             {/* <span className="header__option__lineTwo">Sign In</span> */}
@@ -24,6 +25,10 @@ const UserDropdown = (props) => {
             to={!props.user ? '/login' : '/dashboard'}
             className="header__link">
             <span className="header__option__lineOne header_my_account">
+              <img
+                src="./assets/svg/icons/dashboard.svg"
+                alt="myaccount icon"
+              />{' '}
               My account
             </span>
             {/* <img src="./assets/svg/icons/user.svg" alt="user" /> */}

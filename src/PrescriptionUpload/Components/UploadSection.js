@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { PrescriptionUpload } from '../../Redux/Action/PrescriptionUploadAction';
+import {
+  clearSuccessPrescription,
+  PrescriptionUpload,
+} from '../../Redux/Action/PrescriptionUploadAction';
 import { NameInput } from './NameInput';
 
 const UploadSection = (props) => {
@@ -56,15 +59,13 @@ const UploadSection = (props) => {
                   <img src={URL.createObjectURL(images.photo)} alt="" />
                 </div>
               ) : (
-                <label
-                for="file-upload">
-                <img
-                  src={`./assets/svg/icons/upload.svg`}
-                  className="file-input-img"
-                  alt=""
-                    />
-                  </label>
-                  
+                <label for="file-upload">
+                  <img
+                    src={`./assets/svg/icons/upload.svg`}
+                    className="file-input-img"
+                    alt=""
+                  />
+                </label>
               )}
             </div>
             <div className="">
@@ -80,11 +81,11 @@ const UploadSection = (props) => {
             <span className="text-muted">
               upload photo of your prescription
             </span>
-            {props.status && (
+            {/* {props.status && (
               <div className="">
                 <span className="text-success">{props.success}</span>
               </div>
-            )}
+            )} */}
             {error.length > 0 && (
               <div className="">
                 <span className="text-danger">{error}</span>
@@ -125,6 +126,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   upload: (name, image) => dispatch(PrescriptionUpload(name, image)),
+  closePopup: () => dispatch(clearSuccessPrescription()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadSection);

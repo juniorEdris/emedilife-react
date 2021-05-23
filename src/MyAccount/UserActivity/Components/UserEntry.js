@@ -5,10 +5,12 @@ import { setUserAction } from '../../../Redux/Action/UserAction';
 import { UserID } from '../../../PrimarySections/Utility';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import SpinLoader from '../../../PrimarySections/SectionUtils/SpinLoader';
 
 const UserEntry = (props) => {
   const history = useHistory();
   const [number, setNumber] = useState('');
+  const [loading, setLoading] = useState(false);
   const [OTP, setOTP] = useState('');
   // const [userId, setUser] = useState(false);
   const [resendOtpActive, setResendOtpActive] = useState(false);
@@ -21,26 +23,34 @@ const UserEntry = (props) => {
     }, 120000);
   };
   const register = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setError({});
     await API()
       .post(`${ENDPOINTS.REGISTER}?phone=${number}`)
       .then((res) => {
         if (res.data.data.id) {
+          setLoading(false);
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
           // activeResendButton();
+        } else {
+          setLoading(false);
+          setError({ otp: 'Athentication failed' });
         }
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
         setError({ numFormat: error.data });
       });
   };
   const login = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setError({});
     if (!number) {
+      setLoading(false);
       setError({ loginErrMessage: 'Provide a valid number.' });
     }
     await API()
@@ -48,10 +58,14 @@ const UserEntry = (props) => {
       .then((res) => {
         console.log('otp response', res);
         if (res.data.token) {
+          setLoading(false);
+
           localStorage.setItem('user_token', res.data.token);
           props.setUser();
           history.push(`${props.pathRedirect}`);
         } else if (!res.data.status) {
+          setLoading(false);
+
           setError({
             otpErrMessage: res.data.message,
           });
@@ -63,6 +77,7 @@ const UserEntry = (props) => {
   };
   return (
     <div className="user_entry pb-70">
+      {loading && <SpinLoader />}
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12">

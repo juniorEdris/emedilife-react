@@ -1,5 +1,9 @@
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
-import { SET_USER, SET_USER_NULL } from '../Types';
+import { SET_USER, SET_USER_NULL, LOGOUT_REQUEST } from '../Types';
+
+const logoutRequest = () => ({
+  type: LOGOUT_REQUEST,
+});
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -14,20 +18,21 @@ export const setUserAction = (user) => (dispatch, getState) => {
   dispatch(setUser(true));
 };
 export const LogOutAction = () => async (dispatch, getState) => {
-  await API()
+  dispatch(logoutRequest());
+  const logout = await API()
     .post(`${ENDPOINTS.LOG_OUT}`)
     .then((res) => {
-      console.log('logout', res);
-      if (res.data.status === "success") {
+      console.log(res);
+      if (!res.data.status) {
+        console.log('log out failed');
+      } else {
         localStorage.removeItem('user_token');
         localStorage.removeItem('user_id');
-        console.log('log out success');
-      } else { 
-        console.log('log out failed');
+        dispatch(logoutSuccess(false));
       }
     })
     .catch((err) => {
       console.log(err);
     });
-  dispatch(logoutSuccess(false));
+  console.log(logout);
 };

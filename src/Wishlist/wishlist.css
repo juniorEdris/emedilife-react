@@ -48,3 +48,9 @@
 .wishlist_table .btn-addcart:hover{
     background: var(--dark-color);
 }
+
+.wish_item_image img{
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+}

@@ -17,7 +17,6 @@ const AccountOrderHistory = (props) => {
   for (let i = 0; i <= 3; i++) {
     recentOrders.push(props.orders[i]);
   }
-  console.log(recentOrders, 'recentOrders',props.orders.length);
   return (
     <div className="">
       <div className="order_header pl-4 pr-4">

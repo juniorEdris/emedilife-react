@@ -121,7 +121,12 @@
 .category_sidebar_list_active{
     background-color: #111 !important;
 }
-
+/* header Icons */
+.header_my_account img,
+.header_wishlist img{
+height: 20px;
+width: 20px;
+}
 @keyframes scale-in-ver-top {
     0% {
       -webkit-transform: scaleY(0);

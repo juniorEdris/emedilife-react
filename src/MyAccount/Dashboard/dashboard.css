@@ -226,6 +226,12 @@
     padding: 0.4rem 0;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    color: var(--light-color);
+    background-color: var(--theme-color);
+}
+.account_submit_btn a:hover {
+    color: var(--light-color);
+    background-color: var(--dark-color);
 }
 
 .account_submit_btn button {

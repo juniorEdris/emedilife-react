@@ -60,9 +60,11 @@ export const initialState = {
   //   CartItems state
   // cartItems: [],
   cart_update_id: '',
+  // login/logout/user states
   user: localStorage.getItem('user_token')
     ? localStorage.getItem('user_token')
     : null,
+  logOutRequest: false,
   //   Wishlist state
   wishlist: [],
   localWishlist: localStorage.getItem('Wish List')
@@ -80,7 +82,7 @@ export const initialState = {
   contactConfirm: '',
   // Prescription states
   uploadloading: false,
-  prescriptionSuccess: 'Uploading...',
+  prescriptionSuccess: '',
   prescriptionStatus: false,
   // Place Orders states
   placingOrder: false,

@@ -50,3 +50,22 @@
 .primary_close_box:hover{
     background: var(--dark-color) !important;
 }
+/* SpinLoder css */
+.spin_loader{
+    opacity: 0.4;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+.spin_loader_backdrop{
+    background: var(--dark-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+    width: 100%;
+    opacity: 0.4;
+}

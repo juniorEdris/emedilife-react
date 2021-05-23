@@ -141,11 +141,12 @@ const EditInformation = (props) => {
                 <option selected value="">
                   Choose...
                 </option>
-                {props.userArea[0] && props.userArea[0]?.areas?.map((area) => (
-                  <option value={area.id} key={area.name}>
-                    {area.name}
-                  </option>
-                ))}
+                {props.userArea[0] &&
+                  props.userArea[0]?.areas?.map((area) => (
+                    <option value={area.id} key={area.name}>
+                      {area.name}
+                    </option>
+                  ))}
               </select>
               {inputs.area === '' && (
                 <small className="text-danger">
@@ -176,7 +177,7 @@ const EditInformation = (props) => {
               onClick={submitFrom}
               className={`${
                 inputs.address === '' && 'pointer_disabled'
-              } btn btn-primary col-md-4`}>
+              } btn col-md-4`}>
               Save Address
             </Link>
           </div>

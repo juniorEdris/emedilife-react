@@ -4,6 +4,7 @@ import {
   PRESCRIPTION_UPLOAD_SUCCESS,
   PRESCRIPTION_UPLOAD_ERROR,
   PRESCRIPTION_UPLOAD_SUCCESS_COMPLETE,
+  PRESCRIPTION_UPLOAD_FINISHED,
 } from '../Types';
 
 export const PrescriptionUploadReducer = (state = initialState, action) => {
@@ -12,8 +13,8 @@ export const PrescriptionUploadReducer = (state = initialState, action) => {
       return {
         ...state,
         uploadloading: true,
-        prescriptionSuccess: 'Prescription upload loading',
-        prescriptionStatus: true,
+        prescriptionSuccess: '',
+        prescriptionStatus: false,
         error: {},
       };
     case PRESCRIPTION_UPLOAD_SUCCESS:
@@ -38,6 +39,12 @@ export const PrescriptionUploadReducer = (state = initialState, action) => {
         prescriptionSuccess: '',
         prescriptionStatus: false,
         error: { prescription: action.error.images[0] },
+      };
+    case PRESCRIPTION_UPLOAD_FINISHED:
+      return {
+        ...state,
+        prescriptionSuccess: '',
+        prescriptionStatus: false,
       };
     default:
       return {

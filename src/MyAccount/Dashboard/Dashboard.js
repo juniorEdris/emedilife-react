@@ -6,7 +6,7 @@ import { getCartItems } from '../../Redux/Action/CartProductsAction';
 import './dashboard.css';
 import { getUserInfo } from '../../Redux/Action/GetUserInfoAction';
 import { getOrderList } from '../../Redux/Action/OrderListAction';
-import SpinLoader from '../../PrimarySections/PageLoader/SpinLoader';
+import SpinLoader from '../../PrimarySections/SectionUtils/SpinLoader';
 
 const Dashboard = (props) => {
   useEffect(() => {
@@ -30,6 +30,7 @@ const Dashboard = (props) => {
   const [orderId, setOrderId] = useState('');
   return (
     <div className="dashboard_wrapper container-md-fluid">
+      {props.logOutRequest && <SpinLoader />}
       {props.loading && <SpinLoader />}
       <div className="row">
         <div className="col-md-3 col-xl-2 p-md-2">
@@ -55,6 +56,7 @@ const mapStateToProps = (state) => ({
   loading: state.AccountInfo.storeInfoloading,
   response: state.AccountInfo.storeInfoStatus,
   localCartList: state.Basket.localBasket,
+  logOutRequest: state.User.logOutRequest,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,7 @@ import {
   PRESCRIPTION_UPLOAD_SUCCESS,
   PRESCRIPTION_UPLOAD_ERROR,
   PRESCRIPTION_UPLOAD_SUCCESS_COMPLETE,
+  PRESCRIPTION_UPLOAD_FINISHED,
 } from '../Types';
 
 const prescriptionUploadRequest = () => {
@@ -30,6 +31,11 @@ const prescriptionUploadError = (error) => {
     error,
   };
 };
+const clearSuccessMsg = () => {
+  return {
+    type: PRESCRIPTION_UPLOAD_FINISHED,
+  };
+};
 
 export const PrescriptionUpload = (name, image) => async (dispatch) => {
   const user_id = localStorage.getItem('user_id');
@@ -44,12 +50,16 @@ export const PrescriptionUpload = (name, image) => async (dispatch) => {
         dispatch(prescriptionUploadError(res.data.errors));
       } else {
         dispatch(prescriptionUploadSuccess(res.data));
-        setTimeout(() => {
-          dispatch(prescriptionUploadComplete());
-        }, 6000);
+        // setTimeout(() => {
+        //   dispatch(prescriptionUploadComplete());
+        // }, 6000);
       }
     })
     .catch((error) => {
       console.log('error', error);
     });
+};
+
+export const clearSuccessPrescription = () => (dispatch) => {
+  dispatch(clearSuccessMsg());
 };
