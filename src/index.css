@@ -107,6 +107,9 @@ h6 {
 /*--------------------------------------------------------------------
                         Primary css starts here
 --------------------------------------------------------------------*/
+.scroll-disabled{
+    overflow: hidden;
+}
 .box-shadow {
     -webkit-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
@@ -186,6 +189,7 @@ ALL Section Heading css starts here
     padding: 0 0.625rem;
     font-weight: 300;
     margin-bottom: 1.2rem;
+    text-transform: capitalize;
 }
 
 .section_heading_one:before,
@@ -636,8 +640,8 @@ ALL Section Heading css starts here
 }
 
 .data-list-back-drop {
-    position: absolute;
-    min-height: calc(100% - 102px);
+    position: fixed;
+    min-height: calc(100vh - 102px);
     width: 100%;
     background: var(--dark-color);
     opacity: 0.4;
@@ -666,7 +670,11 @@ ALL Section Heading css starts here
 .data-list div:hover {
     background-color: var(--dark-color);
 }
-
+.data-list .header_search_list_loader{
+    background-color: var(--light-color) !important;
+    text-transform:capitalize !important;
+    text-align:center !important;
+}
 .data-list div:hover a {
     color: var(--light-color);
 }
@@ -769,7 +777,7 @@ ALL Section Heading css starts here
 } */
 .header__link,
 a.header__option__lineTwo.header_logout {
-    color: var(--light-color);
+    color: var(--light-color) !important;
     text-decoration: none;
     display: none;
 }

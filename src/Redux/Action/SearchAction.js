@@ -27,9 +27,10 @@ export const GetSearchResults = (data) => async (dispatch) => {
 
   await API()
     .get(
-      `${ENDPOINTS.SEARCH}?keyword=${keywords}&category_id=${category}&per_page=20`
+      `${ENDPOINTS.SEARCH}?keyword=${keywords}&category_id=${category}&per_page=20&page=${page}`
     )
     .then((res) => {
+      console.log(res.data, 'search');
       dispatch(fetchSearchSuccess(res.data));
     })
     .catch((error) => {

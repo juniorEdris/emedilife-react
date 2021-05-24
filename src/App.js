@@ -43,11 +43,13 @@ import OtherBrands from './OtherBrands/OtherBrands';
 import { CopyRight } from './CopyRight/CopyRight';
 import OrderCancel from './OrderNotify/OrderCancel';
 import CategorySidebar from './PrimarySections/Header/Components/SubComponents/CategorySidebar';
+import Search from './SearchMedicine/Search';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
   const [categoryBar, setCategoryBar] = useState(false);
-  const [categoryID, setCategoryID] = useState('');
+  const [categoryID, setCategoryID] = useState(1);
+  const [categoryName, setCategoryName] = useState('');
   const loginSuccessPageRedirectTo = (path) => {
     setNextPage(path);
   };
@@ -60,11 +62,14 @@ function App(props) {
   useEffect(() => {
     document.body.style.overflow = categoryBar ? 'hidden' : '';
   }, [categoryBar]);
+  console.log(categoryID);
   return (
     <Router>
       <div className="App">
         <Header categoryBar={categoryBar} setCategoryBar={setCategoryBar} />
         <CategorySidebar
+          categoryName={categoryName}
+          setCategoryName={setCategoryName}
           categoryBar={categoryBar}
           setCategoryBar={setCategoryBar}
           categoryID={categoryID}
@@ -78,6 +83,9 @@ function App(props) {
               setCategoryID={setCategoryID}
             />
           </Route>
+          {/* <Route path="/search-medicines">
+            <Search />
+          </Route> */}
           <Route path="/productdetails">
             <ProductDetails />
           </Route>
@@ -96,7 +104,12 @@ function App(props) {
           <Route path="/dashboard">
             {!props.User ? <Redirect to="/login" /> : <Dashboard />}
           </Route>
-          <Route path="/category-products" component={CategoryBasedProducts} />
+          <Route path="/category-products">
+            <CategoryBasedProducts
+              setCategoryID={setCategoryID}
+              categoryName={categoryName}
+            />
+          </Route>
           <Route path="/otherbrands" component={OtherBrands} />
           <Route path="/generic-products" component={GenericProducts} />
           <Route path="/company-medicines" component={CompanyProducts} />

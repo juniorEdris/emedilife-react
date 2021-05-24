@@ -20,6 +20,7 @@ const AllProducts = (props) => {
           setCategory={props.setCategory}
           sort={props.sort}
           setSort={props.setSort}
+          category_hide={props.category_hide}
         />
         <Body
           page={props.page}
@@ -27,6 +28,8 @@ const AllProducts = (props) => {
           loading={props.loading}
           products={props.products}
           pages={props.pages}
+          section_title={props.section_title}
+          section_title_bold={props.section_title_bold}
         />
       </div>
     </div>

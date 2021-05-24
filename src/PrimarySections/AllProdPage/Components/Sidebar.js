@@ -31,57 +31,59 @@ const Sidebar = (props) => {
     <div className="search_sidebar col-12 col-md-3 d-none d-md-block">
       {' '}
       {/* categories */}
-      <div className="sidebar_categories mb-5">
-        <div className="sidebar_header">
-          <h5>
+      {!props.category_hide && (
+        <div className="sidebar_categories mb-5">
+          <div className="sidebar_header">
+            <h5>
+              {props.loading ? (
+                <Skeleton width="50%" height="50px" />
+              ) : (
+                'Categories'
+              )}
+            </h5>
+          </div>
+          <div className="sidebar_list">
             {props.loading ? (
-              <Skeleton width="50%" height="50px" />
+              <ul>
+                {Array(6)
+                  .fill()
+                  .map((list) => (
+                    <li>
+                      <Skeleton width="100%" height="30px" />
+                    </li>
+                  ))}
+              </ul>
             ) : (
-              'Categories'
-            )}
-          </h5>
-        </div>
-        <div className="sidebar_list">
-          {props.loading ? (
-            <ul>
-              {Array(6)
-                .fill()
-                .map((list) => (
-                  <li>
-                    <Skeleton width="100%" height="30px" />
-                  </li>
-                ))}
-            </ul>
-          ) : (
-            <ul>
-              <li>
-                <Link
-                  to="#"
-                  className={props.category === '' && 'active'}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.setCategory('');
-                  }}>
-                  All
-                </Link>
-              </li>
-              {props.categories?.map((category) => (
-                <li key={category.id}>
+              <ul>
+                <li>
                   <Link
                     to="#"
-                    className={props.category === category.id && 'active'}
+                    className={props.category === '' && 'active'}
                     onClick={(e) => {
                       e.preventDefault();
-                      props.setCategory(category.id);
+                      props.setCategory('');
                     }}>
-                    {props.home ? category.name.en : category.name}
+                    All
                   </Link>
                 </li>
-              ))}
-            </ul>
-          )}
+                {props.categories?.map((category) => (
+                  <li key={category.id}>
+                    <Link
+                      to="#"
+                      className={props.category === category.id && 'active'}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        props.setCategory(category.id);
+                      }}>
+                      {props.home ? category.name.en : category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-      </div>
+      )}
       {/* sorting */}
       <div className="sidebar_sorting mb-5">
         <div className="sidebar_header">

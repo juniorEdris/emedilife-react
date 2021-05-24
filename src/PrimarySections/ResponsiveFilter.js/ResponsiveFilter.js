@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import './responsivefilter.css';
 
 const ResponsiveFilter = (props) => {
+  // useEffect(() => {
+  //   document.body.style.overflow = props.filter ? 'hidden' : '';
+  // }, [props.filter]);
   return (
     <div className="responsive_filter bg-light col-12 d-md-none">
       <div className="col-12 p-0">

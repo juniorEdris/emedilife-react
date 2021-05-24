@@ -28,7 +28,7 @@ const categoryBasedError = (error) => {
 };
 
 export const GetCategoryBasedProd = (data) => async (dispatch) => {
-  const { keywords, category_id, subcategory, childcategory, page } = data;
+  const { keywords, category_id = '', subcategory, childcategory, page } = data;
   dispatch(categoryBasedRequest());
   await API()
     .get(

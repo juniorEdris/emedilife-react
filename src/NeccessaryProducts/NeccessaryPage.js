@@ -17,6 +17,7 @@ const NeccessaryProducts = (props) => {
   useEffect(() => {
     props.getSortingProducts({ sortingType: sort });
   }, [sort]);
+  console.log(category);
   return (
     <div className="neccessary_product_wrapper">
       <AllProducts
@@ -31,6 +32,7 @@ const NeccessaryProducts = (props) => {
         loading={props.loading}
         products={props.products}
         pages={props.pages}
+        section_title={'Neccessary Products'}
       />
     </div>
   );

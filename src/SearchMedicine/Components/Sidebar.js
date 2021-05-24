@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
+import Skeleton from '@yisheng90/react-loading';
 
 const Sidebar = (props) => {
   const [price, setPrice] = useState({ value: { min: 200, max: 1000 } });
@@ -98,18 +99,38 @@ const Sidebar = (props) => {
           <h5>Categories</h5>
         </div>
         <div className="sidebar_list">
-          <ul>
-            {Categories.map((category) => (
-              <li key={category.id}>
+          {props.loading ? (
+            <ul>
+              {Array(6)
+                .fill()
+                .map((list) => (
+                  <li>
+                    <Skeleton width="100%" height="30px" />
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <ul>
+              <li>
                 <Link
                   to="#"
-                  className={props.category === category.name && 'active'}
-                  onClick={() => props.setCategory(category.name)}>
-                  {category.name}
+                  onClick={() => props.setCategory('')}
+                  className={props.category === '' && 'active'}>
+                  All
                 </Link>
               </li>
-            ))}
-          </ul>
+              {props.categories.map((category) => (
+                <li key={category.id}>
+                  <Link
+                    to="#"
+                    className={props.category === category.id && 'active'}
+                    onClick={() => props.setCategory(category.id)}>
+                    {category.name.en}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       {/* sorting */}
@@ -180,7 +201,10 @@ const Sidebar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  loading: state.HomeContent.loading,
+  categories: state.HomeContent.categories,
+});
 
 const mapDispatchToProps = {};
 

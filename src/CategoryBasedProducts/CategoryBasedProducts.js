@@ -17,7 +17,7 @@ const CategoryProducts = (props) => {
     <div className="other_brands_wrapper">
       <AllProducts
         home={true}
-        categories={props.categories}
+        // categories={props.categories}
         category={category}
         setCategory={setCategory}
         sort={sort}
@@ -27,6 +27,8 @@ const CategoryProducts = (props) => {
         loading={props.loading}
         products={props.products}
         pages={props.pages}
+        category_hide={true}
+        section_title={props.categoryName}
       />
     </div>
   );

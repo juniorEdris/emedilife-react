@@ -2,12 +2,13 @@ import Skeleton from '@yisheng90/react-loading';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Pagination from '../../../Pagination/Pagination';
+import NoProducts from '../../../SectionUtils/NoProducts';
 import ProductCard from '../../../SectionUtils/ProductCard';
 
 const SearchProducts = (props) => {
   return (
     <div className="search_body_products">
-      {props.products !== undefined ? (
+      {props.products !== undefined && props.products.length > 0 ? (
         <div className="row">
           {props.loading
             ? Array(20)
@@ -26,7 +27,21 @@ const SearchProducts = (props) => {
               ))}
         </div>
       ) : (
-        'no results'
+        <div className=" row">
+          {props.loading ? (
+            Array(20)
+              .fill()
+              .map((s, i) => (
+                <div className="col-6 col-lg-3 mb-1">
+                  <Skeleton width="100%" height={354} />
+                </div>
+              ))
+          ) : (
+            <div className="w-100">
+              <NoProducts />
+            </div>
+          )}
+        </div>
       )}
       {props.pages?.links?.length > 0 && (
         <Pagination

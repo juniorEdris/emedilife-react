@@ -31,6 +31,10 @@ const GenericProducts = (props) => {
         loading={props.loading}
         products={props.products}
         pages={props.pages}
+        section_title={props.products[0]?.generic && `products under`}
+        section_title_bold={
+          props.products[0]?.generic && `${props.products[0]?.generic} generic`
+        }
       />
     </div>
   );

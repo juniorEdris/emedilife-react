@@ -5,13 +5,19 @@ import { GetSearchResults } from '../../../../Redux/Action/SearchAction';
 
 export const Search = (props) => {
   const history = useHistory();
-
+  useEffect(() => {
+    document.body.style.overflow = props.input.length > 0 ? 'hidden' : '';
+  }, [props.input]);
   const handleChange = (e) => {
     props.setInput(e.target.value);
   };
 
   const searchList = (e) => {
     props.setList(false);
+  };
+  const goToSearch = (e) => {
+    e.preventDefault();
+    history.push('/search-medicines');
   };
 
   return (
@@ -41,7 +47,10 @@ export const Search = (props) => {
               ))}
             </select>
           </div> */}
-          <Link to="#" className="header__searchIcon">
+          <Link
+            to="#"
+            className="header__searchIcon"
+            onClick={props.searchProducts}>
             <i className=" fas fa-search" title="search"></i>
           </Link>
         </div>

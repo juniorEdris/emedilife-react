@@ -69,3 +69,7 @@
     width: 100%;
     opacity: 0.4;
 }
+/* no_products css */
+.no_products{
+    height: 230px;
+}

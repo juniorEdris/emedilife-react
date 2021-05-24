@@ -33,6 +33,7 @@ const CompanyProducts = (props) => {
         loading={props.loading}
         products={props.products}
         pages={props.pages}
+        section_title={props.products[0]?.company}
       />
     </div>
   );

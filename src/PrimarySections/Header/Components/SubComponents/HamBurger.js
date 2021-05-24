@@ -25,6 +25,11 @@ function HamBurger(props) {
           <ul className="sidebar_route_list">
             <li>
               <Link to="/" onClick={() => setSidebar(false)}>
+                {/* <img
+                  className="hamburger_icon"
+                  src="./assets/svg/icons/home.svg"
+                  alt="myaccount icon"
+                /> */}
                 Home
               </Link>
             </li>
@@ -44,18 +49,33 @@ function HamBurger(props) {
             {!props.user ? (
               <li>
                 <Link to="/login" onClick={() => setSidebar(false)}>
+                  {/* <img
+                    className="hamburger_icon"
+                    src="./assets/svg/icons/login.svg"
+                    alt="myaccount icon"
+                  /> */}
                   Login
                 </Link>
               </li>
             ) : (
               <li>
                 <Link to="/dashboard" onClick={() => setSidebar(false)}>
+                  {/* <img
+                    className="hamburger_icon"
+                    src="./assets/svg/icons/dashboard.svg"
+                    alt="myaccount icon"
+                  /> */}
                   Dashboard
                 </Link>
               </li>
             )}
             <li>
               <Link to="/wishlist" onClick={() => setSidebar(false)}>
+                {/* <img
+                  className="hamburger_icon"
+                  src="./assets/svg/icons/nav-wishlist.svg"
+                  alt="wishlist icon"
+                /> */}
                 Wishlist
               </Link>
             </li>

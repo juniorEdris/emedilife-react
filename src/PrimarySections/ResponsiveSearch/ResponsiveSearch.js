@@ -7,7 +7,9 @@ import './responsivesearch.css';
 
 const ResponsiveSearch = (props) => {
   const history = useHistory();
-
+  // useEffect(() => {
+  //   document.body.style.overflow = props.search ? 'hidden' : '';
+  // }, [props.search]);
   const searchList = (e) => {
     props.setList(false);
     props.setInput('');

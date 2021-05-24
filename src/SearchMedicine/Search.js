@@ -21,6 +21,9 @@ const Search = (props) => {
   useEffect(() => {
     toTheTop();
   }, []);
+  useEffect(() => {
+    props.getProducts({ category: category });
+  }, [category, page]);
   return (
     <div className="container-md-fluid mb-4">
       <div className="search_medicine_wrapper row">

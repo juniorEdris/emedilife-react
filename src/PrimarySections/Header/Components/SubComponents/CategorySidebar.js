@@ -29,7 +29,7 @@ const CategorySidebar = (props) => {
             : props.categories?.map((cat) => (
                 <li
                   className={`${
-                    props.categoryID === cat.name.en &&
+                    props.categoryID === cat.id &&
                     'category_sidebar_list_active'
                   }`}>
                   <Link
@@ -37,8 +37,8 @@ const CategorySidebar = (props) => {
                     key={cat.id}
                     onClick={() => {
                       props.setCategoryBar(!props.categoryBar);
-
-                      props.setCategoryID(cat.name.en);
+                      props.setCategoryName(cat.name.en);
+                      props.setCategoryID(cat.id);
                     }}>
                     {cat.name.en}
                   </Link>
@@ -62,6 +62,3 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({});
 export default connect(mapStateToProps, mapDispatchToProps)(CategorySidebar);
-
-/*          categoryID={categoryID}
-          setCategoryID={setCategoryID}*/

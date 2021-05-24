@@ -227,7 +227,7 @@
     margin-bottom: 1rem;
     font-size: 1.2rem;
     color: var(--light-color);
-    background-color: var(--theme-color);
+    background-color: var(--user-entry-btn);
 }
 .account_submit_btn a:hover {
     color: var(--light-color);

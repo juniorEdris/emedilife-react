@@ -27,6 +27,10 @@ export const HeaderTop = (props) => {
     setFilter(!filter);
     setSearch(false);
   };
+  const searchProducts = (e) => {
+    e.preventDefault();
+    props.getSearchResults({ keywords: input, category: option });
+  };
   useEffect(() => {
     props.getSearchResults({ keywords: input, category: option });
   }, [input, option]);
@@ -41,6 +45,7 @@ export const HeaderTop = (props) => {
         setInput={setInput}
         list={list}
         setList={setList}
+        searchProducts={searchProducts}
       />
       <div className="header__right row align-items-center">
         <Link
@@ -64,6 +69,7 @@ export const HeaderTop = (props) => {
           setInput={setInput}
           list={list}
           setList={setList}
+          search={search}
         />
       )}
       {search && (
@@ -75,7 +81,13 @@ export const HeaderTop = (props) => {
             setInput('');
           }}></div>
       )}
-      {filter && <ResponsiveFilter option={option} setOption={setOption} />}
+      {filter && (
+        <ResponsiveFilter
+          option={option}
+          setOption={setOption}
+          filter={filter}
+        />
+      )}
       {filter && (
         <div
           className="responsive_backdrop d-md-none"

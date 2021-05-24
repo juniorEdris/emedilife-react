@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SearchBanner from './SubComponent/SearchBanner';
 import SearchProducts from './SubComponent/ProductsCase';
+import SectionHeadingOne from '../../SectionUtils/SectionHeadingOne';
 
 const Body = (props) => {
   return (
@@ -9,6 +10,10 @@ const Body = (props) => {
       {' '}
       {/*  */}
       <SearchBanner />
+      <SectionHeadingOne
+        fontStyleOne={props.section_title}
+        fontStyleTwo={props.section_title_bold}
+      />
       <SearchProducts
         page={props.page}
         setPage={props.setPage}
