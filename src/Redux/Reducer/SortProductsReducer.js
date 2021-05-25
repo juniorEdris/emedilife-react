@@ -2,7 +2,6 @@ import //   FILTER_PRODUCTS,
 '../Types';
 const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 const filterProducts = (product, price) => {
-  console.log(product);
   return {
     type: FILTER_PRODUCTS,
     product,
@@ -25,7 +24,6 @@ const filterProducts = (product, price) => {
 // };
 
 export const getCompanySortedProducts = (data) => (dispatch) => {
-  console.log(data);
   const sortedProds = data.products.slice();
   if (data.sortingType === 'price low to high') {
     sortedProds.sort((a, b) =>

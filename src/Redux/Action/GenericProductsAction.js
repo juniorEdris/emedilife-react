@@ -47,9 +47,9 @@ const filterProducts = (product, price) => {
 };
 
 export const getGenericSortedProducts = (data) => (dispatch, getState) => {
-  console.log(data);
+  // console.log(data);
   const sortedProds = getState().GenericProducts?.genericProducts?.slice();
-  console.log(sortedProds);
+  // console.log(sortedProds);
 
   if (data.sortingType === 'price low to high') {
     sortedProds.sort((a, b) =>

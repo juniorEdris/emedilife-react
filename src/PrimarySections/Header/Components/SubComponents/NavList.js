@@ -5,7 +5,6 @@ function NavList(props) {
   const allCategory = (e) => {
     e.preventDefault();
     props.setCategoryBar(!props.categoryBar);
-    console.log(props.categoryBar);
   };
   return (
     <div className="nav_links">

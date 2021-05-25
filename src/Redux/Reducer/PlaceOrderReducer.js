@@ -38,7 +38,6 @@ export const PlaceOrderReducer = (state = initialState, action) => {
         place_order_id: '',
       };
     case PLACE_ORDER_ERROR:
-      console.log(action.error);
       return {
         ...state,
         placingOrder: true,

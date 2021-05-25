@@ -33,10 +33,8 @@ export const getOrderList = (data) => async (dispatch) => {
     .then((res) => {
       if (res.data.status === false) {
         dispatch(OrderListError());
-        console.log(res.data);
       } else {
         dispatch(OrderListSuccess(res.data));
-        console.log(res.data.data);
       }
     })
     .catch((error) => {

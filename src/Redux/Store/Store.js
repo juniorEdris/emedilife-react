@@ -80,6 +80,7 @@ export const initialState = {
   // Contact Page states
   error: { name: '', email: '', subject: '', message: '', prescription: '' },
   contactConfirm: '',
+  sendMsgReq: false,
   // Prescription states
   uploadloading: false,
   prescriptionSuccess: '',

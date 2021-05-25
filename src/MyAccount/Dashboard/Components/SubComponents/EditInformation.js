@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { StoreAccInfo } from '../../../../Redux/Action/AccountInfoAction';
+import { PopUp } from '../../../../PrimarySections/SectionUtils/PopUp';
+import {
+  ClearResponse,
+  StoreAccInfo,
+} from '../../../../Redux/Action/AccountInfoAction';
 import { GetAreaOption } from '../../../../Redux/Action/GetUserInfoAction';
 
 const EditInformation = (props) => {
-  console.log(props.loading, props.response);
+  console.log(props.loading, props.response, props.info);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
@@ -35,16 +39,20 @@ const EditInformation = (props) => {
   const submitFrom = (e) => {
     e.preventDefault();
     props.storeInfo(inputs);
-    setInputs({
-      name: '',
+  };
+  const closePopup = (e) => {
+    props.clearResponse();
+    // setInputs({
+    //   name: '',
 
-      address: '',
-      district: '',
-      area: '',
-    });
+    //   address: '',
+    //   district: '',
+    //   area: '',
+    // });
   };
   return (
     <div className="edit_information">
+      {props.response && <PopUp close={closePopup} response={props.response} />}
       <div className="acc_dash_heading mb-5">
         <h5>Edit account information</h5>
       </div>
@@ -141,7 +149,7 @@ const EditInformation = (props) => {
                 <option selected value="">
                   Choose...
                 </option>
-                {props.userArea[0] &&
+                {props.userArea &&
                   props.userArea[0]?.areas?.map((area) => (
                     <option value={area.id} key={area.name}>
                       {area.name}
@@ -196,6 +204,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   storeInfo: (object) => dispatch(StoreAccInfo(object)),
+  clearResponse: () => dispatch(ClearResponse()),
   getArea: (id) => dispatch(GetAreaOption(id)),
 });
 

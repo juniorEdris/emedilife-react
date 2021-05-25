@@ -30,7 +30,6 @@ export const GetSearchResults = (data) => async (dispatch) => {
       `${ENDPOINTS.SEARCH}?keyword=${keywords}&category_id=${category}&per_page=20&page=${page}`
     )
     .then((res) => {
-      console.log(res.data, 'search');
       dispatch(fetchSearchSuccess(res.data));
     })
     .catch((error) => {

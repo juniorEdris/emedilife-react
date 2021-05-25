@@ -13,6 +13,10 @@ const CategoryProducts = (props) => {
   useEffect(() => {
     props.getProducts({ page, category_id: id });
   }, [page, id]);
+  // useEffect(() => {
+  //   props.setCategoryID('jack', props.products[0]?.category_id);
+  //   props.setCategoryName('jack', props.products[0]?.category);
+  // }, [props.products]);
   return (
     <div className="other_brands_wrapper">
       <AllProducts
@@ -28,7 +32,8 @@ const CategoryProducts = (props) => {
         products={props.products}
         pages={props.pages}
         category_hide={true}
-        section_title={props.categoryName}
+        section_title={props.products[0]?.category}
+        // section_title={props.categoryName}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { PopUp } from '../../PrimarySections/SectionUtils/PopUp';
 import { SendContactMessage } from '../../Redux/Action/ContactMessageAction';
 
 const ContactForm = (props) => {
@@ -10,8 +11,19 @@ const ContactForm = (props) => {
     subject: '',
     message: '',
   });
+  const [error, setError] = useState();
   const sendMsg = (e) => {
     e.preventDefault();
+    // if (formData.name === '') {
+    //   setError('name feild is required');
+    // } else if (formData.email === '') {
+    //   setError('email feild is required');
+    // } else if (formData.subject === '') {
+    //   setError('subject feild is required');
+    // } else if (formData.message === '') {
+    //   setError('message feild is required');
+    // } else {
+    // }
     props.sendMsg(formData);
   };
   const handleChange = (e) => {
@@ -92,9 +104,9 @@ const ContactForm = (props) => {
           Send
         </Link>
       </form>
-      {props.success !== '' && (
+      {error !== '' && (
         <div className="mt-2 mb-2 text-center">
-          <p className="text-success">{props.success}</p>
+          <p className="text-danger">{error}</p>
         </div>
       )}
     </div>

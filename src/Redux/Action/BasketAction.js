@@ -152,7 +152,6 @@ export const updateCartItem = (product) => async (dispatch, getState) => {
       setTimeout(() => {
         dispatch(productStatusComplete());
       }, 3000);
-      console.log('xxxx');
       return;
     }
     cartItems.forEach((x) => {

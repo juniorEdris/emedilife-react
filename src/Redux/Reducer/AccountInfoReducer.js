@@ -3,6 +3,7 @@ import {
   ACCOUNT_INFO_SUBMIT_REQUEST,
   ACCOUNT_INFO_SUBMIT_SUCCESS,
   ACCOUNT_INFO_SUBMIT_ERROR,
+  ACCOUNT_INFO_SUBMIT_SUCCESS_RESPONSE_CLEAR,
 } from '../Types';
 
 export const AccountInfoReducer = (state = initialState, action) => {
@@ -23,7 +24,13 @@ export const AccountInfoReducer = (state = initialState, action) => {
       return {
         ...state,
         storeInfoloading: false,
-        storeInfoStatus: action.error,
+        storeInfoStatus: '',
+      };
+    case ACCOUNT_INFO_SUBMIT_SUCCESS_RESPONSE_CLEAR:
+      return {
+        ...state,
+        storeInfoloading: false,
+        storeInfoStatus: '',
       };
 
     default:

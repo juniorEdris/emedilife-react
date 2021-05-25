@@ -62,7 +62,6 @@ function App(props) {
   useEffect(() => {
     document.body.style.overflow = categoryBar ? 'hidden' : '';
   }, [categoryBar]);
-  console.log(categoryID);
   return (
     <Router>
       <div className="App">
@@ -108,6 +107,7 @@ function App(props) {
             <CategoryBasedProducts
               setCategoryID={setCategoryID}
               categoryName={categoryName}
+              setCategoryName={setCategoryName}
             />
           </Route>
           <Route path="/otherbrands" component={OtherBrands} />

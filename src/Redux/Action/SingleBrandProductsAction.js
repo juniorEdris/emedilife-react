@@ -51,7 +51,6 @@ export const getSingleCompanyProducts = (data) => async (dispatch) => {
 };
 
 export const getCompanySortedProducts = (data) => (dispatch, getState) => {
-  console.log(data);
   const sortedProds = getState().SingleCompany.company_products.slice();
 
   if (data.sortingType === 'price low to high') {
