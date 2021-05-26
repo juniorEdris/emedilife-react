@@ -20,10 +20,10 @@ const ProductSlider = (props) => {
       700: {
         items: 3,
       },
-      900: {
-        items: 4,
-      },
-      1000: {
+      // 900: {
+      //   items: 4,
+      // },
+      1200: {
         items: 5.5,
         // freeDrag:true,
       },
@@ -33,7 +33,7 @@ const ProductSlider = (props) => {
       },
       1700: {
         items: 7,
-    // freeDrag:true,
+        // freeDrag:true,
         // center:true,
       },
     },

@@ -90,7 +90,7 @@ const UserEntry = (props) => {
                       <div className="user_entry_heading">Login/Register</div>
                       <form action="#" onSubmit={!UserID() ? register : login}>
                         <div className="form-group row align-items-center mt-5">
-                          <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
+                          <div className="col-12 col-sm-12 col-md-8 offset-md-2 offset-xl-2">
                             <input
                               type="text"
                               className="form-control input"

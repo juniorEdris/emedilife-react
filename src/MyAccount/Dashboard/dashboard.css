@@ -171,7 +171,7 @@
 
 .trow-light {
     background: var(--light-color);
-    border-bottom: 1px solid var(--nav-bg) !important;
+    /* border-bottom: 1px solid var(--nav-bg) !important; */
     border-top: none;
 }
 
@@ -258,4 +258,9 @@
 
 .order-table-btn {
     width: 130px;
+}
+.order_price_card .order_price_section{
+    text-align:right;
+    border-right: 1px solid var(--theme-color);
+    font-weight: 500;
 }

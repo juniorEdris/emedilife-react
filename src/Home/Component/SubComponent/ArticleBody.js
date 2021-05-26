@@ -7,7 +7,7 @@ const ArticleBody = (props) => {
     <div className="health_article_body row">
       {props.blogs?.length > 0 &&
         props.blogs?.map((post) => (
-          <div className="col-12 col-md-3" key={post.id}>
+          <div className="col-6 col-md-4 col-xl-3" key={post.id}>
             <Article key={post.id} post={post} />
           </div>
         ))}

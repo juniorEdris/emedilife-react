@@ -33,10 +33,10 @@ const Dashboard = (props) => {
       {props.logOutRequest && <SpinLoader />}
       {props.loading && <SpinLoader />}
       <div className="row">
-        <div className="col-md-3 col-xl-2 p-md-2">
+        <div className="col-md-4 col-xl-2 p-md-2">
           <DashSidebar tab={tab} setTab={setTab} />
         </div>
-        <div className="col-md-9 col-xl-10 p-md-2">
+        <div className="col-md-8 col-xl-10 p-md-2">
           <DashBody
             tab={tab}
             setTab={setTab}

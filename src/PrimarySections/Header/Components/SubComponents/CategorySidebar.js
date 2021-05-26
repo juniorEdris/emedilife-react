@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 const CategorySidebar = (props) => {
   const CloseBar = () => {
     props.setCategoryBar(!props.categoryBar);
-
-    props.setCategoryID();
+    props.setCategoryID('');
   };
   return (
     <div className="sidebar category_sidebar d-none d-md-block">
@@ -29,7 +28,7 @@ const CategorySidebar = (props) => {
             : props.categories?.map((cat) => (
                 <li
                   className={`${
-                    props.categoryID === cat.id &&
+                    props.categoryID.toString() === cat.id.toString() &&
                     'category_sidebar_list_active'
                   }`}>
                   <Link

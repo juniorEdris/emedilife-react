@@ -12,11 +12,8 @@ const CategoryProducts = (props) => {
   const id = query.get('id');
   useEffect(() => {
     props.getProducts({ page, category_id: id });
+    props.setCategoryID(id);
   }, [page, id]);
-  // useEffect(() => {
-  //   props.setCategoryID('jack', props.products[0]?.category_id);
-  //   props.setCategoryName('jack', props.products[0]?.category);
-  // }, [props.products]);
   return (
     <div className="other_brands_wrapper">
       <AllProducts

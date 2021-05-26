@@ -7,7 +7,7 @@ const NecessaryProducts = (props) => {
     <div className="">
       <div className="row">
         {props.products?.map((product) => (
-          <div className="col-6 col-md-4 col-lg-2" key={product.id}>
+          <div className="col-6 col-md-4 col-xl-2" key={product.id}>
             <ProductCard key={product.id} product={product} />
           </div>
         ))}

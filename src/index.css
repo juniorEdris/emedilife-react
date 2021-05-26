@@ -121,7 +121,9 @@ h6 {
     /* max-height: 15.625rem; */
     object-fit: contain;
 }
-
+.full_vh{
+    height: 100vh !important;
+}
 .error-handler {
     color: rgb(211, 15, 15);
     margin: 1rem 0;
@@ -145,6 +147,7 @@ h6 {
     text-transform: capitalize;
     border-radius: 0.25rem;
     font-size: 1rem;
+    display: block;
 }
 
 .table_link img {
@@ -625,7 +628,7 @@ ALL Section Heading css starts here
 }
 
 .header__logo {
-    padding: 0 1.429rem 0 1.429rem;
+    padding: 0 2rem 0 1.429rem;
     width: 15.929rem;
 }
 

@@ -28,7 +28,7 @@ const Sidebar = (props) => {
   ];
 
   return (
-    <div className="search_sidebar col-12 col-md-3 d-none d-md-block">
+    <div className="search_sidebar col-md-4 col-xl-3 d-none d-md-block">
       {' '}
       {/* categories */}
       {!props.category_hide && (

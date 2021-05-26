@@ -6,7 +6,7 @@ import SectionHeadingOne from '../../SectionUtils/SectionHeadingOne';
 
 const Body = (props) => {
   return (
-    <div className="search_body col-12 col-md-9">
+    <div className="search_body col-12 col-md-8 col-xl-9">
       {' '}
       {/*  */}
       <SearchBanner />

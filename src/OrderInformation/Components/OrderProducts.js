@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 import { Truncate } from '../../PrimarySections/Utility';
 
 const OrderProducts = (props) => {
+  let subTotal = () => {
+    let allProd = [];
+    props.order?.cart?.forEach((x) => {
+      allProd.push(x.price * x.total_quantity);
+    });
+    return allProd.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+  };
   return (
     <div className="primary_table">
       <table class="table">
@@ -36,9 +43,14 @@ const OrderProducts = (props) => {
               <tr className="trow-light" key={item.product_id}>
                 <td>{Truncate(item.name, 15)}</td>
                 <td>{item.unitType}</td>
-                <td>{item.unit_quantity}</td>
+                <td>{item.total_quantity}</td>
                 <td>BDT {item.price}</td>
-                <td>BDT {(item.price * item.unit_quantity).toFixed(2)}</td>
+                <td>
+                  BDT{' '}
+                  {(Number(item.price) * Number(item.total_quantity)).toFixed(
+                    2
+                  )}
+                </td>
                 <td>
                   <Link
                     to={`/productdetails?id=${item.product_id}`}
@@ -52,6 +64,27 @@ const OrderProducts = (props) => {
                 </td>
               </tr>
             ))}
+            <tr className="order_price_card">
+              <td colSpan="4" className="order_price_section">
+                Sub Total
+              </td>
+              <td>BDT {subTotal().toFixed(2)}</td>
+              <td></td>
+            </tr>
+            <tr className="order_price_card">
+              <td colSpan="4" className="order_price_section">
+                Regular (withine 24 hours)
+              </td>
+              <td>BDT {Number(props.order?.shipping_cost).toFixed(2)}</td>
+              <td></td>
+            </tr>
+            <tr className="order_price_card">
+              <td colSpan="4" className="order_price_section">
+                Total
+              </td>
+              <td>BDT {Number(props.order?.pay_amount).toFixed(2)}</td>
+              <td></td>
+            </tr>
           </tbody>
         )}
       </table>
