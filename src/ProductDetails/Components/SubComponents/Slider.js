@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
 import './slider.css';
 import Skeleton from '@yisheng90/react-loading';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Slider = (props) => {
   return (
@@ -11,20 +11,19 @@ const Slider = (props) => {
       {props.loading ? (
         <Skeleton width={'100%'} height={'390px'} />
       ) : (
-        <AliceCarousel
-          disableButtonsControls
-          animationDuration={100}
-          animationType={'fadeout'}
-          mouseTracking={true}
-          infinite={true}
-          swipeDelta={0}
-          autoPlayStrategy="default">
+        <Carousel
+        autoPlay
+        interval="3000" 
+        transitionTime="1000" 
+        infiniteLoop
+        showIndicators={false}
+          >
           <img
             src={`http:${props.details?.photo}`}
             className="slider_image"
             alt={props.details?.name}
           />
-        </AliceCarousel>
+        </Carousel>
       )}
     </div>
   );

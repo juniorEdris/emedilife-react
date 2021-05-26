@@ -4,8 +4,19 @@
 }
 .product_slider_wrapper .slider_image{
     width: 100%;
+    /* height: 100%; */
     height: 426px;
     object-fit: contain;
+}
+/* Carrosel overwritten Css */
+.product_slider_wrapper .carousel p.carousel-status{
+    display:none;
+}
+.product_slider_wrapper .thumbs-wrapper .thumbs .thumb img{
+    height: 80px !important;
+}
+.product_slider_wrapper .carousel .thumbs-wrapper{
+    margin: 0!important;
 }
 
 /* Details information css */

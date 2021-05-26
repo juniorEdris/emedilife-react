@@ -6,10 +6,17 @@ import { Link } from 'react-router-dom';
 const DeliveryDetails = (props) => {
   return (
     <div className="delivery_details">
-      <div className="head row">
-        <h4>Delivery Option</h4>
-        <img className="icon" src={`./assets/svg/icons/info.svg`} alt="" />
-      </div>
+
+        {props.loading ? (
+          <div className=" row">
+            <Skeleton width={'100%'} height={100} />
+          </div>
+        ) : (
+          <div className="head row">
+            <h4>Delivery Option</h4>
+            <img className="icon" src={`./assets/svg/icons/info.svg`} alt="" />
+          </div>
+        )}
       {props.loading ? (
         <div className="body row">
           <Skeleton width={'100%'} height={100} />

@@ -92,7 +92,16 @@
 .header__option {
   margin-left: 1rem;
 }
-
+/* PRODUCT DETAILS CSS */
+.details_product-name {
+  font-size: 1.2rem!important;}
+  .details_footer ul li {
+    font-size: 1rem!important;
+  }
+  .details_footer h4 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
 }
 @media (min-width: 768px) {
   .header__nav {
