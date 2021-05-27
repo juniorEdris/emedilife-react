@@ -36,7 +36,7 @@
     width: 30px;
     height: 30px;
     padding-left: 0.1rem;
-    line-height: 27px;
+    line-height: 30px;
     background: var(--danger);
     color: var(--light);
     position: absolute;
@@ -57,7 +57,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 2000;
 }
 .spin_loader_backdrop{
     background: var(--dark-color);
@@ -65,7 +65,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 999;
+    z-index: 1999;
     width: 100%;
     opacity: 0.4;
 }

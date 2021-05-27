@@ -7,6 +7,7 @@ import './dashboard.css';
 import { getUserInfo } from '../../Redux/Action/GetUserInfoAction';
 import { getOrderList } from '../../Redux/Action/OrderListAction';
 import SpinLoader from '../../PrimarySections/SectionUtils/SpinLoader';
+import { guestCartItem } from '../../Redux/Action/BasketAction';
 
 const Dashboard = (props) => {
   useEffect(() => {
@@ -18,13 +19,13 @@ const Dashboard = (props) => {
     let arr = [];
     props.localCartList?.forEach((x) => {
       const data = {
-        id: x.id,
+        product_id: x.product_id,
         total_quantity: x.total_quantity,
         unit_prices_id: x.unit_prices_id,
       };
       arr.push(data);
     });
-    console.log('loacal products to server', arr);
+    props.guestCartSubmit();
   }, []);
   const [tab, setTab] = useState('dashboard');
   const [orderId, setOrderId] = useState('');
@@ -63,6 +64,7 @@ const mapDispatchToProps = (dispatch) => ({
   getCartItems: () => dispatch(getCartItems()),
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderList: () => dispatch(getOrderList()),
+  guestCartSubmit: (array) => dispatch(guestCartItem(array)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

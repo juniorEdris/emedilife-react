@@ -14,14 +14,6 @@ const PrescriptionUpload = (props) => {
   return (
     <div className="container-md-fluid prescription_body">
       {props.loading && <SpinLoader />}
-      {/* <div className="prescription_loading">
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div> */}
       {props.success && (
         <PopUp response={props.success} close={props.closePopup} />
       )}

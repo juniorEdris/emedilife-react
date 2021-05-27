@@ -14,12 +14,14 @@ const SearchProducts = (props) => {
             ? Array(20)
                 .fill()
                 .map((s, i) => (
-                  <div className="col-6 col-lg-4 col-xl-3 mb-1">
+                  <div className="col-6 col-lg-4 col-xl-3 mb-1 col-xxl-2">
                     <Skeleton width="100%" height={354} />
                   </div>
                 ))
             : props.products?.map((product) => (
-                <div className="col-6 col-lg-4 col-xl-3 " key={product.id}>
+                <div
+                  className="col-6 col-lg-4 col-xl-3 col-xxl-2"
+                  key={product.id}>
                   {' '}
                   {/* col-md-2 col-md-4 */}
                   <ProductCard product={product} key={product.id} />

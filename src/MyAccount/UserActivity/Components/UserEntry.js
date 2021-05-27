@@ -6,12 +6,14 @@ import { UserID } from '../../../PrimarySections/Utility';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import SpinLoader from '../../../PrimarySections/SectionUtils/SpinLoader';
+import OTPCard from './OTPSection';
 
 const UserEntry = (props) => {
   const history = useHistory();
   const [number, setNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [OTP, setOTP] = useState('');
+  const [OTPSection, setOTPSection] = useState(false);
   // const [userId, setUser] = useState(false);
   const [resendOtpActive, setResendOtpActive] = useState(false);
   const [error, setError] = useState({});
@@ -21,6 +23,11 @@ const UserEntry = (props) => {
       setResendOtpActive(true);
       console.log('active resend btn active');
     }, 120000);
+  };
+  // Close OTP Section
+  const OTPSectionClose = (e) => {
+    console.log('close', OTPSection);
+    setOTPSection(false);
   };
   const register = async (e) => {
     setLoading(true);
@@ -33,6 +40,7 @@ const UserEntry = (props) => {
           setLoading(false);
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
+          setOTPSection(true);
           // activeResendButton();
         } else {
           setLoading(false);
@@ -78,28 +86,33 @@ const UserEntry = (props) => {
   return (
     <div className="user_entry pb-70">
       {loading && <SpinLoader />}
+      {OTPSection && (
+        <OTPCard
+          close={OTPSectionClose}
+          otp={OTP}
+          setOtp={setOTP}
+          login={login}
+          resendOtp={register}
+          serverResponse={error}
+        />
+      )}
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-sm-12 col-md-12 col-lg-12">
             <main id="primary" className="site-main">
               <div className="user-login">
-                <div className="row"></div> {/* end of row */}
-                <div className="row">
-                  <div className="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
+                <div className="row justify-content-center">
+                  <div className="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-6">
                     <div className="login-form">
                       <div className="user_entry_heading">Login/Register</div>
-                      <form action="#" onSubmit={!UserID() ? register : login}>
+                      <form action="#" onSubmit={register}>
                         <div className="form-group row align-items-center mt-5">
                           <div className="col-12 col-sm-12 col-md-8 offset-md-2 offset-xl-2">
                             <input
                               type="text"
                               className="form-control input"
                               id="number"
-                              placeholder={
-                                !UserID()
-                                  ? 'Enter phone number'
-                                  : 'Enter phone number for OTP message'
-                              }
+                              placeholder={'Enter phone number'}
                               value={number}
                               onChange={(e) => setNumber(e.target.value)}
                               required
@@ -107,42 +120,6 @@ const UserEntry = (props) => {
                             <div className="error-handler">{error.message}</div>
                           </div>
                         </div>
-                        {UserID() && (
-                          <div className="form-group row align-items-center mb-5">
-                            <div className="col-12 col-sm-12 col-md-8 offset-lg-2 offset-xl-2">
-                              <input
-                                type="text"
-                                className="form-control input"
-                                id="otp"
-                                placeholder="Enter your OTP"
-                                value={OTP}
-                                onChange={(e) => setOTP(e.target.value)}
-                                required
-                              />
-                              {error.otp && (
-                                <div className="text-success otp_msg">
-                                  <small>{error.otp}</small>
-                                </div>
-                              )}
-                              <div className="resend_otp_button">
-                                <Link to="#" onClick={register} className="">
-                                  Resend
-                                </Link>{' '}
-                                OTP request
-                              </div>
-                              {error.loginErrMessage && (
-                                <div className="error-handler">
-                                  {error.loginErrMessage}
-                                </div>
-                              )}
-                              {error.otpErrMessage && (
-                                <div className="error-handler">
-                                  <small>{error.otpErrMessage}</small>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        )}
                         <div className="login-box mt-4 text-center">
                           <button
                             type="submit"

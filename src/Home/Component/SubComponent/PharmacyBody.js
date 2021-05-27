@@ -12,7 +12,7 @@ export const PharmacyBody = (props) => {
             <div className="col m-auto">
               <ul className="list">
                 <li>
-                  <b className="mb-1">How to order medicines on Medipathy?</b>
+                  <b className="mb-1">How to order medicines on Emedilife?</b>
                   <ul className="sub_list">
                     <li>
                       {' '}

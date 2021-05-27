@@ -1292,6 +1292,7 @@ Article css starts here
 .user_entry {
     color: var(--dark-color);
     padding: 5% 0;
+    position: relative;
 }
 
 .user_entry .login-form {
@@ -1319,7 +1320,7 @@ Article css starts here
     margin-top: 0.8rem;
 }
 
-.login-box button {
+.login-box button,.login-box a {
     background: var(--user-entry-btn);
     color: var(--light-color);
     border-radius: 0.1rem !important;

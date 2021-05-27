@@ -41,4 +41,5 @@ export const ENDPOINTS = {
   GET_SINGLE_BLOG: `api/web/get_blog_details`,
   GET_SINGLE_ORDER: `api/get_order_details`,
   LOG_OUT: `api/app/logout`,
+  GUEST_CART: `api/product/add_to_cart`,
 };

@@ -39,7 +39,7 @@ const Details = (props) => {
   };
   const addProduct = async (item) => {
     const product = {
-      id: item.id,
+      product_id: item.id,
       photo: item.photo,
       name: item.name,
       price: price === '' ? item.unit_prices[0]?.price : price,
@@ -51,7 +51,7 @@ const Details = (props) => {
   };
   const updateCartItem = async (item) => {
     await props.updateCart({
-      id: item.id,
+      product_id: item.id,
       cart_id: props.cart_id,
       photo: item.photo,
       name: item.name,
@@ -63,7 +63,7 @@ const Details = (props) => {
   };
   const addToWish = async (item) => {
     const product = {
-      id: item.id,
+      product_id: item.id,
       photo: item.photo,
       name: item.name,
       unit_price: {
