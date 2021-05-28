@@ -22,7 +22,6 @@ export const WishlistReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         wishlist: [],
-        localWishlist: [],
         error: '',
       };
     case ADD_TO_LOCAL_WISHLIST_SUCCESS:

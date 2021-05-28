@@ -77,22 +77,27 @@ const addWishItemError = (error) => ({
 export const addToWishlistAction = (product) => async (dispatch, getState) => {
   dispatch(addWishItemRequest());
   if (!UserToken()) {
-    const wishItems = getState().Wishlist.localWishlist.slice();
+    let wishItems = getState().Wishlist.localWishlist.slice();
     let exist = false;
     wishItems.forEach((x) => {
-      if (x.id === product.id) {
-        dispatch(addWishItemLocalMsg('Already Exist In Wishlist'));
+      if (x.product_id === product.product_id) {
+        // dispatch(addWishItemLocalMsg('Already Exist In Wishlist'));
+        dispatch(addWishItemOnlineSuccess({message: 'Already Exist In Wishlist',
+        status: true}));
         setTimeout(() => {
           dispatch(productStatusComplete());
         }, 3000);
         exist = true;
+        console.log('exist',exist);
         return;
       }
     });
     if (!exist) {
       wishItems.push(product);
 
-      dispatch(addWishItemLocalMsg('Product Added To Wishlist Successfully..'));
+      // dispatch(addWishItemLocalMsg('Product Added To Wishlist Successfully..'));
+      dispatch(addWishItemOnlineSuccess({message: 'Product Added To Wishlist Successfully..',
+        status: true}));
       setTimeout(() => {
         dispatch(productStatusComplete());
       }, 3000);
@@ -102,7 +107,7 @@ export const addToWishlistAction = (product) => async (dispatch, getState) => {
   } else {
     await API()
       .post(
-        `${ENDPOINTS.ADD_WISHLIST_ITEM}product_id=${product.id}&unit_price_id=${product.unit_price.unit_prices_id}&total_quantity=${product.total_quantity}`
+        `${ENDPOINTS.ADD_WISHLIST_ITEM}product_id=${product.product_id}&unit_price_id=${product.unit_price.unit_prices_id}&total_quantity=${product.total_quantity}`
       )
       .then((res) => {
         dispatch(productStatusSuccess());
@@ -120,14 +125,13 @@ export const addToWishlistAction = (product) => async (dispatch, getState) => {
 
 export const RemoveWishProd = (product) => async (dispatch, getState) => {
   if (!UserToken()) {
-    const wishItems = getState()
+    let wishItems = getState()
       .Wishlist.localWishlist.slice()
-      .filter((x) => x.id !== product.id);
+      .filter((x) => x.product_id !== product.product_id);
     dispatch(removeProdLocalWish(wishItems));
     localStorage.setItem('Wish List', JSON.stringify(wishItems));
-    dispatch(
-      addWishItemLocalMsg('Product Removed From Wishlist Successfully..')
-    );
+    dispatch(addWishItemOnlineSuccess({message: 'Product Removed From Wishlist Successfully..',
+        status: true}));
     setTimeout(() => {
       dispatch(productStatusComplete());
     }, 3000);
@@ -156,3 +160,42 @@ export const getWishlistItems = () => async (dispatch) => {
       dispatch(getWishItemError(error));
     });
 };
+
+export const guestWishItem = (array) => async (dispatch, getState) => {
+  let Data = [];
+  let wishItems = getState().Wishlist.localWishlist.slice();
+  wishItems.forEach((e) => {
+    const item = {
+      product_id: e.product_id,
+      total_quantity:e.total_quantity,
+      unit_price_id:e.unit_price.unit_prices_id,
+    }
+    
+    Data.push(item)
+  })
+  const arr = JSON.stringify(Object.assign([], Data))
+  if (Data.length > 0) {
+    // await API()
+    //   .post(`${ENDPOINTS.WISH_GUEST_CART}`
+    //     ,
+    //     {
+      //       guest_carts: JSON.parse(arr)
+    //     }
+    //   ).then((res) => {
+      console.log(arr);
+    //     console.log('guest_wish', res);
+    //     dispatch(productStatusSuccess());
+    //     dispatch(addWishItemOnlineSuccess(res.data));
+    //     setTimeout(() => {
+    //       dispatch(productStatusComplete());
+    //     }, 3000);
+    //     localStorage.setItem('Wish List', JSON.stringify([]))
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     dispatch(addWishItemError(err));
+    //   });
+  } else {
+    return
+  }
+}

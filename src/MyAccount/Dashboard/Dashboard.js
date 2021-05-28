@@ -8,25 +8,20 @@ import { getUserInfo } from '../../Redux/Action/GetUserInfoAction';
 import { getOrderList } from '../../Redux/Action/OrderListAction';
 import SpinLoader from '../../PrimarySections/SectionUtils/SpinLoader';
 import { guestCartItem } from '../../Redux/Action/BasketAction';
+import { guestWishItem } from '../../Redux/Action/WishListAction';
 
 const Dashboard = (props) => {
+  console.log(props.geustListloading);
   useEffect(() => {
     props.getCartItems();
     props.User && props.getUserInfo();
     props.User && props.getOrderList();
   }, []);
   useEffect(() => {
-    let arr = [];
-    props.localCartList?.forEach((x) => {
-      const data = {
-        product_id: x.product_id,
-        total_quantity: x.total_quantity,
-        unit_prices_id: x.unit_prices_id,
-      };
-      arr.push(data);
-    });
     props.guestCartSubmit();
-  }, []);
+    props.guestWishSubmit();
+    props.getOrderList();
+  }, [props.geustListloading]);
   const [tab, setTab] = useState('dashboard');
   const [orderId, setOrderId] = useState('');
   return (
@@ -57,6 +52,7 @@ const mapStateToProps = (state) => ({
   loading: state.AccountInfo.storeInfoloading,
   response: state.AccountInfo.storeInfoStatus,
   localCartList: state.Basket.localBasket,
+  geustListloading: state.Basket.loading,
   logOutRequest: state.User.logOutRequest,
 });
 
@@ -65,6 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderList: () => dispatch(getOrderList()),
   guestCartSubmit: (array) => dispatch(guestCartItem(array)),
+  guestWishSubmit: (array) => dispatch(guestWishItem(array)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -200,32 +200,41 @@ export const updateCartItem = (product) => async (dispatch, getState) => {
   }
 };
 export const guestCartItem = (array) => async (dispatch, getState) => {
-  // console.log('guest array aaaaaaaaa', `${ENDPOINTS.GUEST_CART}`);
   dispatch(addProdBasketRequest());
-  const bodyFormData = new FormData();
   let Data = [];
   let cartItems = getState().Basket.localBasket.slice();
   cartItems.forEach((e) => {
-    bodyFormData.append('guest_carts', JSON.stringify(e));
-  });
-  // const fd = new FormData();
-  //     fd.append('images', images.photo, images.photo.name);
-
-  await API()
-    .post(`${ENDPOINTS.GUEST_CART}`, bodyFormData, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-    })
-    .then((res) => {
-      console.log('guest array', res, '...', Data);
-      if (res.data.message) {
-        dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
-        dispatch(productStatusSuccess());
-        setTimeout(() => {
-          dispatch(productStatusComplete());
-        }, 3000);
-      }
-    })
-    .catch((err) => console.log(err));
+    const item = {
+      product_id: e.product_id,
+      total_quantity:e.total_quantity,
+      unit_price_id:e.unit_prices_id,
+    }
+    Data.push(item)
+  })
+  const arr = JSON.stringify(Object.assign([], Data))    
+  if (Data.length > 0) {
+    // await API()
+    //   .post(`${ENDPOINTS.CART_GUEST_CART}`
+    //     ,
+    //     {
+    //       guest_carts: JSON.parse(arr)
+    //     }
+    //   )
+    //   .then((res) => {
+    //     if (res.data.type) {
+    //       dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
+    //       dispatch(productStatusSuccess());
+    //       setTimeout(() => {
+    //         dispatch(productStatusComplete());
+    //       }, 3000);
+    //       localStorage.setItem('Cart List', JSON.stringify([]))
+    //     } else {
+    //       console.log(res.data);
+    //     }
+    //   })
+    //   .catch((err) => console.log(err));
+    console.log('cart added');
+  } else {
+    return
+  }
 };
