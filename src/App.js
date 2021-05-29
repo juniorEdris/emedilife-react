@@ -44,6 +44,7 @@ import { CopyRight } from './CopyRight/CopyRight';
 import OrderCancel from './OrderNotify/OrderCancel';
 import CategorySidebar from './PrimarySections/Header/Components/SubComponents/CategorySidebar';
 import Search from './SearchMedicine/Search';
+import { demoAll } from './Redux/Action/WishListAction';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
@@ -53,10 +54,9 @@ function App(props) {
   const loginSuccessPageRedirectTo = (path) => {
     setNextPage(path);
   };
-
   useEffect(() => {
     props.getHomeContents();
-    // props.User && props.getUserInfo();
+    //  props.demo();
     // props.User && props.getOrderList();
   }, []);
   useEffect(() => {
@@ -143,5 +143,6 @@ const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderList: () => dispatch(getOrderList()),
+  demo: () => dispatch(demoAll()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -175,27 +175,35 @@ export const guestWishItem = (array) => async (dispatch, getState) => {
   })
   const arr = JSON.stringify(Object.assign([], Data))
   if (Data.length > 0) {
-    // await API()
-    //   .post(`${ENDPOINTS.WISH_GUEST_CART}`
-    //     ,
-    //     {
-      //       guest_carts: JSON.parse(arr)
-    //     }
-    //   ).then((res) => {
-      console.log(arr);
-    //     console.log('guest_wish', res);
-    //     dispatch(productStatusSuccess());
-    //     dispatch(addWishItemOnlineSuccess(res.data));
-    //     setTimeout(() => {
-    //       dispatch(productStatusComplete());
-    //     }, 3000);
-    //     localStorage.setItem('Wish List', JSON.stringify([]))
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     dispatch(addWishItemError(err));
-    //   });
+    await API()
+      .post(`${ENDPOINTS.WISH_GUEST_CART}`
+        ,
+        {
+            guest_wishlists: JSON.parse(arr)
+        }
+      ).then((res) => {
+    // console.log(arr,'wishlist');
+    console.log('guest_wish', res);
+        if (res.data.type) {
+          dispatch(productStatusSuccess());
+          dispatch(addWishItemOnlineSuccess(res.data));
+          setTimeout(() => {
+            dispatch(productStatusComplete());
+          }, 3000);
+          localStorage.setItem('Wish List', JSON.stringify([]))
+        } else {
+          console.log(res.data);
+         }
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(addWishItemError(err));
+      });
   } else {
     return
   }
+}
+
+export const demoAll = (array) => async (dispatch, getState) => {
+ console.log('for every page run'); 
 }

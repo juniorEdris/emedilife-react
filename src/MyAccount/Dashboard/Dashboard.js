@@ -21,7 +21,7 @@ const Dashboard = (props) => {
     props.guestCartSubmit();
     props.guestWishSubmit();
     props.getOrderList();
-  }, [props.geustListloading]);
+  }, []);
   const [tab, setTab] = useState('dashboard');
   const [orderId, setOrderId] = useState('');
   return (

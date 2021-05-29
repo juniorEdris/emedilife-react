@@ -213,27 +213,28 @@ export const guestCartItem = (array) => async (dispatch, getState) => {
   })
   const arr = JSON.stringify(Object.assign([], Data))    
   if (Data.length > 0) {
-    // await API()
-    //   .post(`${ENDPOINTS.CART_GUEST_CART}`
-    //     ,
-    //     {
-    //       guest_carts: JSON.parse(arr)
-    //     }
-    //   )
-    //   .then((res) => {
-    //     if (res.data.type) {
-    //       dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
-    //       dispatch(productStatusSuccess());
-    //       setTimeout(() => {
-    //         dispatch(productStatusComplete());
-    //       }, 3000);
-    //       localStorage.setItem('Cart List', JSON.stringify([]))
-    //     } else {
-    //       console.log(res.data);
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
-    console.log('cart added');
+    await API()
+      .post(`${ENDPOINTS.CART_GUEST_CART}`
+        ,
+        {
+          guest_carts: JSON.parse(arr)
+        }
+      )
+      .then((res) => {
+        if (res.data.type) {
+          dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
+          dispatch(productStatusSuccess());
+          setTimeout(() => {
+            dispatch(productStatusComplete());
+          }, 3000);
+          localStorage.setItem('Cart List', JSON.stringify([]))
+        } else {
+          console.log(res.data);
+        }
+      })
+      .catch((err) => console.log(err));
+    // console.log(arr,'basket');
+
   } else {
     return
   }
