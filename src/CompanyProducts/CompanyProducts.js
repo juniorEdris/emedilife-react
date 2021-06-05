@@ -6,7 +6,6 @@ import {
   getCompanySortedProducts,
   getSingleCompanyProducts,
 } from '../Redux/Action/SingleBrandProductsAction';
-import { getSortedProducts } from '../Redux/Reducer/SortProductsReducer';
 
 const CompanyProducts = (props) => {
   const [category, setCategory] = useState('');

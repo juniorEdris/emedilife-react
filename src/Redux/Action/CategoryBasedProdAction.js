@@ -3,6 +3,7 @@ import {
   CATEGORY_BASED_REQUEST,
   CATEGORY_BASED_SUCCESS,
   CATEGORY_BASED_ERROR,
+  CATEGORY_FILTER_PRODUCTS,
 } from '../Types';
 
 const categoryBasedRequest = () => {
@@ -26,6 +27,12 @@ const categoryBasedError = (error) => {
     error,
   };
 };
+const filterProducts = (product, price) => {
+  return {
+    type: CATEGORY_FILTER_PRODUCTS,
+    product,
+  };
+};
 
 export const GetCategoryBasedProd = (data) => async (dispatch) => {
   const { keywords, category_id = '', subcategory, childcategory, page } = data;
@@ -41,4 +48,22 @@ export const GetCategoryBasedProd = (data) => async (dispatch) => {
       console.log(error);
       dispatch(categoryBasedError(error));
     });
+};
+
+
+export const getCategorySortedProducts = (data) => (dispatch, getState) => {
+  const sortedProds = getState().CategoryProducts.categoryProducts.slice();
+
+  if (data.sortingType === 'price low to high') {
+    sortedProds.sort((a, b) =>
+      Number(a.unit_prices?.price) > Number(b.unit_prices?.price) ? 1 : -1
+    );
+  } else if (data.sortingType === 'price high to low') {
+    sortedProds.sort((a, b) =>
+      Number(a.unit_prices?.price) < Number(b.unit_prices?.price) ? 1 : -1
+    );
+  } else {
+    sortedProds.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
+  dispatch(filterProducts(sortedProds, data.sortingType));
 };

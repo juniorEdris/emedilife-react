@@ -2,6 +2,7 @@ import {
   OTHER_BRAND_REQUEST,
   OTHER_BRAND_SUCCESS,
   OTHER_BRAND_ERROR,
+  OTHER_FILTER_PRODUCTS,
 } from '../Types';
 import { initialState } from '../Store/Store';
 
@@ -31,6 +32,11 @@ export const OtherBrandsReducer = (state = initialState, action) => {
         otherBrandsPage: [],
         otherBrandsCat: [],
       };
+      case OTHER_FILTER_PRODUCTS:
+        return {
+          ...state,
+          otherBrands: action.product,
+        };
     default:
       return {
         ...state,

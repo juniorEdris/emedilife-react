@@ -32,7 +32,7 @@ export const GenericProductsReducer = (state = initialState, action) => {
     case FILTER_GENERIC_PRODUCTS:
       return {
         ...state,
-        genericProducts: action.products,
+        genericProducts: action.product,
       };
     default:
       return state;

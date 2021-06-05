@@ -3,6 +3,7 @@ import {
   CATEGORY_BASED_ERROR,
   CATEGORY_BASED_REQUEST,
   CATEGORY_BASED_SUCCESS,
+  CATEGORY_FILTER_PRODUCTS,
 } from '../Types';
 
 export const CategoryBasedProdReducer = (state = initialState, action) => {
@@ -31,6 +32,11 @@ export const CategoryBasedProdReducer = (state = initialState, action) => {
         categoryLists: [],
         categorypages: [],
       };
+      case CATEGORY_FILTER_PRODUCTS:
+        return {
+          ...state,
+          categoryProducts: action.product,
+        };
     default:
       return state;
   }

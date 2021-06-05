@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
 import { useQuery } from '../PrimarySections/Utility';
-import { GetGenericResults } from '../Redux/Action/GenericProductsAction';
-import { getOtherBrands } from '../Redux/Action/OtherBrandsAction';
+import { GetGenericResults, getGenericSortedProducts } from '../Redux/Action/GenericProductsAction';
+import { getOtherBrands, getOtherSortedProducts } from '../Redux/Action/OtherBrandsAction';
 import './otherbrands.css';
 const OtherBrands = (props) => {
   const [category, setCategory] = useState('');
@@ -14,6 +14,9 @@ const OtherBrands = (props) => {
   useEffect(() => {
     props.getProducts({ page, id });
   }, [page, id]);
+  useEffect(() => {
+    props.getSortedProducts({ sortingType: sort });
+  }, [sort]);
   return (
     <div className="other_brands_wrapper">
       <AllProducts
@@ -45,6 +48,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   //   getProducts: (data) => dispatch(getOtherBrands(data)),
   getProducts: (data) => dispatch(GetGenericResults(data)),
+  // getSortingProducts: (data) => dispatch(getOtherSortedProducts(data)),
+  getSortedProducts: (data) => dispatch(getGenericSortedProducts(data)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OtherBrands);

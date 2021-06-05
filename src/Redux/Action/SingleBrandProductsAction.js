@@ -66,3 +66,4 @@ export const getCompanySortedProducts = (data) => (dispatch, getState) => {
   }
   dispatch(filterProducts(sortedProds, data.sortingType));
 };
+
