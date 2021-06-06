@@ -56,7 +56,15 @@ export const getNeccessrySortedProducts = (data) => (dispatch, getState) => {
     sortedProds.sort((a, b) =>
       Number(a.unit_prices?.price) < Number(b.unit_prices?.price) ? 1 : -1
     );
-  } else {
+  }else if (data.sortingType === 'name a to z') {
+    sortedProds.sort((a, b) =>
+    a.name.localeCompare(b.name)
+    );
+  }else if (data.sortingType === 'name z to a') {
+    sortedProds.sort((a, b) =>
+    b.name.localeCompare(a.name)
+    );
+  }  else {
     sortedProds.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
   dispatch(filterProducts(sortedProds, data.sortingType));

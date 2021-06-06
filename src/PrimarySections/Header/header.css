@@ -31,6 +31,15 @@
 .top-0{
     top: 0 !important;
 }
+.sidebar_route_list.loader li{
+    width: 100%;
+    padding: 0.7rem;
+    background-color: var(--white);
+    margin-bottom: 0.4rem;
+}
+.sidebar_route_list.loader li:hover{
+    background-color: unset;
+}
 .sidebar_route_list li{
     width: 100%;
     padding: 0.7rem;

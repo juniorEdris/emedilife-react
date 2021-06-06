@@ -16,7 +16,7 @@ const CategorySidebar = (props) => {
         <div className="cross">
           <span class="lnr lnr-cross" onClick={CloseBar}></span>
         </div>
-        <ul className="sidebar_route_list">
+        <ul className="sidebar_route_list loader">
           {props.loading
             ? Array(12)
                 .fill()
@@ -27,10 +27,9 @@ const CategorySidebar = (props) => {
                 ))
             : props.categories?.map((cat) => (
                 <li
-                  className={`${
-                    props.categoryID.toString() === cat.id.toString() &&
-                    'category_sidebar_list_active'
-                  }`}>
+                className={`${props.categoryID.toString() === cat.id.toString() &&
+                  'category_sidebar_list_active'
+                  }`} key={ cat.id}>
                   <Link
                     to={`/category-products?id=${cat.id}`}
                     key={cat.id}
