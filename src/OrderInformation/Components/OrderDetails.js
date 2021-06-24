@@ -7,7 +7,6 @@ import OrderCancel from '../../OrderNotify/OrderCancel';
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 
 const OrderDetails = (props) => {
-  console.log(props.order?.delivery_status,'45454');
   const history = useHistory();
   const [response, setResponse] = useState({
     loading: false,
@@ -18,14 +17,13 @@ const OrderDetails = (props) => {
     e.preventDefault();
     setResponse({ cancelStatus: false });
     // history.push('/dashboard');
-    props.setTab('dashboard')
+    props.setTab('dashboard');
   };
   const cancelOrder = (e) => {
     e.preventDefault();
     API()
       .post(`${ENDPOINTS.CANCEL_ORDER}?order_id=${props.order_id}`)
       .then((res) => {
-        console.log('remove order', res);
         setResponse({
           loading: false,
           cancelStatus: res.data.status,

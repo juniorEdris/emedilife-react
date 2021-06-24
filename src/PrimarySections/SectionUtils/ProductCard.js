@@ -56,7 +56,7 @@ const ProductCard = (props) => {
                   &#2547; {props.product?.unit_prices?.price}
                 </span>
               </span>
-              {props.product?.unit_prices?.previous_price ? (
+              {/* {props.product?.unit_prices?.previous_price ? (
                 <span className="old-price  p-0 m-0">
                   <span>MRP:</span>
                   <del>
@@ -67,11 +67,10 @@ const ProductCard = (props) => {
               ) : (
                 <span className="old-price  p-0 m-0">
                   {' '}
-                  {/*  col-12*/}
                   <span>MRP:</span>
                   <del> &#2547; {'0.00'}</del>
                 </span>
-              )}
+              )} */}
             </div>
             <Link
               className="btn-cart d-block text-center"

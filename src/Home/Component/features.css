@@ -1,15 +1,28 @@
 .home_feature_area .features_body{
-    box-shadow: -4px 7px 12px -6px rgb(0 0 0 / 23%);
+    box-shadow: var(--box-shadow-1);
+    /* box-shadow: -4px 7px 12px -6px rgb(0 0 0 / 23%); */
 }
 .single_feature{
     /* border: 1px solid red; */
     padding: 1rem ;
 }
+.single_feature .image{
+    height: 80px;
+}
 .single_feature img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
     padding:1rem;
 }
-.single_feature .text{
-    font-size: 1.5rem;
+.single_feature .title{
+    font-size: 0.9rem;
     text-transform: capitalize;
     color: var(--muted-color);
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+.single_feature .menu{
+    text-align: center;
+    color: var(--theme-color);
 }

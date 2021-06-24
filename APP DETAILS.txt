@@ -24,3 +24,17 @@ CSS==================
   html::-webkit-scrollbar {
   display: none; /* css for scrollbar hide*/
 }
+
+
+
+  const activeResendButton = () => {
+    setTimeout(() => {
+      setError({});
+      setResendOtpActive(true);
+      console.log('active resend btn active');
+    }, 120000);
+  };
+
+    const preventEvent = (e) => {
+    e.preventDefault();
+  };

@@ -41,10 +41,7 @@ import GenericProducts from './GenericProducts/GenericProducts';
 import CategoryBasedProducts from './CategoryBasedProducts/CategoryBasedProducts';
 import OtherBrands from './OtherBrands/OtherBrands';
 import { CopyRight } from './CopyRight/CopyRight';
-import OrderCancel from './OrderNotify/OrderCancel';
 import CategorySidebar from './PrimarySections/Header/Components/SubComponents/CategorySidebar';
-import Search from './SearchMedicine/Search';
-import { demoAll } from './Redux/Action/WishListAction';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
@@ -56,8 +53,6 @@ function App(props) {
   };
   useEffect(() => {
     props.getHomeContents();
-    //  props.demo();
-    // props.User && props.getOrderList();
   }, []);
   useEffect(() => {
     document.body.style.overflow = categoryBar ? 'hidden' : '';
@@ -143,6 +138,5 @@ const mapDispatchToProps = (dispatch) => ({
   getHomeContents: () => dispatch(GetHomeContents()),
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderList: () => dispatch(getOrderList()),
-  demo: () => dispatch(demoAll()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

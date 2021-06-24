@@ -9,7 +9,10 @@ import { API, ENDPOINTS } from '../../../PrimarySections/Utility/API_Links';
 import { PlaceOrder } from '../../../Redux/Action/PlaceOrderAction';
 
 const PriceDetails = (props) => {
-  const [offer, setOffer] = useState({});
+  const [offer, setOffer] = useState({
+    coupon: {},
+    error: '',
+  });
   const [error, setError] = useState('');
   useEffect(() => {
     setOffer({});
@@ -78,13 +81,19 @@ const PriceDetails = (props) => {
     API()
       .post(`${ENDPOINTS.COUPON_TOKEN}?coupon_code=${couponNum.coupon_number}`)
       .then((res) => {
-        setOffer(res.data.data);
-        setCouponLoading(false);
+        if (res.data.data && res.data.data.status === '1') {
+          setCouponLoading(false);
+          setOffer({ coupon: res.data.data });
+        } else {
+          setCouponLoading(false);
+          setOffer({ error: res.data.message });
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   // PLACE ORDER FUNCTION
   const PlaceOrder = (e) => {
     e.preventDefault();
@@ -108,11 +117,19 @@ const PriceDetails = (props) => {
     } else {
       const data = {
         ...props.details,
-        coupon_id: offer.id,
-        coupon_discount: offer.price,
+        coupon_id: offer?.coupon?.id || '',
+        coupon_discount: offer?.coupon?.price
+          ? Number(offer.coupon.price).toFixed(2)
+          : offer?.coupon?.percentage
+          ? (
+              (final_total_amount * Number(offer.coupon.percentage)) /
+              100
+            ).toFixed(2)
+          : (0).toFixed(2),
         payment_type: props.type,
         delivery_charge: PriceContainer.delivery_charge,
       };
+
       props.order(data);
     }
   };
@@ -180,6 +197,9 @@ const PriceDetails = (props) => {
               disabled={couponLoading}>
               {couponLoading ? 'Loading...' : 'Apply Coupon'}
             </button>
+            <div className="pl-3 w-100">
+              <p className="text-danger">{offer.error}</p>
+            </div>
           </div>
         )}
         <div className="shipping_method mt-5">
@@ -229,7 +249,14 @@ const PriceDetails = (props) => {
               <p className=" discount_amount mb-0">Discount: </p>{' '}
               <span className="discount_amount">
                 &#2547;{' '}
-                {offer?.price ? Number(offer.price).toFixed(2) : (0).toFixed(2)}
+                {offer?.coupon?.price
+                  ? Number(offer.coupon.price).toFixed(2)
+                  : offer?.coupon?.percentage
+                  ? (
+                      (final_total_amount * Number(offer.coupon.percentage)) /
+                      100
+                    ).toFixed(2)
+                  : (0).toFixed(2)}
               </span>
             </div>
           </div>
@@ -239,12 +266,18 @@ const PriceDetails = (props) => {
             <span className="grand_total_label">Grand Total</span>
             <span className="grand_total_amount">
               &#2547;{' '}
-              {offer?.price
-                ? (final_total_amount - Number(offer.price).toFixed(2)).toFixed(
-                    2
-                  ) || 0
+              {offer?.coupon?.price
+                ? (
+                    final_total_amount - Number(offer.coupon.price).toFixed(2)
+                  ).toFixed(2) || 0
+                : offer?.coupon?.percentage
+                ? (
+                    final_total_amount -
+                    (final_total_amount * Number(offer.coupon.percentage)) / 100
+                  ).toFixed(2) || 0
                 : final_total_amount}
             </span>
+            {/* (price*coupon)/100 */}
           </div>
           <div className="order_btn">
             <button

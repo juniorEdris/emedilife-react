@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
-import { useQuery } from '../PrimarySections/Utility';
 import {
   GetNeccessaryProducts,
   getNeccessrySortedProducts,
@@ -17,7 +16,6 @@ const NeccessaryProducts = (props) => {
   useEffect(() => {
     props.getSortingProducts({ sortingType: sort });
   }, [sort]);
-  console.log(category);
   return (
     <div className="neccessary_product_wrapper">
       <AllProducts

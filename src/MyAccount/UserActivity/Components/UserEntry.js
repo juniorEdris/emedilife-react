@@ -14,19 +14,10 @@ const UserEntry = (props) => {
   const [loading, setLoading] = useState(false);
   const [OTP, setOTP] = useState('');
   const [OTPSection, setOTPSection] = useState(false);
-  // const [userId, setUser] = useState(false);
-  const [resendOtpActive, setResendOtpActive] = useState(false);
   const [error, setError] = useState({});
-  const activeResendButton = () => {
-    setTimeout(() => {
-      setError({});
-      setResendOtpActive(true);
-      console.log('active resend btn active');
-    }, 120000);
-  };
+
   // Close OTP Section
   const OTPSectionClose = (e) => {
-    console.log('close', OTPSection);
     setOTPSection(false);
   };
   const register = async (e) => {
@@ -41,7 +32,6 @@ const UserEntry = (props) => {
           localStorage.setItem('user_id', res.data.data.id);
           setError({ otp: res.data.data.otp });
           setOTPSection(true);
-          // activeResendButton();
         } else {
           setLoading(false);
           setError({ otp: 'Athentication failed' });
@@ -64,7 +54,6 @@ const UserEntry = (props) => {
     await API()
       .post(`${ENDPOINTS.LOGIN}?phone=${number}&otp=${OTP}`)
       .then((res) => {
-        console.log('otp response', res);
         if (res.data.token) {
           setLoading(false);
 

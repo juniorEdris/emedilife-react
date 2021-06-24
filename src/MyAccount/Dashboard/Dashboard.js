@@ -11,15 +11,14 @@ import { guestCartItem } from '../../Redux/Action/BasketAction';
 import { guestWishItem } from '../../Redux/Action/WishListAction';
 
 const Dashboard = (props) => {
-  console.log(props.geustListloading);
   useEffect(() => {
     props.getCartItems();
     props.User && props.getUserInfo();
     props.User && props.getOrderList();
   }, []);
   useEffect(() => {
-    props.guestCartSubmit();
-    props.guestWishSubmit();
+    props.localCartList.length > 0 && props.guestCartSubmit();
+    props.localWishList.length > 0 && props.guestWishSubmit();
     props.getOrderList();
   }, []);
   const [tab, setTab] = useState('dashboard');
@@ -52,6 +51,7 @@ const mapStateToProps = (state) => ({
   loading: state.AccountInfo.storeInfoloading,
   response: state.AccountInfo.storeInfoStatus,
   localCartList: state.Basket.localBasket,
+  localWishList: state.Wishlist.localWishlist,
   geustListloading: state.Basket.loading,
   logOutRequest: state.User.logOutRequest,
 });

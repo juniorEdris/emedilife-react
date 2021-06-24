@@ -23,7 +23,8 @@
     --margin-top: 1.25rem;
     --margin-bottom: 1.25rem;
     --top-whitespace: 2rem;
-    --box-shadow-1: 0px 7px 8px -1px rgba(0, 0, 0, 0.23);
+    /* --box-shadow-1: 0px 7px 8px -1px rgba(0, 0, 0, 0.23); */
+    --box-shadow-1: 0 0.125rem 0.25rem rgb(0 0 0 / 8%), 0 0.125rem 0.25rem rgb(0 0 0 / 15%) !important;
     --box-shadow-2: -3px 3px 5px rgba(0, 0, 0, 0.016);
     --primary-text-size: 1.286rem;
 }
@@ -961,7 +962,7 @@ Footer css starts here
 }
 
 .links li {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.3rem;
 }
 
 .links li a {

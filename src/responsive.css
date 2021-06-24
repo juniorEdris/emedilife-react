@@ -5,10 +5,15 @@
     max-width: 20%;
   }
 }
+@media (min-width: 1370px) {
+  .single_feature .title{
+    font-size: 1.5rem;}
+}
 @media (max-width: 1300px) {
   .header__nav {
     justify-content: flex-end;
   }
+
 }
 /* XL Device :1200px. */
 @media (min-width: 1200px){
@@ -83,6 +88,7 @@
 
 /* MD Device */
 @media (min-width: 768px) and (max-width:991px) {
+
   .section_heading_one{
     font-size: 1.7rem;
   }
@@ -111,6 +117,10 @@
   }
 }
 @media (min-width: 768px) {
+  .col-features{
+    flex: 0 0 19.97777%;
+    max-width: 19.97777%;
+}
   .header__nav {
     width: 250px;
   }

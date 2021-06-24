@@ -6,6 +6,9 @@ function NavList(props) {
     e.preventDefault();
     props.setCategoryBar(!props.categoryBar);
   };
+  const preventEvent = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="nav_links">
       <ul>
@@ -15,53 +18,55 @@ function NavList(props) {
           </Link>
         </li>
         <li>
-          <Link to="#">best sellers</Link>{' '}
-          {/*"/bestsellers" <span className="lnr lnr-chevron-down" />*/}
+          <Link to="#" onClick={preventEvent}>
+            best sellers
+          </Link>{' '}
         </li>
         <li>
-          <Link to="#">todays deals</Link>
+          <Link to="#" onClick={preventEvent}>
+            todays deals
+          </Link>
         </li>
         <li>
-          <Link to="#">mobiles</Link>
+          <Link to="#" onClick={preventEvent}>
+            mobiles
+          </Link>
         </li>
         <li>
-          <Link to="#">prime</Link>
+          <Link to="#" onClick={preventEvent}>
+            prime
+          </Link>
         </li>
         <li>
-          <Link to="#">fashion</Link>
+          <Link to="#" onClick={preventEvent}>
+            fashion
+          </Link>
         </li>
         <li>
-          <Link to="#">customer service</Link>
+          <Link to="#" onClick={preventEvent}>
+            customer service
+          </Link>
         </li>
         <li>
-          <Link to="#">amazon pay</Link>
+          <Link to="#" onClick={preventEvent}>
+            amazon pay
+          </Link>
         </li>
         <li>
-          <Link to="#">electronics</Link>
+          <Link to="#" onClick={preventEvent}>
+            electronics
+          </Link>
         </li>
         <li>
-          <Link to="#">computers</Link>
+          <Link to="#" onClick={preventEvent}>
+            computers
+          </Link>
         </li>
         <li>
-          <Link to="#" className="">
+          <Link to="#" onClick={preventEvent} className="">
             see more
           </Link>
         </li>
-        {/* <li>
-          <Link to="/gift-ideas">gift ideas</Link>
-        </li>
-        <li>
-          <Link to="/home-kitchen">home &amp; kitchen</Link>
-        </li>
-        <li>
-          <Link to="/books">books</Link>
-        </li>
-        <li>
-          <Link to="/gift-cards">gift cards</Link>
-        </li>
-        <li>
-          <Link to="/sell">sell</Link>
-        </li> */}
       </ul>
     </div>
   );

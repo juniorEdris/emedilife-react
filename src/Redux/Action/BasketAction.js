@@ -206,36 +206,33 @@ export const guestCartItem = (array) => async (dispatch, getState) => {
   cartItems.forEach((e) => {
     const item = {
       product_id: e.product_id,
-      total_quantity:e.total_quantity,
-      unit_price_id:e.unit_prices_id,
-    }
-    Data.push(item)
-  })
-  const arr = JSON.stringify(Object.assign([], Data))    
+      total_quantity: e.total_quantity,
+      unit_price_id: e.unit_prices_id,
+    };
+    Data.push(item);
+  });
+  const arr = JSON.stringify(Object.assign([], Data));
   if (Data.length > 0) {
     await API()
-      .post(`${ENDPOINTS.CART_GUEST_CART}`
-        ,
-        {
-          guest_carts: JSON.parse(arr)
-        }
-      )
+      .post(`${ENDPOINTS.CART_GUEST_CART}`, {
+        guest_carts: JSON.parse(arr),
+      })
       .then((res) => {
+        console.log('basket', res, arr);
         if (res.data.type) {
           dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
           dispatch(productStatusSuccess());
           setTimeout(() => {
             dispatch(productStatusComplete());
           }, 3000);
-          localStorage.setItem('Cart List', JSON.stringify([]))
+          localStorage.setItem('Cart List', JSON.stringify([]));
         } else {
           console.log(res.data);
         }
       })
       .catch((err) => console.log(err));
     // console.log(arr,'basket');
-
   } else {
-    return
+    return;
   }
 };

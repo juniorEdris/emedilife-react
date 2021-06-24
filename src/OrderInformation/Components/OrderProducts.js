@@ -75,7 +75,18 @@ const OrderProducts = (props) => {
               <td colSpan="4" className="order_price_section">
                 Regular (withine 24 hours)
               </td>
-              <td>BDT {Number(props.order?.shipping_cost).toFixed(2)}</td>
+              <td>
+                (+)BDT {Number(props.order?.shipping_cost).toFixed(2) || 0}
+              </td>
+              <td></td>
+            </tr>
+            <tr className="order_price_card">
+              <td colSpan="4" className="order_price_section">
+                Discount
+              </td>
+              <td>
+                (-)BDT {Number(props.order?.coupon_discount).toFixed(2) || 0}
+              </td>
               <td></td>
             </tr>
             <tr className="order_price_card">
