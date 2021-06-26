@@ -15,8 +15,3 @@
     display: flex;
     align-items: center;
 }
-
-/* iframe css */
-.pharmacy_right .plyr__video-embed{
-    height: 320px;
-}

@@ -8,7 +8,6 @@ const DeliveryDetails = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
   return (
     <div className="">
       <div className="delivery_details chekoutCard">
@@ -82,8 +81,7 @@ const DeliveryDetails = (props) => {
                   <option
                     value={district.id}
                     key={district.name}
-                    // selected={Number(props.details?.district) === district.id}
-                  >
+                    selected={Number(props.details?.district) === district.id}>
                     {district.name}
                   </option>
                 ))}
@@ -109,8 +107,7 @@ const DeliveryDetails = (props) => {
                   <option
                     value={area.id}
                     key={area.name}
-                    // selected={Number(props.details?.area) === area.id}
-                  >
+                    selected={Number(props.details?.area) === area.id}>
                     {area.name}
                   </option>
                 ))}
@@ -130,7 +127,7 @@ const DeliveryDetails = (props) => {
                 className="form-control form-control-lg"
                 id="address"
                 placeholder="Apartment, studio, or floor"
-                defaultValue={props.info?.address}
+                value={props.info?.address}
                 name="address"
                 onChange={handleChange}
               />
@@ -158,6 +155,25 @@ const DeliveryDetails = (props) => {
               )}
             </div> */}
           </div>
+          <div className="form-row">
+            <div className="form-group col-12">
+              <label htmlFor="delivery_mark">Delivery Mark</label>
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                id="delivery_mark"
+                placeholder="Building, Mor, Store, Mall, Market, Area, Place"
+                value={props.info?.delivery_mark}
+                name="delivery_mark"
+                onChange={handleChange}
+              />
+              {props.details.delivery_mark === '' && (
+                <small className="text-danger">
+                  Please provide your delivery mark.
+                </small>
+              )}
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -175,8 +191,3 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeliveryDetails);
-
-//
-// area
-// address
-// zip

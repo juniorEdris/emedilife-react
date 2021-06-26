@@ -24,6 +24,7 @@ export const HomeContentReducer = (state = initialState, action) => {
         hometoplargeBannner: [],
         homebtmLargeBanner: [],
         homeappBanner: [],
+        footerlinks: [],
       };
     case FETCH_HOME_PRODUCTS_SUCCESS:
       return {
@@ -42,6 +43,7 @@ export const HomeContentReducer = (state = initialState, action) => {
         hometoplargeBannner: action.top_large_banner,
         homebtmLargeBanner: action.bottom_large_banner,
         homeappBanner: action.appBanner,
+        footerlinks: action.footerlinks,
       };
     case FETCH_HOME_PRODUCTS_ERROR:
       return {
@@ -60,6 +62,7 @@ export const HomeContentReducer = (state = initialState, action) => {
         hometoplargeBannner: [],
         homebtmLargeBanner: [],
         homeappBanner: [],
+        footerlinks: [],
       };
     default:
       return state;

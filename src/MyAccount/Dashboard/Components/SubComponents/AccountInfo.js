@@ -27,7 +27,21 @@ const AccountInfo = (props) => {
             {props.loading ? (
               <Skeleton width={'100%'} height={30} />
             ) : (
+              <span>{props.info?.phone || 'User number'}</span>
+            )}
+          </div>
+          <div className="">
+            {props.loading ? (
+              <Skeleton width={'100%'} height={30} />
+            ) : (
               <span>{props.info?.email || 'User email'}</span>
+            )}
+          </div>
+          <div className="">
+            {props.loading ? (
+              <Skeleton width={'100%'} height={30} />
+            ) : (
+              <span>{props.info?.address || 'User address'}</span>
             )}
           </div>
         </div>

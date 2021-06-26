@@ -25,6 +25,7 @@ const fetchHomeProductsSuccess = (res) => {
     top_large_banner: res.top_large_banner,
     bottom_large_banner: res.bottom_large_banner,
     appBanner: res.footer_top_large_banner,
+    footerlinks: res.pages_lists,
   };
 };
 const fetchHomeProductsError = (error) => ({

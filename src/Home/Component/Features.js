@@ -6,31 +6,31 @@ export const Features = (props) => {
   const images = [
     {
       id: 1,
-      image: 'genuine_medicine.svg',
+      image: 'genuine_medicine.png',
       name: 'Genuine medicine',
       small: `Directly Collected From Pharmaceuticals Companies`,
     },
     {
       id: 2,
-      image: 'widest_range.svg',
+      image: 'widest_range.png',
       name: 'Widest range',
       small: `30,000+ Medicines 270+ Pharmaceuticals Companies 20,000+ Other Supplimentary Products`,
     },
     {
       id: 3,
-      image: 'secure_pakaging.svg',
+      image: 'secure_pakaging.png',
       name: 'Secure packaging',
       small: 'Every Delivery is packed By Secured Seal and Transaction ID',
     },
     {
       id: 4,
-      image: 'assured_savings.svg',
+      image: 'assured_savings.png',
       name: 'Assured savings',
       small: '10-15% Savings in Every Purchase',
     },
     {
       id: 4,
-      image: 'secure_transacrtions.svg',
+      image: 'secure_transacrtions.png',
       name: 'Secured and Trusted Transaction',
       small:
         'Your Every Transaction is Secured ans No one outside emedilife is able to See Your prescription and information',
@@ -73,7 +73,7 @@ export const Features = (props) => {
                     alt={'feature images'}
                   />
                 </div>
-                <div className="title">{image.name}</div>
+                {/* <div className="title">{image.name}</div> */}
                 {/* <div className="menu">
                   {' '}
                   <small>{image.small}</small>

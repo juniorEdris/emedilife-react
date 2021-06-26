@@ -14,6 +14,7 @@ const CheckOutBody = (props) => {
     area: '',
     address: '',
     zip: '',
+    delivery_mark: '',
   });
   const [paymentType, setPaymentType] = useState('Cash on Delivery');
   useEffect(() => {
@@ -21,16 +22,18 @@ const CheckOutBody = (props) => {
       name: props.info?.name,
       phone: props.info?.phone,
       email: props.info?.email,
-      district: props.info?.district_i || '',
-      area: props.info?.area_i || '',
+      district: props.info?.district_id || '',
+      area: props.info?.area_id || '',
       address: props.info?.address,
       zip: props.info?.zip || '',
+      delivery_mark: props.info?.delivery_mark || '',
     });
   }, [props.info]);
   useEffect(() => {
     props.getArea(DeliveryDetails.district);
     setDeliveryDetails({ ...DeliveryDetails, area: '' });
   }, [DeliveryDetails.district]);
+
   return (
     <div className="checkout_body row">
       <div className="col-md-6">

@@ -42,7 +42,7 @@ export const PlaceOrder = (data) => async (dispatch) => {
         data.payment_type
       }&district_id=${data.district}&area_id=${data.area}&address=${
         data.address
-      }&zip=${data.zip}`
+      }&zip=${data.zip}&delivery_location=${data.delivery_location}`
     )
     .then((res) => {
       if (!res.data.status) {

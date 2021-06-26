@@ -104,7 +104,8 @@ const PriceDetails = (props) => {
       props.details?.email === '' ||
       props.details?.district === '' ||
       props.details?.area === '' ||
-      props.details?.address === ''
+      props.details?.address === '' ||
+      props.details?.delivery_mark === ''
     ) {
       setError('Please fill all the delivery details.');
     } else if (!props.cartList?.length > 0) {
