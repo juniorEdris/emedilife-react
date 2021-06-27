@@ -101,7 +101,14 @@ function FooterLinks(props) {
                 {props.links?.length > 0 &&
                   policies?.map((comp) => (
                     <li>
-                      <Link to={`/pages?page_id=${comp.id}`}>{comp.title}</Link>
+                      <Link
+                        to={
+                          comp.id === 7
+                            ? `/Privacy-Policy`
+                            : `/pages?page_id=${comp.id}`
+                        }>
+                        {comp.title}
+                      </Link>
                     </li>
                   ))}
               </ul>
