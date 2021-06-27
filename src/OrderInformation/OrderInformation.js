@@ -13,13 +13,22 @@ const OrderInformation = (props) => {
   useEffect(() => {
     props.getSingleOrder(props.orderId);
   }, [props.orderId]);
+  const printPage = (e) => {
+    window.print();
+  };
   return (
     <div className="order_information">
       <div className="container">
-        <div className="order-information-heading mt-0">
+        <div className="order-information-heading mt-0 d-flex align-items-center justify-content-between">
           {' '}
           {/*  */}
-          <h5 className="">Order Information</h5>
+          <h5 className="">Order Information</h5>{' '}
+          <button
+            type="button"
+            className="btn print-btn col-2 d-none d-md-block"
+            onClick={printPage}>
+            Print
+          </button>
         </div>
         <OrderDetails
           loading={props.loading}

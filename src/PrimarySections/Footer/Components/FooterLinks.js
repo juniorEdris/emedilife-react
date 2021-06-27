@@ -36,9 +36,9 @@ function FooterLinks(props) {
                 <Link to="/contact-us">contact us</Link>
               </li> */}
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <a href="https://www.facebook.com/Emedilife-111986904405990">
                     Facebook
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link to="#" onClick={preventEvent}>
@@ -51,9 +51,7 @@ function FooterLinks(props) {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" onClick={preventEvent}>
-                    Twitter
-                  </Link>
+                  <a href="https://twitter.com/emedilife">Twitter</a>
                 </li>
               </ul>
             </div>

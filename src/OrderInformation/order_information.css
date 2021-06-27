@@ -10,12 +10,24 @@
     margin-top: var(--top-whitespace);
     margin-bottom: var(--margin-bottom);
 }
-
+.print-btn{
+    background: var(--nav-bg);
+    color: var(--light-color);
+}
+.print-btn:hover{
+    background: var(--dark-color);
+    color: var(--light-color);
+}
+.order_table_name{
+    color: var(--dark-color);
+}
+.order_table_name:hover{
+    color: var(--nav-bg);
+}
 .order_information_details {
     /* box-shadow: var(--box-shadow-1); */
     margin-bottom: var(--margin-bottom);
 }
-
 .list_content {
     padding: 0.625rem;
     font-weight: 300;

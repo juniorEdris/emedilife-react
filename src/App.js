@@ -47,6 +47,7 @@ import MorePages from './PrimarySections/MorePages';
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
   const [categoryBar, setCategoryBar] = useState(false);
+  const [cart, setCart] = useState(false);
   const [categoryID, setCategoryID] = useState(1);
   const [categoryName, setCategoryName] = useState('');
   const loginSuccessPageRedirectTo = (path) => {
@@ -61,7 +62,12 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        <Header categoryBar={categoryBar} setCategoryBar={setCategoryBar} />
+        <Header
+          categoryBar={categoryBar}
+          setCategoryBar={setCategoryBar}
+          cart={cart}
+          setCart={setCart}
+        />
         <CategorySidebar
           categoryName={categoryName}
           setCategoryName={setCategoryName}
@@ -124,7 +130,11 @@ function App(props) {
           {/* <Route path="/ordercancel" component={OrderCancel} /> */}
           <Route exact path="*" component={NoRoutes} />
         </Switch>
-        <CartIcon loginSuccessPageRedirectTo={loginSuccessPageRedirectTo} />
+        <CartIcon
+          loginSuccessPageRedirectTo={loginSuccessPageRedirectTo}
+          cart={cart}
+          setCart={setCart}
+        />
         <BackToTop />
         <Footer />
         <CopyRight />

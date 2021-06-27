@@ -24,7 +24,7 @@ const CheckOutBody = (props) => {
       email: props.info?.email,
       district: props.info?.district_id || '',
       area: props.info?.area_id || '',
-      address: props.info?.address,
+      address: props.info?.address || '',
       zip: props.info?.zip || '',
       delivery_mark: props.info?.delivery_mark || '',
     });

@@ -26,11 +26,14 @@ const PaymentMethod = (props) => {
             </div>
             <div className="">
               <label htmlFor="cashRadio">
-                <img
-                  src="./assets/svg/icons/cash_payment.svg"
-                  className="check-box-img"
-                  alt=""
-                />
+                <div className="payment_radio text-center">
+                  <img
+                    src="./assets/images/checkout/cod.png"
+                    className="check-box-img"
+                    alt=""
+                  />
+                  <div className="">Cash on delivery</div>
+                </div>
               </label>
             </div>
           </div>
@@ -47,11 +50,14 @@ const PaymentMethod = (props) => {
             </div>
             <div className="">
               <label htmlFor="cardRadio">
-                <img
-                  src="./assets/svg/icons/card_payment.svg"
-                  className="check-box-img"
-                  alt=""
-                />
+                <div className="payment_radio text-center">
+                  <img
+                    src="./assets/images/checkout/op.png"
+                    className="check-box-img"
+                    alt=""
+                  />
+                  <div className="">Online payment</div>
+                </div>
               </label>
             </div>
           </div>

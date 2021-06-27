@@ -13,7 +13,7 @@ const OrderProducts = (props) => {
     return allProd.reduce((a, b) => parseInt(a) + parseInt(b), 0);
   };
   return (
-    <div className="primary_table">
+    <div className="primary_table overflow-none">
       <table class="table">
         <thead class="thead-primary">
           <tr>
@@ -41,7 +41,13 @@ const OrderProducts = (props) => {
           <tbody>
             {props.order?.cart?.map((item) => (
               <tr className="trow-light" key={item.product_id}>
-                <td>{Truncate(item.name, 15)}</td>
+                <td>
+                  <Link
+                    to={`/productdetails?id=${item.product_id}`}
+                    className="order_table_name">
+                    {Truncate(item.name, 15)}
+                  </Link>
+                </td>
                 <td>{item.unitType}</td>
                 <td>{item.total_quantity}</td>
                 <td>BDT {item.price}</td>
@@ -50,17 +56,6 @@ const OrderProducts = (props) => {
                   {(Number(item.price) * Number(item.total_quantity)).toFixed(
                     2
                   )}
-                </td>
-                <td>
-                  <Link
-                    to={`/productdetails?id=${item.product_id}`}
-                    className="table_link">
-                    {/* <img
-                  src="./assets/svg/icons/light-shopping-cart.svg"
-                  alt="cart img"
-                /> */}
-                    View Details
-                  </Link>
                 </td>
               </tr>
             ))}

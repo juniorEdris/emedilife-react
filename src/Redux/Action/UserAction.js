@@ -19,10 +19,9 @@ export const setUserAction = (user) => (dispatch, getState) => {
 };
 export const LogOutAction = () => async (dispatch, getState) => {
   dispatch(logoutRequest());
-  const logout = await API()
+  await API()
     .post(`${ENDPOINTS.LOG_OUT}`)
     .then((res) => {
-      console.log(res);
       if (!res.data.status) {
         console.log('log out failed');
       } else {
@@ -34,5 +33,4 @@ export const LogOutAction = () => async (dispatch, getState) => {
     .catch((err) => {
       console.log(err);
     });
-  console.log(logout);
 };

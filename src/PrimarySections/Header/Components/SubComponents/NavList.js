@@ -34,32 +34,7 @@ function NavList(props) {
         </li>
         <li>
           <Link to="#" onClick={preventEvent}>
-            prime
-          </Link>
-        </li>
-        <li>
-          <Link to="#" onClick={preventEvent}>
-            fashion
-          </Link>
-        </li>
-        <li>
-          <Link to="#" onClick={preventEvent}>
             customer service
-          </Link>
-        </li>
-        <li>
-          <Link to="#" onClick={preventEvent}>
-            amazon pay
-          </Link>
-        </li>
-        <li>
-          <Link to="#" onClick={preventEvent}>
-            electronics
-          </Link>
-        </li>
-        <li>
-          <Link to="#" onClick={preventEvent}>
-            computers
           </Link>
         </li>
         <li>

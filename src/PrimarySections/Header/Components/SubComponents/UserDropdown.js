@@ -8,72 +8,26 @@ const UserDropdown = (props) => {
     <>
       {!props.user ? (
         <div className="header__option pl-1">
-          <Link
-            to={!props.user ? '/login' : '/dashboard'}
-            className="header__link">
-            <span className="header__option__lineOne header_my_account">
-              <img src="./assets/svg/icons/login.svg" alt="login icon" /> Sign
-              In
-            </span>
-            {/* <span className="lnr lnr-user"></span> */}
-            {/* <span className="header__option__lineTwo">Sign In</span> */}
+          <Link to={'/login'} className="header__link">
+            <div className="header__option__lineOne header_my_account">
+              <img src="./assets/svg/icons/login.svg" alt="login icon" />
+              Sign In
+            </div>
           </Link>
         </div>
       ) : (
         <div className="header__option pl-1">
-          <Link
-            to={!props.user ? '/login' : '/dashboard'}
-            className="header__link">
-            <span className="header__option__lineOne header_my_account">
+          <Link to={'/dashboard'} className="header__link">
+            <div className="header__option__lineOne header_my_account">
               <img
                 src="./assets/svg/icons/dashboard.svg"
                 alt="myaccount icon"
               />{' '}
               My account
-            </span>
-            {/* <img src="./assets/svg/icons/user.svg" alt="user" /> */}
+            </div>
           </Link>
-          {/* <Link
-            to="#"
-            className="header__option__lineTwo header_logout"
-            onClick={(e) => {
-              e.preventDefault();
-              props.logOut();
-            }}>
-            Logout
-          </Link> */}
         </div>
       )}
-
-      {/* {dropdown && (
-        <div className="dropdown">
-          {!props.user ? (
-            <ul>
-              <li>
-                <Link to="/login">log in</Link>
-              </li>
-            </ul>
-          ) : (
-            <ul>
-              <li>
-                <Link to={!props.user ? `/login` : `/dashboard`}>
-                  dashboard
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.logOut();
-                  }}>
-                  log out
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
-      )} */}
     </>
   );
 };

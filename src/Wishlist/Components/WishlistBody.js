@@ -6,14 +6,13 @@ const WishlistBody = (props) => {
   };
   const addProduct = async (item) => {
     const product = {
-      id: item.product_id,
+      product_id: item.product_id,
       photo: item.photo,
       name: item.name,
       price: item.unit_price.price,
       unit_prices_id: item.unit_price.id,
       total_quantity: item.total_quantity,
     };
-    console.log('wishlist add to cart', product);
     await props.addToCart(product);
     props.user && (await props.getCartItems());
   };

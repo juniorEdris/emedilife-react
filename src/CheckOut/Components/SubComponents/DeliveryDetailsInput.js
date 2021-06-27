@@ -38,7 +38,6 @@ const DeliveryDetails = (props) => {
                 id="mobile"
                 defaultValue={props.info?.phone}
                 name="phone"
-                // onChange={handleChange}
                 readOnly
               />
               {props.details.phone === '' && (
@@ -49,7 +48,7 @@ const DeliveryDetails = (props) => {
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="Email">Email Address</label>
+            <label htmlFor="Email">Email Address (optional)</label>
             <input
               type="email"
               className="form-control form-control-lg"
@@ -73,15 +72,14 @@ const DeliveryDetails = (props) => {
                 className="form-control form-control-lg"
                 name="district"
                 onChange={handleChange}
+                value={props.details?.district}
+                defaultValue={props.details?.district}
                 required>
                 <option value="" selected>
                   Choose...
                 </option>
                 {props.info?.districts_lists?.map((district) => (
-                  <option
-                    value={district.id}
-                    key={district.name}
-                    selected={Number(props.details?.district) === district.id}>
+                  <option value={district.id} key={district.name}>
                     {district.name}
                   </option>
                 ))}
@@ -99,6 +97,8 @@ const DeliveryDetails = (props) => {
                 className="form-control form-control-lg"
                 name="area"
                 onChange={handleChange}
+                value={props.details?.area}
+                defaultValue={props.details?.area}
                 required>
                 <option value="" selected>
                   Choose...
@@ -107,7 +107,8 @@ const DeliveryDetails = (props) => {
                   <option
                     value={area.id}
                     key={area.name}
-                    selected={Number(props.details?.area) === area.id}>
+                    // selected={Number(props.details?.area) === area.id}
+                  >
                     {area.name}
                   </option>
                 ))}
@@ -157,7 +158,7 @@ const DeliveryDetails = (props) => {
           </div>
           <div className="form-row">
             <div className="form-group col-12">
-              <label htmlFor="delivery_mark">Delivery Mark</label>
+              <label htmlFor="delivery_mark">Delivery Mark (optional)</label>
               <input
                 type="text"
                 className="form-control form-control-lg"
@@ -167,11 +168,11 @@ const DeliveryDetails = (props) => {
                 name="delivery_mark"
                 onChange={handleChange}
               />
-              {props.details.delivery_mark === '' && (
+              {/* {props.details.delivery_mark === '' && (
                 <small className="text-danger">
                   Please provide your delivery mark.
                 </small>
-              )}
+              )} */}
             </div>
           </div>
         </form>

@@ -6,6 +6,7 @@ import ResponsiveFilter from '../../ResponsiveFilter.js/ResponsiveFilter';
 import ResponsiveSearch from '../../ResponsiveSearch/ResponsiveSearch';
 import HamBurger from './SubComponents/HamBurger';
 import Logo from './SubComponents/Logo';
+import SearchIcon from './SubComponents/SearchIcon';
 import ProductCart from './SubComponents/ProductCart';
 import Search from './SubComponents/Search';
 import UserDropdown from './SubComponents/UserDropdown';
@@ -57,7 +58,8 @@ export const HeaderTop = (props) => {
         <div className="header__nav">
           <WishListIcon />
           <UserDropdown />
-          <ProductCart handleChange={openSeacrhbox} />
+          <SearchIcon handleChange={openSeacrhbox} />
+          <ProductCart cart={props.cart} setCart={props.setCart} />
         </div>
       </div>
       {search && (

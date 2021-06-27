@@ -9,7 +9,6 @@ import {
 import { GetAreaOption } from '../../../../Redux/Action/GetUserInfoAction';
 
 const EditInformation = (props) => {
-  console.log(props.loading, props.response, props.info);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
@@ -24,8 +23,8 @@ const EditInformation = (props) => {
       name: props.info?.name,
       phone: props.info?.phone,
       email: props.info?.email,
-      district: props.info?.district || '',
-      area: props.info?.area || '',
+      district: props.info?.district_id || '',
+      area: props.info?.area_id || '',
       address: props.info?.address,
       zip: props.info?.zip || '',
     });
@@ -42,13 +41,6 @@ const EditInformation = (props) => {
   };
   const closePopup = (e) => {
     props.clearResponse();
-    // setInputs({
-    //   name: '',
-
-    //   address: '',
-    //   district: '',
-    //   area: '',
-    // });
   };
   return (
     <div className="edit_information">
@@ -84,7 +76,6 @@ const EditInformation = (props) => {
                 type="text"
                 className="form-control"
                 id="phone"
-                // onChange={handleChange}
                 value={inputs.phone}
                 placeholder="Phone number"
                 readOnly

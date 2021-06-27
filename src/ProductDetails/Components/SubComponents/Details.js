@@ -19,7 +19,6 @@ const Details = (props) => {
   const [previousPrice, setPreviousPrice] = useState(0);
 
   useEffect(() => {
-    // props.getCartID('');
     setPrice('');
     setPriceId('');
     setPreviousPrice(0);
@@ -79,6 +78,9 @@ const Details = (props) => {
     };
     await props.addToWish(product);
   };
+  const preventEvent = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="product_details_wrapper">
       {props.loading ? (
@@ -129,7 +131,7 @@ const Details = (props) => {
             </small>
           </div>
           <div className="share_btns">
-            <Link to="#">
+            <Link to="#" onClick={preventEvent}>
               {' '}
               <img
                 className="share_btns_child share"
