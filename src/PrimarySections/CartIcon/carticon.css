@@ -238,6 +238,12 @@
     color: var(--light-color);
     cursor: pointer;
 }
+.dec{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+.inc{
+    border-radius: 0 0.25rem 0.25rem 0;
+}
 
 .cart_count:hover {
     color: var(--light-color);

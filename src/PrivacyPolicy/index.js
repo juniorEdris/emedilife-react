@@ -1,4 +1,10 @@
+import { useEffect } from 'react';
+import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
+
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    toTheTop();
+  }, [])
   return (
     <div className="more_pages">
       <h1 className="text-capitalize text-center pt-5 pb-5">Privacy Policy</h1>
