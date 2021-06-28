@@ -5,13 +5,14 @@ import { Link, useHistory } from 'react-router-dom';
 import {
   AddBasketProd,
   RemoveBasketProd,
+  updateCartItem,
 } from '../../../Redux/Action/BasketAction';
 import { getCartItems } from '../../../Redux/Action/CartProductsAction';
 import {
   getCartUpdateID,
   removeCartUpdateID,
 } from '../../../Redux/Action/CartUpdateIDAction';
-import { getCartProdSubTotal, useQuery } from '../../Utility';
+import { getCartProdSubTotal, Truncate, useQuery } from '../../Utility';
 
 const CartList = (props) => {
   const router = useHistory();
@@ -36,8 +37,30 @@ const CartList = (props) => {
     props.user && (await props.getCartItems());
   };
 
-  const addToCart = async (item) => {
-    await props.addToCart(item);
+  const IncCart = async (item) => {
+    const product = {
+      cart_id: item.id,
+      product_id: item.product_id,
+      name: item.name,
+      photo:item.photo,
+      price:item.unit_price.price,
+      unit_prices_id:item.unit_price.id,
+      total_quantity: Number(item.total_quantity) + 1,
+    };
+    await props.updateProduct(product);
+    props.user && (await props.getCartItems());
+  };
+  const DecCart = async (item) => {
+    const product = {
+      cart_id: item.id,
+      product_id: item.product_id,
+      name: item.name,
+      photo:item.photo,
+      price:item.unit_price.price,
+      unit_prices_id:item.unit_price.id,
+      total_quantity: Number(item.total_quantity) - 1,
+    };
+    await props.updateProduct(product);
     props.user && (await props.getCartItems());
   };
   return (
@@ -48,8 +71,8 @@ const CartList = (props) => {
             {props.localCartList?.map((item) => (
               <li key={item.id}>
                 <div className="cart_single_product">
-                  <div className="cart_single_image">
-                    <Link to={`/updatecartproduct?id=${item.id}`}>
+                  <div className="cart_single_image col-3">
+                    <Link to={`/productdetails?id=${item.id}`}>
                       <img
                         src={`https:${item.photo}`}
                         alt="img-1"
@@ -57,12 +80,12 @@ const CartList = (props) => {
                       />
                     </Link>
                   </div>
-                  <div className="cart_single_body">
+                  <div className="cart_single_body col-8">
                     <div className="cart_single_name">
                       <Link
-                        to={`/updatecartproduct?id=${item.id}`}
+                        to={`/productdetails?id=${item.id}`}
                         onClick={() => props.getCartID(item.id)}>
-                        {item.name}
+                        {Truncate(item.name,20)}
                       </Link>
                     </div>
                     <div className="cart_single_price">
@@ -98,20 +121,8 @@ const CartList = (props) => {
               : props.cartList?.map((item) => (
                   <li key={item.product_id}>
                     <div className="cart_single_product">
-                      {/* <div className="count_btn">
-                        <span
-                          className="cart_dec_btn"
-                          onClick={() => addToCart(item)}>
-                          <i className="fas fa-plus"></i>
-                        </span>
-                        <span
-                          className="cart_inc_btn"
-                          onClick={() => removeFromCart(item)}>
-                          <i className="fas fa-minus"></i>
-                        </span>
-                      </div> */}
-                      <div className="cart_single_image">
-                        <Link to={`/updatecartproduct?id=${item?.product_id}`}>
+                      <div className="cart_single_image col-3">
+                        <Link to={`/productdetails?id=${item?.product_id}`}>
                           <img
                             src={`https:${item?.photo}`}
                             alt="img-1"
@@ -119,20 +130,23 @@ const CartList = (props) => {
                           />
                         </Link>
                       </div>
-                      <div className="cart_single_body">
+                      <div className="cart_single_body col-8">
                         <div className="cart_single_name">
                           <Link
-                            to={`/updatecartproduct?id=${item?.product_id}`}
-                            onClick={() => props.getCartID(item?.id)}>
-                            {item?.name}
+                          to={`/productdetails?id=${item?.product_id}`}
+                          onClick={() => props.getCartID(item?.id)} title={item?.name}>
+                            {Truncate(item?.name,20)}
                           </Link>
                         </div>
-                        <div className="cart_single_price">
-                          <span className="cart_price">
+                        <div className="cart_single_price row">
+                          <div className="cart_price">
                             &#2547; {item?.unit_price?.price}
-                          </span>
+                        </div> { ' ' }
                           <span className="times">&times;</span>
-                          <span className="count">{item?.total_quantity}</span>
+                        <div className="count d-flex align-items-center">
+                          {item?.total_quantity}
+                          {/* <span className={`${Number(item?.total_quantity) === 0 && 'pointer_none'} cart_count dec`} onClick={()=>DecCart(item)}>-</span><span>{item?.total_quantity}</span><span className='cart_count inc' onClick={() => IncCart(item)}>+</span> */}
+                        </div>                        
                         </div>
                       </div>
                     </div>
@@ -187,6 +201,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeProduct: (prod) => dispatch(RemoveBasketProd(prod)),
+  updateProduct: (prod) => dispatch(updateCartItem(prod)),
   getCartItems: () => dispatch(getCartItems()),
   getCartID: (id) => dispatch(getCartUpdateID(id)),
   removeCartID: () => dispatch(removeCartUpdateID()),

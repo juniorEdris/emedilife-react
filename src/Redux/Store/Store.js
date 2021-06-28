@@ -58,7 +58,6 @@ export const initialState = {
   basketstatus: '',
   tabStatus: false,
   //   CartItems state
-  // cartItems: [],
   cart_update_id: '',
   // login/logout/user states
   user: localStorage.getItem('user_token')

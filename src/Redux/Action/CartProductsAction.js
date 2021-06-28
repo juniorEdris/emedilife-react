@@ -5,12 +5,15 @@ import {
   GET_CART_ITEM_SUCCESS,
 } from '../Types';
 
-const getCartItemRequest = () => ({
-  type: GET_CART_ITEM_REQUEST,
-});
+const getCartItemRequest = () => {
+  return({
+    type: GET_CART_ITEM_REQUEST,
+    res:true,
+  })
+};
 
 const getCartItemSuccess = (res) => {
-  return { type: GET_CART_ITEM_SUCCESS, cartItems: res };
+  return { type: GET_CART_ITEM_SUCCESS, cartItems: res || [] };
 };
 
 const getCartItemError = (res) => ({

@@ -11,10 +11,10 @@ export const CartItemsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        basket: [],
+        basket: state.basket.length > 0  ? [...state.basket] : [],
         error: '',
       };
-    case GET_CART_ITEM_SUCCESS:
+      case GET_CART_ITEM_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -25,7 +25,7 @@ export const CartItemsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        basket: [],
+        basket: [...state.basket],
         error: action.error,
       };
     default:

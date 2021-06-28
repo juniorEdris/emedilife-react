@@ -1,4 +1,4 @@
-import { UserID } from '../../PrimarySections/Utility';
+ import { UserID } from '../../PrimarySections/Utility';
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 import {
   ADD_TO_BASKET_REQUEST,
@@ -53,6 +53,7 @@ const productStatusComplete = () => ({
 
 export const AddBasketProd =
   (product, quantity) => async (dispatch, getState) => {
+    // console.log(product);
     const user = localStorage.getItem('user_id');
     // return action if its null
     if (product === null) return;
@@ -144,6 +145,7 @@ export const updateCartItem = (product) => async (dispatch, getState) => {
     total_quantity,
     unit_prices_id,
   } = product;
+  // console.log(product);
 
   dispatch(addProdBasketRequest());
   const user = localStorage.getItem('user_id');
