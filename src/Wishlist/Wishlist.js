@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartAddanime from '../PrimarySections/CartAddAnime/CartAddanime';
+import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop';
 import { UserID, UserToken } from '../PrimarySections/Utility';
 import { AddBasketProd } from '../Redux/Action/BasketAction';
 import { getCartItems } from '../Redux/Action/CartProductsAction';
@@ -15,6 +16,7 @@ import WishlistHeader from './Components/WishlistHeader';
 import './wishlist.css';
 const WishList = (props) => {
   useEffect(() => {
+    toTheTop()
     UserToken() && props.getWishlist();
   }, []);
   const removeFromCart = async (items) => {

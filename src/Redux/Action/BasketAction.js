@@ -53,12 +53,12 @@ const productStatusComplete = () => ({
 
 export const AddBasketProd =
   (product, quantity) => async (dispatch, getState) => {
-    // console.log(product);
     const user = localStorage.getItem('user_id');
     // return action if its null
     if (product === null) return;
     if (!user) {
-      let cartItems = getState().Basket.localBasket.slice();
+      let cartItems = getState().Basket.localBasket?.slice();
+      console.log(cartItems);
       let exist = false;
       cartItems.forEach((x) => {
         if (x.product_id === product.product_id) {
@@ -233,7 +233,6 @@ export const guestCartItem = (array) => async (dispatch, getState) => {
         }
       })
       .catch((err) => console.log(err));
-    // console.log(arr,'basket');
   } else {
     return;
   }

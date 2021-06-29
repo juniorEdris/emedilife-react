@@ -108,6 +108,12 @@ h6 {
 /*--------------------------------------------------------------------
                         Primary css starts here
 --------------------------------------------------------------------*/
+.success-border{
+    border:1px solid var(--success)
+}
+.danger-border{
+    border:1px solid var(--danger)
+}
 .scroll-disabled{
     overflow: hidden;
 }

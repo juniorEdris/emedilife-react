@@ -21,6 +21,7 @@
 .success_header h3{
     text-align: center;
     margin-bottom: 1rem;
+    line-height: 1.5;
 }
 .popup_content p{
     font-size: 1.3rem;

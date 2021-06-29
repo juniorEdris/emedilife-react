@@ -44,4 +44,5 @@ export const ENDPOINTS = {
   CART_GUEST_CART: `api/product/add_to_cart`,
   WISH_GUEST_CART: `api/product/add_to_wishlist`,
   MOREPAGES: `api/get_page_contents`,
+  EMAILCHECK: `api/app/check_unique_email`,
 };

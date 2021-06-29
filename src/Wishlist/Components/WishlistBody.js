@@ -10,7 +10,7 @@ const WishlistBody = (props) => {
       photo: item.photo,
       name: item.name,
       price: item.unit_price.price,
-      unit_prices_id: item.unit_price.id,
+      unit_prices_id: !props.user ? item.unit_price.unit_prices_id : item.unit_price_id,
       total_quantity: item.total_quantity,
     };
     await props.addToCart(product);

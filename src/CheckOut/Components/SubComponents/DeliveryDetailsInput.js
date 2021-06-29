@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 const DeliveryDetails = (props) => {
@@ -8,6 +8,8 @@ const DeliveryDetails = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
+
   return (
     <div className="">
       <div className="delivery_details chekoutCard">
@@ -51,16 +53,22 @@ const DeliveryDetails = (props) => {
             <label htmlFor="Email">Email Address (optional)</label>
             <input
               type="email"
-              className="form-control form-control-lg"
+              className={`${props.EmailExist.status && 'success-border' } form-control form-control-lg`}
               id="Email"
               placeholder="Email"
               defaultValue={props.info?.email}
               name="email"
               onChange={handleChange}
+              onBlur={props.emailCheck}
             />
             {props.details.email === '' && (
               <small className="text-danger">
                 Please provide your email address.
+              </small>
+            )}
+            {props.EmailExist.error && (
+              <small className="text-danger">
+               {props.EmailExist.error}
               </small>
             )}
           </div>
@@ -107,7 +115,6 @@ const DeliveryDetails = (props) => {
                   <option
                     value={area.id}
                     key={area.name}
-                    // selected={Number(props.details?.area) === area.id}
                   >
                     {area.name}
                   </option>
@@ -168,11 +175,6 @@ const DeliveryDetails = (props) => {
                 name="delivery_mark"
                 onChange={handleChange}
               />
-              {/* {props.details.delivery_mark === '' && (
-                <small className="text-danger">
-                  Please provide your delivery mark.
-                </small>
-              )} */}
             </div>
           </div>
         </form>

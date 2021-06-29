@@ -114,7 +114,9 @@ const PriceDetails = (props) => {
       (getCartProdSubTotal(props.cartList, props.user) || 0)
     ) {
       setError(`minimum order price ${PriceContainer?.min_order}tk`);
-    } else {
+    } else if (props.emailExist.status ==='already taken') {
+      setError(`Make sure you have provided correct information.`);
+     } else {
       const data = {
         ...props.details,
         coupon_id: offer?.coupon?.id || '',
@@ -282,6 +284,7 @@ const PriceDetails = (props) => {
           <div className="order_btn">
             <button
               type="button"
+              disabled={couponLoading }
               className={` btn btn-primary col-md-5`}
               onClick={PlaceOrder}>
               {props.orderSuccessLoading ? 'Ordering...' : 'Place Order Now'}

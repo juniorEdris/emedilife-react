@@ -77,9 +77,10 @@ const addWishItemError = (error) => ({
 export const addToWishlistAction = (product) => async (dispatch, getState) => {
   dispatch(addWishItemRequest());
   if (!UserToken()) {
-    let wishItems = getState().Wishlist.localWishlist.slice();
+    let wishItems = getState().Wishlist.localWishlist?.slice();
+    console.log(wishItems);
     let exist = false;
-    wishItems.forEach((x) => {
+    wishItems?.forEach((x) => {
       if (x.product_id === product.product_id) {
         // dispatch(addWishItemLocalMsg('Already Exist In Wishlist'));
         dispatch(
@@ -192,8 +193,6 @@ export const guestWishItem = (array) => async (dispatch, getState) => {
         guest_wishlists: JSON.parse(arr),
       })
       .then((res) => {
-        // console.log(arr,'wishlist');
-        console.log('guest_wish', res);
         if (res.data.type) {
           dispatch(productStatusSuccess());
           dispatch(addWishItemOnlineSuccess(res.data));
