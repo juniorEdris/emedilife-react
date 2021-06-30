@@ -45,19 +45,7 @@ const OrderDetails = (props) => {
         />
       )}
       <div className="order_information_details">
-        {/* <div className="col-12">
-        <div className="row">
-          <h5 className="order_info_heading flex-grow-1">Order Details</h5>
-          <Link
-            to="#"
-            className="btn cancel_order_btn bg-danger"
-            onClick={cancelOrder}>
-            {' '}
-            cancel order
-          </Link>
-        </div>
-      </div> */}
-        <h5 className="order_info_heading">Order Details</h5>
+        <h5 className="order_info_heading print_heading">Order Details</h5>
         {props.loading ? (
           <div className="col-12 mt-2 ">
             <Skeleton width={'100%'} height={100} />

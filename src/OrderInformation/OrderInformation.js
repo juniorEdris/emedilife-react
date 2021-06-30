@@ -19,7 +19,7 @@ const OrderInformation = (props) => {
   return (
     <div className="order_information">
       <div className="container">
-        <div className="order-information-heading mt-0 d-flex align-items-center justify-content-between">
+        <div className=" order-information-heading mt-0 d-flex align-items-center justify-content-between">
           {' '}
           {/*  */}
           <h5 className="">Order Information</h5>{' '}

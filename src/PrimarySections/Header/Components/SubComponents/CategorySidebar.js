@@ -1,6 +1,7 @@
 import Skeleton from '@yisheng90/react-loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { GetHomeChildCat, GetHomeSubCat } from '../../../../Redux/Action/HomeProductsAction';
 
 const CategorySidebar = (props) => {
   const CloseBar = () => {
@@ -16,7 +17,7 @@ const CategorySidebar = (props) => {
         <div className="cross">
           <span class="lnr lnr-cross" onClick={CloseBar}></span>
         </div>
-        <ul className={`sidebar_route_list ${props.loading && 'loader'}`}>
+        <ul className={`sidebar_route_list ${props.loading && 'loader'} category_list`}>
           {props.loading
             ? Array(12)
                 .fill()
@@ -27,21 +28,43 @@ const CategorySidebar = (props) => {
                 ))
             : props.categories?.map((cat) => (
                 <li
-                  className={`${
-                    props.categoryID.toString() === cat.id.toString() &&
-                    'category_sidebar_list_active'
-                  }`}
                   key={cat.id}>
                   <Link
                     to={`/category-products?id=${cat.id}`}
-                    key={cat.id}
+                  key={cat.id}
+                  className={`${
+                    props.categoryID.toString() === cat.id.toString() &&
+                    'category_sidebar_list_active'
+                  } ${cat.has_subcategory && 'has_subcat'}`}
                     onClick={() => {
                       props.setCategoryBar(!props.categoryBar);
-                      props.setCategoryName(cat.name.en);
+                      props.setCategoryName(cat.name);
                       props.setCategoryID(cat.id);
-                    }}>
-                    {cat.name.en}
-                  </Link>
+                  }}
+                  onMouseOver={() =>
+                    props.getSubcategories(cat.id)
+                  }>
+                    {cat.name}
+                </Link>
+                {props.subcategories?.length > 0 &&
+                  <ul className='sub_category'>
+                  {props.subcategories?.map(subcat =>
+                    <li key={subcat.id}>
+                      <Link to='/'
+                        className={`${subcat.has_childcategory && 'has_childcat'}`}
+                  onMouseOver={() =>
+                    props.getChildcategories(cat.id)
+                  }
+                  >{subcat.name}</Link>
+                    {props.childcategories?.length > 0  && <ul className="child_category">
+                        {props.childcategories?.map(childcat => (
+                          <li key={ childcat.id}>
+                        <Link to='/'>{childcat.name}</Link>
+                      </li>))}
+                  </ul>}
+                  </li>)}
+                </ul>
+                }
                 </li>
               ))}
         </ul>
@@ -58,7 +81,14 @@ const CategorySidebar = (props) => {
 };
 const mapStateToProps = (state) => ({
   loading: state.HomeContent.loading,
+  subcatloading: state.HomeContent.subloading,
+  catloading: state.HomeContent.childloading,
   categories: state.HomeContent.categories,
+  subcategories: state.HomeContent.subcategories,
+  childcategories: state.HomeContent.childcategories,
 });
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  getSubcategories:(id)=>dispatch(GetHomeSubCat(id)),
+  getChildcategories:(id)=>dispatch(GetHomeChildCat(id))
+});
 export default connect(mapStateToProps, mapDispatchToProps)(CategorySidebar);

@@ -214,5 +214,37 @@
   }
 }
 
-@media (max-width: 767px) {
+/* Print CSS HERE */
+
+@media print {
+  /* OREDER INFORMATION STARTS  */
+  .header,.order-information-heading,.header_nav,.dashSidebar,.cart_icon, .footer, .copyright,.cancel_order_btn{
+    
+    display: none !important; 
+    
+  } 
+  .print_heading {
+    font-weight: 500 !important;
+    text-align: center !important;
+    font-size: 22px !important;
+  }
+  .order_info_heading{
+    margin-bottom: 0.5rem !important;
+  }
+  .list_content {
+    border-bottom: 1px solid var(--muted-color)!important;
+    color: var(--dark-color)!important;
+}
+  .order_table_name{
+    text-decoration: none !important;
+  }
+  .dashboard_body{
+    font-size: 18px !important;
+  }
+  .col-xl-10 {
+    -ms-flex: 0 0 100%;
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  /* OREDER INFORMATION STARTS  */
 }

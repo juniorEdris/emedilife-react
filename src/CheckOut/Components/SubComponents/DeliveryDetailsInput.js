@@ -8,8 +8,6 @@ const DeliveryDetails = (props) => {
       [e.target.name]: e.target.value,
     });
   };
-
-
   return (
     <div className="">
       <div className="delivery_details chekoutCard">
@@ -53,7 +51,7 @@ const DeliveryDetails = (props) => {
             <label htmlFor="Email">Email Address (optional)</label>
             <input
               type="email"
-              className={`${props.EmailExist.status && 'success-border' } form-control form-control-lg`}
+              className={`${props.EmailExist.status ==='available' && 'success-border'} form-control form-control-lg`}
               id="Email"
               placeholder="Email"
               defaultValue={props.info?.email}

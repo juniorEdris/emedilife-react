@@ -27,6 +27,10 @@ export const initialState = {
   pages: [],
   //HomeContents
   categories: [],
+  subloading:true,
+  subcategories: [],
+  childloading:true,
+  childcategories: [],
   homeSlider: [],
   homeBrands: [],
   neccessaryProducts: [],

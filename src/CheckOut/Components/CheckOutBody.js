@@ -38,11 +38,15 @@ const CheckOutBody = (props) => {
   // CHECK EMAIL VALIDATION
   const [EmailExist, setEmailExist] = useState({});
   const emailCheck= e=> {
+    setEmailExist({loading:true})
     API().post(`${ENDPOINTS.EMAILCHECK}?user_id=${UserID()}&email=${DeliveryDetails.email}`).then(res => {
       if (res.data.status) {
-        setEmailExist({status:'available'})
+        setEmailExist({status:'available',loading:false})
       } else {
-        setEmailExist({status:'already taken', error:res.data.message})
+        setEmailExist({
+          status: 'already taken', error: res.data.message
+          ,loading:false,
+        })
       }
     }).catch(err=> console.log(err))
   }

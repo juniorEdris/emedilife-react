@@ -35,24 +35,63 @@
     width: 100%;
     padding: 0.7rem;
     background-color: var(--white);
-    margin-bottom: 0.4rem;
 }
 .sidebar_route_list.loader li:hover{
     background-color: unset;
 }
 .sidebar_route_list li{
+margin-bottom: 0.7rem;
+}
+.sidebar_route_list li a{
     width: 100%;
     padding: 0.7rem;
     background-color: var(--theme-color);
     margin-bottom: 0.4rem;
 }
-.sidebar_route_list li:hover{
+.sidebar_route_list li a:hover{
     background-color: #111;
 }
 .sidebar_route_list li a{
     display: block;
     color: #fff;
     text-transform: capitalize;
+    position: relative;
+}
+a.has_subcat::after{
+    content: '\f0dd';
+    font-family: "Font Awesome 5 Free";
+    right: 10px;
+    position: absolute;
+    color: var(--light-color);
+    font-weight: 600;
+}
+a.has_childcat::after{
+    content: '\f0dd';
+    font-family: "Font Awesome 5 Free";
+    right: 10px;
+    position: absolute;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+.category_list .sub_category{
+ display: none;
+}
+.category_list li:hover .sub_category{
+ display: block;
+}
+.sub_category .child_category{
+    display: none;
+}
+.sub_category li a,.child_category li a{
+ background: var(--light-color);
+ color: var(--dark-color);
+ border: 1px solid var(--theme-color);
+}
+.sub_category li:hover .child_category{
+    display: block;
+}
+.sub_category li a:hover,.child_category li a:hover{
+    color: var(--light-color);
 }
 .cross .lnr {
     font-size: 1rem;

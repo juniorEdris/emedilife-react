@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ function FooterLinks(props) {
                 {props.links?.length > 0 &&
                   company?.map((comp) => (
                     <li>
-                      <Link to={`/pages?page_id=${comp.id}`}>{comp.title}</Link>
+                      <Link to={`/pages?page_id=${comp.id}`} className={ comp.id === 5 && 'pointer_none' || comp.id === 6 && 'pointer_none'}>{comp.title}</Link>
                     </li>
                   ))}
                 <li>

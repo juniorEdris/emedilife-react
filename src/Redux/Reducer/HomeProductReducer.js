@@ -3,6 +3,15 @@ import {
   FETCH_HOME_PRODUCTS_ERROR,
   FETCH_HOME_PRODUCTS_REQUEST,
   FETCH_HOME_PRODUCTS_SUCCESS,
+  FETCH_HOME_CATEGORIES_ERROR,
+  FETCH_HOME_CATEGORIES_REQUEST,
+  FETCH_HOME_CATEGORIES_SUCCESS,
+  FETCH_HOME_CHILD_CATEGORIES_ERROR,
+  FETCH_HOME_CHILD_CATEGORIES_REQUEST,
+  FETCH_HOME_CHILD_CATEGORIES_SUCCESS,
+  FETCH_HOME_SUB_CATEGORIES_ERROR,
+  FETCH_HOME_SUB_CATEGORIES_REQUEST,
+  FETCH_HOME_SUB_CATEGORIES_SUCCESS,
 } from '../Types';
 
 export const HomeContentReducer = (state = initialState, action) => {
@@ -11,7 +20,7 @@ export const HomeContentReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        categories: [],
+        // categories: [],
         homeSlider: [],
         homeBrands: [],
         popularProducts: [],
@@ -30,7 +39,7 @@ export const HomeContentReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        categories: action.categories,
+        // categories: action.categories,
         homeSlider: action.slider,
         homeBrands: action.homeBrands,
         popularProducts: action.popularProducts,
@@ -49,7 +58,7 @@ export const HomeContentReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        categories: [],
+        // categories: [],
         homeSlider: [],
         homeBrands: [],
         popularProducts: [],
@@ -64,6 +73,64 @@ export const HomeContentReducer = (state = initialState, action) => {
         homeappBanner: [],
         footerlinks: [],
       };
+    // CATEGORIES 
+    case FETCH_HOME_CATEGORIES_REQUEST:
+      return {
+        ...state,
+        loading:true,
+        categories: [],
+      };
+      case FETCH_HOME_CATEGORIES_SUCCESS:
+        return {
+          ...state,
+          loading:false,
+          categories: action.categories,
+        };
+        case FETCH_HOME_CATEGORIES_ERROR:
+          return {
+            ...state,
+            loading:true,
+            categories: [],
+          };
+    // SUBCATEGORIES 
+    case FETCH_HOME_SUB_CATEGORIES_REQUEST:
+      return {
+        ...state,
+        subloading:true,
+        subcategories: [],
+      };
+    case FETCH_HOME_SUB_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        subloading:false,
+        subcategories: action.subCat,
+      };
+    case FETCH_HOME_SUB_CATEGORIES_ERROR:
+      return {
+        ...state,
+        subloading:true,
+        subcategories: [],
+      };
+    // CHILDCATEGORIES 
+    case FETCH_HOME_CHILD_CATEGORIES_REQUEST:
+      return {
+        ...state,
+        childloading:true,
+        childcategories: [],
+      };
+      case FETCH_HOME_CHILD_CATEGORIES_SUCCESS:
+        return {
+          ...state,
+          childloading:false,
+          childcategories: action.childCat,
+        };
+        case FETCH_HOME_CHILD_CATEGORIES_ERROR:
+          return {
+            ...state,
+            childloading:true,
+            childcategories: [],
+      };
+      
     default:
       return state;
   }

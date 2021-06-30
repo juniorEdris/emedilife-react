@@ -284,7 +284,8 @@ const PriceDetails = (props) => {
           <div className="order_btn">
             <button
               type="button"
-              disabled={couponLoading }
+              disabled={couponLoading || props.emailExist.loading}
+              title={couponLoading && 'Coupon verifying. Please Wait' || props.emailExist.loading && 'Delivery email verifying. Please Wait'}
               className={` btn btn-primary col-md-5`}
               onClick={PlaceOrder}>
               {props.orderSuccessLoading ? 'Ordering...' : 'Place Order Now'}
