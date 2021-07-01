@@ -19,12 +19,21 @@ function FooterLinks(props) {
             <div className="links_container col-6 col-features">
               <h4 className="mb-2">Company</h4>
               <ul className="links">
-                {props.links?.length > 0 &&
+                {/* {props.links?.length > 0 &&
                   company?.map((comp) => (
                     <li>
                       <Link to={`/pages?page_id=${comp.id}`} className={ comp.id === 5 && 'pointer_none' || comp.id === 6 && 'pointer_none'}>{comp.title}</Link>
                     </li>
-                  ))}
+                  ))} */}
+                <li>
+                  <Link to="/about-us">about us</Link>
+                </li>
+                <li>
+                  <Link to="/careers" className='pointer_none'>careers</Link>
+                </li>
+                <li>
+                  <Link to="/emedilife-care" className='pointer_none'>Emedilife Care</Link>
+                </li>
                 <li>
                   <Link to="/blog">blogs</Link>
                 </li>
@@ -99,7 +108,7 @@ function FooterLinks(props) {
             <div className="links_container col-6 col-features">
               <h4 className="mb-2">Our Policy</h4>
               <ul className="links">
-                {props.links?.length > 0 &&
+                {/* {props.links?.length > 0 &&
                   policies?.map((comp) => (
                     <li>
                       <Link
@@ -111,7 +120,35 @@ function FooterLinks(props) {
                         {comp.title}
                       </Link>
                     </li>
-                  ))}
+                  ))} */}
+                    <li>
+                      <Link
+                        to={
+                          `/Privacy-Policy`}>
+                        privacy policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={
+                          `/customer-support`}>
+                        customer support policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={
+                          `/assistant-policy`}>
+                        assistant policy
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={
+                          `/return-policy`}>
+                        return policy
+                      </Link>
+                    </li>
               </ul>
             </div>
           </div>

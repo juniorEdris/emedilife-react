@@ -16,6 +16,7 @@ export const API = () => {
 export const ENDPOINTS = {
   HOMEPRODUCT: `api/web/get_home_contents`,
   CATEGORIES:`/api/app/get_categories`,
+  SUB_CHILD_PRODUCT:`/api/web/search_product_by_category`,
   PRODUCTDETAILS: `api/web/get_single_product?product_id=`,
   SEARCH: `api/web/search_product`,
   ADDTOBASKET: `api/product/add_to_cart`,

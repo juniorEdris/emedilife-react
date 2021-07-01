@@ -44,6 +44,9 @@ import { CopyRight } from './CopyRight/CopyRight';
 import CategorySidebar from './PrimarySections/Header/Components/SubComponents/CategorySidebar';
 import MorePages from './PrimarySections/MorePages';
 import PrivacyPolicy from './PrivacyPolicy';
+import ReturnPolicy from './PrimarySections/ReturnPolicy';
+import AssistantPolicy from './PrimarySections/AssistantPolicy';
+import CustomerSupport from './PrimarySections/CustomerSupport';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
@@ -127,7 +130,10 @@ function App(props) {
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/ordersuccess" component={OrderNotification} />
-          <Route path="/pages" component={MorePages} />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/customer-support" component={CustomerSupport} />
+          <Route path="/assistant-policy" component={AssistantPolicy} />
+          <Route path="/return-policy" component={ReturnPolicy} />
           <Route path="/Privacy-Policy" component={PrivacyPolicy} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>

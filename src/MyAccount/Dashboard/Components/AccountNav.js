@@ -9,12 +9,12 @@ const AccountNav = (props) => {
   };
   return (
     <div className="">
-      <div className="account_nav">
+      <div className="">
         <div className="acc_heading">
           <h5>My Account</h5>
         </div>
         <div className="dash_nav_list">
-          <ul>
+          <ul className='account_nav'>
             <li>
               <Link
                 to="#"

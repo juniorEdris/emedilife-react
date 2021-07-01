@@ -75,7 +75,7 @@ const Sidebar = (props) => {
                         e.preventDefault();
                         props.setCategory(category.id);
                       }}>
-                      {props.home ? category.name.en : category.name}
+                      {category.name}
                     </Link>
                   </li>
                 ))}

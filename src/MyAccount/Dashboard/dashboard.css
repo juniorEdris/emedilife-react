@@ -18,7 +18,8 @@
     text-transform: uppercase;
 }
 
-.dash_nav_list ul {
+.dash_nav_list .account_nav,
+.dash_nav_list .dash_category {
     border: 1px solid var(--theme-color);
     padding: 0.325rem 0.625rem;
 }
@@ -74,7 +75,37 @@
 .browse_nav_list ul li a:hover {
     background-color: var(--muted-btn-color);
 }
-
+.browse_nav_list ul li {
+    position: relative;
+}
+.dash_category .dash_sub_category{
+ display: none;   
+}
+.dash_category li:hover .dash_sub_category{
+ display: block;   
+}
+.dash_sub_category .dash_child_category{
+    display: none;
+}
+.dash_sub_category li:hover .dash_child_category{
+    display: block;
+}
+a.has_subcat::after{
+    content: '\f0dd';
+    font-family: "Font Awesome 5 Free";
+    right: 10px;
+    position: absolute;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+a.has_childcat::after{
+    content: '\f0dd';
+    font-family: "Font Awesome 5 Free";
+    right: 10px;
+    position: absolute;
+    color: var(--dark-color);
+    font-weight: 600;
+}
 /* MY DASHBOARD CSS STARTS HERE (DASHBOARD BODY) */
 /* Account Dashboard */
 .account_msg {

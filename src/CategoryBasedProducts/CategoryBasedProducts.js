@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import AllProducts from '../PrimarySections/AllProdPage/AllProducts';
 import { useQuery } from '../PrimarySections/Utility';
-import { GetCategoryBasedProd, getCategorySortedProducts } from '../Redux/Action/CategoryBasedProdAction';
+import { GetCategoryBasedProd, getCategorySortedProducts, GetChildCategoryBasedProd, GetSubCategoryBasedProd } from '../Redux/Action/CategoryBasedProdAction';
 import './categoryProducts.css';
 const CategoryProducts = (props) => {
   const [category, setCategory] = useState('');
@@ -10,10 +10,20 @@ const CategoryProducts = (props) => {
   const [page, setPage] = useState(1);
   const query = useQuery();
   const id = query.get('id');
+  const sub_id = query.get('subcategory_id');
+  const child_id = query.get('childcategory_id');
   useEffect(() => {
-    props.getProducts({ page, category_id: id });
-    props.setCategoryID(id);
-  }, [page, id]);
+    if (id) {
+      props.getProducts({ page, category_id: id });
+      props.setCategoryID(id);
+    } else if (sub_id) {
+      props.getsubProducts({ page, subcategory: sub_id });
+    } else if (child_id) {
+      props.getchildProducts({ page, childcategory: child_id });
+    }
+  }, [page, id,sub_id,child_id]);
+  
+
   useEffect(() => {
     props.getSortingProducts({ sortingType: sort });
   }, [sort]);
@@ -21,7 +31,6 @@ const CategoryProducts = (props) => {
     <div className="other_brands_wrapper">
       <AllProducts
         home={true}
-        // categories={props.categories}
         category={category}
         setCategory={setCategory}
         sort={sort}
@@ -32,8 +41,7 @@ const CategoryProducts = (props) => {
         products={props.products}
         pages={props.pages}
         category_hide={true}
-        section_title={props.products[0]?.category}
-        // section_title={props.categoryName}
+        section_title={props.products.length > 0 ? props.products[0]?.category : ''}
       />
     </div>
   );
@@ -48,6 +56,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProducts: (data) => dispatch(GetCategoryBasedProd(data)),
+  getsubProducts: (data) => dispatch(GetSubCategoryBasedProd(data)),
+  getchildProducts: (data) => dispatch(GetChildCategoryBasedProd(data)),
   getSortingProducts:(data)=>dispatch(getCategorySortedProducts(data))
 });
 

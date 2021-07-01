@@ -57,7 +57,7 @@ margin-bottom: 0.7rem;
     text-transform: capitalize;
     position: relative;
 }
-a.has_subcat::after{
+.sidebar_route_list a.has_subcat::after{
     content: '\f0dd';
     font-family: "Font Awesome 5 Free";
     right: 10px;
@@ -65,13 +65,18 @@ a.has_subcat::after{
     color: var(--light-color);
     font-weight: 600;
 }
-a.has_childcat::after{
+.sidebar_route_list a.has_childcat::after{
     content: '\f0dd';
     font-family: "Font Awesome 5 Free";
     right: 10px;
     position: absolute;
     color: var(--dark-color);
     font-weight: 600;
+}
+.category_sidebar_list_active.has_subcat::after
+{
+    content: '\f0dd';
+    color: var(--light-color);
 }
 .category_list .sub_category{
  display: none;

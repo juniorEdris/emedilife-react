@@ -94,7 +94,6 @@ export const GetHomeContents = () => async (dispatch) => {
   // Category
   API().post(`${ENDPOINTS.CATEGORIES}`).then(
     res => {
-      console.log('categories',res);
       dispatch(fetchHomeCategorySuccess(res.data.data));
     }
     ).catch(
@@ -106,7 +105,6 @@ export const GetHomeContents = () => async (dispatch) => {
 };
 // SUB CATEGORIES ACTION
 export const GetHomeSubCat = (id) => async (dispatch) => {
-  console.log(id);
   dispatch(fetchHomeSubCategoryRequest());
   await API()
   .post(`${ENDPOINTS.CATEGORIES}?category_id=${id}`)

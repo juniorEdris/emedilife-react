@@ -15,9 +15,8 @@ const categoryBasedRequest = () => {
 const categoryBasedSuccess = (res) => {
   return {
     type: CATEGORY_BASED_SUCCESS,
-    results: res.products.data,
-    categories: res.categories,
-    pages: res.products.meta,
+    results: res.data|| [],
+    pages: res.meta,
   };
 };
 
@@ -35,11 +34,41 @@ const filterProducts = (product, price) => {
 };
 
 export const GetCategoryBasedProd = (data) => async (dispatch) => {
-  const { keywords, category_id = '', subcategory, childcategory, page } = data;
+  const { keywords, category_id = '', subcategory='', childcategory='', page } = data;
   dispatch(categoryBasedRequest());
   await API()
-    .get(
-      `${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}&category_id=${category_id}`
+    .post(
+      `${ENDPOINTS.SUB_CHILD_PRODUCT}?per_page=20&page=${page}&category_id=${category_id}`
+    )
+    .then((res) => {
+      dispatch(categoryBasedSuccess(res.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(categoryBasedError(error));
+    });
+};
+export const GetSubCategoryBasedProd = (data) => async (dispatch) => {
+  const { keywords, category_id = '', subcategory='', childcategory='', page } = data;
+  dispatch(categoryBasedRequest());
+  await API()
+  .post(
+    `${ENDPOINTS.SUB_CHILD_PRODUCT}?per_page=20&page=${page}&sub_category_id=${subcategory}`
+    )
+    .then((res) => {
+      dispatch(categoryBasedSuccess(res.data));
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(categoryBasedError(error));
+    });
+};
+export const GetChildCategoryBasedProd = (data) => async (dispatch) => {
+  const { keywords, category_id = '', subcategory='', childcategory='', page } = data;
+  dispatch(categoryBasedRequest());
+  await API()
+    .post(
+      `${ENDPOINTS.SUB_CHILD_PRODUCT}?per_page=20&page=${page}&childcategory_id=${childcategory}`
     )
     .then((res) => {
       dispatch(categoryBasedSuccess(res.data));

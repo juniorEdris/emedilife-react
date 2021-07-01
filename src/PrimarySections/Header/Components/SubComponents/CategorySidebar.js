@@ -50,16 +50,27 @@ const CategorySidebar = (props) => {
                   <ul className='sub_category'>
                   {props.subcategories?.map(subcat =>
                     <li key={subcat.id}>
-                      <Link to='/'
+                      <Link to={`/category-products?subcategory_id=${subcat.id}`}
                         className={`${subcat.has_childcategory && 'has_childcat'}`}
                   onMouseOver={() =>
-                    props.getChildcategories(cat.id)
+                    props.getChildcategories(subcat.id)
                   }
+                  onClick={() => {
+                    props.setCategoryBar(!props.categoryBar);
+                    props.setCategoryName(cat.name);
+                    props.setCategoryID(cat.id);
+                }}
                   >{subcat.name}</Link>
                     {props.childcategories?.length > 0  && <ul className="child_category">
                         {props.childcategories?.map(childcat => (
                           <li key={ childcat.id}>
-                        <Link to='/'>{childcat.name}</Link>
+                            <Link to={`/category-products?childcategory_id=${childcat.id}`}
+                            onClick={() => {
+                              props.setCategoryBar(!props.categoryBar);
+                              props.setCategoryName(cat.name);
+                              props.setCategoryID(cat.id);
+                          }}
+                            >{childcat.name}</Link>
                       </li>))}
                   </ul>}
                   </li>)}
