@@ -21,7 +21,7 @@ const getUserInfoError = (error) => ({
 });
 //  Get Areas
 const GetUserArea = (areas) => {
-  return { type: GET_USER_AREAS, areas };
+  return { type: GET_USER_AREAS, areas:areas || [] };
 };
 
 export const getUserInfo = () => async (dispatch) => {
@@ -38,6 +38,7 @@ export const getUserInfo = () => async (dispatch) => {
 
 export const GetAreaOption = (id) => (dispatch, getState) => {
   let userInfo = getState().UserInfo.info.districts_lists;
+  console.log(userInfo);
   const areas = userInfo?.slice().filter((x) => x.id === Number(id));
   dispatch(GetUserArea(areas));
 };

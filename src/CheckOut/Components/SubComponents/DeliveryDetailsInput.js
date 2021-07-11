@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 const DeliveryDetails = (props) => {
+  console.log('userArea',props.useArea);
   const handleChange = (e) => {
     props.setDetails({
       ...props.details,
@@ -108,7 +109,7 @@ const DeliveryDetails = (props) => {
                 required>
                 <option value="" selected>
                   Choose...
-                </option>
+                </option> 
                 {props.useArea[0]?.areas?.map((area) => (
                   <option
                     value={area.id}

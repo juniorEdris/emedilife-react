@@ -169,6 +169,12 @@ const CartList = (props) => {
       {/* cart product wrapper ends */}
       {/* cart product button starts */}
       <div className="cart_product_btn col-12 p-0">
+        {/* <div className="">
+        <div className="cart_refresh d-flex align-items-center justify-content-center w-100" onClick={ props.refreshCart}>
+            <span className=" btn lnr lnr-undo mr-3"  title={'Refresh cart list'}></span>
+            <span className='text'>update cart list.</span> 
+          </div>
+        </div>*/}
         <div className="cart_total row no-gutters justify-content-between">
           <span>cart subtotal :</span>
           <span>
