@@ -220,7 +220,6 @@ export const guestCartItem = (array) => async (dispatch, getState) => {
         guest_carts: JSON.parse(arr),
       })
       .then((res) => {
-        console.log('basket', res, arr);
         if (res.data.type) {
           dispatch(addProdServerBasketSuccess({ ...res.data, type: true }));
           dispatch(productStatusSuccess());

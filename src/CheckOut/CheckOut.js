@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCartProdSubTotal } from '../PrimarySections/Utility';
@@ -78,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
   guestWishSubmit: (array) => dispatch(guestWishItem(array)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckOut);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(CheckOut));

@@ -34,7 +34,7 @@ const AccountInfo = (props) => {
             {props.loading ? (
               <Skeleton width={'100%'} height={30} />
             ) : (
-              <span>{props.info?.email === null ? 'user email' : 'User email'}</span>
+              <span>{props.info?.email === null ? 'user email' : props.info?.email}</span>
             )}
           </div>
           <div className="">

@@ -9,22 +9,13 @@ import { getCartProdSubTotal } from '../../PrimarySections/Utility';
 const CartIcon = (props) => {
   useEffect(() => {
     document.body.style.overflow = props.cart ? 'hidden' : '';
+    props.user && props.getCartItems()    
   }, [props.cart]);
   const sidebarOpen = (e) => {
     e.preventDefault();
     props.setCart(!props.cart);
   };
-  let cartLength = () => {
-    let allProd = [];
-    props.user
-      ? props.cartList?.forEach((x) => {
-          allProd.push(x.total_quantity);
-        })
-      : props.localCartList?.forEach((x) => {
-          allProd.push(x.total_quantity);
-        });
-    return allProd.reduce((a, b) => parseInt(a) + parseInt(b), 0);
-  };
+  let cartLength = () => props.user ? props.cartList?.length : props.localCartList?.length
   return (
     <div className="">
       <Link to="#" onClick={sidebarOpen}>

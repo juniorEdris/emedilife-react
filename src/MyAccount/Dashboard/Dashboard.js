@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import DashBody from './Components/DashBody';
 import DashSidebar from './Components/DashSidebar';
@@ -66,4 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
   guestWishSubmit: (array) => dispatch(guestWishItem(array)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Dashboard));

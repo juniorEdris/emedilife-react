@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PopUp } from '../PrimarySections/SectionUtils/PopUp';
 import SpinLoader from '../PrimarySections/SectionUtils/SpinLoader';
@@ -50,5 +50,5 @@ const mapDispatchToProps = (dispatch) => ({
   guestWishSubmit: (array) => dispatch(guestWishItem(array)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PrescriptionUpload);
+export default connect(mapStateToProps, mapDispatchToProps)(memo(PrescriptionUpload));
 
