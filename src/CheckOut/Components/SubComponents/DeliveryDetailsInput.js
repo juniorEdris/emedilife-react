@@ -133,7 +133,7 @@ const DeliveryDetails = (props) => {
                 className="form-control form-control-lg"
                 id="address"
                 placeholder="Apartment, studio, or floor"
-                value={props.info?.address}
+                defaultValue={props.info?.address}
                 name="address"
                 onChange={handleChange}
               />

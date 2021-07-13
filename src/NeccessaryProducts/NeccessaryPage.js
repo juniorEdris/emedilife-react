@@ -39,7 +39,7 @@ const NeccessaryProducts = (props) => {
 const mapStateToProps = (state) => ({
   loading: state.NeccessaryContent.loading,
   products: state.NeccessaryContent.neccessaryResults,
-  categories: state.NeccessaryContent.neccessaryCategories,
+  categories: state.HomeContent.categories,
   pages: state.NeccessaryContent.neccessary_pages,
 });
 

@@ -31,7 +31,6 @@ const filterProducts = (product, price) => {
 export const GetNeccessaryProducts = (data) => async (dispatch) => {
   const { keywords, category_id, subcategory, childcategory, page } = data;
   dispatch(fetchNeccessaryRequest());
-
   await API()
     .get(
       `${ENDPOINTS.HOMEPRODUCT}?per_page=20&page=${page}&category_id=${category_id}`

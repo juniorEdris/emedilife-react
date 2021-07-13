@@ -180,8 +180,8 @@ const CartList = (props) => {
           <span>
             &#2547;{' '}
             {!props.user
-              ? getCartProdSubTotal(props.localCartList, props.user) || 0
-              : getCartProdSubTotal(props.cartList, props.user) || 0}
+              ? getCartProdSubTotal(props.localCartList, props.user).toFixed(2) || 0
+              : getCartProdSubTotal(props.cartList, props.user).toFixed(2) || 0}
           </span>
         </div>
         <div className="checkout_btn">

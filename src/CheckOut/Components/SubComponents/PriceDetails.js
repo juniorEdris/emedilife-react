@@ -62,7 +62,7 @@ const PriceDetails = (props) => {
   });
   // GET TOTAL AMOUNT
   const final_total_amount = (
-    parseInt(getCartProdSubTotal(props.cartList, props.user)) +
+    Number(getCartProdSubTotal(props.cartList, props.user)) +
       Number(PriceContainer?.delivery_charge) ||
     getCartProdSubTotal(props.cartList, props.user) ||
     0
@@ -78,20 +78,28 @@ const PriceDetails = (props) => {
   const submitCoupon = (e) => {
     setCouponLoading(true);
     e.preventDefault();
-    API()
-      .post(`${ENDPOINTS.COUPON_TOKEN}?coupon_code=${couponNum.coupon_number}`)
-      .then((res) => {
-        if (res.data.data && res.data.data.status === '1') {
-          setCouponLoading(false);
-          setOffer({ coupon: res.data.data });
-        } else {
-          setCouponLoading(false);
-          setOffer({ error: res.data.message });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (final_total_amount < 100) {
+      setError(`minimum order price ${PriceContainer?.min_order}tk`);
+      setCouponLoading(false);
+    } else if (!couponNum.coupon_number) {
+      setError(`provide a coupon number.`);
+      setCouponLoading(false);
+     }else{
+      API()
+        .post(`${ENDPOINTS.COUPON_TOKEN}?coupon_code=${couponNum.coupon_number}`)
+        .then((res) => {
+          if (res.data.data && res.data.data.status === '1') {
+            setCouponLoading(false);
+            setOffer({ coupon: res.data.data });
+          } else {
+            setCouponLoading(false);
+            setOffer({ error: res.data.message });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });  
+    }
   };
 
   // PLACE ORDER FUNCTION

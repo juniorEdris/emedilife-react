@@ -27,11 +27,11 @@ const CartIcon = (props) => {
           {!props.user ? (
             <div className="total_wrapper">
               &#2547;{' '}
-              {getCartProdSubTotal(props.localCartList, props.user) || 0}
+              {getCartProdSubTotal(props.localCartList, props.user).toFixed(2) || 0}
             </div>
           ) : (
             <div className="total_wrapper">
-              &#2547; {getCartProdSubTotal(props.cartList, props.user) || 0}
+              &#2547; {getCartProdSubTotal(props.cartList, props.user).toFixed(2) || 0}
             </div>
           )}
         </div>
