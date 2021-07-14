@@ -1,0 +1,7 @@
+.links_container h4 a{
+    color: var(--light-color);
+}
+.links_container h4 a:hover{
+    color: var(--light-color);
+    opacity: 0.4;
+}

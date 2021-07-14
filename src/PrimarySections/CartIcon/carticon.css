@@ -268,6 +268,25 @@
     color: var(--light-color);
     background-color: var(--dark-color);
 }
+.cart_placeholder{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cart_placeholder img{
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+}
+.cart_placeholder_text{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--theme-color);
+    text-transform: capitalize;
+}
 
 /* CHECKOUT BUTTON */
 .checkout_btn {

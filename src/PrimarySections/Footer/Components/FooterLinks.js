@@ -7,10 +7,6 @@ function FooterLinks(props) {
   const preventEvent = (e) => {
     e.preventDefault();
   };
-  // company lists
-  let company = props.links && props.links.slice(0, 3);
-  // policies lists
-  const policies = props.links && props.links.slice(3, -1);
   return (
     <div className="footer_links">
       {props.links?.length > 0 && (
@@ -40,7 +36,9 @@ function FooterLinks(props) {
               </ul>
             </div>
             <div className="links_container col-6 col-features">
-              <h4 className="mb-2">Connect with Us</h4>
+              <h4 className="mb-2">
+                <Link to='/contact-us'>Connect with Us</Link>
+              </h4>
               <ul className="links">
                 {/* <li>
                 <Link to="/contact-us">contact us</Link>
@@ -108,19 +106,6 @@ function FooterLinks(props) {
             <div className="links_container col-6 col-features">
               <h4 className="mb-2">Our Policy</h4>
               <ul className="links">
-                {/* {props.links?.length > 0 &&
-                  policies?.map((comp) => (
-                    <li>
-                      <Link
-                        to={
-                          comp.id === 7
-                            ? `/Privacy-Policy`
-                            : `/pages?page_id=${comp.id}`
-                        }>
-                        {comp.title}
-                      </Link>
-                    </li>
-                  ))} */}
                     <li>
                       <Link
                         to={
@@ -142,13 +127,13 @@ function FooterLinks(props) {
                         assistant policy
                       </Link>
                     </li>
-                    <li>
+                     {/*<li>
                       <Link
                         to={
                           `/return-policy`}>
                         return policy
                       </Link>
-                    </li>
+                    </li> */}
               </ul>
             </div>
           </div>

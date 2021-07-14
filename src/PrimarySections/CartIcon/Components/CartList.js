@@ -68,7 +68,7 @@ const CartList = (props) => {
       <div className="cart_product_wrapper">
         {!props.user ? (
           <ul className="cart_sidebar_list">
-            {props.localCartList?.map((item) => (
+            {props.localCartList.length > 0 ? props.localCartList?.map((item) => (
              <li key={item.product_id}>
              <div className="cart_single_product">
                <div className="cart_single_image col-3">
@@ -108,7 +108,12 @@ const CartList = (props) => {
                &times;
              </span>
            </li>
-            ))}
+            )) :
+              <div className="cart_placeholder">
+                <img src="./assets/svg/icons/cart/vector.svg" alt="no_products" />
+                <div className="cart_placeholder_text">your cart is empty</div>
+              </div>
+            }
           </ul>
         ) : (
           <ul className="cart_sidebar_list">
@@ -122,7 +127,7 @@ const CartList = (props) => {
                       className="mb-4"
                     />
                   ))
-              : props.cartList?.map((item) => (
+              : props.cartList?.length > 0 ? props.cartList?.map((item) => (
                   <li key={item.product_id}>
                     <div className="cart_single_product">
                       <div className="cart_single_image col-3">
@@ -162,7 +167,11 @@ const CartList = (props) => {
                       &times;
                     </span>
                   </li>
-                ))}
+              )) :
+              <div className="cart_placeholder">
+                  <img src="./assets/svg/icons/cart/vector.svg" alt="no_products" />
+              </div>
+                }
           </ul>
         )}
       </div>
