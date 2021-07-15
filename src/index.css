@@ -187,7 +187,14 @@ h6 {
     /* padding: 0 120px; */
     padding: 0 70px;
 }
-
+/* INPUT CUSTOMIZATION */
+.uparzon-input-lg{
+    height: calc(1.2em + 1rem + 4px);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    font-size: 1.25rem;
+}
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
 --------------------------------------------------------------------*/

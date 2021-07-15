@@ -12,8 +12,8 @@ const ContactDetails = (props) => {
               <h4>PHONE</h4>
             </div>
             <div className="contact_box_body">
-              <div>Toll Free: 111 222 333 555</div>
-              <div>Fax: 111 222 333 555</div>
+              <div>01911066121</div>
+              <div>01790577887</div>
             </div>
           </div>
         </div>
@@ -24,8 +24,7 @@ const ContactDetails = (props) => {
               <h4>EMAIL</h4>
             </div>
             <div className="contact_box_body">
-              <div>Medipathy@mail.com</div>
-              <div>Support@medipathy.com</div>
+              <div>emedilife2day@gmail.com</div>
             </div>
           </div>
         </div>
@@ -36,7 +35,7 @@ const ContactDetails = (props) => {
               <h4>ADDRESS</h4>
             </div>
             <div className="contact_box_body">
-              <div>No #45/C, East Nasirabad, Baizid, Chattagram</div>
+              <div>Singapore Market(3rd Floor), 1557 Access Road,Agrabad,Chittagong.</div>
             </div>
           </div>
         </div>

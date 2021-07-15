@@ -1,0 +1,52 @@
+:root{
+    --aplication-setter-color:#DFDFDF;
+    --application-top-whitespace:32px;
+}
+
+.jobaplication_wrapper{
+    margin-top: var(--application-top-whitespace);
+    min-height: 100vh;
+}
+.application_header {
+    border-bottom:1px solid var(--theme-color) ;
+}
+.application_header .section_setter{
+    background-color: var(--aplication-setter-color);
+    color: var(--theme-color);
+    padding: 1rem 0.4rem;
+    text-align: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.application_header .section_setter:hover,
+.application_header .section_setter.active
+{
+    background-color: var(--theme-color);
+    color: var(--light-color);
+}
+main{
+    margin-top: var(--application-top-whitespace);
+}
+/* PART TIME FORM CSS STARTS HERE */
+.header_input{
+    border-bottom:1px solid var(--gray)
+}
+.thead-theme{
+    background-color: var(--theme-color);
+    color: var(--light-color)!important;
+}
+.table_inputs_heading{
+    padding: 0.6rem 0;
+    font-size: 1.2rem;
+}
+.table_inputs td, .table th{
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid var(--theme-color);
+}
+.table_inputs td:not(:last-child){
+    padding: .75rem .75rem 0.75rem 0;
+}
+
+/* PART TIME FORM CSS ENDS HERE */

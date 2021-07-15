@@ -28,6 +28,7 @@ import Blog from './Blog/Blog';
 import WishList from './Wishlist/Wishlist';
 import OrderNotification from './OrderNotify/OrderNotification';
 import BlogDetails from './BlogDetails';
+import JobAplication from './JobAppplication';
 
 // slick
 import 'slick-carousel/slick/slick.css';
@@ -135,6 +136,7 @@ function App(props) {
           <Route path="/assistant-policy" component={AssistantPolicy} />
           <Route path="/return-policy" component={ReturnPolicy} />
           <Route path="/Privacy-Policy" component={PrivacyPolicy} />
+          <Route path="/emedilife-career" component={JobAplication} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon

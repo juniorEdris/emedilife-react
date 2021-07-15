@@ -15,17 +15,11 @@ function FooterLinks(props) {
             <div className="links_container col-6 col-features">
               <h4 className="mb-2">Company</h4>
               <ul className="links">
-                {/* {props.links?.length > 0 &&
-                  company?.map((comp) => (
-                    <li>
-                      <Link to={`/pages?page_id=${comp.id}`} className={ comp.id === 5 && 'pointer_none' || comp.id === 6 && 'pointer_none'}>{comp.title}</Link>
-                    </li>
-                  ))} */}
                 <li>
                   <Link to="/about-us">about us</Link>
                 </li>
                 <li>
-                  <Link to="/careers" className='pointer_none'>careers</Link>
+                  <Link to="/emedilife-career" className=''>careers</Link>
                 </li>
                 <li>
                   <Link to="/emedilife-care" className='pointer_none'>Emedilife Care</Link>
@@ -40,11 +34,8 @@ function FooterLinks(props) {
                 <Link to='/contact-us'>Connect with Us</Link>
               </h4>
               <ul className="links">
-                {/* <li>
-                <Link to="/contact-us">contact us</Link>
-              </li> */}
                 <li>
-                  <a href="https://www.facebook.com/Emedilife-111986904405990">
+                  <a href="https://www.facebook.com/emedilife" rel='noreferrer' target='_blank'>
                     Facebook
                   </a>
                 </li>
@@ -59,7 +50,7 @@ function FooterLinks(props) {
                   </Link>
                 </li>
                 <li>
-                  <a href="https://twitter.com/emedilife">Twitter</a>
+                  <a href="https://twitter.com/emedilife" rel='noreferrer' target='_blank'>Twitter</a>
                 </li>
               </ul>
             </div>

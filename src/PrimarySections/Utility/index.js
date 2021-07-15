@@ -42,3 +42,6 @@ export const getCartProdSubTotal = (basket, user) =>
 
 export const UserToken = () => localStorage.getItem('user_token');
 export const UserID = () => localStorage.getItem('user_id');
+
+
+export const BorderBreak = ()=>(<div className="border-break w-100 pt-3 pb-3"></div>)

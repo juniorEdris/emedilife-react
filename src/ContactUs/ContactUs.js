@@ -23,19 +23,6 @@ const ContactUs = (props) => {
       <ContactDetails />
       <ContactForm />
       {props.success && <PopUp close={clearMsg} response={props.success} />}
-
-      {/* {props.error.name && (
-        <PopUp close={clearMsg} response={props.error.name} />
-      )}
-      {props.error.email && (
-        <PopUp close={clearMsg} response={props.error.email} />
-      )}
-      {props.error.subject && (
-        <PopUp close={clearMsg} response={props.error.subject} />
-      )}
-      {props.error.message && (
-        <PopUp close={clearMsg} response={props.error.name} />
-      )} */}
     </div>
   );
 };
