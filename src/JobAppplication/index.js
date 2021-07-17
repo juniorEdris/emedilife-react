@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { connect } from 'react-redux'
-import FullTimeForm from './FullTimeForm';
+import FullTimeForm from './Components/FullTimeForm';
 import './jobapplication.css'
-import PartTimeForm from './PartTimeForm';
-import VoulenteerForm from './VoulenteerForm';
+import PartTimeForm from './Components/PartTimeForm';
+import VoulenteerForm from './Components/VoulenteerForm';
 
 const JobAplication = (props) => {
     const [activeSection, setActiveSection] = useState('part time job');
@@ -59,10 +59,21 @@ const JobAplication = (props) => {
                     {
                         activeSection === 'part time job' ?
                             <PartTimeForm
-                            partTimeInfo = {partTimeInfo}
-                            setPartTimeInfo={setPartTimeInfo}
-                            inputEvent={partTimeDetailsSet}    
-                            /> : activeSection === 'full time job' ? <FullTimeForm /> : <VoulenteerForm />
+                                partTimeInfo = {partTimeInfo}
+                                setPartTimeInfo={setPartTimeInfo}
+                                inputEvent={partTimeDetailsSet}    
+                            /> :
+                            activeSection === 'full time job' ?
+                            <FullTimeForm
+                                partTimeInfo = {partTimeInfo}
+                                setPartTimeInfo={setPartTimeInfo}
+                                inputEvent={partTimeDetailsSet}  
+                            /> :
+                            <VoulenteerForm 
+                                partTimeInfo = {partTimeInfo}
+                                setPartTimeInfo={setPartTimeInfo}
+                                inputEvent={partTimeDetailsSet}  
+                            />
                     }
             </main>
         </div>

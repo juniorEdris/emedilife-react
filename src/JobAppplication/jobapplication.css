@@ -29,6 +29,11 @@ main{
     margin-top: var(--application-top-whitespace);
 }
 /* PART TIME FORM CSS STARTS HERE */
+.part_time_wrapper{
+    /* border-bottom:1px solid var(--theme-color) ;
+    border-right:1px solid var(--theme-color) ;
+    border-left:1px solid var(--theme-color) ; */
+}
 .header_input{
     border-bottom:1px solid var(--gray)
 }
@@ -48,5 +53,26 @@ main{
 .table_inputs td:not(:last-child){
     padding: .75rem .75rem 0.75rem 0;
 }
+.radio{
+    color: var(--theme-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.radio:before{
+    content: '\f0c8';
+    font-family: 'Font Awesome 5 Free';
+    margin-right: 0.6rem;
+    font-weight: 500;
+}
+.radio.active:before{
+    content: '\f14a';
+}
 
+.submit_btn button{
+    font-size: 1.2rem;
+    background-color: var(--theme-color);
+}
+.submit_btn button:hover{
+    background-color: var(--dark-color);
+}
 /* PART TIME FORM CSS ENDS HERE */

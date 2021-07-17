@@ -1,17 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import HeadInputs from './Components/HeadInputs'
 
-const PartTimeForm = (props) => {
-
+const EducationQ = (props) => {
     return (
-        <div className='part_time_wrapper'>
-            <HeadInputs
-            partTimeInfo = {props.partTimeInfo}
-            setPartTimeInfo={props.setPartTimeInfo}
-            inputEvent={props.inputEvent}
-            />
-            <div className="middle_inputs">
+        <div className="middle_inputs mb-3 mt-3">
                 <div className="col-12 table_inputs_heading">Education Qualification: </div>
                 <div className="table_inputs">
                 <table className="table">
@@ -32,7 +24,7 @@ const PartTimeForm = (props) => {
                         <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                             </div>
                          </div>
                         </div>       
@@ -41,7 +33,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                             </div>
                          </div>
                         </div>
@@ -50,7 +42,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                             </div>
                          </div>
                         </div>
@@ -59,7 +51,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                             </div>
                          </div>
                         </div>
@@ -68,7 +60,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                             </div>
                          </div>
                         </div>
@@ -80,7 +72,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -89,7 +81,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -98,7 +90,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -107,7 +99,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -116,7 +108,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -128,7 +120,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -137,7 +129,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -146,7 +138,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -155,7 +147,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -164,7 +156,7 @@ const PartTimeForm = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent} placeholder='Type here' value={props.partTimeInfo.full_name} required />
                                 </div>
                             </div>
                             </div>        
@@ -175,7 +167,6 @@ const PartTimeForm = (props) => {
 
                 </div>
             </div>
-        </div>
     )
 }
 
@@ -187,4 +178,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PartTimeForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EducationQ)

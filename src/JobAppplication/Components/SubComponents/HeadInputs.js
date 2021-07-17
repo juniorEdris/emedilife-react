@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 
 const HeadInputs = (props) => {
     return (
-        <div className='col-12 d-flex header_input'>
-         <div className="col-12 col-md-4">
+        <div className='col-12 d-flex flex-wrap header_input  p-0'>
+         <div className="col-12 col-lg-4  p-0">
             <form className="needs-validation" noValidate>
                 <div className="form-row">
                     <div className="col-12 mb-3">
@@ -63,9 +63,9 @@ const HeadInputs = (props) => {
                 </div>
             </form>
             </div>
-            <div className="col-12 p-0 col-md-8 ">
-                <div className=" col-12 d-flex flex-wrap">
-                    <div className="col-md-8 ">
+            <div className={`col-lg-8 col-12`}>
+                <div className={` col-12 d-flex flex-wrap p-0`}>
+                    <div className={`${props.no_upload_image ? "col-lg-12" : 'col-lg-8'} p-0`}>
                     <form className="needs-validation" noValidate>
                     <div className="form-row">
                         <div className="col-12 mb-3">
@@ -93,11 +93,11 @@ const HeadInputs = (props) => {
                     </div>
                     </form>
                     </div>
-                    <div className="col-md-4 d-flex align-items-center justify-content-center ">image upload arriving soon</div>
+                    <div className={`${props.no_upload_image ? 'd-none' :'d-flex'} col-lg-4  align-items-center justify-content-center`}>image upload arriving soon</div>
                 </div>
-                <div className="col-12 ">
+                <div className="col-12 p-0">
                 <div className="form-row">
-                        <div className="col-12 mb-3">
+                        <div className="col-12 mb-3 p-0">
                         <div className="form-group">
                             <label htmlFor="present_address">Present Address</label>
                             <textarea className="form-control" id="present_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.partTimeInfo.present_address}/>
@@ -105,9 +105,9 @@ const HeadInputs = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="col-12 ">
+                <div className="col-12 p-0">
                 <div className="form-row">
-                        <div className="col-12 mb-3">
+                        <div className="col-12 mb-3 p-0">
                         <div className="form-group">
                             <label htmlFor="permanent_address">Permanent Address</label>
                             <textarea className="form-control" id="permanent_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.partTimeInfo.permanent_address}/>
