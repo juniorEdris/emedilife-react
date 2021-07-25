@@ -22,7 +22,7 @@ function FooterLinks(props) {
                   <Link to="/emedilife-career" className=''>careers</Link>
                 </li>
                 <li>
-                  <Link to="/emedilife-care" className='pointer_none'>Emedilife Care</Link>
+                  <Link to="/emedilife-care">Emedilife Care</Link>
                 </li>
                 <li>
                   <Link to="/blog">blogs</Link>
@@ -55,20 +55,20 @@ function FooterLinks(props) {
               </ul>
             </div>
             <div className="links_container col-6 col-features">
-              <h4 className="mb-2">Make Money With Us</h4>
+              <h4 className="mb-2">Make money with us</h4>
               <ul className="links">
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <Link to="/e-volunteer">
                     E-Volunteer
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <Link to="/medi-shebok">
                     medishebok
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <Link to="/emedi-partner">
                     partner with emedilife
                   </Link>
                 </li>

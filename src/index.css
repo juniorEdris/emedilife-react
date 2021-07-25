@@ -105,21 +105,29 @@ h6 {
     margin: 0;
 }
 
-textarea{
+textarea {
     resize: none;
 }
+
 /*--------------------------------------------------------------------
                         Primary css starts here
 --------------------------------------------------------------------*/
-.success-border{
-    border:1px solid var(--success)
+.text-color-theme {
+    color: var(--theme-color);
 }
-.danger-border{
-    border:1px solid var(--danger)
+
+.success-border {
+    border: 1px solid var(--success)
 }
-.scroll-disabled{
+
+.danger-border {
+    border: 1px solid var(--danger)
+}
+
+.scroll-disabled {
     overflow: hidden;
 }
+
 .box-shadow {
     -webkit-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 4px 8px 16px -5px rgba(0, 0, 0, 0.16);
@@ -131,9 +139,11 @@ textarea{
     /* max-height: 15.625rem; */
     object-fit: contain;
 }
-.full_vh{
+
+.full_vh {
     height: 100vh !important;
 }
+
 .error-handler {
     color: rgb(211, 15, 15);
     margin: 1rem 0;
@@ -169,6 +179,10 @@ textarea{
     background: var(--dark-color);
 }
 
+.cursor_pointer {
+    cursor: pointer;
+}
+
 .pointer_disabled {
     pointer-events: none;
     opacity: 0.4;
@@ -182,22 +196,26 @@ textarea{
     color: var(--theme-color);
     height: 120px !important;
 }
-.overflow-none{
+
+.overflow-none {
     height: unset !important;
     overflow-y: none !important;
 }
+
 .container-md-fluid {
     /* padding: 0 120px; */
     padding: 0 70px;
 }
+
 /* INPUT CUSTOMIZATION */
-.uparzon-input-lg{
+.uparzon-input-lg {
     height: calc(1.2em + 1rem + 4px);
     padding-top: .5rem;
     padding-bottom: .5rem;
     padding-left: 1rem;
     font-size: 1.25rem;
 }
+
 /*--------------------------------------------------------------------
 ALL Section Heading css starts here
 --------------------------------------------------------------------*/
@@ -656,6 +674,7 @@ ALL Section Heading css starts here
 .header__search_container {
     width: 41%;
 }
+
 .header__search {
     width: 100%;
     height: 40px;
@@ -693,11 +712,13 @@ ALL Section Heading css starts here
 .data-list div:hover {
     background-color: var(--dark-color);
 }
-.data-list .header_search_list_loader{
+
+.data-list .header_search_list_loader {
     background-color: var(--light-color) !important;
-    text-transform:capitalize !important;
-    text-align:center !important;
+    text-transform: capitalize !important;
+    text-align: center !important;
 }
+
 .data-list div:hover a {
     color: var(--light-color);
 }
@@ -794,6 +815,7 @@ ALL Section Heading css starts here
     justify-content: center;
     align-items: center;
 }
+
 .header__link,
 a.header__option__lineTwo.header_logout {
     color: var(--light-color) !important;
@@ -1334,7 +1356,8 @@ Article css starts here
     margin-top: 0.8rem;
 }
 
-.login-box button,.login-box a {
+.login-box button,
+.login-box a {
     background: var(--user-entry-btn);
     color: var(--light-color);
     border-radius: 0.1rem !important;

@@ -6,8 +6,8 @@ const SalaryInput = (props) => {
         <div className='salary_inputs mb-2 mt-2 '>
             <div className="form-row">
                 <div className="col-8 col-md-4 mb-3">
-                <label htmlFor="expected_salary" className='table_inputs_heading'>Expected Salary(Per Month)</label>
-                    <input type="text" className="form-control uparzon-input-lg" id="expected_salary"  placeholder='In number'  required />
+                <label htmlFor="expected_salary" className='table_inputs_heading text-color-theme'>Expected Salary(Per Month)</label>
+                    <input type="text" className="form-control uparzon-input-lg" id="expected_salary"  required />
                 </div>
             </div>
         </div>

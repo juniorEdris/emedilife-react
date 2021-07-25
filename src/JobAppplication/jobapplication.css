@@ -1,16 +1,18 @@
-:root{
-    --aplication-setter-color:#DFDFDF;
-    --application-top-whitespace:32px;
+:root {
+    --aplication-setter-color: #DFDFDF;
+    --application-top-whitespace: 32px;
 }
 
-.jobaplication_wrapper{
+.jobaplication_wrapper {
     margin-top: var(--application-top-whitespace);
     min-height: 100vh;
 }
+
 .application_header {
-    border-bottom:1px solid var(--theme-color) ;
+    border-bottom: 1px solid var(--theme-color);
 }
-.application_header .section_setter{
+
+.application_header .section_setter {
     background-color: var(--aplication-setter-color);
     color: var(--theme-color);
     padding: 1rem 0.4rem;
@@ -19,60 +21,81 @@
     cursor: pointer;
     font-size: 1.2rem;
 }
+
 .application_header .section_setter:hover,
-.application_header .section_setter.active
-{
+.application_header .section_setter.active {
     background-color: var(--theme-color);
     color: var(--light-color);
 }
-main{
+
+main {
     margin-top: var(--application-top-whitespace);
 }
+
 /* PART TIME FORM CSS STARTS HERE */
-.part_time_wrapper{
+.part_time_wrapper {
     /* border-bottom:1px solid var(--theme-color) ;
     border-right:1px solid var(--theme-color) ;
     border-left:1px solid var(--theme-color) ; */
 }
-.header_input{
-    border-bottom:1px solid var(--gray)
+
+.header_input {
+    border-bottom: 1px solid var(--gray)
 }
-.thead-theme{
+
+.thead-theme {
     background-color: var(--theme-color);
-    color: var(--light-color)!important;
+    color: var(--light-color) !important;
 }
-.table_inputs_heading{
+
+.table_inputs_heading {
     padding: 0.6rem 0;
     font-size: 1.2rem;
 }
-.table_inputs td, .table th{
+
+.job_application .table_inputs td,
+.job_application .table th {
     vertical-align: middle;
     text-align: center;
     border: 1px solid var(--theme-color);
 }
-.table_inputs td:not(:last-child){
-    padding: .75rem .75rem 0.75rem 0;
+
+.table_inputs td {
+    padding: 0;
 }
-.radio{
+
+/* .table_inputs td:not(:last-child) {
+    padding: .75rem .75rem 0.75rem 0;
+} */
+
+.radio {
     color: var(--theme-color);
     font-size: 1.2rem;
     cursor: pointer;
 }
-.radio:before{
+
+.radio:before {
     content: '\f0c8';
     font-family: 'Font Awesome 5 Free';
     margin-right: 0.6rem;
     font-weight: 500;
 }
-.radio.active:before{
+
+.radio.active:before {
     content: '\f14a';
 }
 
-.submit_btn button{
+.submit_btn button {
     font-size: 1.2rem;
     background-color: var(--theme-color);
 }
-.submit_btn button:hover{
+
+.submit_btn button:hover {
     background-color: var(--dark-color);
 }
+
 /* PART TIME FORM CSS ENDS HERE */
+/* volunteer_inputs_wrapper FORM CSS Starts HERE */
+.volunteer_inputs_wrapper {
+    border-bottom: 1px solid var(--dark);
+}

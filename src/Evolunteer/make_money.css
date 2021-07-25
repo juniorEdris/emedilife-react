@@ -1,0 +1,11 @@
+.make_money_header h1 {
+    color: rgba(168, 6, 114, 100%);
+    line-height: 1.5;
+}
+
+.make_money_body {
+    border: 1px solid var(--theme-color);
+    border-radius: 0.25rem;
+    padding: 2rem;
+    margin: 3rem 0;
+}

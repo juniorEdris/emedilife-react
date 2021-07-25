@@ -48,6 +48,10 @@ import PrivacyPolicy from './PrivacyPolicy';
 import ReturnPolicy from './PrimarySections/ReturnPolicy';
 import AssistantPolicy from './PrimarySections/AssistantPolicy';
 import CustomerSupport from './PrimarySections/CustomerSupport';
+import EmedilifeCare from './EmedilifeCare';
+import MediShebok from './MediShebok';
+import Evolunteer from './Evolunteer';
+import EmediPartner from './EmediPartner';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
@@ -137,6 +141,10 @@ function App(props) {
           <Route path="/return-policy" component={ReturnPolicy} />
           <Route path="/Privacy-Policy" component={PrivacyPolicy} />
           <Route path="/emedilife-career" component={JobAplication} />
+          <Route path="/emedilife-care" component={EmedilifeCare} />
+          <Route path="/e-volunteer" component={Evolunteer} />
+          <Route path="/medi-shebok" component={MediShebok} />
+          <Route path="/emedi-partner" component={EmediPartner} />
           <Route exact path="*" component={NoRoutes} />
         </Switch>
         <CartIcon

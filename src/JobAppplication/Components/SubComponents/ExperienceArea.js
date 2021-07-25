@@ -7,13 +7,13 @@ import { connect } from 'react-redux'
             <div className="form-row">
                 <div className="col-lg-6">
                     <div className="form-group">
-                        <label htmlFor="exampleFormControlTextarea1" className=' table_inputs_heading'>Experience (If any):</label>
+                        <label htmlFor="exampleFormControlTextarea1" className='text-color-theme table_inputs_heading'>Experience (If any):</label>
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} defaultValue={""} />
                     </div>
                 </div>
                 <div className="col-lg-6">
                     <div className="form-group">
-                        <label htmlFor="exampleFormControlTextarea1" className=' table_inputs_heading'>Training (If any):</label>
+                        <label htmlFor="exampleFormControlTextarea1" className='text-color-theme table_inputs_heading'>Training (If any):</label>
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} defaultValue={""} />
                     </div>
                 </div>

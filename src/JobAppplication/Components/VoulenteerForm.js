@@ -1,26 +1,17 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import AgreementRadio from './SubComponents/AgreementRadio'
-import EducationQ from './SubComponents/EducationQ'
-import HeadInputs from './SubComponents/HeadInputs'
+import ExperienceArea from './SubComponents/ExperienceArea'
 import SubmitButton from './SubComponents/SubmitButton'
+import VolunteerInputs from './SubComponents/VolunteerInputs'
 
 const VoulenteerForm = (props) => {
     const [selected, setSelected] = useState(false);
      
     return (
         <div className='voulenteer_wrapper'>
-            <HeadInputs
-            partTimeInfo = {props.partTimeInfo}
-            setPartTimeInfo={props.setPartTimeInfo}
-            inputEvent={props.inputEvent}
-            no_upload_image
-            />
-            <EducationQ
-            partTimeInfo = {props.partTimeInfo}
-            setPartTimeInfo={props.setPartTimeInfo}
-            inputEvent={props.inputEvent}
-            />
+            <VolunteerInputs/>
+            <ExperienceArea/> 
             <div className="mb-4 mt-4">
                 <AgreementRadio
                     selected={selected}

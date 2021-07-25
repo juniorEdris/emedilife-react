@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/zip
 # production
 /build
 

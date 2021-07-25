@@ -1,0 +1,32 @@
+.medishebok_wrapper h1 {
+    color: rgb(194, 7, 132);
+    text-align: center;
+    border-bottom: 2px solid var(--gray);
+}
+
+.medishebok_wrapper .medishebok_wrapper_headlines p {
+    position: relative;
+    color: var(--theme-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.medishebok_wrapper .medishebok_wrapper_headlines p::before,
+.medishebok_wrapper .medishebok_wrapper_headlines p::after {
+    content: '"';
+    /* font-family: 'Font Awesome 5 Free'; */
+    margin-right: 0.1rem;
+    font-weight: 700;
+}
+
+.medishebok_wrapper main {
+    padding: 2rem;
+    padding-top: 0.8rem;
+    border: 1px solid var(--theme-color);
+    border-radius: 0.25rem;
+}
+
+.medishebok_wrapper main h5 {
+    text-align: center;
+}

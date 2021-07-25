@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import FullTimeForm from './Components/FullTimeForm';
 import './jobapplication.css'
 import PartTimeForm from './Components/PartTimeForm';
 import VoulenteerForm from './Components/VoulenteerForm';
+import {toTheTop} from '../PrimarySections/SectionUtils/WindowTop';
 
 const JobAplication = (props) => {
+    useEffect(() => {
+        toTheTop()
+
+    }, [])
     const [activeSection, setActiveSection] = useState('part time job');
     const [partTimeInfo, setPartTimeInfo] = useState(
         {
@@ -28,7 +33,6 @@ const JobAplication = (props) => {
             [e.target.id]: e.target.value,
         })
     }
-    console.log(partTimeInfo);
     const section_setters = [
         {
             id: 1,

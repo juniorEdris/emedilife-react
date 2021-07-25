@@ -17,7 +17,7 @@ const DeliveryDetails = (props) => {
             <img className="icon" src={`./assets/svg/icons/info.svg`} alt="" />
           </div>
         )}
-      {props.loading ? (
+      {/* {props.loading ? (
         <div className="body row">
           <Skeleton width={'100%'} height={100} />
         </div>
@@ -33,7 +33,7 @@ const DeliveryDetails = (props) => {
             Road, Agrabad, Chowmuhani
           </p>
         </div>
-      )}
+      )} */}
 
       {props.loading ? (
         <div className="details_footer">
@@ -41,15 +41,23 @@ const DeliveryDetails = (props) => {
         </div>
       ) : (
         <div className="details_footer">
-          <h4>Return and Warrenty Policy</h4>
+          {/* <h4>Return and Warrenty Policy</h4> */}
           <ul>
+            <li>
+              <img
+              className="footer_icon icon"
+              src={`./assets/svg/icons/location.svg`}
+              alt={'edit'}
+              />
+              Home Delivery
+            </li>
             <li>
               <img
                 className="footer_icon icon"
                 src={`./assets/svg/icons/checkmark-1.svg`}
                 alt={'100% authentic'}
               />
-              100% authentic
+              100% Authentic
             </li>
             <li>
               <img
@@ -57,7 +65,7 @@ const DeliveryDetails = (props) => {
                 src={`./assets/svg/icons/checkmark-1.svg`}
                 alt={'14 days Easy Return'}
               />
-              14 days Easy Return
+              14 Days Easy Return
             </li>
             <li>
               <img
@@ -65,7 +73,15 @@ const DeliveryDetails = (props) => {
                 src={`./assets/svg/icons/map-sheild.svg`}
                 alt={'Warrenty not available'}
               />
-              Warrenty not available
+              Warrenty not Available
+            </li>
+            <li>
+              <img
+                className="footer_icon icon"
+                src={`./assets/svg/icons/checkmark-1.svg`}
+                alt={'Warrenty not available'}
+              />
+              Cash on Delivery
             </li>
           </ul>
         </div>

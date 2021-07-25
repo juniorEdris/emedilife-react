@@ -1,0 +1,47 @@
+.emedi_partner_wrapper h1 {
+    color: rgb(194, 7, 132);
+    text-align: center;
+    border-bottom: 2px solid var(--gray);
+    line-height: 1.5;
+}
+
+.emedi_partner_wrapper .emedi_partner_wrapper_headlines p {
+    position: relative;
+    color: var(--theme-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.emedi_partner_wrapper .emedi_partner_wrapper_headlines span {
+    color: rgb(194, 7, 132);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.emedi_partner_wrapper .emedi_partner_wrapper_headlines p::before,
+.emedi_partner_wrapper .emedi_partner_wrapper_headlines p::after {
+    content: '"';
+    margin-right: 0.1rem;
+    font-weight: 700;
+}
+
+.emedi_partner_wrapper_subscribe {
+    color: rgb(194, 7, 132);
+    font-weight: 600;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.emedi_partner_wrapper_subscribe::after {
+    content: '\f061';
+    font-family: 'Font Awesome 5 Free';
+    margin-left: 1rem;
+    font-weight: 600;
+}
+
+.emedi_partner_wrapper main {
+    padding: 2rem;
+    border: 1px solid var(--theme-color);
+    border-radius: 0.25rem;
+}

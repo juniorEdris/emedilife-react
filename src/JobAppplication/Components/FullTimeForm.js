@@ -6,6 +6,7 @@ import ExperienceArea from './SubComponents/ExperienceArea'
 import HeadInputs from './SubComponents/HeadInputs'
 import SalaryInput from './SubComponents/SalaryInput'
 import SubmitButton from './SubComponents/SubmitButton'
+import TableRowsTwo from './SubComponents/TableRowsTwo'
 
 const FullTimeForm = (props) => {
     const [selected, setSelected] = useState(false);
@@ -17,22 +18,19 @@ const FullTimeForm = (props) => {
             setPartTimeInfo={props.setPartTimeInfo}
             inputEvent={props.inputEvent}
             />
+            <TableRowsTwo
+            title={'Write Down 02 Referral Personnel Located at Your Area'}
+            partTimeInfo = {props.partTimeInfo}
+            setPartTimeInfo={props.setPartTimeInfo}
+            inputEvent={props.inputEvent}
+            />
             <EducationQ
+            title={'Education Qualification'}
             partTimeInfo = {props.partTimeInfo}
             setPartTimeInfo={props.setPartTimeInfo}
             inputEvent={props.inputEvent}
             />
             <ExperienceArea/> 
-            <EducationQ
-            partTimeInfo = {props.partTimeInfo}
-            setPartTimeInfo={props.setPartTimeInfo}
-            inputEvent={props.inputEvent}
-            />
-            <EducationQ
-            partTimeInfo = {props.partTimeInfo}
-            setPartTimeInfo={props.setPartTimeInfo}
-            inputEvent={props.inputEvent}
-            />
             <SalaryInput />
             <AgreementRadio
                 selected={selected}
