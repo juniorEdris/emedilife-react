@@ -12,18 +12,18 @@ import { guestWishItem } from '../../Redux/Action/WishListAction';
 import {toTheTop} from '../../PrimarySections/SectionUtils/WindowTop';
 
 const Dashboard = (props) => {
+  const [tab, setTab] = useState('dashboard');
   useEffect(() => {
     toTheTop()
     props.getOrderList();
     props.User && props.getUserInfo();
     props.User && props.getOrderList();
-  }, []);
+  }, [tab]);
   useEffect(() => {
     props.localCartList?.length > 0 && props.guestCartSubmit();
     props.localWishList?.length > 0 && props.guestWishSubmit();
      props.getCartItems();
   }, []);
-  const [tab, setTab] = useState('dashboard');
   const [orderId, setOrderId] = useState('');
   return (
     <div className="dashboard_wrapper container-md-fluid">
