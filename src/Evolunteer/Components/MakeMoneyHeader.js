@@ -2,9 +2,82 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import AgreementRadio from '../../JobAppplication/Components/SubComponents/AgreementRadio';
 import SubmitButton from '../../JobAppplication/Components/SubComponents/SubmitButton';
+import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
 
 const MakeMoneyHeader = (props) => {
     const [selected, setSelected] = useState(false);
+    const [form, setForm] = useState({
+        name: '',
+        mobile: '',
+        dob: '',
+        age: '',
+        email: '',
+        father_name: '',
+        mother_name: '',
+        nid: '',
+        gender: '',
+        religion: '',
+        marital_status:''
+    });
+    const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState({
+        status: false,
+        success: '',
+        error:''
+    });
+    const handlechange = e => {
+        setForm({...form,[e.target.id]:e.target.value})
+    }
+    const register = async e => {
+        e.preventDefault()
+        setLoading(true)
+        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' ) {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide all your informations.'
+            })
+        } else {
+            await API().post(`${ENDPOINTS.EMEDIPARTNER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`)
+            .then(res=>{
+                if (res.data.status) {
+                    setAlert({
+                        status: res.data.status,
+                        success: res.data.message,
+                    })
+                    setLoading(false)
+                } else {
+                    setAlert({
+                        status: true,
+                        error:res.data.message,
+                    })
+                    setLoading(false)
+                }
+            }).catch(error => {
+                console.log(error);
+            }) 
+        }
+    }
+    const closePopup = e => {
+        setAlert({
+            success:'',
+            error: '',
+            status:'',
+        })
+        setForm({
+            name: '',
+            mobile: '',
+            dob: '',
+            age: '',
+            email: '',
+            father_name: '',
+            mother_name: '',
+            nid: '',
+            gender: '',
+            religion: '',
+            marital_status:''
+        })
+    }
     return (
         <header className='make_money_header'>
             <div className='make_money_header_body'>
@@ -13,8 +86,8 @@ const MakeMoneyHeader = (props) => {
             <form className="needs-validation" noValidate>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="full_name" className=' table_inputs_heading'>Full name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="full_name"  placeholder='Full Name'  required />
+                    <label htmlFor="name" className=' table_inputs_heading'>Full name</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="name" placeholder='Full Name' required onChange={handlechange} value={form.name}/>
                     <div className="valid-feedback">
                         Looks good!
                     </div>
@@ -23,20 +96,20 @@ const MakeMoneyHeader = (props) => {
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="age" className=' table_inputs_heading'>Age</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="age" placeholder='Age in number' required />
+                        <input type="text" className="form-control uparzon-input-lg" id="age" placeholder='Age in number' required onChange={handlechange} value={form.age}/>
 
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="father_name" className=' table_inputs_heading'>Father's name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="father_name"  placeholder='Fathers Name'  required />
+                        <input type="text" className="form-control uparzon-input-lg" id="father_name"  placeholder='Fathers Name'  required onChange={handlechange} value={form.father_name}/>
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="mother_name" className=' table_inputs_heading'>Mother's name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="mother_name"  placeholder='Mothers Name' required/>
+                        <input type="text" className="form-control uparzon-input-lg" id="mother_name"  placeholder='Mothers Name' required onChange={handlechange} value={form.mother_name}/>
                     </div>
                 </div>
             </form>
@@ -102,8 +175,8 @@ const MakeMoneyHeader = (props) => {
                     <div className="col-12 mb-3 ">
                     <div className="form-group">
                                     
-                    <label htmlFor="nid_no" className=' table_inputs_heading'>NID</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="nid_no"  required/>
+                    <label htmlFor="nid" className=' table_inputs_heading'>NID</label>
+                        <input type="text" className="form-control uparzon-input-lg" id="nid"  required onChange={handlechange} value={form.nid}/>
                     </div>
                     </div>
                 </div>

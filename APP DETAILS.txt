@@ -38,3 +38,58 @@ CSS==================
     const preventEvent = (e) => {
     e.preventDefault();
   };
+
+  =========================== Pharmecy
+
+  <ul className="list">
+                <li>
+                  <b className="mb-1">How to order medicines on Emedilife?</b>
+                  <ul className="sub_list">
+                    <li>
+                      {' '}
+                      <img
+                        src="./assets/images/pharmacy_images/list/1.png"
+                        alt=""
+                      />{' '}
+                      Upload Valid Prescription
+                    </li>
+                    <li>
+                      {' '}
+                      <img
+                        src="./assets/images/pharmacy_images/list/2.png"
+                        alt=""
+                      />{' '}
+                      Get a Confirmation Call
+                    </li>
+                    <li>
+                      {' '}
+                      <img
+                        src="./assets/images/pharmacy_images/list/3.png"
+                        alt=""
+                      />{' '}
+                      Delivery at your door step
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <b>You Don't have Prescription? No Worry!</b>
+                  <ul className="sub_list">
+                    <li>
+                      {' '}
+                      <img
+                        src="./assets/images/pharmacy_images/list/1.png"
+                        alt=""
+                      />{' '}
+                      Search &amp; add the medicines
+                    </li>
+                    <li>
+                      {' '}
+                      <img
+                        src="./assets/images/pharmacy_images/list/2.png"
+                        alt=""
+                      />{' '}
+                      Get a Confirmation Call
+                    </li>
+                  </ul>
+                </li>
+              </ul>

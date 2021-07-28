@@ -81,11 +81,6 @@ const UploadSection = (props) => {
             <span className="text-muted">
               upload photo of your prescription
             </span>
-            {/* {props.status && (
-              <div className="">
-                <span className="text-success">{props.success}</span>
-              </div>
-            )} */}
             {error.length > 0 && (
               <div className="">
                 <span className="text-danger">{error}</span>

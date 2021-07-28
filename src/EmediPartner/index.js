@@ -1,16 +1,94 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import SubmitButton from '../JobAppplication/Components/SubComponents/SubmitButton'
+import { PopUp } from '../PrimarySections/SectionUtils/PopUp'
+import SpinLoader from '../PrimarySections/SectionUtils/SpinLoader'
 import { toTheTop } from '../PrimarySections/SectionUtils/WindowTop'
+import { API , ENDPOINTS} from '../PrimarySections/Utility/API_Links'
 import './emedi_pertner.css'
 
 const EmediPartner = (props) => {
     useEffect(() => {
         toTheTop()
-
+        
     }, [])
+    const [form, setForm] = useState({
+        name: '',
+        mobile: '',
+        dob: '',
+        age: '',
+        email: '',
+        father_name: '',
+        mother_name: '',
+        nid: '',
+        gender: '',
+        religion: '',
+        marital_status:''
+    });
+    const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState({
+        status: false,
+        success: '',
+        error:''
+    });
+    const handlechange = e => {
+        setForm({...form,[e.target.id]:e.target.value})
+    }
+    const register = async e => {
+        e.preventDefault()
+        setLoading(true)
+        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' ) {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide all your informations.'
+            })
+        } else {
+            await API().post(`${ENDPOINTS.EMEDIPARTNER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`)
+            .then(res=>{
+                if (res.data.status) {
+                    setAlert({
+                        status: res.data.status,
+                        success: res.data.message,
+                    })
+                    setLoading(false)
+                } else {
+                    setAlert({
+                        status: true,
+                        error:res.data.message,
+                    })
+                    setLoading(false)
+                }
+            }).catch(error => {
+                console.log(error);
+            }) 
+        }
+    }
+    const closePopup = e => {
+        setAlert({
+            success:'',
+            error: '',
+            status:'',
+        })
+        setForm({
+            name: '',
+            mobile: '',
+            dob: '',
+            age: '',
+            email: '',
+            father_name: '',
+            mother_name: '',
+            nid: '',
+            gender: '',
+            religion: '',
+            marital_status:''
+        })
+    }
     return (
         <div className='emedi_partner_wrapper mt-4 mb-4'>
+            {loading && <SpinLoader/>}
+            {alert.status && alert.success && <PopUp close={closePopup} response={ alert.success }/>}
+            {alert.status && alert.error && <PopUp close={closePopup} response={ alert.error }/>}
             <div className="container-md-fluid">
                 <header className="emedi_partner_wrapper_headlines">
                     <h1>Partner With Emedilife</h1>
@@ -28,8 +106,8 @@ const EmediPartner = (props) => {
                         <div className="col-lg-4 col-12 ">
                             <div className="form-row">
                                 <div className="col-12 mb-3">
-                                <label htmlFor="full_name">Full name</label>
-                                    <input type="text" className="form-control uparzon-input-lg" id="full_name" placeholder='Full Name' required />
+                                <label htmlFor="name">Full name</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="name" placeholder='Full Name' required onChange={handlechange} value={form.name}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
@@ -37,8 +115,8 @@ const EmediPartner = (props) => {
                             </div>
                             <div className="form-row">
                                 <div className="col-12 mb-3">
-                                <label htmlFor="birth_date">Birth Date</label>
-                                    <input type="date" className="form-control uparzon-input-lg" id="birth_date" required />
+                                <label htmlFor="dob">Birth Date</label>
+                                    <input type="date" className="form-control uparzon-input-lg" id="dob" required  onChange={handlechange} value={form.dob}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
@@ -47,7 +125,25 @@ const EmediPartner = (props) => {
                             <div className="form-row">
                                 <div className="col-12 mb-3">
                                 <label htmlFor="father_name">Father name</label>
-                                    <input type="text" className="form-control uparzon-input-lg" id="father_name" placeholder='Father Name' required />
+                                    <input type="text" className="form-control uparzon-input-lg" id="father_name" placeholder='Father Name' required  onChange={handlechange} value={form.father_name}/>
+                                <div className="valid-feedback">
+                                    Looks good!
+                                </div>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="col-12 mb-3">
+                                <label htmlFor="mother_name">Mother name</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="mother_name" placeholder='Mother Name' required  onChange={handlechange} value={form.mother_name}/>
+                                <div className="valid-feedback">
+                                    Looks good!
+                                </div>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="col-12 mb-3">
+                                <label htmlFor="age">Age</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="age" placeholder='age' required  onChange={handlechange} value={form.age}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
@@ -55,9 +151,9 @@ const EmediPartner = (props) => {
                             </div>
                             <div className="form-row">
                             <div className="col-12 mb-3">
-                            <label htmlFor="sex">Sex:</label>
-                            <select className="custom-select uparzon-input-lg" id="sex" required>
-                                <option selected disabled value>Choose gender</option>
+                            <label htmlFor="gender">Sex:</label>
+                            <select className="custom-select uparzon-input-lg" id="gender" required  onChange={handlechange} value={form.gender}>
+                                <option selected value=''>Choose gender</option>
                                 <option value='male'>Male</option>
                                 <option value='female'>Female</option>
                                 <option value='other'>Other</option>
@@ -72,8 +168,8 @@ const EmediPartner = (props) => {
                         <div className="col-lg-4 col-12 ">
                             <div className="form-row">
                                 <div className="col-12 mb-3">
-                                <label htmlFor="mobile_no">Mobile No.</label>
-                                    <input type="text" className="form-control uparzon-input-lg" id="mobile_no" placeholder='+88' required />
+                                <label htmlFor="mobile">Mobile No.</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="mobile" placeholder='+88' required  onChange={handlechange} value={form.mobile}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
@@ -82,7 +178,7 @@ const EmediPartner = (props) => {
                             <div className="form-row">
                                 <div className="col-12 mb-3">
                                 <label htmlFor="email">Email</label>
-                                    <input type="email" className="form-control uparzon-input-lg" id="email" required placeholder='email' />
+                                    <input type="email" className="form-control uparzon-input-lg" id="email" required placeholder='email'  onChange={handlechange} value={form.email}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
@@ -90,26 +186,19 @@ const EmediPartner = (props) => {
                             </div>
                             <div className="form-row">
                                 <div className="col-12 mb-3">
-                                <label htmlFor="nid_no">NID</label>
-                                    <input type="text" className="form-control uparzon-input-lg" id="nid_no" placeholder='NID no' required />
+                                <label htmlFor="nid">NID</label>
+                                    <input type="text" className="form-control uparzon-input-lg" id="nid" placeholder='NID no' required  onChange={handlechange} value={form.nid}/>
                                 <div className="valid-feedback">
                                     Looks good!
                                 </div>
                                 </div>
                             </div>
-                            {/* <div className="form-row">
-                            <div className="col-12 mb-3">
-                            <label htmlFor="sex">Upload:</label>
-                                <input type="file" className="form-control uparzon-input-lg" id="nid_no" placeholder='NID no' required />
-                            <div className="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                            </div>
-                            </div> */}
                         </div>
-                        {/* col ends here  */}
+                        {/* col ends here   onChange={handlechange} value={form.photo}*/}
                         <div className={`d-flex col-lg-4  align-items-center flex-column `}>        
-                        <label htmlFor="image mb-2">Upload photo</label> 
+                        <input type="file" className="file-input" id="partner_nid" required />
+                        Upload photo
+                        <label htmlFor="partner_nid" className="mt-2">
                         <svg className='cursor_pointer' id='image' xmlns="http://www.w3.org/2000/svg" width="254" height="254" viewBox="0 0 254 264">
                             <g id="Group_67098" data-name="Group 67098" transform="translate(-1465 -326)">
                                 <g id="Rectangle_2726" data-name="Rectangle 2726" transform="translate(1465 326)" fill="#fff" stroke="#7a0553" stroke-width="1" stroke-dasharray="3">
@@ -131,11 +220,12 @@ const EmediPartner = (props) => {
                                 </g>
                                 </g>
                                 </g>
-                        </svg>
+                                </svg>
+                            </label>
                     </div>
                     </div>
                     <div className="mt-2">
-                        <SubmitButton/>
+                        <SubmitButton click={register}/>
                     </div>
                 </main>
             </div>

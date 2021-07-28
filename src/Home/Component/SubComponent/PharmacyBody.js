@@ -1,6 +1,7 @@
 import Skeleton from '@yisheng90/react-loading';
 import React from 'react';
 import { connect } from 'react-redux';
+import { renderDiv } from '../../../PrimarySections/Utility';
 import './pharmacybody.css';
 
 export const PharmacyBody = (props) => {
@@ -8,61 +9,51 @@ export const PharmacyBody = (props) => {
     <div className="pharmacy_body mt-5">
       <div className="container-md-fluid">
         <div className="row">
-          <div className="col-12 col-md-6 pharmacy_left mb-2 mb-sm-0">
-            <div className="col m-auto">
-              <ul className="list">
+          <div className="col-12 col-md-6 pharmacy_left mb-4 mb-sm-0">
+            {
+              props.loading ?
+              (
+                <ul className="list">
                 <li>
-                  <b className="mb-1">How to order medicines on Emedilife?</b>
+                  <Skeleton width={'100%'} height={40} />
+
                   <ul className="sub_list">
                     <li>
-                      {' '}
-                      <img
-                        src="./assets/images/pharmacy_images/list/1.png"
-                        alt=""
-                      />{' '}
-                      Upload Valid Prescription
+                      <Skeleton width={'100%'} height={40} />
+
                     </li>
                     <li>
-                      {' '}
-                      <img
-                        src="./assets/images/pharmacy_images/list/2.png"
-                        alt=""
-                      />{' '}
-                      Get a Confirmation Call
+                      <Skeleton width={'100%'} height={40} />
+
                     </li>
                     <li>
-                      {' '}
-                      <img
-                        src="./assets/images/pharmacy_images/list/3.png"
-                        alt=""
-                      />{' '}
-                      Delivery at your door step
+                      <Skeleton width={'100%'} height={40} />
+
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <b>You Don't have Prescription? No Worry!</b>
+                  <Skeleton width={'100%'} height={40} />
+
                   <ul className="sub_list">
                     <li>
-                      {' '}
-                      <img
-                        src="./assets/images/pharmacy_images/list/1.png"
-                        alt=""
-                      />{' '}
-                      Search &amp; add the medicines
+                      <Skeleton width={'100%'} height={40} />
+
                     </li>
                     <li>
-                      {' '}
-                      <img
-                        src="./assets/images/pharmacy_images/list/2.png"
-                        alt=""
-                      />{' '}
-                      Get a Confirmation Call
+                      <Skeleton width={'100%'} height={40} />
+
                     </li>
                   </ul>
                 </li>
               </ul>
+              ):
+                  (
+            <div className="col m-auto">
+              {renderDiv(props.video?.description)}
             </div>
+                )
+              }
           </div>
           <div className="col-12 col-md-6 pharmacy_right">
             {props.loading ? (

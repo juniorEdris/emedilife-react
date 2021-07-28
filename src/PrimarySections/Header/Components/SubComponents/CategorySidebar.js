@@ -71,9 +71,9 @@ const CategorySidebar = (props) => {
                               props.setCategoryID(cat.id);
                           }}
                             >{childcat.name}</Link>
-                      </li>))}
+                          </li>))}
                   </ul>}
-                  </li>)}
+                    </li>)}
                 </ul>
                 }
                 </li>

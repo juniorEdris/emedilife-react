@@ -26,7 +26,7 @@
     height: 100vh;
     position: sticky;
     top: 0;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 .top-0{
     top: 0 !important;
@@ -39,14 +39,13 @@
 .sidebar_route_list.loader li:hover{
     background-color: unset;
 }
-.sidebar_route_list li{
-margin-bottom: 0.7rem;
+.sidebar_route_list li:not(:last-child){
+    margin-bottom: 0.7rem;
 }
 .sidebar_route_list li a{
     width: 100%;
     padding: 0.7rem;
     background-color: var(--theme-color);
-    margin-bottom: 0.4rem;
 }
 .sidebar_route_list li a:hover{
     background-color: #111;
@@ -78,14 +77,33 @@ margin-bottom: 0.7rem;
     content: '\f0dd';
     color: var(--light-color);
 }
+.category_list li{
+    position: relative;
+}
 .category_list .sub_category{
- display: none;
+    width: 13vw;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    background-color: var(--light-color);
+}
+.category_list .sub_category li{
+    position: relative;
 }
 .category_list li:hover .sub_category{
- display: block;
+    opacity: 1;
+    visibility: visible;
 }
 .sub_category .child_category{
-    display: none;
+    width: 13vw;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    background-color: var(--light-color);
 }
 .sub_category li a,.child_category li a{
  background: var(--light-color);
@@ -93,7 +111,8 @@ margin-bottom: 0.7rem;
  border: 1px solid var(--theme-color);
 }
 .sub_category li:hover .child_category{
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 .sub_category li a:hover,.child_category li a:hover{
     color: var(--light-color);

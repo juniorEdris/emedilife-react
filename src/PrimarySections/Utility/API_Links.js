@@ -47,4 +47,6 @@ export const ENDPOINTS = {
   WISH_GUEST_CART: `api/product/add_to_wishlist`,
   MOREPAGES: `api/get_page_contents`,
   EMAILCHECK: `api/app/check_unique_email`,
+  EMEDICARE: `api/web/register/emedilife-care`,
+  EMEDIPARTNER: `api/web/register/emedilife-partner`,
 };
