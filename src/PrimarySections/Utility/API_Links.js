@@ -49,4 +49,8 @@ export const ENDPOINTS = {
   EMAILCHECK: `api/app/check_unique_email`,
   EMEDICARE: `api/web/register/emedilife-care`,
   EMEDIPARTNER: `api/web/register/emedilife-partner`,
+  EMEDI_E_VOLUNTEER: `api/web/register/evolunteer`,
+  // 
+  EMEDI_CAREER: `api/web/register/emedilife-careers`,
+  EMEDI_SHEBOK: `api/web/register/medishebok`,
 };

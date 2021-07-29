@@ -70,19 +70,7 @@ const EmediPartner = (props) => {
             error: '',
             status:'',
         })
-        setForm({
-            name: '',
-            mobile: '',
-            dob: '',
-            age: '',
-            email: '',
-            father_name: '',
-            mother_name: '',
-            nid: '',
-            gender: '',
-            religion: '',
-            marital_status:''
-        })
+
     }
     return (
         <div className='emedi_partner_wrapper mt-4 mb-4'>

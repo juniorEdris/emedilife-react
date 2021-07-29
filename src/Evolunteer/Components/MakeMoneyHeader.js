@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import AgreementRadio from '../../JobAppplication/Components/SubComponents/AgreementRadio';
 import SubmitButton from '../../JobAppplication/Components/SubComponents/SubmitButton';
 import { API, ENDPOINTS } from '../../PrimarySections/Utility/API_Links';
+import SpinLoader from '../../PrimarySections/PageLoader/SpinLoader';
+import { PopUp } from '../../PrimarySections/SectionUtils/PopUp';
 
 const MakeMoneyHeader = (props) => {
     const [selected, setSelected] = useState(false);
@@ -17,7 +19,14 @@ const MakeMoneyHeader = (props) => {
         nid: '',
         gender: '',
         religion: '',
-        marital_status:''
+        marital_status: '',
+        alt_mobile:'',
+        active_mobile:'',
+        present_address:'',
+        permanent_address:'',
+        experience_details:'',
+        training_details:'',
+        expected_salary:'',
     });
     const [loading, setLoading] = useState(false);
     const [alert, setAlert] = useState({
@@ -30,15 +39,22 @@ const MakeMoneyHeader = (props) => {
     }
     const register = async e => {
         e.preventDefault()
-        setLoading(true)
-        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' ) {
+        setLoading(true) 
+        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' || form.alt_mobile === '' || form.active_mobile ==='' || form.present_address === '' || form.permanent_address === '' || form.experience_details === '' || form.training_details === '') {
             setLoading(false)
             setAlert({
                 status: true,
                 error: 'Please provide all your informations.'
             })
+        } else if (!selected) {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'select that all the information is true...'
+            })
+            
         } else {
-            await API().post(`${ENDPOINTS.EMEDIPARTNER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`)
+            await API().post(`${ENDPOINTS.EMEDI_E_VOLUNTEER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&alternative_mobile=${form.alt_mobile}&active_mobile=${form.active_mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&present_address=${form.present_address}&experience=${form.experience_details}&training=${form.training_details}&expected_salary=${form.expected_salary}&acknowledgement=${selected ? 1 :0}`)
             .then(res=>{
                 if (res.data.status) {
                     setAlert({
@@ -64,29 +80,20 @@ const MakeMoneyHeader = (props) => {
             error: '',
             status:'',
         })
-        setForm({
-            name: '',
-            mobile: '',
-            dob: '',
-            age: '',
-            email: '',
-            father_name: '',
-            mother_name: '',
-            nid: '',
-            gender: '',
-            religion: '',
-            marital_status:''
-        })
     }
+    console.log(selected);
     return (
         <header className='make_money_header'>
+            {loading && <SpinLoader />}
+            {alert.status && alert.success && <PopUp close={closePopup} response={ alert.success }/>}
+            {alert.status && alert.error && <PopUp close={closePopup} response={ alert.error }/>}
             <div className='make_money_header_body'>
             <div className='col-12 d-flex flex-wrap header_input  p-0'>
          <div className="col-12 col-lg-4  p-0">
             <form className="needs-validation" noValidate>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="name" className=' table_inputs_heading'>Full name</label>
+                    <label htmlFor="name" className=' table_inputs_heading'>Full name:</label>
                                     <input type="text" className="form-control uparzon-input-lg" id="name" placeholder='Full Name' required onChange={handlechange} value={form.name}/>
                     <div className="valid-feedback">
                         Looks good!
@@ -95,20 +102,26 @@ const MakeMoneyHeader = (props) => {
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="age" className=' table_inputs_heading'>Age</label>
+                    <label htmlFor="dob" className=' table_inputs_heading'>Date of birth:</label>
+                        <input type="date" className="form-control uparzon-input-lg" id="dob" placeholder='Age in number' required onChange={handlechange} value={form.dob}/>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="col-12 mb-3">
+                    <label htmlFor="age" className=' table_inputs_heading'>Age:</label>
                         <input type="text" className="form-control uparzon-input-lg" id="age" placeholder='Age in number' required onChange={handlechange} value={form.age}/>
 
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="father_name" className=' table_inputs_heading'>Father's name</label>
+                    <label htmlFor="father_name" className=' table_inputs_heading'>Father's name:</label>
                         <input type="text" className="form-control uparzon-input-lg" id="father_name"  placeholder='Fathers Name'  required onChange={handlechange} value={form.father_name}/>
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="mother_name" className=' table_inputs_heading'>Mother's name</label>
+                    <label htmlFor="mother_name" className=' table_inputs_heading'>Mother's name:</label>
                         <input type="text" className="form-control uparzon-input-lg" id="mother_name"  placeholder='Mothers Name' required onChange={handlechange} value={form.mother_name}/>
                     </div>
                 </div>
@@ -120,8 +133,8 @@ const MakeMoneyHeader = (props) => {
                     <form className="needs-validation" noValidate>
                     <div className="form-row">
                         <div className="col-12 mb-3">
-                        <label htmlFor="mobile" className=' table_inputs_heading'>Mobile No.</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="mobile"  placeholder='+88'  required />
+                        <label htmlFor="mobile" className=' table_inputs_heading'>Mobile No:</label>
+                            <input type="text" className="form-control uparzon-input-lg" id="mobile"  placeholder='+88'  required onChange={handlechange} value={form.mobile} />
                         <div className="valid-feedback">
                             Looks good!
                         </div>
@@ -129,8 +142,8 @@ const MakeMoneyHeader = (props) => {
                     </div>
                     <div className="form-row">
                         <div className="col-12 mb-3">
-                        <label htmlFor="mobile" className=' table_inputs_heading'>Alternative Mobile No.</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="mobile"  placeholder='+88'  required />
+                        <label htmlFor="alt_mobile" className=' table_inputs_heading'>Alternative Mobile No:</label>
+                            <input type="text" className="form-control uparzon-input-lg" id="alt_mobile"  placeholder='+88'  required onChange={handlechange} value={form.alt_mobile} />
                         <div className="valid-feedback">
                             Looks good!
                         </div>
@@ -138,15 +151,17 @@ const MakeMoneyHeader = (props) => {
                     </div>
                     <div className="form-row">
                         <div className="col-12 mb-3">
-                        <label htmlFor="email" className=' table_inputs_heading'>Email</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="email"  placeholder='Email' required />
+                        <label htmlFor="email" className=' table_inputs_heading'>Email:</label>
+                            <input type="text" className="form-control uparzon-input-lg" id="email" placeholder='Email' required onChange={handlechange} value={form.email} />
                         </div>
                     </div>
                     </form>
                     </div>
                     <div className={`${props.no_upload_image ? 'd-none' : 'd-flex'} col-lg-4  align-items-center align-items-md-start justify-content-center flex-column `}>        
-                        <label htmlFor="image" className=' table_inputs_heading'>Upload photo</label> 
-                        <svg className='cursor_pointer' id='image' xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 254 264">
+                                Upload photo
+                        <input type="file" className="file-input" id="make_money_image" required />
+                        <label htmlFor="make_money_image" className=' table_inputs_heading'>
+                            <svg className='cursor_pointer' id='image' xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 254 264">
                             <g id="Group_67098" data-name="Group 67098" transform="translate(-1465 -326)">
                                 <g id="Rectangle_2726" data-name="Rectangle 2726" transform="translate(1465 326)" fill="#fff" stroke="#7a0553" stroke-width="1" stroke-dasharray="3">
                                 <rect width="254" height="264" rx="7" stroke="none"/>
@@ -168,6 +183,7 @@ const MakeMoneyHeader = (props) => {
                                 </g>
                                 </g>
                         </svg>
+                        </label> 
                     </div>
                 </div>
                 <div className="col-12 p-0">
@@ -175,7 +191,7 @@ const MakeMoneyHeader = (props) => {
                     <div className="col-12 mb-3 ">
                     <div className="form-group">
                                     
-                    <label htmlFor="nid" className=' table_inputs_heading'>NID</label>
+                    <label htmlFor="nid" className=' table_inputs_heading'>NID:</label>
                         <input type="text" className="form-control uparzon-input-lg" id="nid"  required onChange={handlechange} value={form.nid}/>
                     </div>
                     </div>
@@ -187,16 +203,16 @@ const MakeMoneyHeader = (props) => {
         <div className="col-12 p-0">
         <div className="form-row p-0">
                 <div className="col-lg-4 mb-3 p-0">
-                    <label htmlFor="active_mobile_number" className=' table_inputs_heading'>Your Active Mobile No:</label>
-                    <input type="text" className="form-control uparzon-input-lg" id="active_mobile_number"  required/>  
+                    <label htmlFor="active_mobile" className=' table_inputs_heading'>Your Active Mobile No:</label>
+                    <input type="text" className="form-control uparzon-input-lg" id="active_mobile"  required onChange={handlechange} value={form.active_mobile}/>  
                     <div className="invalid-feedback">
                         Please select a valid state.
                     </div>
                 </div>
                 <div className="col-lg-4 mb-3">
                 <label htmlFor="religion" className=' table_inputs_heading'>Religion:</label>
-                <select className="custom-select uparzon-input-lg" id="religion" required >
-                    <option selected disabled value>Choose religion</option>
+                <select className="custom-select uparzon-input-lg" id="religion" required onChange={handlechange} value={form.religion}>
+                    <option selected value=''>Choose religion</option>
                     <option value='islam'>Islam</option>
                     <option value='hindu'>Hindu</option>
                     <option value='other'>Other</option>
@@ -206,11 +222,11 @@ const MakeMoneyHeader = (props) => {
                 </div>
                 </div>
                 <div className="col-lg-4 mb-3">
-                <label htmlFor="religion" className=' table_inputs_heading'>Religion:</label>
-                <select className="custom-select uparzon-input-lg" id="religion" required >
-                    <option selected disabled value>Choose religion</option>
-                    <option value='islam'>Islam</option>
-                    <option value='hindu'>Hindu</option>
+                <label htmlFor="gender" className=' table_inputs_heading'>Gender:</label>
+                <select className="custom-select uparzon-input-lg" id="gender" required onChange={handlechange} value={form.gender}>
+                    <option selected value=''>Select one</option>
+                    <option value='male'>Male</option>
+                    <option value='female'>Female</option>
                     <option value='other'>Other</option>
                 </select>
                 <div className="invalid-feedback">
@@ -223,16 +239,16 @@ const MakeMoneyHeader = (props) => {
                 <div className="form-row">
                 <div className="col-12 mb-3 ">
                 <div className="form-group">
-                        <label htmlFor="present_address" className=' table_inputs_heading'>Present Address</label>
-                        <textarea className="form-control" id="present_address" rows={3} defaultValue={""} />
+                        <label htmlFor="present_address" className=' table_inputs_heading'>Present Address:</label>
+                        <textarea className="form-control" id="present_address" rows={3}  onChange={handlechange} value={form.present_address}/>
                     </div>
                     </div>
                     </div>
                 <div className="form-row">
                         <div className="col-12 mb-3">
                         <div className="form-group">
-                            <label htmlFor="permanent_address" className=' table_inputs_heading'>Permanent Address</label>
-                            <textarea className="form-control" id="permanent_address" rows={3} defaultValue={""} />
+                            <label htmlFor="permanent_address" className=' table_inputs_heading'>Permanent Address:</label>
+                            <textarea className="form-control" id="permanent_address" rows={3}  onChange={handlechange} value={form.permanent_address}/>
                         </div>
                         </div>
                     </div>
@@ -242,16 +258,28 @@ const MakeMoneyHeader = (props) => {
         <div className="form-row">
             <div className="col-lg-6">
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1" className=' table_inputs_heading'>Experience (If any):</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} defaultValue={""} />
+                    <label htmlFor="experience_details" className=' table_inputs_heading'>Experience (If any):</label>
+                    <textarea className="form-control" id="experience_details" rows={3} onChange={handlechange} value={form.experience_details} />
                 </div>
             </div>
             <div className="col-lg-6">
                 <div className="form-group">
-                    <label htmlFor="exampleFormControlTextarea1" className=' table_inputs_heading'>Training (If any):</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} defaultValue={""} />
+                    <label htmlFor="training_details" className=' table_inputs_heading'>Training (If any):</label>
+                    <textarea className="form-control" id="training_details" rows={3} onChange={handlechange} value={form.training_details} />
                 </div>
-            </div>
+                </div>
+                <div className="col-12 p-0">
+                <div className="form-row">
+                    <div className="col-12 col-lg-5 mb-3 ">
+                    <div className="form-group">
+                                    
+                    <label htmlFor="expected_salary" className=' table_inputs_heading'>Expected Salary:</label>
+                        <input type="text" className="form-control uparzon-input-lg" id="expected_salary"  required onChange={handlechange} value={form.expected_salary}/>
+                    </div>
+                    </div>
+                </div>
+                
+                </div>
             </div>
                 </div> 
                 <div className="text-center">
@@ -267,7 +295,7 @@ const MakeMoneyHeader = (props) => {
                         </small>
                     </div>
                 </div>
-                <SubmitButton/>
+                <SubmitButton click={register}/>
             </div>
         </header>
     )
