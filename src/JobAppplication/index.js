@@ -12,27 +12,7 @@ const JobAplication = (props) => {
 
     }, [])
     const [activeSection, setActiveSection] = useState('part time job');
-    const [partTimeInfo, setPartTimeInfo] = useState(
-        {
-            full_name: '',
-            birth_date: '',
-            father_name: '',
-            mother_name: '',
-            sex: '',
-            religion: '',
-            mobile:'',
-            email:'',
-            nid_no:'',
-            present_address:'',
-            permanent_address:'',
-        }
-    );
-    const partTimeDetailsSet = e => {
-        setPartTimeInfo({
-            ...partTimeInfo,
-            [e.target.id]: e.target.value,
-        })
-    }
+    
     const section_setters = [
         {
             id: 1,
@@ -63,20 +43,14 @@ const JobAplication = (props) => {
                     {
                         activeSection === 'part time job' ?
                             <PartTimeForm
-                                partTimeInfo = {partTimeInfo}
-                                setPartTimeInfo={setPartTimeInfo}
-                                inputEvent={partTimeDetailsSet}    
+   
                             /> :
                             activeSection === 'full time job' ?
                             <FullTimeForm
-                                partTimeInfo = {partTimeInfo}
-                                setPartTimeInfo={setPartTimeInfo}
-                                inputEvent={partTimeDetailsSet}  
+ 
                             /> :
                             <VoulenteerForm 
-                                partTimeInfo = {partTimeInfo}
-                                setPartTimeInfo={setPartTimeInfo}
-                                inputEvent={partTimeDetailsSet}  
+ 
                             />
                     }
             </main>

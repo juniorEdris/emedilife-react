@@ -8,7 +8,7 @@ const HeadInputs = (props) => {
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="full_name">Full name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.partTimeInfo.full_name} required />
+                        <input type="text" className="form-control uparzon-input-lg" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.form.full_name} required />
                     <div className="valid-feedback">
                         Looks good!
                     </div>
@@ -16,28 +16,28 @@ const HeadInputs = (props) => {
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
-                    <label htmlFor="birth_date">Date of birth</label>
-                        <input type="date" className="form-control uparzon-input-lg" id="birth_date" onChange={props.inputEvent}  value={props.partTimeInfo.birth_date} required />
+                    <label htmlFor="dob">Date of birth</label>
+                        <input type="date" className="form-control uparzon-input-lg" id="dob" onChange={props.inputEvent}  value={props.form.dob} required />
 
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="father_name">Father's name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="father_name" onChange={props.inputEvent} placeholder='Fathers Name' value={props.partTimeInfo.father_name} required />
+                        <input type="text" className="form-control uparzon-input-lg" id="father_name" onChange={props.inputEvent} placeholder='Fathers Name' value={props.form.father_name} required />
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="mother_name">Mother's name</label>
-                        <input type="text" className="form-control uparzon-input-lg" id="mother_name" onChange={props.inputEvent} placeholder='Mothers Name' value={props.partTimeInfo.mother_name} required/>
+                        <input type="text" className="form-control uparzon-input-lg" id="mother_name" onChange={props.inputEvent} placeholder='Mothers Name' value={props.form.mother_name} required/>
                     </div>
                 </div>
                 <div className="form-row">
                 <div className="col-12 mb-3">
-                <label htmlFor="sex">Sex:</label>
-                <select className="custom-select uparzon-input-lg" id="sex" required onChange={ props.inputEvent}>
-                    <option selected disabled value>Choose gender</option>
+                <label htmlFor="gender">Gender:</label>
+                <select className="custom-select uparzon-input-lg" id="gender" required onChange={ props.inputEvent}>
+                    <option selected value=''>Choose gender</option>
                     <option value='male'>Male</option>
                     <option value='female'>Female</option>
                     <option value='other'>Other</option>
@@ -51,7 +51,7 @@ const HeadInputs = (props) => {
                 <div className="col-12 mb-3">
                 <label htmlFor="religion">Religion:</label>
                 <select className="custom-select uparzon-input-lg" id="religion" required onChange={ props.inputEvent}>
-                    <option selected disabled value>Choose religion</option>
+                    <option selected value=''>Choose religion</option>
                     <option value='islam'>Islam</option>
                     <option value='hindu'>Hindu</option>
                     <option value='other'>Other</option>
@@ -70,7 +70,7 @@ const HeadInputs = (props) => {
                     <div className="form-row">
                         <div className="col-12 mb-3">
                         <label htmlFor="mobile">Mobile</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="mobile" onChange={props.inputEvent} placeholder='Mobile' value={props.partTimeInfo.mobile} required />
+                            <input type="text" className="form-control uparzon-input-lg" id="mobile" onChange={props.inputEvent} placeholder='Mobile' value={props.form.mobile} required />
                         <div className="valid-feedback">
                             Looks good!
                         </div>
@@ -79,22 +79,24 @@ const HeadInputs = (props) => {
                     <div className="form-row">
                         <div className="col-12 mb-3">
                         <label htmlFor="email">Email</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="email" onChange={props.inputEvent} placeholder='Email' value={props.partTimeInfo.email} required />
+                            <input type="text" className="form-control uparzon-input-lg" id="email" onChange={props.inputEvent} placeholder='Email' value={props.form.email} required />
                         </div>
                     </div>
                     <div className="form-row">
                                 <div className="col-12 mb-3">
                         <div className="form-group">
                                         
-                        <label htmlFor="nid_no">NID</label>
-                            <input type="text" className="form-control uparzon-input-lg" id="nid_no" onChange={props.inputEvent} placeholder='NID no.' value={props.partTimeInfo.nid_no} required/>
+                        <label htmlFor="nid">NID</label>
+                            <input type="text" className="form-control uparzon-input-lg" id="nid" onChange={props.inputEvent} placeholder='NID no.' value={props.form.nid} required/>
                         </div>
                         </div>
                     </div>
                     </form>
                     </div>
-                    <div className={`${props.no_upload_image ? 'd-none' : 'd-flex'} col-lg-4  align-items-center align-items-md-start justify-content-center flex-column `}>        
-                        <label htmlFor="image">Upload photo</label> 
+                    <div className={`${props.no_upload_image ? 'd-none' : 'd-flex'} col-lg-4  align-items-center align-items-md-start flex-column `}>
+                        <input type="file" className="file-input" id="medishebok_image" required />
+                        <label htmlFor="medishebok_image">
+                            <span className='mb-2'>Upload photo</span>
                         <svg className='cursor_pointer' id='image' xmlns="http://www.w3.org/2000/svg" width="190" height="190" viewBox="0 0 254 264">
                             <g id="Group_67098" data-name="Group 67098" transform="translate(-1465 -326)">
                                 <g id="Rectangle_2726" data-name="Rectangle 2726" transform="translate(1465 326)" fill="#fff" stroke="#7a0553" stroke-width="1" stroke-dasharray="3">
@@ -116,7 +118,8 @@ const HeadInputs = (props) => {
                                 </g>
                                 </g>
                                 </g>
-                        </svg>
+                            </svg>
+                        </label>
                     </div>
                 </div>
                 <div className="col-12 ">
@@ -124,7 +127,7 @@ const HeadInputs = (props) => {
                         <div className="col-12 mb-3 p-0">
                         <div className="form-group">
                             <label htmlFor="present_address">Present Address</label>
-                            <textarea className="form-control" id="present_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.partTimeInfo.present_address}/>
+                            <textarea className="form-control" id="present_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.form.present_address}/>
                         </div>
                         </div>
                     </div>
@@ -134,7 +137,7 @@ const HeadInputs = (props) => {
                         <div className="col-12 mb-3 p-0">
                         <div className="form-group">
                             <label htmlFor="permanent_address">Permanent Address</label>
-                            <textarea className="form-control" id="permanent_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.partTimeInfo.permanent_address}/>
+                            <textarea className="form-control" id="permanent_address" rows={3} defaultValue={""} onChange={props.inputEvent} value={props.form.permanent_address}/>
                         </div>
                         </div>
                     </div>

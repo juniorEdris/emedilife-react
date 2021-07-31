@@ -50,11 +50,11 @@ const MakeMoneyHeader = (props) => {
             setLoading(false)
             setAlert({
                 status: true,
-                error: 'select that all the information is true...'
+                error: 'select all the information is true...'
             })
             
         } else {
-            await API().post(`${ENDPOINTS.EMEDI_E_VOLUNTEER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&alternative_mobile=${form.alt_mobile}&active_mobile=${form.active_mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&present_address=${form.present_address}&experience=${form.experience_details}&training=${form.training_details}&expected_salary=${form.expected_salary}&acknowledgement=${selected ? 1 :0}`)
+            await API().post(`${ENDPOINTS.EMEDI_E_VOLUNTEER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&alternative_mobile=${form.alt_mobile}&active_mobile=${form.active_mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&present_address=${form.present_address}&experience=${form.experience_details}&training=${form.training_details}&expected_salary=${form.expected_salary}&acknowledgement=${selected ? 1 :0}&permanent_address=${form.permanent_address}`)
             .then(res=>{
                 if (res.data.status) {
                     setAlert({
@@ -81,7 +81,6 @@ const MakeMoneyHeader = (props) => {
             status:'',
         })
     }
-    console.log(selected);
     return (
         <header className='make_money_header'>
             {loading && <SpinLoader />}

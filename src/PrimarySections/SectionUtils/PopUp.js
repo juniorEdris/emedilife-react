@@ -14,7 +14,7 @@ export const PopUp = (props) => {
             </div>
             <div className="popup_header">
               <div className="success_header">
-                <h3 className="text-capitalize">{props.response}</h3>
+                <h4 className="text-capitalize">{props.response}</h4>
               </div>
             </div>
             <div className="popup_footer">
@@ -27,7 +27,7 @@ export const PopUp = (props) => {
                 <Link
                   to="#"
                   onClick={props.close}
-                  className="btn btn-success col-8 col-md-5 mt-3">
+                  className="btn btn-danger col-8 col-md-4 mt-3">
                   Close
                 </Link>
               </div>

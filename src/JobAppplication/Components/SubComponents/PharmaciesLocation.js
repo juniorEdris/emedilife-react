@@ -22,7 +22,7 @@ const PharmaciesLocation = (props) => {
                         <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                             </div>
                          </div>
                         </div>       
@@ -31,7 +31,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                             </div>
                          </div>
                         </div>
@@ -40,7 +40,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                             </div>
                          </div>
                         </div>
@@ -52,7 +52,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -61,7 +61,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -70,7 +70,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -82,7 +82,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -91,7 +91,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -100,7 +100,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -112,7 +112,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -121,7 +121,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -130,7 +130,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -142,7 +142,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -151,7 +151,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
@@ -160,7 +160,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" onChange={props.inputEvent}  value={props.partTimeInfo.full_name} required />
+                                    <input type="text" className="form-control border-0" id="location" onChange={props.inputEvent}  value={props.form.location} required />
                                 </div>
                             </div>
                             </div>        
