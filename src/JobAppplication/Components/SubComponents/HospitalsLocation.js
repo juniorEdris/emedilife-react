@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const PharmaciesLocation = (props) => {
+const MedicalLocation = (props) => {
     return (
         <div className="job_application middle_inputs mb-3 mt-3">
                 <div className="col-12 table_inputs_heading text-color-theme">{props.title}: </div>
@@ -22,7 +22,7 @@ const PharmaciesLocation = (props) => {
                         <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="pharmaTypeOne" required onChange={props.inputEvent.pharmaLocationEventOne} value={props.form.PharmalocationOne.pharmaTypeOne}/>
+                                <input type="text" className="form-control border-0" id="medicalTypeOne" required onChange={props.inputEvent.medicalLocationEventOne} value={props.form.medicallocationOne.medicalTypeOne}/>
                             </div>
                          </div>
                         </div>       
@@ -31,7 +31,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="pharmaNameOne" required onChange={props.inputEvent.pharmaLocationEventOne} value={props.form.PharmalocationOne.pharmaNameOne}/>
+                                <input type="text" className="form-control border-0" id="medicalNameOne" required onChange={props.inputEvent.medicalLocationEventOne} value={props.form.medicallocationOne.medicalNameOne}/>
                             </div>
                          </div>
                         </div>
@@ -40,7 +40,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="pharmaAddressOne" required onChange={props.inputEvent.pharmaLocationEventOne} value={props.form.PharmalocationOne.pharmaAddressOne}/>
+                                <input type="text" className="form-control border-0" id="medicalAddressOne" required onChange={props.inputEvent.medicalLocationEventOne} value={props.form.medicallocationOne.medicalAddressOne}/>
                             </div>
                          </div>
                         </div>
@@ -52,7 +52,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaTypeTwo" required onChange={props.inputEvent.pharmaLocationEventTwo} value={props.form.PharmalocationTwo.pharmaTypeTwo}/>
+                                    <input type="text" className="form-control border-0" id="medicalTypeTwo" required onChange={props.inputEvent.medicalLocationEventTwo} value={props.form.medicallocationTwo.medicalTypeTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -61,7 +61,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaNameTwo" required onChange={props.inputEvent.pharmaLocationEventTwo} value={props.form.PharmalocationTwo.pharmaNameTwo} />
+                                    <input type="text" className="form-control border-0" id="medicalNameTwo" required onChange={props.inputEvent.medicalLocationEventTwo} value={props.form.medicallocationTwo.medicalNameTwo} />
                                 </div>
                             </div>
                             </div>        
@@ -70,7 +70,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaAddressTwo" required onChange={props.inputEvent.pharmaLocationEventTwo} value={props.form.PharmalocationTwo.pharmaAddressTwo}/>
+                                    <input type="text" className="form-control border-0" id="medicalAddressTwo" required onChange={props.inputEvent.medicalLocationEventTwo} value={props.form.medicallocationTwo.medicalAddressTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -82,7 +82,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaTypeThree" required onChange={props.inputEvent.pharmaLocationEventThree} value={props.form.PharmalocationThree.pharmaTypeThree}/>
+                                    <input type="text" className="form-control border-0" id="medicalTypeThree" required onChange={props.inputEvent.medicalLocationEventThree} value={props.form.medicallocationThree.medicalTypeThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -91,7 +91,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaNameThree" required onChange={props.inputEvent.pharmaLocationEventThree} value={props.form.PharmalocationThree.pharmaNameThree}/>
+                                    <input type="text" className="form-control border-0" id="medicalNameThree" required onChange={props.inputEvent.medicalLocationEventThree} value={props.form.medicallocationThree.medicalNameThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -100,7 +100,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaAddressThree" required onChange={props.inputEvent.pharmaLocationEventThree} value={props.form.PharmalocationThree.pharmaAddressThree}/>
+                                    <input type="text" className="form-control border-0" id="medicalAddressThree" required onChange={props.inputEvent.medicalLocationEventThree} value={props.form.medicallocationThree.medicalAddressThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -112,7 +112,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaTypeFour" required onChange={props.inputEvent.pharmaLocationEventFour} value={props.form.PharmalocationFour.pharmaTypeFour}/>
+                                    <input type="text" className="form-control border-0" id="medicalTypeFour" required onChange={props.inputEvent.medicalLocationEventFour} value={props.form.medicallocationFour.medicalTypeFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -121,7 +121,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaNameFour" required onChange={props.inputEvent.pharmaLocationEventFour} value={props.form.PharmalocationFour.pharmaNameFour}/>
+                                    <input type="text" className="form-control border-0" id="medicalNameFour" required onChange={props.inputEvent.medicalLocationEventFour} value={props.form.medicallocationFour.medicalNameFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -130,7 +130,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaAddressFour" required onChange={props.inputEvent.pharmaLocationEventFour} value={props.form.PharmalocationFour.pharmaAddressFour}/>
+                                    <input type="text" className="form-control border-0" id="medicalAddressFour" required onChange={props.inputEvent.medicalLocationEventFour} value={props.form.medicallocationFour.medicalAddressFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -142,7 +142,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaTypeFive" required onChange={props.inputEvent.pharmaLocationEventFive} value={props.form.PharmalocationFive.pharmaTypeFive}/>
+                                    <input type="text" className="form-control border-0" id="medicalTypeFive" required onChange={props.inputEvent.medicalLocationEventFive} value={props.form.medicallocationFive.medicalTypeFive}/>
                                 </div>
                             </div>
                             </div>        
@@ -151,7 +151,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaNameFive" required onChange={props.inputEvent.pharmaLocationEventFive} value={props.form.PharmalocationFive.pharmaNameFive}/>
+                                    <input type="text" className="form-control border-0" id="medicalNameFive" required onChange={props.inputEvent.medicalLocationEventFive} value={props.form.medicallocationFive.medicalNameFive}/>
                                 </div>
                             </div>
                             </div>        
@@ -160,7 +160,7 @@ const PharmaciesLocation = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="pharmaAddressFive" required onChange={props.inputEvent.pharmaLocationEventFive} value={props.form.PharmalocationFive.pharmaAddressFive}/>
+                                    <input type="text" className="form-control border-0" id="medicalAddressFive" required onChange={props.inputEvent.medicalLocationEventFive} value={props.form.medicallocationFive.medicalAddressFive}/>
                                 </div>
                             </div>
                             </div>        
@@ -182,4 +182,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PharmaciesLocation)
+export default connect(mapStateToProps, mapDispatchToProps)(MedicalLocation)

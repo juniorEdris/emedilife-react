@@ -5,6 +5,23 @@ const HeadInputs = (props) => {
         <div className='job_application col-12 d-flex flex-wrap header_input  p-0'>
          <div className="col-12 col-lg-4  p-0">
             <form className="needs-validation" noValidate>
+            {props.position && <div className="form-row">
+                <div className="col-12 mb-3">
+                <label htmlFor="position">Position:</label>
+                <select className="custom-select uparzon-input-lg" id="position" required onChange={ props.inputEvent}>
+                    <option selected value=''>Choose position</option>
+                    <option value='marketing-officer-lady'>Marketing Officer (Lady)</option>
+                    <option value='pharmacist-grade-a'>Pharmacist(Grade-A)</option>
+                    <option value='sourcing-officer'>Sourcing Officer</option>
+                    <option value='computer-operator'>Computer Operator</option>
+                    <option value='delivery-man'>Delivery Man</option>
+                    <option value='office-staff'>Office Staff</option>
+                </select>
+                <div className="invalid-feedback">
+                    Please select a valid state.
+                </div>
+                </div>
+                </div>}
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="full_name">Full name</label>

@@ -24,7 +24,7 @@ const EducationQ = (props) => {
                         <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"   required />
+                                <input type="text" className="form-control border-0" id="type"   required onChange={props.inputEvent.educationEventOne} value={props.form.educationOne.type}/>
                             </div>
                          </div>
                         </div>       
@@ -33,7 +33,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"   required />
+                                <input type="text" className="form-control border-0" id="institute"   required onChange={props.inputEvent.educationEventOne} value={props.form.educationOne.institute}/>
                             </div>
                          </div>
                         </div>
@@ -42,7 +42,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"   required />
+                                <input type="text" className="form-control border-0" id="board"   required onChange={props.inputEvent.educationEventOne} value={props.form.educationOne.board}/>
                             </div>
                          </div>
                         </div>
@@ -51,7 +51,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"   required />
+                                <input type="text" className="form-control border-0" id="year"   required onChange={props.inputEvent.educationEventOne} value={props.form.educationOne.year}/>
                             </div>
                          </div>
                         </div>
@@ -60,7 +60,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"   required />
+                                <input type="text" className="form-control border-0" id="result"   required onChange={props.inputEvent.educationEventOne} value={props.form.educationOne.result}/>
                             </div>
                          </div>
                         </div>
@@ -72,7 +72,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="typeTwo"   required onChange={props.inputEvent.educationEventTwo} value={props.form.educationTwo.typeTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -81,7 +81,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="instituteTwo"   required onChange={props.inputEvent.educationEventTwo} value={props.form.educationTwo.instituteTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -90,7 +90,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="boardTwo"   required onChange={props.inputEvent.educationEventTwo} value={props.form.educationTwo.boardTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -99,7 +99,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="yearTwo"   required onChange={props.inputEvent.educationEventTwo} value={props.form.educationTwo.yearTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -108,7 +108,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="resultTwo"   required onChange={props.inputEvent.educationEventTwo} value={props.form.educationTwo.resultTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -120,7 +120,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="typeThree"   required  onChange={props.inputEvent.educationEventThree} value={props.form.educationThree.typeThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -129,7 +129,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="instituteThree"   required  onChange={props.inputEvent.educationEventThree} value={props.form.educationThree.instituteThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -138,7 +138,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="boardThree"   required  onChange={props.inputEvent.educationEventThree} value={props.form.educationThree.boardThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -147,7 +147,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="yearThree"   required  onChange={props.inputEvent.educationEventThree} value={props.form.educationThree.yearThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -156,7 +156,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="resultThree"   required  onChange={props.inputEvent.educationEventThree} value={props.form.educationThree.resultThree}/>
                                 </div>
                             </div>
                             </div>        
@@ -168,7 +168,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="typeFour"   required  onChange={props.inputEvent.educationEventFour} value={props.form.educationFour.typeFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -177,7 +177,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="instituteFour"   required  onChange={props.inputEvent.educationEventFour} value={props.form.educationFour.instituteFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -186,7 +186,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="boardFour"   required  onChange={props.inputEvent.educationEventFour} value={props.form.educationFour.boardFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -195,7 +195,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="yearFour"   required  onChange={props.inputEvent.educationEventFour} value={props.form.educationFour.yearFour}/>
                                 </div>
                             </div>
                             </div>        
@@ -204,7 +204,7 @@ const EducationQ = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name"   required />
+                                    <input type="text" className="form-control border-0" id="resultFour"   required  onChange={props.inputEvent.educationEventFour} value={props.form.educationFour.resultFour}/>
                                 </div>
                             </div>
                             </div>        

@@ -13,7 +13,7 @@ const TableRowsTwo = (props) => {
                         <th scope="col">Name</th>
                         <th scope="col">Relation</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Location</th>
+                        <th scope="col">Phone</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,7 +23,7 @@ const TableRowsTwo = (props) => {
                         <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"  required />
+                                <input type="text" className="form-control border-0" id="referalNameOne" onChange={props.inputEvent.ReferalEventOne} value={props.form.referalOne.referalNameOne}  required />
                             </div>
                          </div>
                         </div>       
@@ -32,7 +32,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"  required />
+                                <input type="text" className="form-control border-0" id="referalRelationOne" onChange={props.inputEvent.ReferalEventOne} value={props.form.referalOne.referalRelationOne}  required />
                             </div>
                          </div>
                         </div>
@@ -41,7 +41,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name"  required />
+                                <input type="text" className="form-control border-0" id="referalAddressOne" onChange={props.inputEvent.ReferalEventOne} value={props.form.referalOne.referalAddressOne}  required />
                             </div>
                          </div>
                         </div>
@@ -50,7 +50,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control border-0" id="full_name" />
+                                <input type="text" className="form-control border-0" id="referalPhoneOne" onChange={props.inputEvent.ReferalEventOne} value={props.form.referalOne.referalPhoneOne} />
                             </div>
                          </div>
                         </div>
@@ -62,7 +62,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" />
+                                    <input type="text" className="form-control border-0" id="referalNameTwo" onChange={props.inputEvent.ReferalEventTwo} value={props.form.referalTwo.referalNameTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -71,7 +71,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" />
+                                    <input type="text" className="form-control border-0" id="referalRelationTwo" onChange={props.inputEvent.ReferalEventTwo} value={props.form.referalTwo.referalRelationTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -80,7 +80,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" />
+                                    <input type="text" className="form-control border-0" id="referalAddressTwo" onChange={props.inputEvent.ReferalEventTwo} value={props.form.referalTwo.referalAddressTwo}/>
                                 </div>
                             </div>
                             </div>        
@@ -89,7 +89,7 @@ const TableRowsTwo = (props) => {
                             <div className="form-group m-0">
                             <div className="form-row">
                                 <div className="col">
-                                    <input type="text" className="form-control border-0" id="full_name" />
+                                    <input type="text" className="form-control border-0" id="referalPhoneTwo" onChange={props.inputEvent.ReferalEventTwo} value={props.form.referalTwo.referalPhoneTwo}/>
                                 </div>
                             </div>
                             </div>        
