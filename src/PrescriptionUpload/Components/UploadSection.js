@@ -33,9 +33,6 @@ const UploadSection = (props) => {
   };
   return (
     <div className="upload_section col col-md-8">
-      {/* <div className="upload_section_top">
-        <span>home/upload prescription</span>
-      </div> */}{' '}
       <div className="upload_section_middle">
         <span className="">upload prescription</span>
         {props.error?.prescription && (
@@ -125,3 +122,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadSection);
+

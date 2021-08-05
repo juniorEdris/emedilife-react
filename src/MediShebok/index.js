@@ -32,7 +32,8 @@ const MediShebok = (props) => {
             permanent_address:'',
             experience:'',
             training: '',
-            position:'',
+            position: '',
+            photo:''
         }
     );
     const [loading, setLoading] = useState(false);
@@ -282,10 +283,10 @@ const MediShebok = (props) => {
     // Send Data to API function
     const register = async e => {
         e.preventDefault()
-        const education_1 = `edu_qualifications[0][type]=${educationOne.type}&edu_qualifications[0][institution]=${educationOne.institute}&edu_qualifications[0][board]=${educationOne.board}&edu_qualifications[0][passing_year]=${educationOne.year}&edu_qualifications[0][result]=${educationOne.result}`
-        const education_2 = `edu_qualifications[1][type]=${educationTwo.typeTwo}&edu_qualifications[1][institution]=${educationTwo.instituteTwo}&edu_qualifications[1][board]=${educationTwo.boardTwo}&edu_qualifications[1][passing_year]=${educationTwo.yearTwo}&edu_qualifications[1][result]=${educationTwo.resultTwo}`
-        const education_3 = `edu_qualifications[2][type]=${educationThree.typeThree}&edu_qualifications[2][institution]=${educationThree.instituteThree}&edu_qualifications[2][board]=${educationThree.boardThree}&edu_qualifications[2][passing_year]=${educationThree.yearThree}&edu_qualifications[2][result]=${educationThree.resultThree}`
-        const education_4 = `edu_qualifications[3][type]=${educationFour.typeFour}&edu_qualifications[3][institution]=${educationFour.instituteFour}&edu_qualifications[3][board]=${educationFour.boardFour}&edu_qualifications[3][passing_year]=${educationFour.yearFour}&edu_qualifications[3][result]=${educationFour.resultFour}`
+        const education_1 = `edu_qualifications[0][exam_type]=${educationOne.type}&edu_qualifications[0][institution]=${educationOne.institute}&edu_qualifications[0][board]=${educationOne.board}&edu_qualifications[0][passing_year]=${educationOne.year}&edu_qualifications[0][result]=${educationOne.result}`
+        const education_2 = `edu_qualifications[1][exam_type]=${educationTwo.typeTwo}&edu_qualifications[1][institution]=${educationTwo.instituteTwo}&edu_qualifications[1][board]=${educationTwo.boardTwo}&edu_qualifications[1][passing_year]=${educationTwo.yearTwo}&edu_qualifications[1][result]=${educationTwo.resultTwo}`
+        const education_3 = `edu_qualifications[2][exam_type]=${educationThree.typeThree}&edu_qualifications[2][institution]=${educationThree.instituteThree}&edu_qualifications[2][board]=${educationThree.boardThree}&edu_qualifications[2][passing_year]=${educationThree.yearThree}&edu_qualifications[2][result]=${educationThree.resultThree}`
+        const education_4 = `edu_qualifications[3][exam_type]=${educationFour.typeFour}&edu_qualifications[3][institution]=${educationFour.instituteFour}&edu_qualifications[3][board]=${educationFour.boardFour}&edu_qualifications[3][passing_year]=${educationFour.yearFour}&edu_qualifications[3][result]=${educationFour.resultFour}`
         
         const pharma_1 = `parmacy_locations[0][type]=${PharmalocationOne.pharmaTypeOne}&parmacy_locations[0][name]=${PharmalocationOne.pharmaNameOne}&parmacy_locations[0][address]=${PharmalocationOne.pharmaAddressOne}`
         const pharma_2 = `parmacy_locations[1][type]=${PharmalocationTwo.pharmaTypeTwo}&parmacy_locations[1][name]=${PharmalocationTwo.pharmaNameTwo}&parmacy_locations[1][address]=${PharmalocationTwo.pharmaAddressTwo}`
@@ -302,15 +303,15 @@ const MediShebok = (props) => {
         const referal_1 = `referrals_location[0][name]=${referalOne.referalNameOne}&referrals_location[0][relation]=${referalOne.referalRelationOne}&referrals_location[0][address]=${referalOne.referalAddressOne}&referrals_location[0][phone]=${referalOne.referalPhoneOne}`
         const referal_2 = `referrals_location[1][name]=${referalTwo.referalNameTwo}&referrals_location[1][relation]=${referalTwo.referalRelationTwo}&referrals_location[1][address]=${referalTwo.referalAddressTwo}&referrals_location[1][phone]=${referalTwo.referalPhoneTwo}`
         setLoading(true)
-        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' || form.experience === '' || form.training === '' || form.mother_name === '' || form.present_address === '' || form.religion === '') {
+        if (form.full_name === '' || form.mobile === ''  || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' || form.experience === '' || form.training === '' || form.mother_name === '' || form.present_address === '' || form.religion === '') {
             setLoading(false)
             setAlert({
                 status: true,
-                error: 'Please provide all your informations.'
+                error: 'Please provide your informations.'
             })
         } else {
                         
-            await API().post(`${ENDPOINTS.EMEDI_SHEBOK}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}`)
+            await API().post(`${ENDPOINTS.EMEDI_SHEBOK}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}`,imageSet())
                 .then(res => {
                 if (res.data.status) {
                     setAlert({
@@ -337,6 +338,21 @@ const MediShebok = (props) => {
             [e.target.id]: e.target.value,
         })
     }
+    const imageEvent = e => {
+        setForm({
+            ...form,
+            [e.target.id]: e.target.files[0],
+        })
+    }
+    const imageSet = e => {
+        if (form.photo) {
+            const fd = new FormData();
+            fd.append('photo', form.photo, form.photo.name);
+            return fd
+        } else {
+            return {}
+        }
+    }
     const closePopup = e => {
         setAlert({
             success:'',
@@ -344,10 +360,100 @@ const MediShebok = (props) => {
             status:'',
         })
     }
+        // close success popup and clear all the states
+        const closeSuccessPopup = e => {
+            setAlert({
+                success:'',
+                error: '',
+                status:'',
+            })
+            // Form inputs
+            setForm(
+                {
+                    full_name: '',
+                    dob: '',
+                    father_name: '',
+                    mother_name: '',
+                    gender: '',
+                    religion: '',
+                    mobile:'',
+                    email:'',
+                    nid:'',
+                    present_address:'',
+                    permanent_address:'',
+                    experience:'',
+                    training: '',
+                    expected_salary:'',
+                    qualification: [],
+                    position: '',
+                    photo:'',
+                }
+            )
+            // education state
+            setEducationOne(
+                        {
+                id:'',
+                type: '',
+                board: '',
+                year: '',
+                result: '',
+                institute: '',
+            }
+            )
+            setEducationTwo(
+                        {
+                idTwo:'',
+                typeTwo: '',
+                boardTwo: '',
+                yearTwo: '',
+                resultTwo: '',
+                instituteTwo: '',
+            }
+            )
+            setEducationThree(
+                        {
+                idThree:'',
+                typeThree: '',
+                boardThree: '',
+                yearThree: '',
+                resultThree: '',
+                instituteThree: '',
+            }
+            )
+            setEducationFour(
+                        {
+                idFour:'',
+                typeFour: '',
+                boardFour: '',
+                yearFour: '',
+                resultFour: '',
+                instituteFour: '',
+            }
+            )
+            // referal state
+            setReferalOne(
+                {
+                    id:'',
+                    referalNameOne: '',
+                    referalRelationOne: '',
+                    referalAddressOne: '',
+                    referalPhoneOne: '',
+                }
+            )
+            setReferalTwo(
+                {
+                    id:'',
+                    referalNameTwo: '',
+                    referalRelationTwo: '',
+                    referalAddressTwo: '',
+                    referalPhoneTwo: '',
+                }
+            )
+        }
     return (
         <div className='medishebok_wrapper mt-4 mb-4'>
             {loading && <SpinLoader />}
-            {alert.status && alert.success && <PopUp close={closePopup} response={ alert.success }/>}
+            {alert.status && alert.success && <PopUp close={closeSuccessPopup} response={ alert.success }/>}
             {alert.status && alert.error && <PopUp close={closePopup} response={ alert.error }/>}
             <div className="container-md-fluid">
             <header className="medishebok_wrapper_headlines">
@@ -356,13 +462,16 @@ const MediShebok = (props) => {
                 register as a medishebok now..</p>    
             </header>
             <main>
-                <h5>Register</h5>
+                    <h5>Register</h5>
+            <form action="" method="POST" encType="multipart/formdata">
+                
             <HeadInputs
                 form = {form}
                 setForm={setForm}
                 inputEvent={inputEvent}
                 position={false}
-            />
+                imageEvent={imageEvent}
+                />
             <EducationQ
             title={'Education Qualificaion'}
             form={{
@@ -388,9 +497,9 @@ const MediShebok = (props) => {
                 form = {form}
                 setForm={setForm}
                 inputEvent={inputEvent}
-            /> 
+                /> 
             <PharmaciesLocation
-            title={'Write Down 05 Pharmacies Located at Your Area'}
+            title={'Write down 05 pharmacies located at your area'}
             form={{
                 PharmalocationOne,
                 PharmalocationTwo,
@@ -412,19 +521,19 @@ const MediShebok = (props) => {
             pharmaLocationEventFour,
             pharmaLocationEventFive,
         }}
-            />
+        />
         <MedicalLocation
-            title={'Write Down 05 Hospital/Clinic/Diagnostics Located at Your Area'}
+            title={'Write down 05 hospital/clinic/diagnostics located at your area'}
             form={{
                 medicallocationOne,
                 medicallocationTwo,
                 medicallocationThree,
                 medicallocationFour,
                 medicallocationFive,
-        }}
-        setForm={{
-            setMedicallocationTwo,
-            setMedicallocationOne,
+            }}
+            setForm={{
+                setMedicallocationTwo,
+                setMedicallocationOne,
             setMedicallocationThree,
             setMedicallocationFour,
             setMedicallocationFive,
@@ -436,9 +545,9 @@ const MediShebok = (props) => {
             medicalLocationEventFour,
             medicalLocationEventFive,
         }}
-            />
+        />
             <TableRowsTwo
-            title={'Write Down 02 Referral Personnel Located at Your Area'}
+            title={'Write down 02 referral persons of your area'}
             form={{
                 referalOne,    
                 referalTwo,    
@@ -453,6 +562,7 @@ const MediShebok = (props) => {
             }}
             />
             <SubmitButton click={register}/>
+            </form>
             </main>
             </div>
         </div>

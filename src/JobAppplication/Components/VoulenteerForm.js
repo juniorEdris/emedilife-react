@@ -27,7 +27,8 @@ const VoulenteerForm = (props) => {
             training: '',
             expected_salary:'',
             present_status: '',
-            age:'',
+            age: '',
+            position:'',
         }
     );
     const [loading, setLoading] = useState(false);
@@ -38,17 +39,20 @@ const VoulenteerForm = (props) => {
     });
     
     // Send Data to API function
-    
-
     const register = async e => {
         e.preventDefault()
         setLoading(true)
-        if (form.name === '' || form.mobile === '' || form.dob === '' ||  form.email === '' || form.father_name === '' || form.nid === '' || form.gender === '' || form.experience === '' || form.training === '' || form.mother_name === '' || form.present_address === '' || form.religion === '' || form.expected_salary==='') {
+         if (form.full_name === '' ) {
             setLoading(false)
             setAlert({
                 status: true,
-                // error: 'Please provide all your informations.'
-                error: 'Voulenteer Activities are not eligable right now.'
+                error: 'Please provide all your informations.'
+            })
+        }else if (form.mobile === '' ) {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide all your informations.'
             })
         }else if (!selected) {
             setLoading(false)
@@ -58,7 +62,7 @@ const VoulenteerForm = (props) => {
             })
             
         } else {
-            await API().post(`${ENDPOINTS.EMEDI_CAREER}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&acknowledgement=${selected ? 1 : 0}&expected_salary=${form.expected_salary}`)
+            await API().post(`${ENDPOINTS.EMEDI_CAREER}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&acknowledgement=${selected ? 1 : 0}&expected_salary=${form.expected_salary}&position=${form.position}&job_type=${'volunteer'}`)
                 .then(res => {
                 if (res.data.status) {
                     setAlert({
@@ -91,11 +95,37 @@ const VoulenteerForm = (props) => {
             status:'',
         })
     }
-    // console.log(form)
+    const closeSuccessPopup = e => {
+        setAlert({
+            success:'',
+            error: '',
+            status:'',
+        })
+        setForm({
+            full_name: '',
+            dob: '',
+            father_name: '',
+            mother_name: '',
+            gender: '',
+            religion: '',
+            mobile:'',
+            email:'',
+            nid:'',
+            present_address:'',
+            permanent_address:'',
+            experience:'',
+            training: '',
+            expected_salary:'',
+            present_status: '',
+            age: '',
+            position:'',
+        })
+        setSelected(false)
+    }
     return (
         <div className='voulenteer_wrapper'>
             {loading && <SpinLoader />}
-            {alert.status && alert.success && <PopUp close={closePopup} response={ alert.success }/>}
+            {alert.status && alert.success && <PopUp close={closeSuccessPopup} response={ alert.success }/>}
             {alert.status && alert.error && <PopUp close={closePopup} response={ alert.error }/>}
             <VolunteerInputs
                 form = {form}

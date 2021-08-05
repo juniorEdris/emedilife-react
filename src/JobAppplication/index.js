@@ -24,7 +24,7 @@ const JobAplication = (props) => {
         },
         {
             id: 3,
-            section:'voulenteer',
+            section:'volunteer',
         },
     ]
     return (

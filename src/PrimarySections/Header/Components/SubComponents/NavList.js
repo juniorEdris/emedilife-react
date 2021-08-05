@@ -19,27 +19,27 @@ function NavList(props) {
         </li>
         <li>
           <Link to="#" onClick={preventEvent}>
-            best sellers
+            Order Medicines
           </Link>{' '}
         </li>
         <li>
           <Link to="#" onClick={preventEvent}>
-            todays deals
+          Healthcare Products
           </Link>
         </li>
         <li>
           <Link to="#" onClick={preventEvent}>
-            mobiles
+          Medishebok Service
           </Link>
         </li>
         <li>
           <Link to="#" onClick={preventEvent}>
-            customer service
+          e-Appointment
           </Link>
         </li>
         <li>
           <Link to="#" onClick={preventEvent} className="">
-            see more
+          Lab Tests
           </Link>
         </li>
       </ul>

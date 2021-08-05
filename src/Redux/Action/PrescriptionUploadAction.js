@@ -50,9 +50,6 @@ export const PrescriptionUpload = (name, image) => async (dispatch) => {
         dispatch(prescriptionUploadError(res.data.errors));
       } else {
         dispatch(prescriptionUploadSuccess(res.data));
-        // setTimeout(() => {
-        //   dispatch(prescriptionUploadComplete());
-        // }, 6000);
       }
     })
     .catch((error) => {
