@@ -16,15 +16,11 @@ const PrescriptionUpload = (props) => {
     // local products to server
     props.localCartList?.length > 0 && props.guestCartSubmit();
     props.localWishList?.length > 0 && props.guestWishSubmit();
-props.getCartItems();
+    props.getCartItems();
   
   }, []);
   return (
     <div className="container-md-fluid prescription_body">
-      {props.loading && <SpinLoader />}
-      {props.success && (
-        <PopUp response={props.success} close={props.closePopup} />
-      )}
       <div className="prescription_upload row">
         <UploadSection />
         <PreviewSection />

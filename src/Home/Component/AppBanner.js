@@ -4,7 +4,7 @@ import WideBanner from '../../PrimarySections/SectionUtils/WideBanner';
 
 const AppBanner = (props) => {
   return (
-    <div className="app_banner all-wide-banners mb-3">
+    <div className="app_banner all-wide-banners mb-0">
       <WideBanner
         loading={props.loading}
         online={true}

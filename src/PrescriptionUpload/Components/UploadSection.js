@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { PopUp } from '../../PrimarySections/SectionUtils/PopUp';
+import SpinLoader from '../../PrimarySections/SectionUtils/SpinLoader';
 import {
   clearSuccessPrescription,
   PrescriptionUpload,
@@ -31,8 +33,17 @@ const UploadSection = (props) => {
   const removeImage = (image, i) => {
     setImages({ photo: '' });
   };
+  const close= e=> {
+    props.closePopup()
+    setInput({name:''})
+    setImages({ photo: '' });
+  }
   return (
     <div className="upload_section col col-md-8">
+      {props.loading && <SpinLoader />}
+      {props.success && (
+        <PopUp response={props.success} close={close} />
+      )}
       <div className="upload_section_middle">
         <span className="">upload prescription</span>
         {props.error?.prescription && (
@@ -83,7 +94,7 @@ const UploadSection = (props) => {
                 <span className="text-danger">{error}</span>
               </div>
             )}
-            <label
+             <label
               for="file-upload"
               className="gallery-btn btn col offset-md-3 col-md-6 btn-block btn-outlined">
               <img

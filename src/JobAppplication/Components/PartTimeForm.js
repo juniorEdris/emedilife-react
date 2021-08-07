@@ -39,7 +39,24 @@ const PartTimeForm = (props) => {
     const [alert, setAlert] = useState({
         status: false,
         success: '',
-        error:''
+        error:'',
+        input_error: {
+            full_name: '',
+            dob: '',
+            father_name: '',
+            mother_name: '',
+            gender: '',
+            religion: '',
+            mobile:'',
+            email:'',
+            nid:'',
+            present_address:'',
+            permanent_address:'',
+            experience:'',
+            training: '',
+            position: '',
+            photo:''
+        }
     });
     // Education states
     const [educationOne, setEducationOne] = useState(
@@ -304,20 +321,7 @@ const PartTimeForm = (props) => {
             const referal_1 = `referrals_location[0][name]=${referalOne.referalNameOne}&referrals_location[0][relation]=${referalOne.referalRelationOne}&referrals_location[0][address]=${referalOne.referalAddressOne}&referrals_location[0][phone]=${referalOne.referalPhoneOne}`
             const referal_2 = `referrals_location[1][name]=${referalTwo.referalNameTwo}&referrals_location[1][relation]=${referalTwo.referalRelationTwo}&referrals_location[1][address]=${referalTwo.referalAddressTwo}&referrals_location[1][phone]=${referalTwo.referalPhoneTwo}`
         setLoading(true)
-        if (form.mobile === '' ) {
-            setLoading(false)
-            setAlert({
-                status: true,
-                error: 'Please provide phone number.'
-            })
-        }else if (form.full_name === '' ) {
-            setLoading(false)
-            setAlert({
-                status: true,
-                error: 'Please provide your name.'
-            })
-            
-        }else if(!selected) {
+        if(!selected) {
             setLoading(false)
             setAlert({
                 status: true,
@@ -341,9 +345,45 @@ const PartTimeForm = (props) => {
                     setLoading(false)
                 }
             }).catch(error => {
-                console.log(error);
-                console.log(error.message);
-                console.log(error.Preview);
+                const full_name= error.response.data.errors.name[0]
+                const dob= error.response.data.errors.dob[0]
+                const father_name= error.response.data.errors.father_name[0]
+                const mother_name= error.response.data.errors.mother_name[0]
+                const gender= error.response.data.errors.gender[0]
+                const religion= error.response.data.errors.religion[0]
+                const mobile=error.response.data.errors.mobile[0]
+                const email=error.response.data.errors.email[0]
+                const nid=error.response.data.errors.nid[0]
+                const present_address = error.response.data.errors.present_address[0]
+                console.log(
+                    full_name,
+                    dob,
+                    father_name,
+                    mother_name,
+                    gender,
+                    religion,
+                    mobile,
+                    email,
+                    nid,
+                    present_address
+                );
+                setAlert({
+                    status: true,
+                    error: error.response.data.message,
+                    input_error: {
+                        full_name,
+                        dob,
+                        father_name,
+                        mother_name,
+                        gender,
+                        religion,
+                        mobile,
+                        email,
+                        nid,
+                        present_address
+                    }
+                })
+                setLoading(false)
             }) 
         }
     }
@@ -370,6 +410,7 @@ const PartTimeForm = (props) => {
     }
     const closePopup = e => {
         setAlert({
+            ...alert,
             success:'',
             error: '',
             status:'',
@@ -446,6 +487,47 @@ const PartTimeForm = (props) => {
                 instituteFour: '',
             }
             )
+            // Pharma state
+            setPharmalocationOne(
+                {
+                    id:'',
+                    pharmaTypeOne: '',
+                    pharmaNameOne: '',
+                    pharmaAddressOne: '',
+                }
+                )
+                    setPharmalocationTwo(
+                {
+                    id:'',
+                    pharmaTypeTwo: '',
+                    pharmaNameTwo: '',
+                    pharmaAddressTwo: '',
+                }
+                )
+                    setPharmalocationThree(
+                {
+                    id:'',
+                    pharmaTypeThree: '',
+                    pharmaNameThree: '',
+                    pharmaAddressThree: '',
+                }
+                )
+                    setPharmalocationFour(
+                {
+                    id:'',
+                    pharmaTypeFour: '',
+                    pharmaNameFour: '',
+                    pharmaAddressFour: '',
+                }
+                )
+                    setPharmalocationFive(
+                {
+                    id:'',
+                    pharmaTypeFive: '',
+                    pharmaNameFive: '',
+                    pharmaAddressFive: '',
+                }
+                )
             // referal state
             setReferalOne(
                 {
@@ -475,6 +557,7 @@ const PartTimeForm = (props) => {
 
             <HeadInputs
                 form={form}
+                error={alert.input_error}
                 setForm={setForm}
                 inputEvent={inputEvent}
                 imageEvent={imageEvent}

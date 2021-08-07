@@ -26,6 +26,25 @@ const EmedilifeCare = (props) => {
         success:'',
         error: '',
         status:false,
+        input_error: {
+            full_name: '',
+            dob: '',
+            age:'',
+            father_name: '',
+            mother_name: '',
+            gender: '',
+            religion: '',
+            mobile:'',
+            email:'',
+            nid:'',
+            present_address:'',
+            permanent_address:'',
+            experience:'',
+            training: '',
+            position: '',
+            photo: '',
+            marital_status:''
+        }
     });
     const [loading, setloading] = useState(false);
     useEffect(() => {
@@ -37,16 +56,36 @@ const EmedilifeCare = (props) => {
     }
     const register = async e => {
         e.preventDefault()
+        setAlert(
+            {
+                success:'',
+                error: '',
+                status:false,
+                input_error: {
+                    full_name: '',
+                    dob: '',
+                    age:'',
+                    father_name: '',
+                    mother_name: '',
+                    gender: '',
+                    religion: '',
+                    mobile:'',
+                    email:'',
+                    nid:'',
+                    present_address:'',
+                    permanent_address:'',
+                    experience:'',
+                    training: '',
+                    position: '',
+                    photo: '',
+                    marital_status:''
+                }
+            }
+        )
         setloading(true)
-        if (form.name === '' || form.mobile === '' || form.dob === '' || form.age === '' || form.email === '' || form.father_name === '' || form.mother_name === '' || form.nid === '' || form.gender === '' || form.religion === '' || form.marital_status === '') {
-            setloading(false)
-            setAlert({
-                status: true,
-                error: 'Please provide all your informations.'
-            })
-        } else {
             await API().post(`${ENDPOINTS.EMEDICARE}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`)
             .then(res=>{
+                console.log(res.data);
                 if (res.data.status) {
                     setAlert({
                         status: res.data.status,
@@ -54,19 +93,66 @@ const EmedilifeCare = (props) => {
                     })
                     setloading(false)
                 } else {
-                    setAlert({
-                        status: true,
-                        error:res.data.message,
-                    })
+                const full_name= res.data.errors.name ? res.data.errors.name[0] : ''
+                const dob= res.data.errors.dob ? res.data.errors.dob[0] : ''
+                const father_name= res.data.errors.father_name ? res.data.errors.father_name[0] : ''
+                const mother_name= res.data.errors.mother_name ? res.data.errors.mother_name[0] : ''
+                const gender= res.data.errors.gender ? res.data.errors.gender[0] : ''
+                const religion= res.data.errors.religion ? res.data.errors.religion[0] : ''
+                const mobile=res.data.errors.mobile ? res.data.errors.mobile[0] : ''
+                const email=res.data.errors.email ? res.data.errors.email[0] : ''
+                const nid=res.data.errors.nid ? res.data.errors.nid[0] : ''
+                const age = res.data.errors.age ? res.data.errors.age[0] : ''
+                const marital_status = res.data.errors.marital_status ? res.data.errors.marital_status[0] : ''
+
+                setAlert({
+                    status: true,
+                    error: "The given data was invalid.",
+                    input_error: {
+                        full_name,
+                        dob,
+                        father_name,
+                        mother_name,
+                        age,
+                        gender,
+                        religion,
+                        mobile,
+                        email,
+                        nid,
+                        marital_status,
+                    }
+                })
                     setloading(false)
                 }
             }).catch(error => {
                 console.log(error);
             }) 
-        }
+        
+    }
+    const closeSuccessPopup = e => {
+        setAlert({
+            success:'',
+            error: '',
+            status: '',
+            input_error:{}
+        })
+        setForm({
+            name: '',
+            mobile: '',
+            dob: '',
+            age: '',
+            email: '',
+            father_name: '',
+            mother_name: '',
+            nid: '',
+            gender: '',
+            religion: '',
+            marital_status:''
+        });
     }
     const closePopup = e => {
         setAlert({
+            ...alert,
             success:'',
             error: '',
             status:'',
@@ -75,7 +161,7 @@ const EmedilifeCare = (props) => {
     return (
         <div className="container-md-fluid">
             {loading && <SpinLoader/>}
-            {alert.status && alert.success && <PopUp close={closePopup} response={ alert.success }/>}
+            {alert.status && alert.success && <PopUp close={closeSuccessPopup} response={ alert.success }/>}
             {alert.status && alert.error && <PopUp close={closePopup} response={ alert.error }/>}
             <div className='emedilife_care_wrapper'>
                 <header>
@@ -98,34 +184,55 @@ const EmedilifeCare = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="name">Full name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="name" placeholder='Full Name' required onChange={handlechange} value={form.name}/>
-                    <div className="valid-feedback">
-                        Looks good!
-                    </div>
+                    {alert?.input_error?.full_name !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.full_name}
+                        </small>
+                    )}
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="dob">Date of birth</label>
                         <input type="date" className="form-control uparzon-input-lg" id="dob" required  onChange={handlechange} value={form.dob}/>
-
+                        {alert?.input_error?.dob !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.dob}
+                        </small>
+                    )}
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="father_name">Father's name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="father_name" placeholder='Fathers Name' required onChange={handlechange} value={form.father_name}/>
+                        {alert?.input_error?.father_name !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.father_name}
+                        </small>
+                    )}
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="mother_name">Mother's name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="mother_name" placeholder='Mothers Name' required onChange={handlechange} value={form.mother_name}/>
+                        {alert?.input_error?.mother_name !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.mother_name}
+                        </small>
+                    )}
                     </div>
                 </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="age">Age</label>
                         <input type="text" className="form-control uparzon-input-lg" id="age" placeholder='Age in number' required onChange={handlechange} value={form.age}/>
+                        {alert?.input_error?.age !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.age}
+                        </small>
+                    )}
                     </div>
                 </div>
                 
@@ -136,18 +243,33 @@ const EmedilifeCare = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="mobile">Mobile No.</label>
                         <input type="text" className="form-control uparzon-input-lg" id="mobile" placeholder='Mobile' required onChange={handlechange} value={form.mobile}/>
+                        {alert?.input_error?.mobile !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.mobile}
+                        </small>
+                    )}
                     </div>
             </div>
             <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="email">Email</label>
                         <input type="text" className="form-control uparzon-input-lg" id="email" placeholder='email' required onChange={handlechange} value={form.email}/>
+                        {alert?.input_error?.email !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.email}
+                        </small>
+                    )}
                     </div>
             </div>
                 <div className="form-row">
                     <div className="col-12 mb-3">
                     <label htmlFor="nid">NID no.</label>
                         <input type="text" className="form-control uparzon-input-lg" id="nid" placeholder='NID no.' required onChange={handlechange} value={form.nid}/>
+                        {alert?.input_error?.nid !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.nid}
+                        </small>
+                    )}
                     </div>
                 </div>
                 </div>
@@ -161,9 +283,11 @@ const EmedilifeCare = (props) => {
                         <option value='female'>Female</option>
                         <option value='other'>Other</option>
                     </select>
-                    <div className="invalid-feedback">
-                        Please select a valid state.
-                    </div>
+                    {alert?.input_error?.gender !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.gender}
+                        </small>
+                    )}
                     </div>
                     </div>
                     <div className="form-row">
@@ -175,9 +299,11 @@ const EmedilifeCare = (props) => {
                         <option value='hindu'>Hindu</option>
                         <option value='other'>Other</option>
                     </select>
-                    <div className="invalid-feedback">
-                        Please select a valid state.
-                    </div>
+                    {alert?.input_error?.religion !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.religion}
+                        </small>
+                    )}
                     </div>
                     </div>
                     <div className="form-row">
@@ -188,9 +314,11 @@ const EmedilifeCare = (props) => {
                         <option value='married'>Married</option>
                         <option value='not_married'>Not married</option>
                     </select>
-                    <div className="invalid-feedback">
-                        Please select a valid state.
-                    </div>
+                    {alert?.input_error?.marital_status !== '' && (
+                        <small className="text-danger">
+                            {alert?.input_error?.marital_status}
+                        </small>
+                    )}
                     </div>
                     </div>
                     </div>

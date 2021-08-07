@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const WideBanner = (props) => {
   return (
-    <div className="wide_banner mb-5">
+    <div className="wide_banner mb-0">
       {props.loading ? (
         <div className="wide_banner_image">
           <Skeleton width={'100%'} height={200} />

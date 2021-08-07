@@ -6,7 +6,7 @@ const BannerSectionThree = (props) => {
   return (
     <div className="">
       {props.banner?.image_full_path && (
-        <div className="">
+        <div className="mb-5">
           <WideBanner
             loading={props.loading}
             imagepath={props.banner?.image_full_path}

@@ -16,9 +16,9 @@ const HeadInputs = (props) => {
                     <option value='delivery-man'>Delivery Man</option>
                     <option value='office-staff'>Office Staff</option>
                 </select>
-                {props.form.position === '' && (
+                {props?.error?.position !== '' && (
                 <small className="text-danger">
-                  Please provide a position.
+                  {props?.error?.position}
                 </small>
               )}
                 </div>
@@ -29,9 +29,9 @@ const HeadInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="full_name">Full name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="full_name" onChange={props.inputEvent} placeholder='Full Name' value={props.form.full_name} required />
-                {props.form.full_name === '' && (
+                {props?.error?.full_name !== '' && (
                     <small className="text-danger">
-                        Please provide your full name.
+                        {props?.error?.full_name}
                     </small>
                 )}
                     </div>
@@ -40,9 +40,9 @@ const HeadInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="dob">Date of birth</label>
                         <input type="date" className="form-control uparzon-input-lg" id="dob" onChange={props.inputEvent}  value={props.form.dob} required />
-                    {props.form.dob === '' && (
+                    {props?.error?.dob !== '' && (
                         <small className="text-danger">
-                        Please provide your birth date.
+                        {props?.error?.dob}
                         </small>
                     )}
                         </div>
@@ -51,9 +51,9 @@ const HeadInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="father_name">Father's name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="father_name" onChange={props.inputEvent} placeholder='Fathers Name' value={props.form.father_name} required />
-                        {props.form.father_name === '' && (
+                        {props?.error?.father_name !== '' && (
                             <small className="text-danger">
-                                Please provide your father name.
+                                {props?.error?.father_name}
                             </small>
                         )}
                         </div>
@@ -62,9 +62,9 @@ const HeadInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="mother_name">Mother's name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="mother_name" onChange={props.inputEvent} placeholder='Mothers Name' value={props.form.mother_name} required/>
-                        {props.form.mother_name === '' && (
+                        {props?.error?.mother_name !== '' && (
                             <small className="text-danger">
-                                Please provide your mother name.
+                                {props?.error?.mother_name}
                             </small>
                         )}
                     </div>
@@ -78,9 +78,9 @@ const HeadInputs = (props) => {
                     <option value='female'>Female</option>
                     <option value='other'>Other</option>
                 </select>
-                {props.form.gender === '' && (
+                {props?.error?.gender !== '' && (
                         <small className="text-danger">
-                            Please select your gender.
+                            {props?.error?.gender}
                         </small>
                     )}
                 </div>
@@ -94,9 +94,9 @@ const HeadInputs = (props) => {
                     <option value='hindu'>Hindu</option>
                     <option value='other'>Other</option>
                 </select>
-                {props.form.religion === '' && (
+                {props?.error?.religion !== '' && (
                         <small className="text-danger">
-                            Please provide your religion.
+                            {props?.error?.religion}
                         </small>
                     )}
                 </div>
@@ -110,9 +110,9 @@ const HeadInputs = (props) => {
                         <div className="col-12 mb-3">
                         <label htmlFor="mobile">Mobile</label>
                             <input type="text" className="form-control uparzon-input-lg" id="mobile" onChange={props.inputEvent} placeholder='Mobile' value={props.form.mobile} required />
-                    {props.form.mobile === '' && (
+                    {props?.error?.mobile !== '' && (
                         <small className="text-danger">
-                            Please provide your contact number.
+                            {props?.error?.mobile}
                         </small>
                     )}
                         </div>
@@ -121,9 +121,9 @@ const HeadInputs = (props) => {
                         <div className="col-12 mb-3">
                         <label htmlFor="email">Email</label>
                             <input type="text" className="form-control uparzon-input-lg" id="email" onChange={props.inputEvent} placeholder='Email' value={props.form.email} required />
-                        {props.form.email === '' && (
+                        {props?.error?.email !== '' && (
                         <small className="text-danger">
-                            Please provide your email address.
+                            {props?.error?.email}
                         </small>
                     )}
                         </div>
@@ -134,9 +134,9 @@ const HeadInputs = (props) => {
                                         
                         <label htmlFor="nid">NID</label>
                             <input type="text" className="form-control uparzon-input-lg" id="nid" onChange={props.inputEvent} placeholder='NID no.' value={props.form.nid} required/>
-                        {props.form.nid === '' && (
+                        {props?.error?.nid !== '' && (
                         <small className="text-danger">
-                            Please provide your NID no.
+                            {props?.error?.nid}
                         </small>
                     )}
                         </div>
@@ -148,7 +148,7 @@ const HeadInputs = (props) => {
                         <input type="file" className="file-input" id="photo" required onChange={props.imageEvent}/>
                         {props.form.photo !== '' ?
                             <div className="header_input_photo_section">
-                                <div className="">
+                                <div className="photo_section">
                                     {props.form.photo !== '' ? <img src={URL.createObjectURL(props.form.photo)} alt="" /> : <img src={props.form.photo} alt="" />}
                                 </div>
                                 <div className="w-100 text-center">
@@ -194,9 +194,9 @@ const HeadInputs = (props) => {
                         <div className="form-group">
                             <label htmlFor="present_address">Present Address</label>
                             <textarea className="form-control" id="present_address" rows={3} onChange={props.inputEvent} value={props.form.present_address}/>
-                            {props.form.present_address === '' && (
+                            {props?.error?.present_address !== '' && (
                                 <small className="text-danger">
-                                    Please provide your present address.
+                                    {props?.error?.present_address}
                                 </small>
                             )}
                             </div>
@@ -209,9 +209,9 @@ const HeadInputs = (props) => {
                         <div className="form-group">
                             <label htmlFor="permanent_address">Permanent Address</label>
                             <textarea className="form-control" id="permanent_address" rows={3} onChange={props.inputEvent} value={props.form.permanent_address}/>
-                            {props.form.permanent_address === '' && (
+                            {props?.error?.permanent_address !== '' && (
                                 <small className="text-danger">
-                                    Please provide your permanent address.
+                                    {props?.error?.permanent_address}
                                 </small>
                             )}
                             </div>
