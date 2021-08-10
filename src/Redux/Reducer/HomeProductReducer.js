@@ -40,6 +40,7 @@ export const HomeContentReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         // categories: action.categories,
+        header_menu:action.header_menu,
         homeSlider: action.slider,
         homeBrands: action.homeBrands,
         popularProducts: action.popularProducts,

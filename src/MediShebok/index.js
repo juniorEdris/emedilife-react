@@ -530,7 +530,48 @@ const MediShebok = (props) => {
             pharmaNameFive: '',
             pharmaAddressFive: '',
         }
-        )
+            )
+            // medical state
+            setMedicallocationOne(
+                {
+            id:'',
+            medicalTypeOne: '',
+            medicalNameOne: '',
+            medicalAddressOne: '',
+        }
+            )
+            setMedicallocationTwo(
+                {
+            id:'',
+            medicalTypeTwo: '',
+            medicalNameTwo: '',
+            medicalAddressTwo: '',
+        }
+            )
+            setMedicallocationThree(
+                {
+            id:'',
+            medicalTypeThree: '',
+            medicalNameThree: '',
+            medicalAddressThree: '',
+        }
+            )
+            setMedicallocationFour(
+                {
+            id:'',
+            medicalTypeFour: '',
+            medicalNameFour: '',
+            medicalAddressFour: '',
+        }
+            )
+            setMedicallocationFive(
+                 {
+            id:'',
+            medicalTypeFive: '',
+            medicalNameFive: '',
+            medicalAddressFive: '',
+        }
+            )
             // referal state
             setReferalOne(
                 {

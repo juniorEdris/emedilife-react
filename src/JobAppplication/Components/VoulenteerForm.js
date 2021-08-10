@@ -35,26 +35,31 @@ const VoulenteerForm = (props) => {
     const [alert, setAlert] = useState({
         status: false,
         success: '',
-        error:''
+        error:'',
+        input_error: {
+            full_name: '',
+            dob: '',
+            father_name: '',
+            mother_name: '',
+            gender: '',
+            religion: '',
+            mobile:'',
+            email:'',
+            nid:'',
+            present_address:'',
+            permanent_address:'',
+            experience:'',
+            training: '',
+            position: '',
+            photo:''
+        }
     });
     
     // Send Data to API function
     const register = async e => {
         e.preventDefault()
         setLoading(true)
-         if (form.full_name === '' ) {
-            setLoading(false)
-            setAlert({
-                status: true,
-                error: 'Please provide all your informations.'
-            })
-        }else if (form.mobile === '' ) {
-            setLoading(false)
-            setAlert({
-                status: true,
-                error: 'Please provide all your informations.'
-            })
-        }else if (!selected) {
+        if (!selected) {
             setLoading(false)
             setAlert({
                 status: true,
@@ -79,6 +84,27 @@ const VoulenteerForm = (props) => {
                 }
             }).catch(error => {
                 console.log(error);
+                const full_name=  error.response.data.errors.name ? error.response.data.errors.name[0] : ''
+                const dob=  error.response.data.errors.dob ? error.response.data.errors.dob[0] : ''
+                const father_name=  error.response.data.errors.father_name ? error.response.data.errors.father_name[0] : ''
+                const mother_name=  error.response.data.errors.mother_name ? error.response.data.errors.mother_name[0] : ''
+                const mobile= error.response.data.errors.mobile ? error.response.data.errors.mobile[0] : ''
+                const email= error.response.data.errors.email ? error.response.data.errors.email[0] : ''
+                const nid= error.response.data.errors.nid ? error.response.data.errors.nid[0] : ''
+                setAlert({
+                    status: true,
+                    error: error.response.data.message,
+                    input_error: {
+                        full_name,
+                        dob,
+                        father_name,
+                        mother_name,
+                        mobile,
+                        email,
+                        nid
+                    }
+                })
+                setLoading(false)
             }) 
         }
     }
@@ -90,6 +116,7 @@ const VoulenteerForm = (props) => {
     }
     const closePopup = e => {
         setAlert({
+            ...alert,
             success:'',
             error: '',
             status:'',
@@ -131,6 +158,7 @@ const VoulenteerForm = (props) => {
                 form = {form}
                 setForm={setForm}
                 inputEvent={inputEvent}
+                error={alert.input_error}
             />
             <ExperienceArea
                 form = {form}

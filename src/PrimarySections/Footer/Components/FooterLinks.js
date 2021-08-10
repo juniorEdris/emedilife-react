@@ -40,17 +40,17 @@ function FooterLinks(props) {
                   </a>
                 </li>
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <a href="https://www.youtube.com/channel/UC9PTtQCe9U-n0-OsRsYp-Lg" rel='noreferrer' target='_blank'>
                     Youtube
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="#" onClick={preventEvent}>
+                  <a href="https://www.instagram.com/emedilife/" rel='noreferrer' target='_blank'>
                     Instagram
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://twitter.com/emedilife" rel='noreferrer' target='_blank'>Twitter</a>
+                  <a href="https://twitter.com/emedilife/" rel='noreferrer' target='_blank'>Twitter</a>
                 </li>
               </ul>
             </div>

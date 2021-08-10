@@ -11,9 +11,9 @@ const VolunteerInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="full_name">Full name</label>
                         <input type="text" className="form-control uparzon-input-lg" id="full_name"  placeholder='Full Name'  required onChange={props.inputEvent} value={props.form.full_name}/>
-                        {props.form.full_name === '' && (
+                        {props?.error?.full_name !== '' && (
                         <small className="text-danger">
-                        Please provide your full name.
+                            {props?.error?.full_name}
                         </small>
                     )}
                     </div>
@@ -22,9 +22,9 @@ const VolunteerInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="dob">Date of birth</label>
                                 <input type="date" className="form-control uparzon-input-lg" id="dob" onChange={props.inputEvent} value={props.form.dob} required />
-                                {props.form.dob === '' && (
+                                {props?.error?.dob !== '' && (
                                     <small className="text-danger">
-                                    Please provide your birth date.
+                                        {props?.error?.dob}
                                     </small>
                                 )}
                     </div>
@@ -33,9 +33,9 @@ const VolunteerInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="age">Age</label>
                         <input type="text" className="form-control uparzon-input-lg" id="age" placeholder={'Age in number'} required onChange={props.inputEvent} value={props.form.age} />
-                        {props.form.age === '' && (
+                        {props?.error?.age !== '' && (
                             <small className="text-danger">
-                            Please provide your age.
+                                {props?.error?.age}
                             </small>
                         )}
                     </div>
@@ -44,9 +44,9 @@ const VolunteerInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="father_name">Father's name</label>
                                 <input type="text" className="form-control uparzon-input-lg" id="father_name" placeholder='Fathers Name' required onChange={props.inputEvent} value={props.form.father_name} />
-                                {props.form.father_name === '' && (
+                                {props?.error?.father_name !== '' && (
                                     <small className="text-danger">
-                                    Please provide your father name.
+                                        {props?.error?.father_name}
                                     </small>
                                 )}
                     </div>
@@ -55,9 +55,9 @@ const VolunteerInputs = (props) => {
                     <div className="col-12 mb-3">
                     <label htmlFor="mother_name">Mother's name</label>
                                 <input type="text" className="form-control uparzon-input-lg" id="mother_name" placeholder='Mothers Name' required onChange={props.inputEvent} value={props.form.mother_name} />
-                                {props.form.mother_name === '' && (
+                                {props?.error?.mother_name !== '' && (
                                     <small className="text-danger">
-                                    Please provide your mother name.
+                                        {props?.error?.mother_name}
                                     </small>
                                 )}
                     </div>
@@ -68,9 +68,9 @@ const VolunteerInputs = (props) => {
                         <div className="form-group">
                             <label htmlFor="present_address">Present Address</label>
                             <textarea className="form-control" id="present_address" rows={3} onChange={props.inputEvent} value={props.form.present_address} />
-                            {props.form.present_address === '' && (
+                            {props?.error?.present_address !== '' && (
                                 <small className="text-danger">
-                                Please provide your present address.
+                                    {props?.error?.present_address}
                                 </small>
                             )}
                         </div>
@@ -83,9 +83,9 @@ const VolunteerInputs = (props) => {
                         <div className="form-group">
                             <label htmlFor="permanent_address">Permanent Address</label>
                             <textarea className="form-control" id="permanent_address" rows={3} onChange={props.inputEvent} value={props.form.permanent_address} />
-                            {props.form.permanent_address === '' && (
+                            {props?.error?.permanent_address !== '' && (
                                 <small className="text-danger">
-                                Please provide your permanent address.
+                                    {props?.error?.permanent_address}
                                 </small>
                             )}
                         </div>
@@ -101,9 +101,9 @@ const VolunteerInputs = (props) => {
                         <div className="col-12 mb-3">
                         <label htmlFor="mobile">Mobile</label>
                             <input type="text" className="form-control uparzon-input-lg" id="mobile" placeholder='Mobile'  required  onChange={props.inputEvent} value={props.form.mobile}/>
-                            {props.form.mobile === '' && (
+                            {props?.error?.mobile !== '' && (
                                 <small className="text-danger">
-                                Please provide your contact number.
+                                    {props?.error?.mobile}
                                 </small>
                             )}
                         </div>
@@ -112,9 +112,9 @@ const VolunteerInputs = (props) => {
                         <div className="col-12 mb-3">
                         <label htmlFor="email">Email</label>
                             <input type="text" className="form-control uparzon-input-lg" id="email" placeholder='Email' required  onChange={props.inputEvent} value={props.form.email}/>
-                            {props.form.email === '' && (
+                            {props?.error?.email !== '' && (
                                 <small className="text-danger">
-                                Please provide your email.
+                                    {props?.error?.email}
                                 </small>
                             )}
                         </div>
@@ -125,9 +125,9 @@ const VolunteerInputs = (props) => {
                                         
                         <label htmlFor="nid">NID</label>
                             <input type="text" className="form-control uparzon-input-lg" id="nid" placeholder='NID no.' required  onChange={props.inputEvent} value={props.form.nid}/>
-                            {props.form.nid === '' && (
+                            {props?.error?.nid !== '' && (
                                 <small className="text-danger">
-                                Please provide your nid no.
+                                    {props?.error?.nid}
                                 </small>
                             )}
                         </div>
@@ -144,9 +144,9 @@ const VolunteerInputs = (props) => {
                         <option value='female'>Female</option>
                         <option value='other'>Other</option>
                     </select>
-                    {props.form.gender === '' && (
+                    {props?.error?.gender !== '' && (
                         <small className="text-danger">
-                            Please select your gender.
+                            {props?.error?.gender}
                         </small>
                     )}
                     </div>
@@ -160,9 +160,9 @@ const VolunteerInputs = (props) => {
                         <option value='hindu'>Hindu</option>
                         <option value='other'>Other</option>
                     </select>
-                    {props.form.religion === '' && (
+                    {props?.error?.religion !== '' && (
                         <small className="text-danger">
-                            Please select your religion.
+                            {props?.error?.religion}
                         </small>
                     )}
                     </div>
@@ -174,9 +174,9 @@ const VolunteerInputs = (props) => {
                         <div className="form-group">
                             <label htmlFor="present_status">Your Present Status</label>
                             <textarea className="form-control" id="present_status" rows={3}  onChange={props.inputEvent} value={props.form.present_status} />
-                            {props.form.present_status === '' && (
+                            {props?.error?.present_status !== '' && (
                                 <small className="text-danger">
-                                    Please select your present status.
+                                    {props?.error?.present_status}
                                 </small>
                             )}
                         </div>

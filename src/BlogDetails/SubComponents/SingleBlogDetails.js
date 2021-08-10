@@ -46,8 +46,8 @@ const BlogDetails = (props) => {
                 </div>
               ) : (
                 <div className="blog_comment_count col-12 col-md-6">
-                  <span className="lnr lnr-bubble"></span>
-                  <span>13 comments</span>
+                  {/* <span className="lnr lnr-bubble"></span>
+                  <span>13 comments</span> */}
                 </div>
               )}
             </div>

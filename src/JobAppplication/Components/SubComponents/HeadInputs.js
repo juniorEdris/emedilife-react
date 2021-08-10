@@ -9,6 +9,7 @@ const HeadInputs = (props) => {
                 <label htmlFor="position">Position:</label>
                 <select className="custom-select uparzon-input-lg" id="position" required onChange={ props.inputEvent}>
                     <option selected value=''>Choose position</option>
+                    <option value='accountant'>Accountant</option>
                     <option value='marketing-officer'>Marketing Officer</option>
                     <option value='pharmacist-grade-a'>Pharmacist(Grade-A)</option>
                     <option value='sourcing-officer'>Sourcing Officer</option>

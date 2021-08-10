@@ -6,6 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Slider = (props) => {
+  const allPhotos = props?.details?.images && [{photo:props.details?.photo},...props.details?.images]
   return (
     <div className="product_slider_wrapper">
       {props.loading ? (
@@ -13,16 +14,21 @@ const Slider = (props) => {
       ) : (
         <Carousel
         autoPlay
-        interval="3000" 
+        interval="5000" 
         transitionTime="1000" 
         infiniteLoop
         showIndicators={false}
           >
-          <img
-            src={`http:${props.details?.photo}`}
-            className="slider_image"
-            alt={props.details?.name}
-          />
+            {
+              allPhotos.map(image => (
+                <img
+                key={image.photo}
+                src={`http:${image.photo}`}
+                className="slider_image"
+                alt={props.details?.name}
+              />
+            ))
+            }
         </Carousel>
       )}
     </div>

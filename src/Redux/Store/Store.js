@@ -27,6 +27,7 @@ export const initialState = {
   pages: [],
   //HomeContents
   categories: [],
+  header_menu:[],
   subloading:true,
   subcategories: [],
   childloading:true,

@@ -345,28 +345,13 @@ const PartTimeForm = (props) => {
                     setLoading(false)
                 }
             }).catch(error => {
-                const full_name= error.response.data.errors.name[0]
-                const dob= error.response.data.errors.dob[0]
-                const father_name= error.response.data.errors.father_name[0]
-                const mother_name= error.response.data.errors.mother_name[0]
-                const gender= error.response.data.errors.gender[0]
-                const religion= error.response.data.errors.religion[0]
-                const mobile=error.response.data.errors.mobile[0]
-                const email=error.response.data.errors.email[0]
-                const nid=error.response.data.errors.nid[0]
-                const present_address = error.response.data.errors.present_address[0]
-                console.log(
-                    full_name,
-                    dob,
-                    father_name,
-                    mother_name,
-                    gender,
-                    religion,
-                    mobile,
-                    email,
-                    nid,
-                    present_address
-                );
+                const full_name=  error.response.data.errors.name ? error.response.data.errors.name[0] : ''
+                const dob=  error.response.data.errors.dob ? error.response.data.errors.dob[0] : ''
+                const father_name=  error.response.data.errors.father_name ? error.response.data.errors.father_name[0] : ''
+                const mother_name=  error.response.data.errors.mother_name ? error.response.data.errors.mother_name[0] : ''
+                const mobile= error.response.data.errors.mobile ? error.response.data.errors.mobile[0] : ''
+                const email= error.response.data.errors.email ? error.response.data.errors.email[0] : ''
+                const nid= error.response.data.errors.nid ? error.response.data.errors.nid[0] : ''
                 setAlert({
                     status: true,
                     error: error.response.data.message,
@@ -375,12 +360,9 @@ const PartTimeForm = (props) => {
                         dob,
                         father_name,
                         mother_name,
-                        gender,
-                        religion,
                         mobile,
                         email,
-                        nid,
-                        present_address
+                        nid
                     }
                 })
                 setLoading(false)
@@ -528,6 +510,47 @@ const PartTimeForm = (props) => {
                     pharmaAddressFive: '',
                 }
                 )
+            // medical state
+            setMedicallocationOne(
+                {
+            id:'',
+            medicalTypeOne: '',
+            medicalNameOne: '',
+            medicalAddressOne: '',
+        }
+            )
+            setMedicallocationTwo(
+                {
+            id:'',
+            medicalTypeTwo: '',
+            medicalNameTwo: '',
+            medicalAddressTwo: '',
+        }
+            )
+            setMedicallocationThree(
+                {
+            id:'',
+            medicalTypeThree: '',
+            medicalNameThree: '',
+            medicalAddressThree: '',
+        }
+            )
+            setMedicallocationFour(
+                {
+            id:'',
+            medicalTypeFour: '',
+            medicalNameFour: '',
+            medicalAddressFour: '',
+        }
+            )
+            setMedicallocationFive(
+                 {
+            id:'',
+            medicalTypeFive: '',
+            medicalNameFive: '',
+            medicalAddressFive: '',
+        }
+            )
             // referal state
             setReferalOne(
                 {

@@ -22,6 +22,7 @@ const fetchHomeProductsSuccess = (res) => {
   return {
     type: FETCH_HOME_PRODUCTS_SUCCESS,
     // categories: res.categories,
+    header_menu:res.header_menu,
     slider: res.sliders,
     homeBrands: res.companies.data,
     popularProducts: res.trending_products.data,

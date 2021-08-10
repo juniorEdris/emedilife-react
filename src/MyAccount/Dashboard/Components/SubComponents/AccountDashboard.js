@@ -31,7 +31,7 @@ const AccountDashboard = (props) => {
       {/* order history start here */}
       <OrderHistory
         loading={props.orderLoading}
-        orders={props.pendingOrders}
+        orders={props.orders}
         orderPages={props.orderPages}
         tab={props.tab}
         setTab={props.setTab}
