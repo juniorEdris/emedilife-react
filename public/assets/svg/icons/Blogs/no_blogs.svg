@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="496" height="416" viewBox="0 0 496 416">
+  <g id="Group_67281" data-name="Group 67281" transform="translate(-551 -3565)">
+    <g id="error" transform="translate(543 3517)">
+      <path id="Path_21287" data-name="Path 21287" d="M476,48H36A28.032,28.032,0,0,0,8,76V436a28.032,28.032,0,0,0,28,28H476a28.032,28.032,0,0,0,28-28V76A28.032,28.032,0,0,0,476,48ZM36,64H476a12.013,12.013,0,0,1,12,12V96H24V76A12.013,12.013,0,0,1,36,64ZM476,448H36a12.013,12.013,0,0,1-12-12V112H488V436a12.013,12.013,0,0,1-12,12Z" fill="#7a0553"/>
+      <path id="Path_21288" data-name="Path 21288" d="M40,88h8a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z" fill="#7a0553"/>
+      <path id="Path_21289" data-name="Path 21289" d="M72,88h8a8,8,0,0,0,0-16H72a8,8,0,0,0,0,16Z" fill="#7a0553"/>
+      <path id="Path_21290" data-name="Path 21290" d="M104,88h8a8,8,0,0,0,0-16h-8a8,8,0,0,0,0,16Z" fill="#7a0553"/>
+    </g>
+    <path id="Icon_material-error" data-name="Icon material-error" d="M81.538,3a78.538,78.538,0,1,0,78.538,78.538A78.567,78.567,0,0,0,81.538,3Zm7.854,117.808H73.685V105.1H89.392Zm0-31.415H73.685V42.269H89.392Z" transform="translate(596.462 3715.462)" fill="#bf4095"/>
+    <text id="Oops_" data-name="Oops!" transform="translate(782 3793)" fill="#7a0553" font-size="71" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="0" y="0">OOPS!</tspan></text>
+    <text id="Blog_Not_Found" data-name="Blog Not Found" transform="translate(801 3833)" fill="#7a0553" font-size="25" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">Blog Not Found</tspan></text>
+  </g>
+</svg>

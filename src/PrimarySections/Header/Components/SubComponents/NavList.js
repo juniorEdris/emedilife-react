@@ -33,7 +33,7 @@ function NavList(props) {
       } else if(item.custom_link !==null){
         // just add link to anchor , do not need to call any api console.log('link',item.custom_link)
         return <li>
-            <a href={`${item.custom_link}`}  rel='noreferrer' target='_blank'>
+            <a href={`${item.custom_link}`} onClick={preventEvent} rel='noreferrer' target='_blank'>
                   {item.name}
                 </a>
         </li>
@@ -52,14 +52,6 @@ function NavList(props) {
             <span class="lnr lnr-menu"></span> all
           </Link>
         </li>
-        {/*{props.navlists.length > 0 && props.navlists.map(list => (
-          <li key={list.id}>
-             {console.log(list)} 
-            <Link to="#" onClick={preventEvent}>
-              {list.name}
-            </Link>
-          </li>   
-        ))}*/}
         {redirectToPage(props.navlists)}
       </ul>
     </div>

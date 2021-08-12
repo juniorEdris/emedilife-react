@@ -24,10 +24,14 @@ const BlogList = (props) => {
                   <Skeleton width={`100%`} height={`200px`} />
                 </div>
               ))
-          : props.allBlogs.length > 0 &&
+          : props.allBlogs.length > 0 ?
             props.allBlogs.map((blog) => (
               <SingleBlog key={blog.id} blog={blog} />
-            ))}
+            )) :
+            <div className="d-flex align-items-center justify-content-center full_vh">
+              <img src="./assets/svg/icons/Blogs/no_blogs.svg" alt="no blogs found" height={250} width={250}/>
+            </div>
+            }
       </div>
       <Pagination page={page} pages={props.pages} setPage={setPage} />
     </div>
