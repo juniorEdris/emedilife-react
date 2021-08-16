@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { PopUp } from '../../PrimarySections/SectionUtils/PopUp'
@@ -328,7 +329,16 @@ const PartTimeForm = (props) => {
                 error: 'select all the information is true...'
             })
             
-        } else {
+        }
+        // else if (educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '' || educationTwo.typeTwo === '' && educationTwo.yearTwo === '' && educationTwo.instituteTwo === '' && educationTwo.boardTwo === '' && educationTwo.resultTwo === '' || educationThree.typeThree === '' && educationThree.yearThree === '' && educationThree.instituteThree === '' && educationThree.boardThree === '' && educationThree.resultThree === '' || educationFour.typeFour === '' && educationFour.yearFour === '' && educationFour.instituteFour === '' && educationFour.boardFour === '' && educationFour.resultFour === '') {
+        //     setLoading(false)
+        //     setAlert({
+        //         status: true,
+        //         error: 'please provide at least one education qualification.'
+        //     })
+        // }
+        else {
+            // console.log('form accepting');
             await API().post(`${ENDPOINTS.EMEDI_CAREER}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&acknowledgement=${selected ? 1 : 0}&expected_salary=${form.expected_salary}&position=${form.position}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}&job_type=${'part time'}`,imageSet())
                 .then(res => {
                 if (res.data.status) {

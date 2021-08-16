@@ -52,6 +52,7 @@ import EmedilifeCare from './EmedilifeCare';
 import MediShebok from './MediShebok';
 import Evolunteer from './Evolunteer';
 import EmediPartner from './EmediPartner';
+import Invoice from './Invoice';
 
 function App(props) {
   const [nextPage, setNextPage] = useState('/dashboard');
@@ -132,6 +133,7 @@ function App(props) {
             {!props.User ? <Redirect to="/login" /> : <CheckOut />}
           </Route>
           {/* <Route path="/order-info" component={OrderInformation} /> */}
+          <Route path="/invoice" component={Invoice} /> 
           <Route path="/blog" component={Blog} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/ordersuccess" component={OrderNotification} />

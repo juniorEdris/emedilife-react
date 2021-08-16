@@ -11,8 +11,9 @@ import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
 const Details = (props) => {
-  const router = useHistory();
-  const path = router.location.pathname;
+  console.log(props.details);
+  // const router = useHistory();
+  // const path = router.location.pathname;
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');
@@ -24,7 +25,6 @@ const Details = (props) => {
     setPreviousPrice(0);
     setQuantity(1);
   }, [props.prodID]);
-  useEffect(() => {}, [path]);
   const selectPackage = (x) => {
     setPriceId(x.id);
     setPrice(x.price);
@@ -41,6 +41,7 @@ const Details = (props) => {
       product_id: item.id,
       photo: item.photo,
       name: item.name,
+      stock: item.stock,
       price: price === '' ? item.unit_prices[0]?.price : price,
       unit_prices_id: priceId === '' ? item.unit_prices[0]?.id : priceId,
       total_quantity: quantity,
@@ -65,6 +66,7 @@ const Details = (props) => {
       product_id: item.id,
       photo: item.photo,
       name: item.name,
+      stock: item.stock,
       unit_price: {
         price:
           price === '' ? parseInt(item.unit_prices[0]?.price) : parseInt(price),
@@ -242,7 +244,7 @@ const Details = (props) => {
             </div>
           )}
           <div className="details_buttons_wrapper mt-5">
-            {path !== '/updatecartproduct' ? (
+            {props.details?.stock !== '0' ? (
               <button
                 className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
@@ -253,9 +255,9 @@ const Details = (props) => {
               <button
                 className={`details_btn-cart btn btn-danger col-12 col-md-8 offset-md-2`}
                 type="button"
-                onClick={() => updateCartItem(props.details)}>
+                disabled>
                 {' '}
-                update cart
+                stock not available
               </button>
             )}
           </div>

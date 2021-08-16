@@ -1,0 +1,65 @@
+
+.invoice_wrapper{
+    /* margin:var(--top-whitespace) 0; */
+    min-height: 100vh;
+    color: #6A6A6A;
+}
+.customer_copy span {
+    font-size: var(--primary-text-size);
+    color: var(--dark-color);
+}
+.invoice_logo img{
+    width: 200px;
+}
+.invoice_head_text{
+    font-size: 1.5rem;
+    color: #414141;
+}
+.invoice_address_child{
+    border: 1px solid var(--theme-color);
+    border-radius: 0.75rem;
+}
+.invoice_address_child h5{
+    font-size:1.5rem ;
+    color: var(--theme-color);
+}
+.invoice_address_top .invoice_name span{
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #414141;
+}
+.invoice_address_top div,
+.invoice_address_bottom div{
+    margin-bottom: 0.2rem;
+}
+/* Main section css */
+
+.invoice_timestamps{
+    background-color: #FCECF7;
+    padding: 0.4rem 0;
+    font-size: 1.1rem;
+}
+.invoice_timestamps strong{
+    color: #414141;
+}
+/* Footer css here */
+.invoice_total{
+    padding-bottom: 1rem;
+}
+.invoice_total_child{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.invoice_total_child_heading{
+    background-color: #FCECF7;
+    padding: 0.7rem 0;
+}
+.invoice_total_border{
+    border-top: 2px solid #414141;
+}
+.signature_section{
+    padding-bottom: 4rem;
+    color: #414141;
+}

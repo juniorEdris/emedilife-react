@@ -73,15 +73,20 @@ const WishlistBody = (props) => {
                     </div>
                   </td>
                   <td>
-                    <div className="col-12 text-success">in stock</div>
+                    {product.stock !=='0' ? <div className="col-12 text-success">in stock</div> : <div className="col-12 text-danger">out of stock</div>}
                   </td>
                   <td>
-                    <button
+                    {product.stock !=='0' ? <button
                       className="btn btn-addcart text-light col-12"
                       onClick={() => addProduct(product)}>
                       <i className="fas fa-cart-plus mr-2"></i>
                       <span className="d-none d-md-inline"> add to cart</span>
-                    </button>
+                  </button> :
+                    <button
+                    className="btn btn-addcart text-light col-12"
+                    disabled>
+                    <span className="d-none d-md-inline"> stock not available</span>
+                </button> }
                   </td>
                 </tr>
               ))}
