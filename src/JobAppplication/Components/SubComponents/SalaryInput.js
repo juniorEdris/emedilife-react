@@ -7,7 +7,12 @@ const SalaryInput = (props) => {
             <div className="form-row">
                 <div className="col-8 col-md-4 mb-3">
                 <label htmlFor="expected_salary" className='table_inputs_heading text-color-theme'>Expected Salary(Per Month)</label>
-                    <input type="text" className="form-control uparzon-input-lg" id="expected_salary" required onChange={props.inputEvent} value={props.form.expected_salary}/>
+                    <input type="text" className="form-control uparzon-input-lg" id="expected_salary" required onChange={props.inputEvent} value={props.form.expected_salary} />
+                    {props?.error?.salary_error && 
+                    <small className="text-danger">
+                        {props?.error?.salary_error}
+                    </small>
+                    }
                 </div>
             </div>
         </div>

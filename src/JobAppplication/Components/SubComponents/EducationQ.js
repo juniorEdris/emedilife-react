@@ -213,7 +213,11 @@ const EducationQ = (props) => {
                         
                     </tbody>
                 </table>
-
+                {props?.error?.education_error && 
+                    <small className="text-danger">
+                        {props?.error?.education_error}
+                    </small>
+                    }
                 </div>
             </div>
     )

@@ -340,8 +340,49 @@ const MediShebok = (props) => {
         const referal_1 = `referrals_location[0][name]=${referalOne.referalNameOne}&referrals_location[0][relation]=${referalOne.referalRelationOne}&referrals_location[0][address]=${referalOne.referalAddressOne}&referrals_location[0][phone]=${referalOne.referalPhoneOne}`
         const referal_2 = `referrals_location[1][name]=${referalTwo.referalNameTwo}&referrals_location[1][relation]=${referalTwo.referalRelationTwo}&referrals_location[1][address]=${referalTwo.referalAddressTwo}&referrals_location[1][phone]=${referalTwo.referalPhoneTwo}`
         setLoading(true)
-                        
-            await API().post(`${ENDPOINTS.EMEDI_SHEBOK}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}`,imageSet())
+        setAlert({})       
+        if (educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'please provide at least one education qualification.',
+                education_error: 'Please provide at least one education qualification.'
+            })
+        }
+        else if (PharmalocationOne.pharmaTypeOne === '' && PharmalocationOne.pharmaNameOne === '' && PharmalocationOne.pharmaAddressOne === '' || PharmalocationTwo.pharmaTypeTwo === '' && PharmalocationTwo.pharmaNameTwo === '' && PharmalocationTwo.pharmaAddressTwo === '' || PharmalocationThree.pharmaTypeThree === '' && PharmalocationThree.pharmaNameThree === '' && PharmalocationThree.pharmaAddressThree === '' || PharmalocationFour.pharmaTypeFour === '' && PharmalocationFour.pharmaNameFour === '' && PharmalocationFour.pharmaAddressFour === '' || PharmalocationFive.pharmaTypeFive === '' & PharmalocationFive.pharmaNameFive === '' && PharmalocationFive.pharmaAddressFive === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 5 pharmecies information located on your area.',
+                pharma_error: 'Please provide 5 pharmecies information located on your area.'
+            })
+        }
+        else if (medicallocationOne.medicalTypeOne === '' && medicallocationOne.medicalNameOne === '' && medicallocationOne.medicalAddressOne === '' || medicallocationTwo.medicalTypeTwo === '' && medicallocationTwo.medicalNameTwo === '' && medicallocationTwo.medicalAddressTwo === '' || medicallocationThree.medicalTypeThree === '' && medicallocationThree.medicalNameThree === '' && medicallocationThree.medicalAddressThree === '' || medicallocationFour.medicalTypeFour === '' && medicallocationFour.medicalNameFour === '' && medicallocationFour.medicalAddressFour === '' || medicallocationFive.medicalTypeFive === '' && medicallocationFive.medicalNameFive === '' && medicallocationFive.medicalAddressFive === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 5 hospital/clinic/diagnostics information located at your area.',
+                medical_error: 'Please provide 5 hospital/clinic/diagnostics information located at your area.',
+            })
+        }
+        else if (referalOne.referalNameOne === '' && referalOne.referalRelationOne === '' && referalOne.referalAddressOne === '' && referalOne.referalPhoneOne === '' || referalTwo.referalNameTwo === '' && referalTwo.referalRelationTwo === '' && referalTwo.referalAddressTwo === '' && referalTwo.referalPhoneTwo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 2 referal persons of your area.',
+                referal_error: 'Please provide 2 referal persons of your area.'
+            })
+        }
+        else if (form.photo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide a photo.',
+                photo_error: 'Please provide a photo.',
+            })
+        }
+        else {
+            await API().post(`${ENDPOINTS.EMEDI_SHEBOK}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}`, imageSet())
                 .then(res => {
                 if (res.data.status) {
                     setAlert({
@@ -386,9 +427,10 @@ const MediShebok = (props) => {
                 })
                     setLoading(false)
                 } else {
-                    console.log(error);
-                }
-            }) 
+                        console.log(error);
+                    }
+                })
+        }
     }
 
     const inputEvent = e => {
@@ -401,6 +443,10 @@ const MediShebok = (props) => {
         setForm({
             ...form,
             [e.target.id]: e.target.files[0],
+        })
+        setAlert({
+            ...alert,
+            photo_error:''
         })
     }
     const imageSet = e => {
@@ -614,6 +660,7 @@ const MediShebok = (props) => {
                 inputEvent={inputEvent}
                 position={false}
                 imageEvent={imageEvent}
+                photo_error={alert}
                 />
             <EducationQ
             title={'Education Qualificaion'}
@@ -629,6 +676,7 @@ const MediShebok = (props) => {
                 setEducationThree,
                 setEducationFour
             }}
+            error={alert}
             inputEvent={{
                 educationEventOne,
                 educationEventTwo,
@@ -642,6 +690,7 @@ const MediShebok = (props) => {
                 inputEvent={inputEvent}
                 /> 
             <PharmaciesLocation
+            error={alert}
             title={'Write down 05 pharmacies located at your area'}
             form={{
                 PharmalocationOne,
@@ -666,6 +715,7 @@ const MediShebok = (props) => {
         }}
         />
         <MedicalLocation
+            error={alert}
             title={'Write down 05 hospital/clinic/diagnostics located at your area'}
             form={{
                 medicallocationOne,
@@ -677,9 +727,9 @@ const MediShebok = (props) => {
             setForm={{
                 setMedicallocationTwo,
                 setMedicallocationOne,
-            setMedicallocationThree,
-            setMedicallocationFour,
-            setMedicallocationFive,
+                setMedicallocationThree,
+                setMedicallocationFour,
+                setMedicallocationFive,
         }}
         inputEvent={{
             medicalLocationEventOne,
@@ -695,6 +745,7 @@ const MediShebok = (props) => {
                 referalOne,    
                 referalTwo,    
             }}
+            error={alert}
             setForm={{
                 setReferalOne,    
                 setReferalTwo,    

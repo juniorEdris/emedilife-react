@@ -168,7 +168,11 @@ const MedicalLocation = (props) => {
                         </tr>
                     </tbody>
                 </table>
-
+                {props?.error?.medical_error && 
+                    <small className="text-danger">
+                        {props?.error?.medical_error}
+                    </small>
+                }
                 </div>
             </div>
     )

@@ -51,6 +51,10 @@ const EmediPartner = (props) => {
             ...form,
             [e.target.id]: e.target.files[0],
         })
+        setAlert({
+            ...alert,
+            photo_error:''
+        })
     }
     const imageSet = e => {
         if (form.photo) {
@@ -81,7 +85,16 @@ const EmediPartner = (props) => {
             }
         })
         setLoading(true)
-            await API().post(`${ENDPOINTS.EMEDIPARTNER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`,imageSet())
+        if (form.photo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide a photo.',
+                photo_error: 'Please provide a photo.',
+            })
+        }    
+        else {
+        await API().post(`${ENDPOINTS.EMEDIPARTNER}?name=${form.name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&marital_status=${form.marital_status}`, imageSet())
             .then(res=>{
                 if (res.data.status) {
                     setAlert({
@@ -119,7 +132,33 @@ const EmediPartner = (props) => {
                 }
             }).catch(error => {
                 console.log(error);
-            }) 
+                const full_name= error.response.data.errors.name ? error.response.data.errors.name[0] : ''
+                const dob= error.response.data.errors.dob ? error.response.data.errors.dob[0] : ''
+                const father_name= error.response.data.errors.father_name ? error.response.data.errors.father_name[0] : ''
+                const mother_name= error.response.data.errors.mother_name ? error.response.data.errors.mother_name[0] : ''
+                const gender= error.response.data.errors.gender ? error.response.data.errors.gender[0] : ''
+                const mobile=error.response.data.errors.mobile ? error.response.data.errors.mobile[0] : ''
+                const email=error.response.data.errors.email ? error.response.data.errors.email[0] : ''
+                const nid=error.response.data.errors.nid ? error.response.data.errors.nid[0] : ''
+                const age = error.response.data.errors.age ? error.response.data.errors.age[0] : ''
+               
+                setAlert({
+                    status: true,
+                    error: 'The given data was invalid.',
+                    input_error: {
+                        full_name,
+                        mobile,
+                        dob,
+                        age,
+                        email,
+                        father_name,
+                        nid,
+                        mother_name,
+                        gender,
+                    }
+                })
+                setLoading(false)
+            }) }
     }
     const closeSuccessPopup = e => {
         setAlert({
@@ -318,6 +357,13 @@ const EmediPartner = (props) => {
                                 </g>
                                 </svg>
                             </label>}
+                            {alert?.photo_error && (
+                                <div className="">
+                                <small className="text-danger">
+                                    {alert?.photo_error}
+                                </small>
+                                </div>
+                            )}
                     </div>
                     </div>
                     <div className="mt-2">

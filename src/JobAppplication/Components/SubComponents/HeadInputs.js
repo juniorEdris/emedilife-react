@@ -187,6 +187,13 @@ const HeadInputs = (props) => {
                         
                             </label>
                         }
+                        {props?.photo_error?.photo_error && (
+                            <div className="">
+                            <small className="text-danger">
+                                {props?.photo_error?.photo_error}
+                            </small>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="col-12 ">

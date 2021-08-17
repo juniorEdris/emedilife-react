@@ -59,30 +59,35 @@ const MakeMoneyHeader = (props) => {
             ...form,
             [e.target.id]: e.target.files[0],
         })
+        setAlert({
+            ...alert,
+            photo_error:''
+        })
     }
     const register = async e => {
         e.preventDefault()
-        setAlert({
-            status: false,
-            success: '',
-            error:'',
-            input_error: {
-                full_name:'',
-                dob:'',
-                father_name:'',
-                mother_name:'',
-                age:'',
-                gender:'',
-                religion:'',
-                mobile:'',
-                email:'',
-                nid:'',
-                expected_salary:'',
-                alternative_mobile:'',
-                active_mobile:'',
-                present_address:''
-            }
-        })
+        // setAlert({
+        //     status: false,
+        //     success: '',
+        //     error:'',
+        //     input_error: {
+        //         full_name:'',
+        //         dob:'',
+        //         father_name:'',
+        //         mother_name:'',
+        //         age:'',
+        //         gender:'',
+        //         religion:'',
+        //         mobile:'',
+        //         email:'',
+        //         nid:'',
+        //         expected_salary:'',
+        //         alternative_mobile:'',
+        //         active_mobile:'',
+        //         present_address:''
+        //     }
+        // })
+        setAlert({})
         setLoading(true) 
         if (!selected) {
             setLoading(false)
@@ -91,7 +96,24 @@ const MakeMoneyHeader = (props) => {
                 error: 'select all the information is true...'
             })
             
-        } else {
+        }
+        else if (form.photo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide a photo.',
+                photo_error: 'Please provide a photo.',
+            })
+        }
+        else if (form.expected_salary === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide your salary expectation.',
+                salary_error: 'Please provide your salary expectation.',
+            })
+        }
+        else {
             await API().post(`${ENDPOINTS.EMEDI_E_VOLUNTEER}?name=${form.full_name}&age=${form.age}&dob=${form.dob}&mobile=${form.mobile}&alternative_mobile=${form.alt_mobile}&active_mobile=${form.active_mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&present_address=${form.present_address}&experience=${form.experience_details}&training=${form.training_details}&expected_salary=${form.expected_salary}&acknowledgement=${selected ? 1 :0}&permanent_address=${form.permanent_address}`,imageSet())
             .then(res=>{
                 if (res.data.status) {
@@ -138,7 +160,38 @@ const MakeMoneyHeader = (props) => {
                     setLoading(false)
                 }
             }).catch(error => {
-                console.log(error);
+                console.log(error.response.data);
+                const full_name=  error.response.data.errors.name ? error.response.data.errors.name[0] : ''
+                const dob=  error.response.data.errors.dob ? error.response.data.errors.dob[0] : ''
+                const father_name=  error.response.data.errors.father_name ? error.response.data.errors.father_name[0] : ''
+                const mother_name=  error.response.data.errors.mother_name ? error.response.data.errors.mother_name[0] : ''
+                const mobile= error.response.data.errors.mobile ? error.response.data.errors.mobile[0] : ''
+                const email= error.response.data.errors.email ? error.response.data.errors.email[0] : ''
+                const nid = error.response.data.errors.nid ? error.response.data.errors.nid[0] : ''
+                const active_mobile = error.response.data.errors.active_mobile ? error.response.data.errors.active_mobile[0] : ''
+                const religion = error.response.data.errors.religion ? error.response.data.errors.religion[0] : ''
+                const present_address = error.response.data.errors.present_address ? error.response.data.errors.present_address[0] : ''
+                const alternative_mobile = error.response.data.errors.alternative_mobile ? error.response.data.errors.alternative_mobile[0] : ''
+                const gender= error.response.data.errors.gender ? error.response.data.errors.gender[0] : ''
+                setAlert({
+                    status: true,
+                    error: error.response.data.message,
+                    input_error: {
+                        full_name,
+                        dob,
+                        father_name,
+                        mother_name,
+                        mobile,
+                        email,
+                        nid,
+                        gender,
+                        active_mobile,
+                        religion,
+                        present_address,
+                        alternative_mobile,
+                    }
+                })
+                setLoading(false)
             }) 
         }
     }
@@ -330,7 +383,12 @@ const MakeMoneyHeader = (props) => {
                                 </g>
                                 </g>
                         </svg>
-                        </label>} 
+                                        </label>}
+                        {alert?.photo_error && (
+                            <small className="text-danger">
+                                {alert?.photo_error}
+                            </small>
+                        )}        
                     </div>
                 </div>
                 <div className="col-12 p-0">
@@ -438,9 +496,9 @@ const MakeMoneyHeader = (props) => {
                                     
                     <label htmlFor="expected_salary" className=' table_inputs_heading'>Expected Salary:</label>
                         <input type="text" className="form-control uparzon-input-lg" id="expected_salary"  required onChange={handlechange} value={form.expected_salary}/>
-                        {alert?.input_error?.expected_salary && (
+                        {alert?.salary_error && (
                             <small className="text-danger">
-                                {alert?.input_error?.expected_salary}
+                                {alert?.salary_error}
                             </small>
                         )}
                     </div>

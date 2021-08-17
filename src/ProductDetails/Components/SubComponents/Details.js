@@ -11,9 +11,7 @@ import { getCartUpdateID } from '../../../Redux/Action/CartUpdateIDAction';
 import { addToWishlistAction } from '../../../Redux/Action/WishListAction';
 
 const Details = (props) => {
-  console.log(props.details);
-  // const router = useHistory();
-  // const path = router.location.pathname;
+
   const [quantity, setQuantity] = useState(1);
   const [priceId, setPriceId] = useState('');
   const [price, setPrice] = useState('');

@@ -98,7 +98,11 @@ const TableRowsTwo = (props) => {
                         </tr>
                     </tbody>
                 </table>
-
+                {props?.error?.referal_error && 
+                    <small className="text-danger">
+                        {props?.error?.referal_error}
+                    </small>
+                }
                 </div>
             </div>
     )

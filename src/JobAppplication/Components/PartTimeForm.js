@@ -322,6 +322,7 @@ const PartTimeForm = (props) => {
             const referal_1 = `referrals_location[0][name]=${referalOne.referalNameOne}&referrals_location[0][relation]=${referalOne.referalRelationOne}&referrals_location[0][address]=${referalOne.referalAddressOne}&referrals_location[0][phone]=${referalOne.referalPhoneOne}`
             const referal_2 = `referrals_location[1][name]=${referalTwo.referalNameTwo}&referrals_location[1][relation]=${referalTwo.referalRelationTwo}&referrals_location[1][address]=${referalTwo.referalAddressTwo}&referrals_location[1][phone]=${referalTwo.referalPhoneTwo}`
         setLoading(true)
+        setAlert({})
         if(!selected) {
             setLoading(false)
             setAlert({
@@ -330,15 +331,55 @@ const PartTimeForm = (props) => {
             })
             
         }
-        // else if (educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '' || educationTwo.typeTwo === '' && educationTwo.yearTwo === '' && educationTwo.instituteTwo === '' && educationTwo.boardTwo === '' && educationTwo.resultTwo === '' || educationThree.typeThree === '' && educationThree.yearThree === '' && educationThree.instituteThree === '' && educationThree.boardThree === '' && educationThree.resultThree === '' || educationFour.typeFour === '' && educationFour.yearFour === '' && educationFour.instituteFour === '' && educationFour.boardFour === '' && educationFour.resultFour === '') {
-        //     setLoading(false)
-        //     setAlert({
-        //         status: true,
-        //         error: 'please provide at least one education qualification.'
-        //     })
-        // }
+        else if (educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'please provide at least one education qualification.',
+                education_error: 'Please provide at least one education qualification.'
+            })
+        }
+        else if (PharmalocationOne.pharmaTypeOne === '' && PharmalocationOne.pharmaNameOne === '' && PharmalocationOne.pharmaAddressOne === '' || PharmalocationTwo.pharmaTypeTwo === '' && PharmalocationTwo.pharmaNameTwo === '' && PharmalocationTwo.pharmaAddressTwo === '' || PharmalocationThree.pharmaTypeThree === '' && PharmalocationThree.pharmaNameThree === '' && PharmalocationThree.pharmaAddressThree === '' || PharmalocationFour.pharmaTypeFour === '' && PharmalocationFour.pharmaNameFour === '' && PharmalocationFour.pharmaAddressFour === '' || PharmalocationFive.pharmaTypeFive === '' & PharmalocationFive.pharmaNameFive === '' && PharmalocationFive.pharmaAddressFive === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 5 pharmecies information located on your area.',
+                pharma_error: 'Please provide 5 pharmecies information located on your area.'
+            })
+        }
+        else if (medicallocationOne.medicalTypeOne === '' && medicallocationOne.medicalNameOne === '' && medicallocationOne.medicalAddressOne === '' || medicallocationTwo.medicalTypeTwo === '' && medicallocationTwo.medicalNameTwo === '' && medicallocationTwo.medicalAddressTwo === '' || medicallocationThree.medicalTypeThree === '' && medicallocationThree.medicalNameThree === '' && medicallocationThree.medicalAddressThree === '' || medicallocationFour.medicalTypeFour === '' && medicallocationFour.medicalNameFour === '' && medicallocationFour.medicalAddressFour === '' || medicallocationFive.medicalTypeFive === '' && medicallocationFive.medicalNameFive === '' && medicallocationFive.medicalAddressFive === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 5 hospital/clinic/diagnostics information located at your area.',
+                medical_error: 'Please provide 5 hospital/clinic/diagnostics information located at your area.',
+            })
+        }
+        else if (referalOne.referalNameOne === '' && referalOne.referalRelationOne === '' && referalOne.referalAddressOne === '' && referalOne.referalPhoneOne === '' || referalTwo.referalNameTwo === '' && referalTwo.referalRelationTwo === '' && referalTwo.referalAddressTwo === '' && referalTwo.referalPhoneTwo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 2 referal persons of your area.',
+                referal_error: 'Please provide 2 referal persons of your area.'
+            })
+        }
+        else if (form.expected_salary === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide your salary expectation.',
+                salary_error: 'Please provide your salary expectation.',
+            })
+        }
+        else if (form.photo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide a photo.',
+                photo_error: 'Please provide a photo.',
+            })
+        }
         else {
-            // console.log('form accepting');
             await API().post(`${ENDPOINTS.EMEDI_CAREER}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&acknowledgement=${selected ? 1 : 0}&expected_salary=${form.expected_salary}&position=${form.position}&${education_1}&${education_2}&${education_3}&${education_4}&${pharma_1}&${pharma_2}&${pharma_3}&${pharma_4}&${pharma_5}&${hospital_1}&${hospital_2}&${hospital_3}&${hospital_4}&${hospital_5}&${referal_1}&${referal_2}&job_type=${'part time'}`,imageSet())
                 .then(res => {
                 if (res.data.status) {
@@ -389,6 +430,10 @@ const PartTimeForm = (props) => {
         setForm({
             ...form,
             [e.target.id]: e.target.files[0],
+        })
+        setAlert({
+            ...alert,
+            photo_error:''
         })
     }
     const imageSet = e => {
@@ -591,6 +636,7 @@ const PartTimeForm = (props) => {
             <HeadInputs
                 form={form}
                 error={alert.input_error}
+                photo_error={alert}
                 setForm={setForm}
                 inputEvent={inputEvent}
                 imageEvent={imageEvent}
@@ -615,12 +661,15 @@ const PartTimeForm = (props) => {
                     educationEventTwo,
                     educationEventThree,
                     educationEventFour
-                }}
+                    }}
+                error={alert}
+                    
                 />
             <ExperienceArea
                 form = {form}
                 setForm={setForm}
                 inputEvent={inputEvent}
+                error={alert}
             />
             <PharmaciesLocation
             title={'Write down 05 pharmacies located at your area'}
@@ -645,6 +694,7 @@ const PartTimeForm = (props) => {
                 pharmaLocationEventFour,
                 pharmaLocationEventFive,
             }}
+            error={alert}
             />
             <MedicalLocation
             title={'Write down 05 hospital/clinic/diagnostics located at your area'}
@@ -669,6 +719,7 @@ const PartTimeForm = (props) => {
             medicalLocationEventFour,
             medicalLocationEventFive,
         }}
+        error={alert}
             />
             <TableRowsTwo
             title={'Write down 02 referral persons of your area'}
@@ -684,8 +735,9 @@ const PartTimeForm = (props) => {
                 ReferalEventOne,    
                 ReferalEventTwo,    
             }}
+            error={alert}
             />
-            <SalaryInput form={form} inputEvent={inputEvent}/>
+            <SalaryInput form={form} inputEvent={inputEvent} error={alert}/>
             <AgreementRadio
                 selected={selected}
                 setSelected={setSelected}

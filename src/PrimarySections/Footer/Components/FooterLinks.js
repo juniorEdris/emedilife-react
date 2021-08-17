@@ -9,7 +9,7 @@ function FooterLinks(props) {
   };
   return (
     <div className="footer_links">
-      {props.links?.length > 0 && (
+      
         <div className="container">
           <div className="row">
             <div className="links_container col-6 col-features">
@@ -129,7 +129,6 @@ function FooterLinks(props) {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 }

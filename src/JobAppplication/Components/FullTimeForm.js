@@ -164,6 +164,7 @@ const FullTimeForm = (props) => {
         const referal_1 = `referrals_location[0][name]=${referalOne.referalNameOne}&referrals_location[0][relation]=${referalOne.referalRelationOne}&referrals_location[0][address]=${referalOne.referalAddressOne}&referrals_location[0][phone]=${referalOne.referalPhoneOne}`
         const referal_2 = `referrals_location[1][name]=${referalTwo.referalNameTwo}&referrals_location[1][relation]=${referalTwo.referalRelationTwo}&referrals_location[1][address]=${referalTwo.referalAddressTwo}&referrals_location[1][phone]=${referalTwo.referalPhoneTwo}`
         setLoading(true)
+        setAlert({})
         if (!selected) {
             setLoading(false)
             setAlert({
@@ -171,7 +172,40 @@ const FullTimeForm = (props) => {
                 error: 'select all the information is true...'
             })
             
-        } else {
+        }
+        else if (educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'please provide at least one education qualification.',
+                education_error: 'Please provide at least one education qualification.'
+            })
+        }
+        else if (referalOne.referalNameOne === '' && referalOne.referalRelationOne === '' && referalOne.referalAddressOne === '' && referalOne.referalPhoneOne === '' || referalTwo.referalNameTwo === '' && referalTwo.referalRelationTwo === '' && referalTwo.referalAddressTwo === '' && referalTwo.referalPhoneTwo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide 2 referal persons of your area.',
+                referal_error: 'Please provide 2 referal persons of your area.'
+            })
+        }
+        else if (form.expected_salary === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide your salary expectation.',
+                salary_error: 'Please provide your salary expectation.',
+            })
+        }
+        else if (form.photo === '') {
+            setLoading(false)
+            setAlert({
+                status: true,
+                error: 'Please provide a photo.',
+                photo_error: 'Please provide a photo.',
+            })
+        }
+        else {
             await API().post(`${ENDPOINTS.EMEDI_CAREER}?name=${form.full_name}&dob=${form.dob}&mobile=${form.mobile}&email=${form.email}&father_name=${form.father_name}&mother_name=${form.mother_name}&nid=${form.nid}&gender=${form.gender}&religion=${form.religion}&experience=${form.experience}&training=${form.training}&present_address=${form.present_address}&permanent_address=${form.permanent_address}&acknowledgement=${selected ? 1 : 0}&expected_salary=${form.expected_salary}&${education_1}&${education_2}&${education_3}&${education_4}&${referal_1}&${referal_2}&position=${form.position}&job_type=${'full time'}`,imageSet())
                 .then(res => {
                     if (res.data.status) {
@@ -222,6 +256,10 @@ const FullTimeForm = (props) => {
         setForm({
             ...form,
             [e.target.id]: e.target.files[0],
+        })
+        setAlert({
+            ...alert,
+            photo_error:''
         })
     }
     const imageSet = e => {
@@ -341,13 +379,15 @@ const FullTimeForm = (props) => {
             <HeadInputs
                 form={form}
                 error={alert.input_error}
+                photo_error={alert}
                 setForm={setForm}
                 inputEvent={inputEvent}
                 imageEvent={imageEvent}
                 position={true}
-            />
+                />
             <EducationQ
             title={'Education Qualification'}
+            error={alert}
             form={{
                 educationOne,
                 educationTwo,
@@ -371,8 +411,9 @@ const FullTimeForm = (props) => {
                 form = {form}
                 setForm={setForm}
                 inputEvent={inputEvent}
-            />
+                />
             <TableRowsTwo
+                error={alert}
                 title={'Write down 02 referral persons of your area'}
                 form={{
                     referalOne,    
@@ -390,11 +431,12 @@ const FullTimeForm = (props) => {
             <SalaryInput
                 form={form}
                 inputEvent={inputEvent}
+                error={alert}
             />
             <AgreementRadio
                 selected={selected}
                 setSelected={setSelected}
-            />
+                />
             <SubmitButton click={register}/>
         </div>
     )
