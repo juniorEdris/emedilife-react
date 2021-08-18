@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { Truncate } from '../../PrimarySections/Utility';
 
 const InvoiceProducts = (props) => {
+
     return (
-        <div className="primary_table overflow-none">
+        <div className="primary_table overflow-none invoice-table">
       <table class="table">
         <thead class="thead-primary">
           <tr>
@@ -30,60 +31,26 @@ const InvoiceProducts = (props) => {
           </tbody>
         ) : (
           <tbody>
-            {Array(4)
-              .fill()
-              .map((item,i) => (
-              <tr className="trow-light" key={i}>
+            {props.products?.cart?.map((item) => (
+              <tr className="trow-light" key={item.products_id}>
                 <td>
                   <Link
-                    to={`/productdetails?id=${0}`}
+                    to={`/productdetails?id=${item.products_id}`}
                     className="order_table_name">
-                    {Truncate('Omron HEM 7120 Fully Automatic ', 15)}
+                    {Truncate(item.name, 15)}
                   </Link>
                 </td>
-                <td>{'none'}</td>
-                <td>{'2'}</td>
-                <td>BDT {'200'}</td>
+                <td>BDT {item.price}</td>
+                <td>{item.total_quantity}</td>
+                <td>BDT {'00'}</td>
                 <td>
                   BDT{' '}
-                  {(Number('200') * Number('2')).toFixed(
+                  {(Number(item.price) * Number(item.total_quantity)).toFixed(
                     2
                   )}
                 </td>
               </tr>
             ))}
-            <tr className="order_price_card">
-              <td colSpan="4" className="order_price_section">
-                Sub Total
-              </td>
-              <td>BDT {Number('100').toFixed(2)}</td>
-              <td></td>
-            </tr>
-            <tr className="order_price_card">
-              <td colSpan="4" className="order_price_section">
-                Regular (withine 24 hours)
-              </td>
-              <td>
-                (+)BDT {Number('100').toFixed(2) || 0}
-              </td>
-              <td></td>
-            </tr>
-            <tr className="order_price_card">
-              <td colSpan="4" className="order_price_section">
-                Discount
-              </td>
-              <td>
-                (-)BDT {Number('00').toFixed(2) || 0}
-              </td>
-              <td></td>
-            </tr>
-            <tr className="order_price_card">
-              <td colSpan="4" className="order_price_section">
-                Total
-              </td>
-              <td>BDT {Number('1200').toFixed(2)}</td>
-              <td></td>
-            </tr>
           </tbody>
         )}
       </table>

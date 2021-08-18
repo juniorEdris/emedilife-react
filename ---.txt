@@ -1,0 +1,16 @@
+educationOne.type !== '' && educationOne.year !== '' && educationOne.institute !== '' && educationOne.board !== '' && educationOne.result !== '' || educationTwo.typeTwo !== '' && educationTwo.yearTwo !== '' && educationTwo.instituteTwo !== '' && educationTwo.boardTwo !== '' && educationTwo.resultTwo !== '' || educationThree.typeThree !== '' && educationThree.yearThree !== '' && educationThree.instituteThree !== '' && educationThree.boardThree !== '' && educationThree.resultThree !== '' || educationFour.typeFour !== '' && educationFour.yearFour !== '' && educationFour.instituteFour !== '' && educationFour.boardFour !== '' && educationFour.resultFour !== ''
+
+
+educationOne.type === '' && educationOne.year === '' && educationOne.institute === '' && educationOne.board === '' && educationOne.result === '' || educationTwo.typeTwo === '' && educationTwo.yearTwo === '' && educationTwo.instituteTwo === '' && educationTwo.boardTwo === '' && educationTwo.resultTwo === '' || educationThree.typeThree === '' && educationThree.yearThree === '' && educationThree.instituteThree === '' && educationThree.boardThree === '' && educationThree.resultThree === '' || educationFour.typeFour === '' && educationFour.yearFour === '' && educationFour.instituteFour === '' && educationFour.boardFour === '' && educationFour.resultFour === ''
+
+
+
+PharmalocationOne.pharmaTypeOne === '' && PharmalocationOne.pharmaNameOne === '' && PharmalocationOne.pharmaAddressOne === '' || PharmalocationTwo.pharmaTypeTwo === '' && PharmalocationTwo.pharmaNameTwo === '' && PharmalocationTwo.pharmaAddressTwo === '' ||
+PharmalocationThree.pharmaTypeThree === '' && PharmalocationThree.pharmaNameThree === '' && PharmalocationThree.pharmaAddressThree === '' ||
+PharmalocationFour.pharmaTypeFour === '' && PharmalocationFour.pharmaNameFour === '' && PharmalocationFour.pharmaAddressFour === '' ||
+PharmalocationFive.pharmaTypeFive === '' && PharmalocationFive.pharmaNameFive === '' && PharmalocationFive.pharmaAddressFive === ''
+
+
+medicallocationOne.medicalTypeOne === '' && medicallocationOne.medicalNameOne === '' && medicallocationOne.medicalAddressOne === '' || medicallocationTwo.medicalTypeTwo === '' && medicallocationTwo.medicalNameTwo === '' && medicallocationTwo.medicalAddressTwo === '' || medicallocationThree.medicalTypeThree === '' && medicallocationThree.medicalNameThree === '' && medicallocationThree.medicalAddressThree === '' || medicallocationFour.medicalTypeFour === '' && medicallocationFour.medicalNameFour === '' && medicallocationFour.medicalAddressFour === '' || medicallocationFive.medicalTypeFive === '' && medicallocationFive.medicalNameFive === '' && medicallocationFive.medicalAddressFive === ''
+
+referalOne.referalNameOne === '' && referalOne.referalRelationOne === '' && referalOne.referalAddressOne === '' && referalOne.referalPhoneOne === '' || referalTwo.referalNameTwo === '' && referalTwo.referalRelationTwo === '' && referalTwo.referalAddressTwo === '' && referalTwo.referalPhoneTwo === ''

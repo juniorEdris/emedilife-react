@@ -11,7 +11,7 @@
     margin-bottom: var(--margin-bottom);
 }
 .print-btn{
-    background: var(--nav-bg);
+    background: var(--user-entry-btn);
     color: var(--light-color);
 }
 .print-btn:hover{

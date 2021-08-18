@@ -1,4 +1,4 @@
-const InvoiceHeader = () => {
+const InvoiceHeader = (props) => {
     return (
         <div className="mb-2">
             <header>
@@ -17,18 +17,18 @@ const InvoiceHeader = () => {
                             <h5 className='mb-1'>From</h5>
                             <div className="invoice_address_top mb-4">
                                 <div className="invoice_name">
-                                    <span>emedilife co.</span>
+                                    <span>{props.details?.customer_name || 'N/A'}</span>
                                 </div>
                                 <div className="invoice_address">
-                                    <span>House#30(3rd floor), Road#4, Block#B, Agrabad, Chitagong</span>
+                                    <span>{props.details?.customer_address || 'N/A'}</span>
                                 </div>
                             </div>
                             <div className="invoice_address_bottom">
                             <div className="invoice_email">
-                                    <span>emedilife.deliver@pharma.com</span>
+                                    <span>{props.details?.customer_email || 'N/A'}</span>
                                 </div>
                                 <div className="invoice_number">
-                                    <span>+88 01798787442, +88 01554547300</span>
+                                    <span>{props.details?.customer_phone || 'N/A'}</span>
                                 </div>
                             </div>
                         </div>
@@ -38,18 +38,18 @@ const InvoiceHeader = () => {
                             <h5 className='mb-1'>To</h5>
                             <div className="invoice_address_top mb-4">
                                 <div className="invoice_name">
-                                    <span>emedilife co.</span>
+                                    <span>{props.details?.customer_name || 'N/A'}</span>
                                 </div>
                                 <div className="invoice_address">
-                                    <span>House#30(3rd floor), Road#4, Block#B, Agrabad, Chitagong</span>
+                                    <span>{props.details?.customer_address || 'N/A'}</span>
                                 </div>
                             </div>
                             <div className="invoice_address_bottom">
                             <div className="invoice_email">
-                                    <span>emedilife.deliver@pharma.com</span>
+                                    <span>{props.details?.customer_email || 'N/A'}</span>
                                 </div>
                                 <div className="invoice_number">
-                                    <span>+88 01798787442, +88 01554547300</span>
+                                    <span>{props.details?.customer_phone || 'N/A'}</span>
                                 </div>
                             </div>
                         </div>

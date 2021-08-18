@@ -1,21 +1,28 @@
+import dateFormat from 'dateformat';
 import InvoiceProducts from './InvoiceProducts';
 
-const InvoiceMiddle = () => {
+const InvoiceMiddle = (props) => {
     return (
         <div className="">
             <main className='mb-3'>
                 <div className="invoice_timestamps row no-gutters mb-3">
                     <div className="col-4 text-center">
-                        <span><strong>Invoice No:</strong> #UPZ54541722417</span>
+                        <span><strong>Invoice No:</strong> #{props.details?.order_number || 'N/A'}</span>
                     </div>
                     <div className="col-4 text-center">
-                        <span><strong>Invoice Date:</strong> 21 - 08 - 2021</span>
+                        <span><strong>Invoice Date:</strong> {dateFormat(
+                  props.details?.order_date,
+                  ' mmmm dS, yyyy, h:MM:ss TT'
+                )}</span>
                     </div>
                     <div className="col-4 text-center">
-                        <span><strong>Due Date:</strong> 21 - 08 - 2021</span>
+                        <span><strong>Due Date:</strong> {dateFormat(
+                  props.details?.order_date,
+                  ' mmmm dS, yyyy, h:MM:ss TT'
+                )}</span>
                     </div>
                 </div>
-                <InvoiceProducts/>
+                <InvoiceProducts products={props.details}/>
             </main>
         </div>
      );

@@ -218,7 +218,7 @@
 
 @media print {
   /* OREDER INFORMATION STARTS  */
-  .header,.order-information-heading,.header_nav,.dashSidebar,.cart_icon, .footer, .copyright,.cancel_order_btn{
+  .header,.order-information-heading,.header_nav,.dashSidebar,.cart_icon, .footer, .copyright,.cancel_order_btn,.print-btn-container{
     
     display: none !important; 
     
@@ -234,7 +234,7 @@
   .list_content {
     border-bottom: 1px solid var(--muted-color)!important;
     color: var(--dark-color)!important;
-}
+  }
   .order_table_name{
     text-decoration: none !important;
   }
@@ -245,6 +245,9 @@
     -ms-flex: 0 0 100%;
     flex: 1 0 100%;
     max-width: 100%;
+  }
+  .invoice-table table thead.thead-primary{
+    color: var(--dark-color) !important;
   }
   /* OREDER INFORMATION STARTS  */
 }

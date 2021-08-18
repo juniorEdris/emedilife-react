@@ -1,33 +1,33 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useQuery } from '../PrimarySections/Utility';
 import { getSingleOrderDetails } from '../Redux/Action/SingleOrderAction';
 import AddressSection from './Components/AddressSection';
 import OrderDetails from './Components/OrderDetails';
 import OrderProducts from './Components/OrderProducts';
 import './order_information.css';
+import {useHistory} from 'react-router-dom';
 
 const OrderInformation = (props) => {
-  // const query = useQuery();
-  // const id = query.get('id');
   useEffect(() => {
     props.getSingleOrder(props.orderId);
   }, [props.orderId]);
-  const printPage = (e) => {
-    window.print();
+  const history = useHistory()
+  const getInvoice = (e) => {
+    history.push(`/invoice?id=${props.orderId}`)
   };
   return (
     <div className="order_information">
       <div className="container">
-        <div className=" order-information-heading mt-0 d-flex align-items-center justify-content-between">
+        <div className="order-information-heading mt-0 d-flex align-items-center justify-content-between">
           {' '}
           {/*  */}
           <h5 className="">Order Information</h5>{' '}
+          {/* props.singleorder?.delivery_status === 'completed' && */}
           <button
             type="button"
             className="btn print-btn col-2 d-none d-md-block"
-            onClick={printPage}>
-            Print
+            onClick={getInvoice}>
+            View invoice
           </button>
         </div>
         <OrderDetails
