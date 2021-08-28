@@ -10,15 +10,14 @@ const InvoiceMiddle = (props) => {
                         <span><strong>Invoice No:</strong> #{props.details?.order_number || 'N/A'}</span>
                     </div>
                     <div className="col-4 text-center">
-                        <span><strong>Invoice Date:</strong> {dateFormat(
-                  props.details?.order_date,
-                  ' mmmm dS, yyyy, h:MM:ss TT'
-                )}</span>
+                        <span><strong>Invoice Date:</strong> {
+                            dateFormat('mmm dS, yyyy h:MM TT', new Date())
+                        }</span>
                     </div>
                     <div className="col-4 text-center">
                         <span><strong>Due Date:</strong> {dateFormat(
                   props.details?.order_date,
-                  ' mmmm dS, yyyy, h:MM:ss TT'
+                  'mmm dS, yyyy, h:MM TT'
                 )}</span>
                     </div>
                 </div>
